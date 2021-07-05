@@ -1,0 +1,84 @@
+<?php
+include_once "CONEXION.php";
+include_once "I_MODELO.php";
+class MODELO extends CONEXION implements I_MODELO
+{
+    private $id_modelo;
+    private $id_marca_fk;
+    private $nombre;
+    private $estatus;
+
+    /**
+     * @return mixed
+     */
+    public function getIdModelo()
+    {
+        return $this->id_modelo;
+    }
+
+    /**
+     * @param mixed $id_modelo
+     */
+    public function setIdModelo($id_modelo)
+    {
+        $this->id_modelo = $id_modelo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdMarcaFk()
+    {
+        return $this->id_marca_fk;
+    }
+
+    /**
+     * @param mixed $id_marca_fk
+     */
+    public function setIdMarcaFk($id_marca_fk)
+    {
+        $this->id_marca_fk = $id_marca_fk;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEstatus()
+    {
+        return $this->estatus;
+    }
+
+    /**
+     * @param mixed $estatus
+     */
+    public function setEstatus($estatus)
+    {
+        $this->estatus = $estatus;
+    }
+
+    function consultaModelos ($id_marca)
+    {
+        $query = "SELECT `id_modelo`, `id_marca_fk`, `nombre`, `estatus` FROM `modelo` WHERE `id_marca_fk` = ".$id_marca;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+}
