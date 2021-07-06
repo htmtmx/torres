@@ -2,5 +2,7 @@
 
 interface I_MARCA
 {
-    function ListModelos ();
+    function listModelos ();
+
+    function listMarcas ();
 }

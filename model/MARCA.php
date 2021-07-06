@@ -14,7 +14,7 @@ class MARCA extends CONEXION implements I_MARCA
      */
     public function getListModelos()
     {
-        return $this->ListModelos();
+        return $this->listModelos();
     }
 
     /**
@@ -73,7 +73,7 @@ class MARCA extends CONEXION implements I_MARCA
         $this->estatus = $estatus;
     }
 
-    function ListModelos ()
+    function listModelos ()
     {
         include_once "../model/MODELO.php";
         $tempModel = new MODELO();
@@ -81,5 +81,14 @@ class MARCA extends CONEXION implements I_MARCA
         return $modelos;
     }
 
+    function listMarcas ()
+    {
+        $query = "SELECT `id_marca`, `nombre`, `estatus` 
+                FROM `marca`";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 
-}
+    }

@@ -12,7 +12,7 @@ $conn = mysqli_connect(
         'localhost',
         'root',
         '',
-        'autostorres');
+        'autos_torres');
 
 ?>
 

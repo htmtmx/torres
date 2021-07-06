@@ -74,11 +74,35 @@ class MODELO extends CONEXION implements I_MODELO
 
     function consultaModelos ($id_marca)
     {
-        $query = "SELECT `id_modelo`, `id_marca_fk`, `nombre`, `estatus` FROM `modelo` WHERE `id_marca_fk` = ".$id_marca;
+        $query = "SELECT `id_modelo`, `id_marca_fk`, `nombre`, 
+       `estatus` FROM `modelo` WHERE `id_marca_fk` = ".$id_marca;
         $this->connect();
         $result = $this->getData($query);
         $this->close();
         return $result;
     }
 
+    function addModelo ($id_marca,$nombre)
+    {
+        $query = "INSERT INTO `modelo` 
+                (`id_modelo`, `id_marca_fk`, `nombre`, `estatus`) 
+                VALUES (NULL, '".$id_marca."', '".$nombre."', '1')";
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
+    function updateModelo ()
+    {
+        $query = "UPDATE `modelo` 
+                SET `id_marca_fk` = '".$this->getIdMarcaFk()."', 
+                    `nombre` = '".$this->getNombre()."', 
+                    `estatus` = '".$this->getEstatus()."' 
+                WHERE `modelo`.`id_modelo` = ".$this->getIdModelo();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        var_dump($result);
+    }
 }
