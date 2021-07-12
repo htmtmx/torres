@@ -81,6 +81,18 @@ class MODELO extends CONEXION implements I_MODELO
         $this->close();
         return $result;
     }
+    public function consultaModelo($id_modelo)
+    {
+        $query = "SELECT mo.`id_modelo`, mo.`id_marca_fk`,mar.`nombre` 
+                AS nombre_marca, mo.`nombre` AS nombre_modelo, mo.`estatus` 
+                FROM `modelo` mo, `marca` mar 
+                WHERE mo.`id_modelo`= ".$id_modelo."
+                AND mar.`id_marca`= mo.`id_marca_fk`";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 
     function addModelo ($id_marca,$nombre)
     {
@@ -103,6 +115,15 @@ class MODELO extends CONEXION implements I_MODELO
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
-        var_dump($result);
+        return $result;
+    }
+    public function deleteModelo($id_modelo)
+    {
+        $query = "DELETE FROM `modelo` 
+                WHERE `modelo`.`id_modelo` = ".$id_modelo;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
 }

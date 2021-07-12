@@ -1,7 +1,8 @@
 <?php
+include_once "CONEXION.php";
+include_once "I_CLIENTES.php";
 
-
-class CLIENTES
+class CLIENTES extends CONEXION implements I_CLIENTES
 {
     private $no_cliente;
     private $nombre;
@@ -276,5 +277,53 @@ class CLIENTES
         $this->system_state = $system_state;
     }
 
+    public function consultaCliente($no_cliente)
+    {
+        $concat="";
+        if ($no_cliente!=0) {
+            $concat = " AND `cliente`.`no_cliente` = ".$no_cliente;
+        }
+        $query = "SELECT `no_cliente`, `nombre`, `apaterno`, `amaterno`, `telefono`,
+            `celular`, `correo`, `subscripcion`, `empresa`, `rfc`, `fecha_registro`,
+            `medio_identificación`, `folio`, `tipo_cliente`, `estatus`
+            FROM `cliente` WHERE system_state = 1 ".$concat;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
 
+    }
+
+    public function addCliente()
+    {
+        $query = "INSERT INTO `cliente` (
+                `no_cliente`, `nombre`, `apaterno`, `amaterno`, `telefono`, `celular`, `correo`, 
+                `subscripcion`, `empresa`, `rfc`, `fecha_registro`, `medio_identificación`, 
+                `folio`, `tipo_cliente`, `estatus`, `system_state`) VALUES ('".$this->getNoCliente()."', '"
+                .$this->getNombre()."', '".$this->getApaterno()."', '".$this->getAmaterno()."', '"
+                .$this->getTelefono()."', '".$this->getCelular()."', '".$this->getCorreo()."', '"
+                .$this->getSubscripcion()."', '".$this->getEmpresa()."', '".$this->getRfc()."', '"
+                .date('Y-m-d H:i:s')."', '".$this->getMedioIdentificación()."', '"
+                .$this->getFolio()."', '".$this->getTipoCliente()."', '1', '1')";
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        var_dump($result);
+    }
+    public function updateCliente()
+    {
+        $query = "UPDATE `cliente` 
+                SET `nombre` = '".$this->getNombre()."', `apaterno` = '".$this->getApaterno()."', 
+                `amaterno` = '".$this->getAmaterno()."', `telefono` = '".$this->getTelefono()."', 
+                `celular` = '".$this->getCelular()."', `correo` = '".$this->getCorreo()."', 
+                `subscripcion` = '".$this->getSubscripcion()."', `empresa` = '".$this->getEmpresa()."', 
+                `rfc` = '".$this->getRfc()."', `medio_identificación` = '".$this->getMedioIdentificación()."', 
+                `folio` = '".$this->getFolio()."', `tipo_cliente` = '".$this->getTipoCliente()."', 
+                `estatus` = '".$this->getEstatus()."', `system_state` = '".$this->getSystemState()."' 
+                WHERE `cliente`.`no_cliente` = ".$this->getNoCliente();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

@@ -1,7 +1,9 @@
 <?php
 
+include_once "CONEXION.php";
+include_once "I_COCHE.php";
 
-class COCHE
+class COCHE extends CONEXION implements I_COCHE
 {
     private $no_vehiculo;
     private $id_modelo_fk;
@@ -276,5 +278,68 @@ class COCHE
         $this->estatus = $estatus;
     }
 
+    public function consultaCoches($no_vehiculo)
+    {
+        $concat="";
+        if ($no_vehiculo!=0) {
+            $concat = " AND co.no_vehiculo = ".$no_vehiculo;
+        }
+        $query = "SELECT co.no_vehiculo, co.id_modelo_fk, co.fecha_registro, co.anio,
+                co.placa, co.entidad_placa, co.color, co.kilometros, co.transimision,
+                co.combustible, co.no_puertas, co.precio_contado, co.precio_credito,
+                co.opc_credito,co.observaciones,co.estatus, mo.id_modelo, mo.id_marca_fk, 
+                mo.nombre AS modelo_coche, mar.id_marca, mar.nombre AS marca_coche 
+                FROM coche co, modelo mo, marca mar 
+                WHERE co.id_modelo_fk = mo.id_modelo 
+                AND mar.id_marca = mo.id_marca_fk 
+                AND co.estatus = '1' ".$concat;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+    public function addCoche()
+    {
+        $query = "INSERT INTO `coche` 
+                (`no_vehiculo`, `id_modelo_fk`, `fecha_registro`, `anio`, `placa`, 
+                `entidad_placa`, `color`, `kilometros`, `transimision`, `combustible`, 
+                `no_puertas`, `precio_contado`, `precio_credito`, `opc_credito`, 
+                `observaciones`, `estatus`) 
+                VALUES ('".$this->getNoVehiculo()."', '".$this->getIdModeloFk()."', '"
+                .date('Y-m-d H:i:s')."', '".$this->getAnio()."', '".$this->getPlaca()."', '"
+                .$this->getEntidadPlaca()."', '".$this->getColor()."', '".$this->getKilometros()."', '"
+                .$this->getTransimision()."', '".$this->getCombustible()."', '".$this->getNoPuertas()."', '"
+                .$this->getPrecioContado()."', '".$this->getPrecioCredito()."', '1', '"
+                .$this->getObservaciones()."', '1')";
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    public function updateCoche()
+    {
+        $query="UPDATE `coche` 
+                SET `id_modelo_fk` = '".$this->getIdModeloFk()."', 
+                `anio` = '".$this->getAnio()."', `placa` = '".$this->getPlaca()."', `entidad_placa` = '".$this->getEntidadPlaca()."', 
+                `color` = '".$this->getColor()."', `kilometros` = '".$this->getKilometros()."', 
+                `transimision` = '".$this->getTransimision()."', `combustible` = '".$this->getCombustible()."', 
+                `no_puertas` = '".$this->getNoPuertas()."', `precio_contado` = '".$this->getPrecioContado()."', 
+                `precio_credito` = '".$this->getPrecioCredito()."', `opc_credito` = '".$this->getOpcCredito()."', 
+                `observaciones` = '".$this->getObservaciones()."', `estatus` = '".$this->getEstatus()."' 
+                WHERE `coche`.`no_vehiculo` = ".$this->getNoVehiculo();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    public function deleteCoche($no_vehiculo)
+    {
+        $query = "DELETE FROM `coche` 
+                WHERE `coche`.`no_vehiculo` = ".$no_vehiculo;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 
 }
