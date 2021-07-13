@@ -1,7 +1,8 @@
 <?php
+include_once "CONEXION.php";
+include_once "I_DIRECCIONES.php";
 
-
-class DIRECCIONES
+class DIRECCIONES extends CONEXION implements I_DIRECCIONES
 {
     private $id_direccion;
     private $no_cliente_fk;
@@ -191,5 +192,53 @@ class DIRECCIONES
         $this->estado = $estado;
     }
 
-
+    public function consultaDireccion($no_cliente)
+    {
+        $query = "SELECT `id_direccion`, `no_cliente_fk`, `calle`, `no_ext`, `no_int`, 
+        `colonia`, `municipio`, `estado_republica`, `CP`, `referencias`, `estado` 
+        FROM `direcciones` WHERE `no_cliente_fk`= ".$no_cliente;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+    public function addDireccion()
+    {
+        $query = "INSERT INTO `direcciones` (`id_direccion`, `no_cliente_fk`, `calle`, 
+                `no_ext`, `no_int`, `colonia`, `municipio`, `estado_republica`, `CP`, 
+                `referencias`, `estado`) 
+                VALUES (NULL, '".$this->getNoClienteFk()."', '".$this->getCalle()."', '"
+                .$this->getNoExt()."', '".$this->getNoInt()."', '".$this->getColonia()."', '"
+                .$this->getMunicipio()."', '".$this->getEstadoRepublica()."', '"
+                .$this->getCP()."', '".$this->getReferencias()."', '1')";
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    public function updateDireccion()
+    {
+        $query = "UPDATE `direcciones` 
+                SET `no_cliente_fk` = '".$this->getNoClienteFk()."', 
+                `calle` = '".$this->getCalle()."', `no_ext` = '".$this->getNoExt()."', 
+                `no_int` = '".$this->getNoInt()."', `colonia` = '".$this->getColonia()."', 
+                `municipio` = '".$this->getMunicipio()."', 
+                `estado_republica` = '".$this->getEstadoRepublica()."', 
+                `CP` = '".$this->getCP()."', `referencias` = '".$this->getReferencias()."', 
+                `estado` = '".$this->getEstado()."' 
+                WHERE `direcciones`.`id_direccion` = ".$this->getIdDireccion();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    public function deleteDireccion($id_direccion)
+    {
+        $query = "DELETE FROM `direcciones` 
+                WHERE `direcciones`.`id_direccion` = ".$id_direccion;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

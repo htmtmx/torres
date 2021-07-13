@@ -308,7 +308,7 @@ class CLIENTES extends CONEXION implements I_CLIENTES
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
-        var_dump($result);
+        return $result;
     }
     public function updateCliente()
     {
@@ -325,5 +325,21 @@ class CLIENTES extends CONEXION implements I_CLIENTES
         $result = $this->executeInstruction($query);
         $this->close();
         return $result;
+    }
+    public function deleteCliente($no_cliente)
+    {
+        $query = "DELETE FROM `cliente` 
+        WHERE `cliente`.`no_cliente` = ".$no_cliente;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    public function direccionCliente($no_cliente)
+    {
+        include_once "../model/DIRECCIONES.php";
+        $tempDireccion = new DIRECCIONES();
+        $direccionCliente = $tempDireccion->consultaDireccion($no_cliente);
+        return $direccionCliente;
     }
 }

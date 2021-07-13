@@ -1,7 +1,8 @@
 <?php
+include_once "CONEXION.php";
+include_once "I_EMPRESA.php";
 
-
-class EMPRESA
+class EMPRESA extends CONEXION implements I_EMPRESA
 {
     private $rfc;
     private $nombre;
