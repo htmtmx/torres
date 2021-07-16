@@ -94,11 +94,11 @@ class MODELO extends CONEXION implements I_MODELO
         return $result;
     }
 
-    function addModelo ($id_marca,$nombre)
+    function addModelo ()
     {
         $query = "INSERT INTO `modelo` 
                 (`id_modelo`, `id_marca_fk`, `nombre`, `estatus`) 
-                VALUES (NULL, '".$id_marca."', '".$nombre."', '1')";
+                VALUES (NULL, '".$this->getIdMarcaFk()."', '".$this->getNombre()."', '1')";
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
@@ -117,6 +117,7 @@ class MODELO extends CONEXION implements I_MODELO
         $this->close();
         return $result;
     }
+
     public function deleteModelo($id_modelo)
     {
         $query = "DELETE FROM `modelo` 

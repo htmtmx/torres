@@ -6,4 +6,5 @@ interface I_COCHE
     function addCoche();
     function updateCoche();
     function deleteCoche($no_vehiculo);
+    function consultaDetallesCoche($no_vehiculo);
 }

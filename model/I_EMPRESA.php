@@ -3,9 +3,9 @@
 
 interface I_EMPRESA
 {
-    function consultaEmpresa($rfc);
-    function consultaEmpleados($rfc);
+    function consultaEmpresa($id_empresa_fk);
     function addEmpresa();
     function updateEmpresa();
-    function deleteEmpresa($rfc);
+    function deleteEmpresa($id_empresa_fk);
+    function listEmpleados();
 }

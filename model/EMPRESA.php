@@ -4,7 +4,7 @@ include_once "I_EMPRESA.php";
 
 class EMPRESA extends CONEXION implements I_EMPRESA
 {
-    private $rfc;
+    private $id_empresa;
     private $nombre;
     private $calle;
     private $no_ext;
@@ -19,21 +19,38 @@ class EMPRESA extends CONEXION implements I_EMPRESA
     private $path_logo;
     private $version;
     private $licencia;
+    private $listEmpleados;
 
     /**
      * @return mixed
      */
-    public function getRfc()
+    public function getListEmpleados()
     {
-        return $this->rfc;
+        return $this->listEmpleados();
     }
 
     /**
-     * @param mixed $rfc
+     * @param mixed $listEmpleados
      */
-    public function setRfc($rfc)
+    public function setListEmpleados($listEmpleados): void
     {
-        $this->rfc = $rfc;
+        $this->listEmpleados = $listEmpleados;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdEmpresa()
+    {
+        return $this->id_empresa;
+    }
+
+    /**
+     * @param mixed $id_empresa
+     */
+    public function setIdEmpresa($id_empresa): void
+    {
+        $this->id_empresa = $id_empresa;
     }
 
     /**
@@ -260,5 +277,36 @@ class EMPRESA extends CONEXION implements I_EMPRESA
         $this->licencia = $licencia;
     }
 
+    function listEmpleados()
+    {
+        include_once "../model/EMPLEADO.php";
+        $tempEmpleado = new EMPLEADO();
+        $empleados = $tempEmpleado->consultaEmpleados($this->getIdEmpresa());
+        return $empleados;
+    }
 
+    public function consultaEmpresa($id_empresa_fk)
+    {
+        // TODO: Implement consultaEmpresa() method.
+    }
+
+    public function addEmpresa()
+    {
+        // TODO: Implement addEmpresa() method.
+    }
+
+    public function updateEmpresa()
+    {
+        // TODO: Implement updateEmpresa() method.
+    }
+
+    public function deleteEmpresa($id_empresa_fk)
+    {
+        $query = "DELETE FROM `empresa` 
+        WHERE `empresa`.`id_empresa` = ".$id_empresa_fk;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

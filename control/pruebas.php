@@ -5,7 +5,7 @@
 /*include_once "../model/MODELO.php";
 $obj_modelo = new MODELO();
 $obj_modelo->setIdMarcaFk(3);
-$result= $obj_modelo->consultaModelos();
+$result= $obj_modelo->consultaModelos($obj_modelo->getIdMarcaFk());
 var_dump($result);*/
 /********************************************************************
  *        C O N S U L T A   L I S T A   M O D E L O S
@@ -23,11 +23,18 @@ $obj_listmarca = new MARCA();
 $result = $obj_listmarca->listMarcas();
 var_dump($result);*/
 /********************************************************************
+ *                C O N S U L T A   M A R C A
+ *******************************************************************/
+/*include_once "../model/MARCA.php";
+$obj_listmarca = new MARCA();
+$result = $obj_listmarca->consultaMarca(47);
+var_dump($result);*/
+/********************************************************************
  *                     A D D    M O D E L O
  *******************************************************************/
 /*include_once "../model/MODELO.php";
 $objModel = new MODELO();
-$objModel->setIdMarcaFk(27);
+$objModel->setIdMarcaFk(41);
 $objModel->setNombre("Modelo ".$objModel->getIdMarcaFk());
 echo $result = $objModel->addModelo($objModel->getIdMarcaFk(),$objModel->getNombre())?"Se registro correctamente el modelo ".$objModel->getNombre():"";*/
 /********************************************************************
@@ -59,6 +66,13 @@ var_dump($result);*/
 /*include_once "../model/COCHE.php";
 $objCoche = new COCHE();
 $result = $objCoche->consultaCoches(0);
+var_dump($result);*/
+/********************************************************************
+ *      C O N S U L T A    D E T A L L E S    C O C H E
+ *******************************************************************/
+/*include_once "../model/COCHE.php";
+$objCoche = new COCHE();
+$result = $objCoche->consultaDetallesCoche(1);
 var_dump($result);*/
 /********************************************************************
  *                      A D D    C O C H E
@@ -207,4 +221,85 @@ echo $result = $objDireccion->updateDireccion()?"Se actualizo correctamente la d
 /*include_once "../model/DIRECCIONES.php";
 $objDireccion = new DIRECCIONES();
 echo $result = $objDireccion->deleteDireccion(2)?"Se elimino correctamente la direccion":"Error al intentar eliminar";*/
-
+/********************************************************************
+ *              C O N S U L T A    E M P L E A D O
+ *******************************************************************/
+/*include_once "../model/EMPLEADO.php";
+$objEmpleado = new EMPLEADO();
+$result = $objEmpleado->consultaEmpleado(84198);
+var_dump($result);*/
+/********************************************************************
+ *    C O N S U L T A    E M P L E A D O S    E M P R E S A
+ *******************************************************************/
+/*include_once "../model/EMPLEADO.php";
+$objEmpleado = new EMPLEADO();
+$objEmpleado->setIdEmpresaFk(1);
+$result = $objEmpleado->consultaEmpleados($objEmpleado->getIdEmpresaFk());
+var_dump($result);*/
+/********************************************************************
+ *C O N S U L T A    L I S T A    E M P L E A D O S    E M P R E S A
+ *******************************************************************/
+/*include_once "../model/EMPRESA.php";
+$objEmpresa = new EMPRESA();
+$objEmpresa->setIdEmpresa(2);
+$result = $objEmpresa->listEmpleados();
+var_dump($result);*/
+/********************************************************************
+ *                       A D D    E M P L E A D O
+ *******************************************************************/
+/*include_once "../model/EMPLEADO.php";
+$objEmpleado = new EMPLEADO();
+$objEmpleado->setNoEmpleado(84198);
+$objEmpleado->setIdEmpresaFk(2);
+$objEmpleado->setNombre("Jorge");
+$objEmpleado->setApaterno("Lopez");
+$objEmpleado->setAmaterno("Abarca");
+$objEmpleado->setTelefono("0005856");
+$objEmpleado->setCelular("648821");
+$objEmpleado->setSexo(0);
+$objEmpleado->setCorreoUser("jorge@gmail.com");
+$objEmpleado->setPw(md5("0000"));
+$objEmpleado->setPuesto("Admin");
+$objEmpleado->setNivelAcceso(2);
+echo $result = $objEmpleado->addEmpleado()?"Se registro correctamente al empleado ".$objEmpleado->getNoEmpleado():"Error al intentar registrar";*/
+/********************************************************************
+ *                  U P D A T E    E M P L E A D O
+ *******************************************************************/
+/*include_once "../model/EMPLEADO.php";
+$objEmpleado = new EMPLEADO();
+$objEmpleado->setNoEmpleado(84196);
+$objEmpleado->setIdEmpresaFk(2);
+$objEmpleado->setNombre("Jorge");
+$objEmpleado->setApaterno("Lopez");
+$objEmpleado->setAmaterno("Abarca");
+$objEmpleado->setTelefono("0005856");
+$objEmpleado->setCelular("648821");
+$objEmpleado->setSexo(0);
+$objEmpleado->setCorreoUser("jorge@gmail.com");
+$objEmpleado->setPuesto("Admin");
+$objEmpleado->setNivelAcceso(2);
+echo $result = $objEmpleado->updateEmpleado()?"Se actualizo correctamente al empleado ".$objEmpleado->getNoEmpleado():"Error al intentar actualizar";*/
+/********************************************************************
+ *                  U P D A T E    P W D    E M P L E A D O
+ *******************************************************************/
+/*include_once "../model/EMPLEADO.php";
+$objEmpleado = new EMPLEADO();
+echo $result = $objEmpleado->updatePw(84196,1111)?"Se actualizo correctamente la contraseña ":"Error al intentar actualizar";*/
+/********************************************************************
+ *             U P D A T E    E S T A T U S    E M P L E A D O
+ *******************************************************************/
+/*include_once "../model/EMPLEADO.php";
+$objEmpleado = new EMPLEADO();
+echo $result = $objEmpleado->updateStatusEmpleado(84196,1)?"Se actualizo correctamente el estado del empleado ":"Error al intentar actualizar";*/
+/********************************************************************
+ *                       D E L E T E    E M P L E A D O
+ *******************************************************************/
+/*include_once "../model/EMPLEADO.php";
+$objEmpleado = new EMPLEADO();
+echo $result = $objEmpleado->deleteEmpleado(84196)? "Se elimino correctamente al empleado":"Error al intentar eliminar";*/
+/********************************************************************
+ *                       D E L E T E    E M P R E S A
+ *******************************************************************/
+/*include_once "../model/EMPRESA.php";
+$objEmpresa = new EMPRESA();
+echo $result = $objEmpresa->deleteEmpresa(2)? "Se elimino correctamente la empresa":"Error al intentar eliminar";*/

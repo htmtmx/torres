@@ -73,6 +73,16 @@ class MARCA extends CONEXION implements I_MARCA
         $this->estatus = $estatus;
     }
 
+    public function consultaMarca($id_marca)
+    {
+        $query = "SELECT `id_marca`, `nombre`, `estatus` 
+                FROM `marca` WHERE  `id_marca`=".$id_marca;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
     function listModelos ()
     {
         include_once "../model/MODELO.php";
