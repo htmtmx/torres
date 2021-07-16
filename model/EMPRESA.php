@@ -5,6 +5,7 @@ include_once "I_EMPRESA.php";
 class EMPRESA extends CONEXION implements I_EMPRESA
 {
     private $id_empresa;
+    private $rfc;
     private $nombre;
     private $calle;
     private $no_ext;
@@ -51,6 +52,22 @@ class EMPRESA extends CONEXION implements I_EMPRESA
     public function setIdEmpresa($id_empresa): void
     {
         $this->id_empresa = $id_empresa;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRfc()
+    {
+        return $this->rfc;
+    }
+
+    /**
+     * @param mixed $rfc
+     */
+    public function setRfc($rfc): void
+    {
+        $this->rfc = $rfc;
     }
 
     /**
@@ -287,17 +304,52 @@ class EMPRESA extends CONEXION implements I_EMPRESA
 
     public function consultaEmpresa($id_empresa_fk)
     {
-        // TODO: Implement consultaEmpresa() method.
+        $concat="";
+        if ($id_empresa_fk!=0) {
+            $concat = " WHERE `id_empresa` = ".$id_empresa_fk;
+        }
+        $query = "SELECT `id_empresa`, `rfc`, `nombre`, `calle`, `no_ext`, 
+       `no_int`, `colonia`, `cp`, `de_mun`, `estado`, `telefono`, `correo`, 
+       `sitio_web`, `path_logo`, `version`, `licencia` 
+        FROM `empresa` ".$concat;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
     }
 
     public function addEmpresa()
     {
-        // TODO: Implement addEmpresa() method.
+        $query = "INSERT INTO `empresa` (`id_empresa`, `rfc`, `nombre`, `calle`, 
+        `no_ext`, `no_int`, `colonia`, `cp`, `de_mun`, `estado`, `telefono`, 
+        `correo`, `sitio_web`, `path_logo`, `version`, `licencia`) 
+        VALUES ('".$this->getIdEmpresa()."', '".$this->getRfc()."', '"
+        .$this->getNombre()."', '".$this->getCalle()."', '".$this->getNoExt()."', '"
+        .$this->getNoInt()."', '".$this->getColonia()."', '".$this->getCp()."', '"
+        .$this->getDeMun()."', '".$this->getEstado()."', '".$this->getTelefono()."', '"
+        .$this->getCorreo()."', '".$this->getSitioWeb()."', '".$this->getPathLogo()."', '"
+        .$this->getVersion()."', '".$this->getLicencia()."')";
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
 
     public function updateEmpresa()
     {
-        // TODO: Implement updateEmpresa() method.
+        $query = "UPDATE `empresa` SET `rfc` = '".$this->getRfc()."', 
+        `nombre` = '".$this->getNombre()."', `calle` = '".$this->getCalle()."', 
+        `no_ext` = '".$this->getNoExt()."', `no_int` = '".$this->getNoInt()."', 
+        `colonia` = '".$this->getColonia()."', `cp` = '".$this->getCp()."', 
+        `de_mun` = '".$this->getDeMun()."', `estado` = '".$this->getEstado()."', 
+        `telefono` = '".$this->getTelefono()."', `correo` = '".$this->getCorreo()."', 
+        `sitio_web` = '".$this->getSitioWeb()."', `path_logo` = '".$this->getPathLogo()."', 
+        `version` = '".$this->getVersion()."', `licencia` = '".$this->getLicencia()."' 
+        WHERE `empresa`.`id_empresa` = ".$this->getIdEmpresa();
+        $this->connect();
+        $result =  $this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
 
     public function deleteEmpresa($id_empresa_fk)

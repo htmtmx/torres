@@ -1,7 +1,8 @@
 <?php
+include_once "CONEXION.php";
+include_once "I_CONTRATO.php";
 
-
-class CONTRATO
+class CONTRATO extends CONEXION implements I_CONTRATO
 {
     private $no_contrato;
     private $no_empleado_fk;
@@ -259,5 +260,56 @@ class CONTRATO
         $this->estatus = $estatus;
     }
 
+    public function consultaContrato($no_contrato)
+    {
+        $concat = "";
+        if ($no_contrato!= 0) {
+            $concat = "WHERE `no_contrato` = ".$no_contrato;
+        }
+        $query = "SELECT `no_contrato`, `no_empleado_fk`, `no_cliente_fk`, `no_vehiculo_fk`, 
+       `hora_fecha_creacion`, `tipo_contrato`, `plazo`, `fecha_primer_pago`, `enganche`, 
+       `saldo`, `forma_pago`, `subtotal`, `iva`, `total`, `estatus` 
+        FROM `contrato` ".$concat;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 
+    public function addContrato()
+    {
+        $query = "INSERT INTO `contrato` (`no_contrato`, `no_empleado_fk`, `no_cliente_fk`, 
+        `no_vehiculo_fk`, `hora_fecha_creacion`, `tipo_contrato`, `plazo`, `fecha_primer_pago`, 
+        `enganche`, `saldo`, `forma_pago`, `subtotal`, `iva`, `total`, `estatus`) 
+        VALUES ('".$this->getNoContrato()."', '".$this->getNoEmpleadoFk()."', '"
+            .$this->getNoClienteFk()."', '".$this->getNoVehiculoFk()."', '".date('Y-m-d H:i:s')."', '"
+            .$this->getTipoContrato()."', '".$this->getPlazo()."', '".date('Y-m-d')."', '"
+            .$this->getEnganche()."', '".$this->getSaldo()."', '".$this->getFormaPago()."', '"
+            .$this->getSubtotal()."', '".$this->getIva()."', '".$this->getTotal()."', '1')";
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
+    public function updateEstatusContrato($no_contrato, $estatus)
+    {
+        $query = "UPDATE `contrato` 
+                SET `estatus` = '".$estatus."' 
+                WHERE `contrato`.`no_contrato` = ".$no_contrato;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
+    public function deleteContrato($no_contrato)
+    {
+        $query = "DELETE FROM `contrato` 
+        WHERE `contrato`.`no_contrato` = ".$no_contrato;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }
