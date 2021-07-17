@@ -104,9 +104,7 @@ $(document).ready(function () {
             correo_cliente: $("#correo_cliente").val(),
             subscripcion_cliente: $("#subscripcion_cliente").val(),
             empresa_cliente: $("#empresa_cliente").val(),
-            medio_identificación_cliente: $(
-              "#medio_identificación_cliente"
-            ).val(),
+            medio_identificación_cliente: $("#medio_identificación_cliente").val(),
             folio_cliente: $("#folio_cliente").val(),
             tipo_cliente: $("#tipo_cliente").val(),
             rfc_cliente: $("#rfc_cliente").val(),
