@@ -108,6 +108,7 @@
                 <div class="row">
                     <div class="col-lg-9">
                         <h2 class="font-weight-bold mb-0">Vehiculos Registrados</h2>
+                        <h6>Hola <?php echo $_SESSION['usuario']; ?> aqui puedes ver todos los coches</h6>
                         <p class="lead text-muted">Encontramos 4 vehiculos en el sistema</p>
                     </div>
                     <div class="col-lg-3">

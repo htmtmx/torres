@@ -346,4 +346,6 @@ class CLIENTES extends CONEXION implements I_CLIENTES
         $direccionCliente = $tempDireccion->consultaDireccion($no_cliente);
         return $direccionCliente;
     }
+
+
 }

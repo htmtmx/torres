@@ -18,8 +18,8 @@ function consultaCocheDetallesCompletos($show_detalles,$noVehiculo){
         foreach ($arrayCoches as $coche) {
             $arrayDetails = consultaDetallesCoche($coche["no_vehiculo"]);
             $arrayDocumentos =consultaArchivos($coche["no_vehiculo"]);
-            array_push($coche, array($arrayDetails));
-            array_push($coche, array($arrayDocumentos));
+            array_push($coche, $arrayDetails);
+            array_push($coche, $arrayDocumentos);
             array_push($cochesData,$coche);
         }
     }

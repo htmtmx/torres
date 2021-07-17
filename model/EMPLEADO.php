@@ -363,4 +363,16 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
         $this->close();
         return $result;
     }
+
+    public function verificaCountUser()
+    {
+        $query = "SELECT `no_empleado`, `nombre`, `apaterno`, `amaterno`, 
+        `telefono`, `celular`, `sexo`, `fecha_registro`, `correo_user`, `pw`, `puesto`, `nivel_acceso`, `estatus` 
+            FROM `empleado` WHERE `correo_user` = '".$this->getCorreoUser()."' 
+            AND `pw` = '".$this->getPw()."' AND `estatus` = 1 ";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 }
