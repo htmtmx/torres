@@ -62,67 +62,7 @@ $objModel = new MODELO();
 $result = $objModel->consultaModelo(406);
 var_dump($result);*/
 
-/********************************************************************
- *                     A D D    C L I E N T E
- *******************************************************************/
-/*include_once "../model/CLIENTES.php";
-$objCliente = new CLIENTES();
-$objCliente->setNoCliente(666);
-$objCliente->setNombre("Inocencio");
-$objCliente->setApaterno("Rodriguez");
-$objCliente->setAmaterno("Melendez");
-$objCliente->setTelefono("5939150205");
-$objCliente->setCelular("5587794613");
-$objCliente->setCorreo("correo@gmail.com");
-$objCliente->setSubscripcion(1);
-$objCliente->setEmpresa("Reckrea");
-$objCliente->setRfc("SRPOc6846989");
-$objCliente->setMedioIdentificación("INE");
-$objCliente->setFolio("688798798");
-$objCliente->setTipoCliente(1);
-echo $result = $objCliente->addCliente() ? "Se registro correctamente al cliente ".$objCliente->getNoCliente():"Error al intentar registrar";*/
-/********************************************************************
- *              C O N S U L T A    C L I E N T E S
- *******************************************************************/
-/*include_once "../model/CLIENTES.php";
-$objCliente = new CLIENTES();
-$result = $objCliente->consultaCliente(666);
-var_dump($result);*/
-/********************************************************************
- *                 U P D A T E    C L I E N T E
- *******************************************************************/
-/*include_once "../model/CLIENTES.php";
-$objCliente = new CLIENTES();
-$objCliente->setNoCliente(666);
-$objCliente->setNombre("Patricio");
-$objCliente->setApaterno("Murrieta");
-$objCliente->setAmaterno("Godinez");
-$objCliente->setTelefono("55");
-$objCliente->setCelular("593");
-$objCliente->setCorreo("n@gmail.com");
-$objCliente->setSubscripcion(3);
-$objCliente->setEmpresa(" S.A. de C.V.");
-$objCliente->setRfc("R687496HGRTD");
-$objCliente->setMedioIdentificación("Acta ");
-$objCliente->setFolio("2185");
-$objCliente->setTipoCliente(3);
-$objCliente->setEstatus(1);
-$objCliente->setSystemState(1);
-echo $result = $objCliente->updateCliente() ? "Se actualizo correctamente al cliente ".$objCliente->getNoCliente():"Error al intentar actualizar";*/
-/********************************************************************
- *                 D E L E T E    C L I E N T E
- *******************************************************************/
-/*include_once "../model/CLIENTES.php";
-$objCliente = new CLIENTES();
-echo $result = $objCliente->deleteCliente(666)?"Se elimino correctamente el cliente":"Error al intentar eliminar";*/
-/********************************************************************
- *              D I R E C C I O N    C L I E N T E
- *******************************************************************/
-/*include_once "../model/CLIENTES.php";
-$objCliente = new CLIENTES();
-$objCliente->setNoCliente(297659297675);
-$result = $objCliente->direccionCliente($objCliente->getNoCliente());
-var_dump($result);*/
+
 /********************************************************************
  *                   A D D    D I R E C C I O N
  *******************************************************************/

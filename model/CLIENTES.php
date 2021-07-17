@@ -319,7 +319,7 @@ class CLIENTES extends CONEXION implements I_CLIENTES
                 `subscripcion` = '".$this->getSubscripcion()."', `empresa` = '".$this->getEmpresa()."', 
                 `rfc` = '".$this->getRfc()."', `medio_identificación` = '".$this->getMedioIdentificación()."', 
                 `folio` = '".$this->getFolio()."', `tipo_cliente` = '".$this->getTipoCliente()."', 
-                `estatus` = '".$this->getEstatus()."', `system_state` = '".$this->getSystemState()."' 
+                `estatus` = '".$this->getEstatus()."' 
                 WHERE `cliente`.`no_cliente` = ".$this->getNoCliente();
         $this->connect();
         $result = $this->executeInstruction($query);

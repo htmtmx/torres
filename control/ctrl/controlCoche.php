@@ -7,12 +7,13 @@ function consultaCoches($show_detalles,$noVehiculo)
     var_dump($result);
 }
 
-function consultaCocheDetallesCompletos($show_detalles,$noVehiculo){
+function consultaCocheDetallesCompletos($show_detalles,$noVehiculo)
+{
     include_once "../../model/COCHE.php";
     $objCoche = new COCHE();
     $arrayCoches = $objCoche->consultaCoches($noVehiculo);
     //obtengo la lista de coches en
-    if ($show_detalles){
+    if ($show_detalles) {
         //recorrer el for
         foreach ($arrayCoches as $coche) {
             //busco los detalles para cada coche y consulto en la bd
@@ -21,7 +22,8 @@ function consultaCocheDetallesCompletos($show_detalles,$noVehiculo){
             var_dump($arrayDetails);
             //array_push($arrayCoches,"")
         }
-    var_dump($arrayCoches);
+        var_dump($arrayCoches);
+    }
 }
 
 function consultaDetallesCoche($noVehiculo)
