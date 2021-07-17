@@ -12,7 +12,7 @@ function enviaCorreo($nombre, $correo)
     $mail->CharSet = 'UTF-8';
 
     $contacto = "pruebasmail@reckreastudios.com";
-    $pwd_contacto = "PatitoFeo123";
+    $pwd_contacto = "holaMundo123";
     $para = $correo; //Para enviar el correo al que se anuncia
 
     //Asignar al host que manejaremos
