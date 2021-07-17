@@ -1,13 +1,6 @@
 
 <?php
-/********************************************************************
- *                  C O N S U L T A   M O D E L O S
- *******************************************************************/
-/*include_once "../model/MODELO.php";
-$obj_modelo = new MODELO();
-$obj_modelo->setIdMarcaFk(3);
-$result= $obj_modelo->consultaModelos($obj_modelo->getIdMarcaFk());
-var_dump($result);*/
+
 /********************************************************************
  *  C O N S U L T A   L I S T A   M O D E L O S   P O R   M A R C A
  ********************************************************************/
