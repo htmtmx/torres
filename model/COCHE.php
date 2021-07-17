@@ -371,4 +371,15 @@ class COCHE extends CONEXION implements I_COCHE
         return $result;
     }
 
+    public function consultaArchivosCoche($no_vehiculo)
+    {
+        $query = "select * from tipo_archivo ta,  file_vechiculo fv 
+                    where  ta.id_tipo_archivo  = fv.id_tipo_archivo_fk 
+                    and fv.no_vehiculo_fk = ".$no_vehiculo;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
 }

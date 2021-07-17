@@ -310,6 +310,7 @@ class CLIENTES extends CONEXION implements I_CLIENTES
         $this->close();
         return $result;
     }
+
     public function updateCliente()
     {
         $query = "UPDATE `cliente` 
@@ -326,6 +327,8 @@ class CLIENTES extends CONEXION implements I_CLIENTES
         $this->close();
         return $result;
     }
+
+
     public function deleteCliente($no_cliente)
     {
         $query = "UPDATE `cliente` 

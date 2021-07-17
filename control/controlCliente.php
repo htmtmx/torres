@@ -23,10 +23,10 @@ function updateCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoClien
     echo $result = $objCliente->updateCliente() ? "Se actualizo correctamente al cliente ".$objCliente->getNoCliente():"Error al intentar actualizar";
 }
 
-function addCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoCliente,
+function queryCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoCliente,
                     $telefonoCliente,$celularCliente,$correoCliente,$suscripcionCliente,
                     $empresaCliente,$medioIdentificacion,$folioCliente,$tipoCliente,
-                    $rfcCliente)
+                    $rfcCliente, $actionToRealize)
 {
     include_once "../model/CLIENTES.php";
     $objCliente = new CLIENTES();
@@ -43,7 +43,23 @@ function addCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoCliente,
     $objCliente->setMedioIdentificación("$medioIdentificacion");
     $objCliente->setFolio("$folioCliente");
     $objCliente->setTipoCliente($tipoCliente);
-    echo $result = $objCliente->addCliente() ? "Se registro correctamente al cliente ".$objCliente->getNoCliente():"Error al intentar registrar";
+
+    $actionMje = $actionToRealize == 0 ? " actualizó ": " registró ";
+
+    if ($actionToRealize== 1 && $noCliente == 0){
+        //voy a agregar un registro
+        //genero la  clave del cliente
+        include_once "./tool_ids_generate.php";
+        $objCliente-> setNoCliente(gen_client_id());
+        $result = $objCliente-> addCliente();
+    }
+    else{
+        //voy a solo actualizar los datos del cliente
+        $result = $objCliente-> updateCliente();
+    }
+
+    $mjeReturn = $result ? "Se ".$actionMje." correctamente al cliente " :"Error al intentar registrar";
+    echo  $mjeReturn;
 }
 
 /********************************************************************

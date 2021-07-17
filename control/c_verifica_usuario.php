@@ -1,4 +1,6 @@
 <?php
+echo "FUNCIONO";
+/*
     include('./db.php');
     session_start();
     $pw = md5($_POST['pw']);
@@ -39,4 +41,4 @@
     else{
         return "vacio";
     }
-?>
+*/

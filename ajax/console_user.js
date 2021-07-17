@@ -30,6 +30,7 @@ $(document).ready(function(){
                 //funcion propia de jQuery para POST (a doinde enviar, que enviar, resultado devuelto)
                 $.post(url,valoresCajas, function (response) {
                     //tratamos los datos y hacemos acciones
+                    console.log(response);
                     let obj_user = JSON.parse(response);
                     if (obj_user.length === 0) 
                     {

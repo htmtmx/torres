@@ -266,3 +266,8 @@ echo $result = $objContrato->updateEstatusContrato(2,0)? "Se actualizo correctam
 /*include_once "../model/CONTRATO.php";
 $objContrato = new CONTRATO();
 echo $result = $objContrato->deleteContrato(2)?"Se elimino correctamente el contrato": "Error al intentar eliminar el contrato";*/
+
+
+include "./controlCoche.php";
+echo consultaCocheDetallesCompletos(true,0);
+
