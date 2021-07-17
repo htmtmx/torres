@@ -110,9 +110,12 @@ $(document).ready(function () {
   function getCarDetails() {
     //-------------- AJAX pedira la info de los datos se ejecuta cuando entra inicio
     $.ajax({
-      url: "../control/backend/cars-list.php",
+      url: "../control/cars-list.php",
       type: "POST",
-      data: { id: $("#car-id").val(), details: "true" },
+      data: {
+          idCoche: $("#car-id").val(),
+          details: true
+      },
       success: function (response) {
           console.log(response);
         //COnvertimos el string a JSON

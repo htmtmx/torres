@@ -291,6 +291,7 @@ class COCHE extends CONEXION implements I_COCHE
                 mo.nombre AS modelo_coche, mar.id_marca, mar.nombre AS marca_coche 
                 FROM coche co, modelo mo, marca mar 
                 WHERE co.id_modelo_fk = mo.id_modelo 
+                AND co.no_vehiculo > 0
                 AND mar.id_marca = mo.id_marca_fk 
                 AND co.estatus = '1' ".$concat;
         $this->connect();
@@ -332,15 +333,28 @@ class COCHE extends CONEXION implements I_COCHE
         $this->close();
         return $result;
     }
-    public function deleteCoche($no_vehiculo)
+
+    public function updateEstatusCoche($no_vehiculo, $estatus)
     {
-        $query = "DELETE FROM `coche` 
+        $query = "UPDATE `coche` SET `estatus` = '".$estatus."' 
                 WHERE `coche`.`no_vehiculo` = ".$no_vehiculo;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
         return $result;
     }
+
+    public function deleteCoche($no_vehiculo)
+    {
+        $query = "UPDATE autostorres.coche 
+                SET no_vehiculo= no_vehiculo * (-1) 
+                WHERE no_vehiculo = ".$no_vehiculo;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
     public function consultaDetallesCoche($no_vehiculo)
     {
         $query = "SELECT det.`id_detalle`, det.`nombre`, det.`categoria`, 

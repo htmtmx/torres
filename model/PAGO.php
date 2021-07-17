@@ -1,7 +1,8 @@
 <?php
+include_once "CONEXION.php";
+include_once "I_PAGO.php";
 
-
-class PAGO
+class PAGO extends CONEXION implements I_PAGO
 {
     private $folio;
     private $no_contrato_fk;
@@ -174,5 +175,23 @@ class PAGO
         $this->estatus_pago = $estatus_pago;
     }
 
+    public function consultaPago($folio)
+    {
+        $query = "";
+    }
 
+    public function addPAgo()
+    {
+        // TODO: Implement addPAgo() method.
+    }
+
+    public function updatePago()
+    {
+        // TODO: Implement updatePago() method.
+    }
+
+    public function deletePago($folio)
+    {
+        // TODO: Implement deletePago() method.
+    }
 }

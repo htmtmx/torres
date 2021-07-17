@@ -37,6 +37,7 @@ $(document).ready(function () {
           type: "POST",
           url: "../control/client-add.php",
           data: {
+            folio_cliente: $("#folio_cliente").val(),
             nombre_cliente: $("#nombre_cliente").val(),
             apaterno_cliente: $("#apaterno_cliente").val(),
             amaterno_cliente: $("#amaterno_cliente").val(),
@@ -45,10 +46,7 @@ $(document).ready(function () {
             correo_cliente: $("#correo_cliente").val(),
             subscripcion_cliente: $("#subscripcion_cliente").val(),
             empresa_cliente: $("#empresa_cliente").val(),
-            medio_identificación_cliente: $(
-              "#medio_identificación_cliente"
-            ).val(),
-            folio_cliente: $("#folio_cliente").val(),
+            medio_identificación_cliente: $("#medio_identificación_cliente").val(),
             tipo_cliente: $("#tipo_cliente").val(),
             rfc_cliente: $("#rfc_cliente").val(),
             estatus_cliente: "1",

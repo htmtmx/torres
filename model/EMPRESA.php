@@ -354,8 +354,9 @@ class EMPRESA extends CONEXION implements I_EMPRESA
 
     public function deleteEmpresa($id_empresa_fk)
     {
-        $query = "DELETE FROM `empresa` 
-        WHERE `empresa`.`id_empresa` = ".$id_empresa_fk;
+        $query = "UPDATE `empresa` 
+                SET `id_empresa` = `id_empresa` *(-1)  
+                WHERE `empresa`.`id_empresa` = ".$id_empresa_fk;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

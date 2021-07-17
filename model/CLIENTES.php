@@ -286,7 +286,7 @@ class CLIENTES extends CONEXION implements I_CLIENTES
         $query = "SELECT `no_cliente`, `nombre`, `apaterno`, `amaterno`, `telefono`,
             `celular`, `correo`, `subscripcion`, `empresa`, `rfc`, `fecha_registro`,
             `medio_identificación`, `folio`, `tipo_cliente`, `estatus`
-            FROM `cliente` WHERE system_state = 1 ".$concat;
+            FROM `cliente` WHERE system_state > 0 ".$concat;
         $this->connect();
         $result = $this->getData($query);
         $this->close();
@@ -328,8 +328,9 @@ class CLIENTES extends CONEXION implements I_CLIENTES
     }
     public function deleteCliente($no_cliente)
     {
-        $query = "DELETE FROM `cliente` 
-        WHERE `cliente`.`no_cliente` = ".$no_cliente;
+        $query = "UPDATE `cliente` 
+                SET `system_state` = `system_state`*(-1) 
+                WHERE `cliente`.`no_cliente` = ".$no_cliente;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

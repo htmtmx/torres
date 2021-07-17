@@ -272,7 +272,8 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
                 empl.`pw`, empl.`puesto`, empl.`nivel_acceso`, empl.`estatus`, 
                 empl.`system_state`,  empr.`id_empresa`, empr.`nombre` AS nombre_empresa
                 FROM `empleado` empl, `empresa` empr
-                WHERE empr.`id_empresa` = empl.`id_empresa_fk` ".$concat;
+                WHERE empr.`id_empresa` = empl.`id_empresa_fk` 
+                AND empl.`estatus`>0 ".$concat;
         $this->connect();
         $result = $this->getData($query);
         $this->close();
@@ -287,7 +288,9 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
                 empl.`puesto`, empl.`nivel_acceso`, empl.`estatus`, 
                 empl.`system_state`, empr.`id_empresa`, empr.`nombre` AS nombre_empresa  
                 FROM `empleado` empl, `empresa` empr  
-                WHERE empr.`id_empresa`= empl.`id_empresa_fk` AND empl.`id_empresa_fk` = ".$id_empresa_fk;
+                WHERE empr.`id_empresa`= empl.`id_empresa_fk`
+                AND empl.`estatus` > 0
+                AND empl.`id_empresa_fk` = ".$id_empresa_fk;
         $this->connect();
         $result = $this->getData($query);
         $this->close();
@@ -342,7 +345,7 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
     public function updateStatusEmpleado($no_empleado, $estatus)
     {
         $query = "UPDATE `empleado` 
-        SET `estatus` = '".$estatus."', `system_state` = '".$estatus."'
+        SET `estatus` = '".$estatus."'
         WHERE `empleado`.`no_empleado` = ".$no_empleado;
         $this->connect();
         $result = $this->executeInstruction($query);
@@ -352,8 +355,9 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
 
     public function deleteEmpleado($no_empleado)
     {
-        $query = "DELETE FROM `empleado` 
-        WHERE `empleado`.`no_empleado` = ".$no_empleado;
+        $query = "UPDATE `empleado` 
+                SET `system_state` = `system_state`*(-1) 
+                WHERE `empleado`.`no_empleado` = ".$no_empleado;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

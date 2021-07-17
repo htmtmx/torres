@@ -1,3 +1,4 @@
+
 <?php
 /********************************************************************
  *                  C O N S U L T A   M O D E L O S
@@ -8,7 +9,7 @@ $obj_modelo->setIdMarcaFk(3);
 $result= $obj_modelo->consultaModelos($obj_modelo->getIdMarcaFk());
 var_dump($result);*/
 /********************************************************************
- *        C O N S U L T A   L I S T A   M O D E L O S
+ *  C O N S U L T A   L I S T A   M O D E L O S   P O R   M A R C A
  ********************************************************************/
 /*include_once "../model/MARCA.php";
 $obj_marca = new MARCA();
@@ -60,68 +61,7 @@ echo $result = $objModel->deleteModelo(407)?"Se elimino correctamente el modelo 
 $objModel = new MODELO();
 $result = $objModel->consultaModelo(406);
 var_dump($result);*/
-/********************************************************************
- *                C O N S U L T A    C O C H E S
- *******************************************************************/
-/*include_once "../model/COCHE.php";
-$objCoche = new COCHE();
-$result = $objCoche->consultaCoches(0);
-var_dump($result);*/
-/********************************************************************
- *      C O N S U L T A    D E T A L L E S    C O C H E
- *******************************************************************/
-/*include_once "../model/COCHE.php";
-$objCoche = new COCHE();
-$result = $objCoche->consultaDetallesCoche(1);
-var_dump($result);*/
-/********************************************************************
- *                      A D D    C O C H E
- *******************************************************************/
-/*include_once "../model/COCHE.php";
-$objCoche = new COCHE();
-$objCoche->setNoVehiculo(666);
-$objCoche->setIdModeloFk(406);
-$objCoche->setAnio(2021);
-$objCoche->setPlaca("480-546");
-$objCoche->setEntidadPlaca("GUERRERO");
-$objCoche->setColor("NEGRO");
-$objCoche->setKilometros(0);
-$objCoche->setTransimision("ST");
-$objCoche->setCombustible("Gas");
-$objCoche->setNoPuertas(2);
-$objCoche->setPrecioContado(345000);
-$objCoche->setPrecioCredito(395000);
-$objCoche->setOpcCredito(2);
-$objCoche->setObservaciones("Ningun detalle, impecable");
-$objCoche->setEstatus(0);
-echo $result = $objCoche->addCoche()?"Se registro correctamente el coche ".$objCoche->getNoVehiculo():"Error al intentar registrar";*/
-/********************************************************************
- *                    U P D A T E    C O C H E
- *******************************************************************/
-/*include_once "../model/COCHE.php";
-$objCoche = new COCHE();
-$objCoche->setNoVehiculo(666);
-$objCoche->setIdModeloFk(400);
-$objCoche->setAnio(2020);
-$objCoche->setPlaca("666-666");
-$objCoche->setEntidadPlaca("CDMX");
-$objCoche->setColor("BLANCO");
-$objCoche->setKilometros(1);
-$objCoche->setTransimision("AU");
-$objCoche->setCombustible("DIESEL");
-$objCoche->setNoPuertas(3);
-$objCoche->setPrecioContado(300000);
-$objCoche->setPrecioCredito(350000);
-$objCoche->setOpcCredito(2);
-$objCoche->setObservaciones("Muchos detalles");
-$objCoche->setEstatus(0);
-echo $result = $objCoche->updateCoche() ? "Se actualizo correctamente el coche ".$objCoche->getNoVehiculo():"Error al intentar actualizar";*/
-/********************************************************************
- *                    D E L E T E    C O C H E
- *******************************************************************/
-/*include_once "../model/COCHE.php";
-$objCoche = new COCHE();
-echo $result = $objCoche->deleteCoche(666)?"Se elimino correctamente el coche":"Error al intentar eliminar";*/
+
 /********************************************************************
  *                     A D D    C L I E N T E
  *******************************************************************/
