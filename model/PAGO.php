@@ -177,21 +177,45 @@ class PAGO extends CONEXION implements I_PAGO
 
     public function consultaPago($folio)
     {
-        $query = "";
+        $query = "SELECT `folio`, `no_contrato_fk`, `no_transaccion`, `concepto`, `tipo`, `total`, 
+                `fecha_hora_creacion`, `no_pago`, `detalles`, `estatus_pago` 
+                FROM `pago` 
+                WHERE `no_contrato_fk`= ".$folio;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
     }
 
     public function addPAgo()
     {
-        // TODO: Implement addPAgo() method.
+        $query = "INSERT INTO `pago` (`folio`, `no_contrato_fk`, `no_transaccion`, `concepto`, 
+                `tipo`, `total`, `fecha_hora_creacion`, `no_pago`, `detalles`, `estatus_pago`) 
+                VALUES (NULL, '".$this->getNoContratoFk()."', '".$this->getNoTransaccion()."', '"
+                .$this->getConcepto()."', '".$this->getTipo()."', '".$this->getTotal()."', '"
+                .date('Y-m-d H:i:s')."', '".$this->getNoPago()."', '".$this->getDetalles()."', '1')";
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
 
     public function updatePago()
     {
-        // TODO: Implement updatePago() method.
+        $query = "UPDATE `pago` 
+                SET `no_contrato_fk` = '".$this->getNoContratoFk()."', 
+                `no_transaccion` = '".$this->getNoTransaccion()."', 
+                `concepto` = '".$this->getConcepto()."', `tipo` = '".$this->getTipo()."', 
+                `total` = '".$this->getTotal()."', `no_pago` = '".$this->getNoPago()."', 
+                `detalles` = '".$this->getDetalles()."' WHERE `pago`.`folio` = ".$this->getFolio();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
 
-    public function deletePago($folio)
+    public function updateEstatusPago($folio)
     {
-        // TODO: Implement deletePago() method.
+        $query = "";
     }
 }
