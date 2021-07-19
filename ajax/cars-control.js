@@ -193,10 +193,9 @@ $(document).ready(function () {
                     <td>${humanizeNumber(obj_result.kilometros)} Km</td>
                     <td>${obj_result.observaciones}</td>
                     <td>${getEstado(obj_result.estatus)}</td>
-                    <td> <a href="new-sale.php?id=0&vehiculo=${obj_result.no_vehiculo}"><button id="btn-sale${obj_result.no_vehiculo}" type="button" class="btn btn-success">Vender</button></a></td>
-                    <td>
+                    <td id="btnAccionCoche">
                     <div class="dropdown" value_estatus="${
-                    obj_result.estatus}">
+                obj_result.estatus}">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Opciones
                         </button>
@@ -216,7 +215,7 @@ $(document).ready(function () {
                     <div class="thumbnail card position-relative">
                         <div class="img-event">
                             <div class="position-absolute top-0 start-0 p-1"><h2><span class="badge badge-secondary">$${obj_result.precio_contado}</span></h2></div>
-                                <img class="group list-group-image img-fluid" src="https://i.blogs.es/84b986/bestune_t77-640x360/450_1000.jpg" alt="" />
+                                <img class="group list-group-image img-fluid" src="https://aacarsdna.com/images/vehicles/07/large/0520cd8f7f82b3c5d0cadafe9bb92f75.jpg" alt="" />
                             </div>
                             <div class="caption card-body">
                                 <h4 class="group card-title inner list-group-item-heading">${obj_result.marca_coche +" " +obj_result.modelo_coche +" " +obj_result.anio}</h4>
@@ -270,7 +269,9 @@ $(document).ready(function () {
                 $("#paginator").html(template_page);
             }
             //Selecciono el elemento donde voy a pintar el template
-            $("#contador-rows").html("Encontramos " + obj_result.length + " clientes en el sistema");
+            $("#contador-rows").html("Encontramos " + obj_result.length + " vehiculos en el sistema");
+            $("#cont-cat-cars").html(obj_result.length);
+
             $("#cars").html(template);
             
             $("#products").html(templateGrid);
@@ -294,21 +295,27 @@ $(document).ready(function () {
 
     function getEstado(n) {
         var edo = "";
+        var btn = "";
         switch (n) {
             case '0':
-                edo = "No disponible";
+                edo = "<div class=\"spinner-grow text-secondary\" role=\"status\">\n" +
+                    "  <span class=\"sr-only\"></span></div>No disponible";
                 break;
             case '1':
-                edo = "Vendido";
+                edo = "<div class=\"spinner-grow text-primary\" role=\"status\">\n" +
+                    "  <span class=\"sr-only\"></span></div>Vendido";
                 break;
             case '2':
-                edo = "Apartado";
+                edo = "<div class=\"spinner-grow text-warning\" role=\"status\">\n" +
+                    "  <span class=\"sr-only\"></span></div>Apartado";
                 break;
             case '3':
-                edo = "En Venta";
+                edo = "<div class=\"spinner-grow text-success\" role=\"status\">\n" +
+                    "  <span class=\"sr-only\"></span></div>En Venta";
+                //<a href="new-sale.php?id=0&vehiculo=${obj_result.no_vehiculo}"><button id="btn-sale${obj_result.no_vehiculo}" type="button" class="btn btn-success">Vender</button></a>
                 break;
             default:
-                edo = "Por Adquirir";
+
                 break;
         }
         return edo;

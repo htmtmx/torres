@@ -22,7 +22,7 @@
 <!doctype html>
 <html lang="en">
   <?php
-    $tittle = "Usuarios del Sistema";
+    $tittle = "Clientes del Sistema";
     include("includes/header.php");
     include("includes/modal-add-client.php");
     ?>

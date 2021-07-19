@@ -273,7 +273,7 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
                 empl.`system_state`,  empr.`id_empresa`, empr.`nombre` AS nombre_empresa
                 FROM `empleado` empl, `empresa` empr
                 WHERE empr.`id_empresa` = empl.`id_empresa_fk` 
-                AND empl.`estatus`>0 ".$concat;
+                AND empl.`system_state`>0 ".$concat;
         $this->connect();
         $result = $this->getData($query);
         $this->close();

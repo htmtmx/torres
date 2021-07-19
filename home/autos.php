@@ -109,7 +109,7 @@
                     <div class="col-lg-9">
                         <h2 class="font-weight-bold mb-0">Vehiculos Registrados</h2>
                         <h6>Hola <?php echo $_SESSION['usuario']; ?> aqui puedes ver todos los coches</h6>
-                        <p class="lead text-muted">Encontramos 4 vehiculos en el sistema</p>
+                        <p id="contador-rows" class="lead text-muted">Encontramos # vehiculos en el sistema</p>
                     </div>
                     <div class="col-lg-3">
                         <button class="btn btn-primary w-100 aling-self-center">
@@ -144,7 +144,7 @@
                                   <div class="mx-auto">
                                       <i class="icon ion-md-car mr-1 position-absolute paleta"></i>
                                       <h6 class="text-muted">Catalogo de Vehiculos</h6>
-                                      <h3 class="font-weight-bold">10 </h3>
+                                      <h3 id="cont-cat-cars" class="font-weight-bold"> </h3>
                                       <h6 class="text-success">Vehiculos en Venta</h6>
                                   </div>
                               </div>

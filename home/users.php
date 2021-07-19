@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="col-lg-9">
                         <h2 class="font-weight-bold mb-0">Usuarios Registrados</h2>
-                        <p id="contador-rows" class="lead text-muted">Encontramos 4 usuarios en el sistema</p>
+                        <p id="contador-rows" class="lead text-muted">Encontramos # usuarios en el sistema</p>
                     </div>
                     <div class="col-lg-3">
                         <button type="button" class="btn btn-primary w-100 aling-self-center" data-toggle="modal" data-target="#modal-new-user" data-whatever="@getbootstrap">

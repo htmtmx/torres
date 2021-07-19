@@ -42,7 +42,7 @@ $(document).ready(function(){
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             <a href="user-edit.php?id=${obj_users.no_empleado}"><button id="btn-edit${obj_users.no_empleado} "class="user-edit  dropdown-item" type="button">Editar</button></a>
                                 <button id="btn-reset${obj_users.no_empleado} "class="user-reset dropdown-item" type="button">Retablecer Contraseña</button>
-                                <button id="btn-block${obj_users.no_empleado} "class="user-dell dropdown-item" type="button btn btn-danger">${obj_users.estatus == 1 ? "Bloquear":"Activar"}</button>
+                                <button id="btn-block${obj_users.no_empleado} "class="user-dell dropdown-item" type="button btn btn-danger">${obj_users.estatus == 1 ? "Desactivar":"Activar"}</button>
                                 <button id="btn-delete${obj_users.no_empleado} "class="user-delete dropdown-item bg-alert" type="button">Eliminar</button>
                             </div>
                           </div>

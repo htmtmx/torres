@@ -94,13 +94,7 @@ echo $result = $objDireccion->updateDireccion()?"Se actualizo correctamente la d
 /*include_once "../model/DIRECCIONES.php";
 $objDireccion = new DIRECCIONES();
 echo $result = $objDireccion->deleteDireccion(2)?"Se elimino correctamente la direccion":"Error al intentar eliminar";*/
-/********************************************************************
- *              C O N S U L T A    E M P L E A D O
- *******************************************************************/
-/*include_once "../model/EMPLEADO.php";
-$objEmpleado = new EMPLEADO();
-$result = $objEmpleado->consultaEmpleado(84198);
-var_dump($result);*/
+
 /********************************************************************
  *    C O N S U L T A    E M P L E A D O S    E M P R E S A
  *******************************************************************/
@@ -117,59 +111,7 @@ $objEmpresa = new EMPRESA();
 $objEmpresa->setIdEmpresa(2);
 $result = $objEmpresa->listEmpleados();
 var_dump($result);*/
-/********************************************************************
- *                       A D D    E M P L E A D O
- *******************************************************************/
-/*include_once "../model/EMPLEADO.php";
-$objEmpleado = new EMPLEADO();
-$objEmpleado->setNoEmpleado(84198);
-$objEmpleado->setIdEmpresaFk(2);
-$objEmpleado->setNombre("Jorge");
-$objEmpleado->setApaterno("Lopez");
-$objEmpleado->setAmaterno("Abarca");
-$objEmpleado->setTelefono("0005856");
-$objEmpleado->setCelular("648821");
-$objEmpleado->setSexo(0);
-$objEmpleado->setCorreoUser("jorge@gmail.com");
-$objEmpleado->setPw(md5("0000"));
-$objEmpleado->setPuesto("Admin");
-$objEmpleado->setNivelAcceso(2);
-echo $result = $objEmpleado->addEmpleado()?"Se registro correctamente al empleado ".$objEmpleado->getNoEmpleado():"Error al intentar registrar";*/
-/********************************************************************
- *                  U P D A T E    E M P L E A D O
- *******************************************************************/
-/*include_once "../model/EMPLEADO.php";
-$objEmpleado = new EMPLEADO();
-$objEmpleado->setNoEmpleado(84196);
-$objEmpleado->setIdEmpresaFk(2);
-$objEmpleado->setNombre("Jorge");
-$objEmpleado->setApaterno("Lopez");
-$objEmpleado->setAmaterno("Abarca");
-$objEmpleado->setTelefono("0005856");
-$objEmpleado->setCelular("648821");
-$objEmpleado->setSexo(0);
-$objEmpleado->setCorreoUser("jorge@gmail.com");
-$objEmpleado->setPuesto("Admin");
-$objEmpleado->setNivelAcceso(2);
-echo $result = $objEmpleado->updateEmpleado()?"Se actualizo correctamente al empleado ".$objEmpleado->getNoEmpleado():"Error al intentar actualizar";*/
-/********************************************************************
- *                  U P D A T E    P W D    E M P L E A D O
- *******************************************************************/
-/*include_once "../model/EMPLEADO.php";
-$objEmpleado = new EMPLEADO();
-echo $result = $objEmpleado->updatePw(84196,1111)?"Se actualizo correctamente la contraseña ":"Error al intentar actualizar";*/
-/********************************************************************
- *           U P D A T E    E S T A T U S    E M P L E A D O
- *******************************************************************/
-/*include_once "../model/EMPLEADO.php";
-$objEmpleado = new EMPLEADO();
-echo $result = $objEmpleado->updateStatusEmpleado(84196,1)?"Se actualizo correctamente el estado del empleado ":"Error al intentar actualizar";*/
-/********************************************************************
- *                   D E L E T E    E M P L E A D O
- *******************************************************************/
-/*include_once "../model/EMPLEADO.php";
-$objEmpleado = new EMPLEADO();
-echo $result = $objEmpleado->deleteEmpleado(84196)? "Se elimino correctamente al empleado":"Error al intentar eliminar";*/
+
 /********************************************************************
  *                  C O N S U L T A    E M P R E S A
  *******************************************************************/

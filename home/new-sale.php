@@ -594,6 +594,7 @@ include("includes/modal-add-client.php");
         $('div.setup-panel div a.btn-primary').trigger('click');
     });
 </script>
+<script src="../ajax/cars-control.js"></script>
 <div id="mensaje"></div>
 
 </html>

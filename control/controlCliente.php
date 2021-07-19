@@ -62,13 +62,14 @@ function queryCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoClient
     echo  $mjeReturn;
 }
 
-/********************************************************************
- *              C O N S U L T A    C L I E N T E S
- *******************************************************************/
-/*include_once "../model/CLIENTES.php";
-$objCliente = new CLIENTES();
-$result = $objCliente->consultaCliente(666);
-var_dump($result);*/
+function consultaCliente($idCliente)
+{
+    include_once "../model/CLIENTES.php";
+    $objCliente = new CLIENTES();
+    $result = $objCliente->consultaCliente($idCliente);
+    return json_encode($result);;
+}
+
 /********************************************************************
  *                 U P D A T E    C L I E N T E
  *******************************************************************/

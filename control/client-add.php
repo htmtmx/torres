@@ -24,7 +24,7 @@ if (isset($_POST['nombre_cliente']) && isset($_POST['apaterno_cliente'])
     $tipo_cliente           =  $_POST['tipo_cliente'];
     $rfc_cliente            =  $_POST['rfc_cliente'];
 
-    include_once "./ctrl/controlCliente.php";
+    include_once "./controlCliente.php";
     queryCliente($idCliente,$nombre_cliente,$apaterno_cliente,$amaterno_cliente,
         $telefono_cliente,$celular_cliente,$correo_cliente,$subscripcion_cliente,
         $empresa_cliente,$medio_identificación_cliente,$folio_cliente,
