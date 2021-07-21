@@ -164,7 +164,7 @@ if (!isset($_SESSION['usuario'])) {
     }
 </style>
 <?php
-$tittle = "Usuarios del Sistema";
+$tittle = "Venta";
 include("includes/header.php");
 include("includes/modal-add-client.php");
 ?>

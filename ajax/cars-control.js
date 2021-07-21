@@ -14,7 +14,7 @@ $(document).ready(function () {
     function getMarcas() {
       //-------------- AJAX pedira la info de los datos se ejecuta cuando entra inicio
       $.ajax({
-        url: "../control/backend/marcas-list.php",
+        url: "../control/marcas-list.php",
         type: "POST",
         data: { placa: "0" },
         success: function (response) 
@@ -49,7 +49,7 @@ $(document).ready(function () {
         {
             $.ajax({
                 data: { id : marca_sel.val() },
-                url:   '../control/backend/modelos-list.php',
+                url:   '../control/modelos-list.php',
                 type:  'POST',
                 beforeSend: function () 
                 {
@@ -86,7 +86,7 @@ $(document).ready(function () {
 
     function getListDetails() {
         $.ajax({
-            url: "../control/backend/cars-list-details.php",
+            url: "../control/cars-list-details.php",
             type: "POST",
             data: { id: $("#car-id").val()},
             success: function (response) {

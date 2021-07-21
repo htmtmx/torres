@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="col-lg-9">
                         <h2 class="font-weight-bold mb-0">Editar detalles del vehículo</h2>
-                        <p id="contador-rows" class="lead text-muted">Fecha de registro: <span id="fecha"></span> </p>
+                        <p id="fecha" class="lead text-muted">Fecha de registro: <span id="fecha"></span> </p>
                     </div>
                     <div class="col-lg-3">
                     <a href="autos.php#cars">
@@ -152,7 +152,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Transmision</label>
                                         <div class="col-lg-9">
-                                            <select id="subscripcion" name="subscripcion" class="form-control">
+                                            <select id="transimision" name="transimision" class="form-control">
                                                 <option value="AU">Automática</option>
                                                 <option value="MA">Manual</option>
                                             </select>
@@ -163,7 +163,7 @@
                                         <div class="col-lg-9">
                                             <select id="combustible" name="combustible" class="form-control">
                                                 <option value="GAS">Gasolina</option>
-                                                <option value="DIS">Diseles</option>
+                                                <option value="DIE">Diesel</option>
                                                 <option value="HIB">Hibrido</option>
                                                 <option value="ELE">Eléctrico</option>
                                             </select>
@@ -182,6 +182,15 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Opcion a credito</label>
+                                        <div class="col-lg-9">
+                                            <select id="opcCredito" name="opcCredito" class="form-control">
+                                                <option value="0">No</option>
+                                                <option value="1">Si</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Precio Credito $</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="number" id="precio_credito" name="precio_credito" require>
@@ -197,7 +206,12 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Estatus</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text" id="estatus" name="estatus" disabled>
+                                            <select id="estatus" name="estatus" class="form-control" disabled>
+                                                <option value="0">No disponible</option>
+                                                <option value="1">Vendido</option>
+                                                <option value="2">Apartado</option>
+                                                <option value="3">En venta</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -265,7 +279,7 @@
   </script>
 <script src="js/jquery.form.js"></script>
     <script src="js/jquery.validate.js"></script>
-  <script src="/ajax/cars-control.js"></script>
+  <script src="../ajax/cars-control.js"></script>
 
 
   </body>

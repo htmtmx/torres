@@ -182,6 +182,7 @@ $(document).ready(function () {
         let obj_result = JSON.parse(response);
         //Utilizamos los objetos a y los tratamos en una plantilla en tbody
         let template = "";
+        let templateCompra = "";
         let template_page = "";
         let cont = 0;
         console.log(response);
@@ -247,6 +248,21 @@ $(document).ready(function () {
                             </td>
                         </tr>
                         `;
+          <!--Template Compra-->
+          templateCompra += `
+            <tr no_cliente="${obj_result.no_cliente}">
+                            <td hidden>${cont}</td>
+                            <td hidden>${obj_result.no_cliente}</td>
+                            <td>${obj_result.nombre + " " + obj_result.apaterno + " " + obj_result.amaterno}</td>
+                            <td>${obj_result.telefono + " / " + obj_result.celular}</td>
+                            <td>${obj_result.correo}</td>
+                            <td>${obj_result.subscripcion == 1 ? "SUSCRITO" : "-"}</td>
+                            <td>${obj_result.fecha_registro}</td>
+                            <td><div class="spinner-grow text-${obj_result.estatus == 1 ? "success" : "secondary"}" role="status"><span class="sr-only"></span></div>${obj_result.estatus == 1 ? " Activa" : " Inactiva"}</td>
+                            <td><button type="button" class="btnClientSelect btn-success"id="btn-delete${obj_result.no_cliente} ">Seleccione</button></td>
+                        </tr>
+               
+          `;
         });
         if (obj_result.length < 10) {
           if (obj_result.length > 0) {
@@ -283,6 +299,7 @@ $(document).ready(function () {
           "Encontramos " + obj_result.length + " clientes en el sistema"
         );
         $("#clients").html(template);
+        $("#clientsCompra").html(templateCompra);
       },
     });
     //-------------- AJAX pedira la info de los datos
@@ -332,4 +349,37 @@ $(document).ready(function () {
       );
     }
   });
+
+
+  $(document).on("click", ".btnClientSelect", function () {
+    //eliminar cuando confirme
+    let clientSelect = $(this)[0].parentElement.parentElement;
+    let noCliente = $(clientSelect).attr("no_cliente");
+    console.log(noCliente);
+    cargaDatosClienteCompra(noCliente);
+  });
+
+
+
 });
+
+function cargaDatosClienteCompra(idClienteSelect) {
+  //Traer con ajax los datos del cliente
+  //alert("Buscando el id cliente"+idClienteSelect);
+  $.ajax({
+    url: "../control/client-list.php",
+    type: "POST",
+    data: { id: idClienteSelect },
+    success: function (response) {
+      console.log(response);
+      //COnvertimos el string a JSON
+      let obj_users = JSON.parse(response);
+      console.log(obj_users);
+      let obj = obj_users[0];
+      $("#nombreCliente").val(obj.nombre+" "+obj.apaterno+" "+obj.amaterno);
+      $("#contacto").val(obj.telefono+" / "+obj.celular);
+      $("#id_cliente").val(obj.no_cliente);
+    },
+  });
+
+}

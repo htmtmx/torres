@@ -178,7 +178,7 @@
                                   <div class="card-body">
                                   <h5 class="card-title font-weight-bold">Adquirir</h5>
                                   <p class="card-text text-muted">Si compro un coche, registrelo</p>
-                                  <button type="button" class="btn btn-primary btn-sm">Registrar Adquisición</button>
+                                      <button type="button" class="btn btn-primary btn-sm"><a href="new-buy.php?id=0&vehiculo=0">Registrar Adquisición</a></button>
                                   </div>
                               </div>
                           </div>
