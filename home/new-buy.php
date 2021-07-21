@@ -158,6 +158,8 @@ if (!isset($_SESSION['usuario'])) {
         box-shadow: 12px 15px 20px 0px rgba(46, 61, 73, 0.15);
     }
 
+
+
     #ads .ad-title h5 {
         text-transform: uppercase;
         font-size: 18px;
@@ -188,7 +190,7 @@ include("includes/modal-add-client.php");
                         <div class="row">
                             <div class="col-lg-9">
                                 <h2 class="font-weight-bold mb-0">Nueva Compra</h2>
-                                <p id="contador-rows" class="lead text-muted">Porfavor, llene los campos solicitados</p>
+                                <p id="contador-rowsClients" class="lead text-muted">Porfavor, llene los campos solicitados</p>
                             </div>
                             <div class="col-lg-3">
                             </div>
@@ -224,13 +226,24 @@ include("includes/modal-add-client.php");
                                         <h3>Cliente Seleccionado</h3>
                                         <input type="text" id="id_cliente" class="form-control" placeholder="idCliente" hidden/>
                                         <div class="form-group">
-                                            <label class="control-label">Cliente</label>
+                                            <label class="col-sm-2 control-label">Cliente</label>
                                             <input type="text" id="nombreCliente" class="form-control" placeholder="Nombre Cliente" /><span id="nombreCliente"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label">Contacto</label>
-                                            <input type="text" id="contacto" class="form-control" placeholder="Nombre Cliente" />
+                                            <label class="col-md-3 control-label">Contacto</label>
+                                            <label class="col-md-3 control-label">Correo</label>
+                                            <label class="col-md-3 control-label">RFC</label>
+                                            <input type="text" id="contacto" class="col-sm-3 " placeholder="Telefono / Celular" />
+                                            <input type="text" id="correoCliente" class="col-sm-3 " placeholder="Correo" />
+                                            <input type="text" id="rfcCliente" class="col-sm-3 " placeholder="RFC" />
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-12 offset-md-11 py-3">
+                                                <button class="btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                         <section class="bg-mix py-5">
                                             <div class="container">
                                                 <div class="form-group row">
@@ -275,7 +288,6 @@ include("includes/modal-add-client.php");
                                                 </div>
                                             </div>
                                         </section>
-                                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
                                     </div>
                                 </div>
                             </div>
@@ -283,269 +295,34 @@ include("includes/modal-add-client.php");
                                 <div class="col-md-12">
                                     <div class="col-md-12">
                                         <h3>Vechiculo Seleccionado</h3>
+                                        <input type="text" id="id_car_select" class="form-control" placeholder="idCarSelect" hidden/>
                                         <div class="form-group">
                                             <label class="control-label">Vehiculo</label>
-                                            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+                                            <input id="vehiculoSelect" maxlength="200" type="text" required="required" class="form-control" placeholder="Vehiculo" />
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label">Company Address</label>
-                                            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
+                                            <label class="col-md-3 control-label">Color</label>
+                                            <label class="col-md-3 control-label">Kilometraje</label>
+                                            <label class="col-md-3 control-label">Transmision</label>
+                                            <input type="text" id="colorCarSelect" class="col-sm-3 " placeholder="Color" />
+                                            <input type="text" id="kmCarSelect" class="col-sm-3 " placeholder="Kilometraje" />
+                                            <input type="text" id="transCarSelect" class="col-sm-3 " placeholder="Transmision" />
                                         </div>
-                                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                                        <div id="imgCarSelect">
+                                            <!--Imagen del vehiculo seleccionado-->
+
+                                        </div>
+                                        <div class="row">
+                                            <button class="btn btn-primary backBtn btn-md pull-left" type="button">Back</button>
+                                            <label class="col-md-10 hidden"></label>
+                                            <button class=" btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <section class="bg-grey py-3">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="row" id="ads">
-                                                <!-- Category Card -->
-                                                <div class="col-md-4 py-4">
-                                                    <div class="card rounded">
-                                                        <div class="card-image">
-                                                            <span class="card-notify-badge">Low KMS</span>
-                                                            <span class="card-notify-year">2018</span>
-                                                            <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=USC80HOC011A021001.jpg&width=440&height=262" alt="Alternate Text" />
-                                                        </div>
-                                                        <div class="card-image-overlay m-auto">
-                                                            <span class="card-detail-badge">Used</span>
-                                                            <span class="card-detail-badge">$28,000.00</span>
-                                                            <span class="card-detail-badge">13000 Kms</span>
-                                                        </div>
-                                                        <div class="card-body text-center">
-                                                            <div class="ad-title m-auto">
-                                                                <h5>Honda Accord LX</h5>
-                                                            </div>
-                                                            <a class="btn btn-primary nextBtn btn-lg pull-right" href="#">Seleccionar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 py-4">
-                                                    <div class="card rounded">
-                                                        <div class="card-image">
-                                                            <span class="card-notify-badge">Fully-Loaded</span>
-                                                            <span class="card-notify-year">2017</span>
-                                                            <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=CAC80HOC021B121001.jpg&width=440&height=262" alt="Alternate Text" />
-                                                        </div>
-                                                        <div class="card-image-overlay m-auto">
-                                                            <span class="card-detail-badge">Used</span>
-                                                            <span class="card-detail-badge">$28,000.00</span>
-                                                            <span class="card-detail-badge">13000 Kms</span>
-                                                        </div>
-                                                        <div class="card-body text-center">
-                                                            <div class="ad-title m-auto">
-                                                                <h5>Honda CIVIC HATCHBACK LS</h5>
-                                                            </div>
-                                                            <a class="btn btn-primary nextBtn btn-lg pull-right" href="#">Seleccionar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Category Card -->
-                                                <div class="col-md-4 py-4">
-                                                    <div class="card rounded">
-                                                        <div class="card-image">
-                                                            <span class="card-notify-badge">Low KMS</span>
-                                                            <span class="card-notify-year">2018</span>
-                                                            <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=USC80HOC011A021001.jpg&width=440&height=262" alt="Alternate Text" />
-                                                        </div>
-                                                        <div class="card-image-overlay m-auto">
-                                                            <span class="card-detail-badge">Used</span>
-                                                            <span class="card-detail-badge">$28,000.00</span>
-                                                            <span class="card-detail-badge">13000 Kms</span>
-                                                        </div>
-                                                        <div class="card-body text-center">
-                                                            <div class="ad-title m-auto">
-                                                                <h5>Honda Accord LX</h5>
-                                                            </div>
-                                                            <a class="btn btn-primary nextBtn btn-lg pull-right" href="#">Seleccionar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 py-4">
-                                                    <div class="card rounded">
-                                                        <div class="card-image">
-                                                            <span class="card-notify-badge">Fully-Loaded</span>
-                                                            <span class="card-notify-year">2017</span>
-                                                            <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=CAC80HOC021B121001.jpg&width=440&height=262" alt="Alternate Text" />
-                                                        </div>
-                                                        <div class="card-image-overlay m-auto">
-                                                            <span class="card-detail-badge">Used</span>
-                                                            <span class="card-detail-badge">$28,000.00</span>
-                                                            <span class="card-detail-badge">13000 Kms</span>
-                                                        </div>
-                                                        <div class="card-body text-center">
-                                                            <div class="ad-title m-auto">
-                                                                <h5>Honda CIVIC HATCHBACK LS</h5>
-                                                            </div>
-                                                            <a class="btn btn-primary nextBtn btn-lg pull-right" href="#">Seleccionar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Category Card -->
-                                                <div class="col-md-4 py-4">
-                                                    <div class="card rounded">
-                                                        <div class="card-image">
-                                                            <span class="card-notify-badge">Low KMS</span>
-                                                            <span class="card-notify-year">2018</span>
-                                                            <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=USC80HOC011A021001.jpg&width=440&height=262" alt="Alternate Text" />
-                                                        </div>
-                                                        <div class="card-image-overlay m-auto">
-                                                            <span class="card-detail-badge">Used</span>
-                                                            <span class="card-detail-badge">$28,000.00</span>
-                                                            <span class="card-detail-badge">13000 Kms</span>
-                                                        </div>
-                                                        <div class="card-body text-center">
-                                                            <div class="ad-title m-auto">
-                                                                <h5>Honda Accord LX</h5>
-                                                            </div>
-                                                            <a class="btn btn-primary nextBtn btn-lg pull-right" href="#">Seleccionar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 py-4">
-                                                    <div class="card rounded">
-                                                        <div class="card-image">
-                                                            <span class="card-notify-badge">Fully-Loaded</span>
-                                                            <span class="card-notify-year">2017</span>
-                                                            <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=CAC80HOC021B121001.jpg&width=440&height=262" alt="Alternate Text" />
-                                                        </div>
-                                                        <div class="card-image-overlay m-auto">
-                                                            <span class="card-detail-badge">Used</span>
-                                                            <span class="card-detail-badge">$28,000.00</span>
-                                                            <span class="card-detail-badge">13000 Kms</span>
-                                                        </div>
-                                                        <div class="card-body text-center">
-                                                            <div class="ad-title m-auto">
-                                                                <h5>Honda CIVIC HATCHBACK LS</h5>
-                                                            </div>
-                                                            <a class="btn btn-primary nextBtn btn-lg pull-right" href="#">Seleccionar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Category Card -->
-                                                <div class="col-md-4 py-4">
-                                                    <div class="card rounded">
-                                                        <div class="card-image">
-                                                            <span class="card-notify-badge">Low KMS</span>
-                                                            <span class="card-notify-year">2018</span>
-                                                            <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=USC80HOC011A021001.jpg&width=440&height=262" alt="Alternate Text" />
-                                                        </div>
-                                                        <div class="card-image-overlay m-auto">
-                                                            <span class="card-detail-badge">Used</span>
-                                                            <span class="card-detail-badge">$28,000.00</span>
-                                                            <span class="card-detail-badge">13000 Kms</span>
-                                                        </div>
-                                                        <div class="card-body text-center">
-                                                            <div class="ad-title m-auto">
-                                                                <h5>Honda Accord LX</h5>
-                                                            </div>
-                                                            <a class="btn btn-primary nextBtn btn-lg pull-right" href="#">Seleccionar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 py-4">
-                                                    <div class="card rounded">
-                                                        <div class="card-image">
-                                                            <span class="card-notify-badge">Fully-Loaded</span>
-                                                            <span class="card-notify-year">2017</span>
-                                                            <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=CAC80HOC021B121001.jpg&width=440&height=262" alt="Alternate Text" />
-                                                        </div>
-                                                        <div class="card-image-overlay m-auto">
-                                                            <span class="card-detail-badge">Used</span>
-                                                            <span class="card-detail-badge">$28,000.00</span>
-                                                            <span class="card-detail-badge">13000 Kms</span>
-                                                        </div>
-                                                        <div class="card-body text-center">
-                                                            <div class="ad-title m-auto">
-                                                                <h5>Honda CIVIC HATCHBACK LS</h5>
-                                                            </div>
-                                                            <a class="btn btn-primary nextBtn btn-lg pull-right" href="#">Seleccionar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Category Card -->
-                                                <div class="col-md-4 py-4">
-                                                    <div class="card rounded">
-                                                        <div class="card-image">
-                                                            <span class="card-notify-badge">Low KMS</span>
-                                                            <span class="card-notify-year">2018</span>
-                                                            <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=USC80HOC011A021001.jpg&width=440&height=262" alt="Alternate Text" />
-                                                        </div>
-                                                        <div class="card-image-overlay m-auto">
-                                                            <span class="card-detail-badge">Used</span>
-                                                            <span class="card-detail-badge">$28,000.00</span>
-                                                            <span class="card-detail-badge">13000 Kms</span>
-                                                        </div>
-                                                        <div class="card-body text-center">
-                                                            <div class="ad-title m-auto">
-                                                                <h5>Honda Accord LX</h5>
-                                                            </div>
-                                                            <a class="btn btn-primary nextBtn btn-lg pull-right" href="#">Seleccionar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 py-4">
-                                                    <div class="card rounded">
-                                                        <div class="card-image">
-                                                            <span class="card-notify-badge">Fully-Loaded</span>
-                                                            <span class="card-notify-year">2017</span>
-                                                            <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=CAC80HOC021B121001.jpg&width=440&height=262" alt="Alternate Text" />
-                                                        </div>
-                                                        <div class="card-image-overlay m-auto">
-                                                            <span class="card-detail-badge">Used</span>
-                                                            <span class="card-detail-badge">$28,000.00</span>
-                                                            <span class="card-detail-badge">13000 Kms</span>
-                                                        </div>
-                                                        <div class="card-body text-center">
-                                                            <div class="ad-title m-auto">
-                                                                <h5>Honda CIVIC HATCHBACK LS</h5>
-                                                            </div>
-                                                            <a class="btn btn-primary nextBtn btn-lg pull-right" href="#">Seleccionar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Category Card -->
-                                                <div class="col-md-4 py-4">
-                                                    <div class="card rounded">
-                                                        <div class="card-image">
-                                                            <span class="card-notify-badge">Low KMS</span>
-                                                            <span class="card-notify-year">2018</span>
-                                                            <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=USC80HOC011A021001.jpg&width=440&height=262" alt="Alternate Text" />
-                                                        </div>
-                                                        <div class="card-image-overlay m-auto">
-                                                            <span class="card-detail-badge">Used</span>
-                                                            <span class="card-detail-badge">$28,000.00</span>
-                                                            <span class="card-detail-badge">13000 Kms</span>
-                                                        </div>
-                                                        <div class="card-body text-center">
-                                                            <div class="ad-title m-auto">
-                                                                <h5>Honda Accord LX</h5>
-                                                            </div>
-                                                            <a class="btn btn-primary nextBtn btn-lg pull-right" href="#">Seleccionar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 py-4">
-                                                    <div class="card rounded">
-                                                        <div class="card-image">
-                                                            <span class="card-notify-badge">Fully-Loaded</span>
-                                                            <span class="card-notify-year">2017</span>
-                                                            <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=CAC80HOC021B121001.jpg&width=440&height=262" alt="Alternate Text" />
-                                                        </div>
-                                                        <div class="card-image-overlay m-auto">
-                                                            <span class="card-detail-badge">Used</span>
-                                                            <span class="card-detail-badge">$28,000.00</span>
-                                                            <span class="card-detail-badge">13000 Kms</span>
-                                                        </div>
-                                                        <div class="card-body text-center">
-                                                            <div class="ad-title m-auto">
-                                                                <h5>Honda CIVIC HATCHBACK LS</h5>
-                                                            </div>
-                                                            <a class="btn btn-primary nextBtn btn-lg pull-right" href="#">Seleccionar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div id="productsSell" class="row view-group">
+                                        <!--AJAX -->
+                                    </div>
                                 </section>
                             </div>
                             <div class="row setup-content" id="step-3">
@@ -560,7 +337,11 @@ include("includes/modal-add-client.php");
                                             <label class="control-label">Company Address</label>
                                             <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
                                         </div>
-                                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                                        <div class="row">
+                                                <button class="btn btn-primary backBtn btn-md pull-left" type="button">Back</button>
+                                                <label class="col-md-10 hidden"></label>
+                                                <button class=" btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -574,8 +355,6 @@ include("includes/modal-add-client.php");
                             </div>
                     </div>
                 </section>
-
-
             </div>
             <!--FIN contenido dinamico-->
             <?php include("includes/footer.php"); ?>

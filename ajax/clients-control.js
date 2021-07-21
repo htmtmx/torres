@@ -259,7 +259,7 @@ $(document).ready(function () {
                             <td>${obj_result.subscripcion == 1 ? "SUSCRITO" : "-"}</td>
                             <td>${obj_result.fecha_registro}</td>
                             <td><div class="spinner-grow text-${obj_result.estatus == 1 ? "success" : "secondary"}" role="status"><span class="sr-only"></span></div>${obj_result.estatus == 1 ? " Activa" : " Inactiva"}</td>
-                            <td><button type="button" class="btnClientSelect btn-success"id="btn-delete${obj_result.no_cliente} ">Seleccione</button></td>
+                            <td><button type="button" class="btnClientSelect btn-success w-100"id="btn-delete${obj_result.no_cliente} ">Seleccione</button></td>
                         </tr>
                
           `;
@@ -298,8 +298,13 @@ $(document).ready(function () {
         $("#contador-rows").html(
           "Encontramos " + obj_result.length + " clientes en el sistema"
         );
+        $("#contador-rowsClients").html(
+          "Encontramos " + obj_result.length + " clientes en el sistema"
+        );
         $("#clients").html(template);
         $("#clientsCompra").html(templateCompra);
+        $("#clientsVenta").html(templateCompra);
+
       },
     });
     //-------------- AJAX pedira la info de los datos
@@ -378,6 +383,8 @@ function cargaDatosClienteCompra(idClienteSelect) {
       let obj = obj_users[0];
       $("#nombreCliente").val(obj.nombre+" "+obj.apaterno+" "+obj.amaterno);
       $("#contacto").val(obj.telefono+" / "+obj.celular);
+      $("#correoCliente").val(obj.correo);
+      $("#rfcCliente").val(obj.rfc);
       $("#id_cliente").val(obj.no_cliente);
     },
   });

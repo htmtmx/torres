@@ -4,13 +4,11 @@ $(document).ready(function () {
     } else {
       getOnlyCar();
     }
-  
     function getOnlyCar() {
         getMarcas();
         getCarDetails();
         getListDetails();
     }
-
     function getMarcas() {
       //-------------- AJAX pedira la info de los datos se ejecuta cuando entra inicio
       $.ajax({
@@ -179,6 +177,7 @@ $(document).ready(function () {
             //Utilizamos los objetos a y los tratamos en una plantilla en tbody
             let template = "";
             let templateGrid = "";
+            let templateGridSell = "";
             let template_page = "";
             let cont = 0;
             obj_result.forEach((obj_result) => {
@@ -214,14 +213,14 @@ $(document).ready(function () {
                 <div class="item col-xs-4 col-lg-4">
                     <div class="thumbnail card position-relative">
                         <div class="img-event">
-                            <div class="position-absolute top-0 start-0 p-1"><h2><span class="badge badge-secondary">$${obj_result.precio_contado}</span></h2></div>
+                            <div class="position-absolute top-0 start-0 p-1"><h2><span class="badge badge-secondary">${obj_result.precio_contado}</span></h2></div>
                                 <img class="group list-group-image img-fluid" src="https://aacarsdna.com/images/vehicles/07/large/0520cd8f7f82b3c5d0cadafe9bb92f75.jpg" alt="" />
                             </div>
                             <div class="caption card-body">
                                 <h4 class="group card-title inner list-group-item-heading">${obj_result.marca_coche +" " +obj_result.modelo_coche +" " +obj_result.anio}</h4>
                                 <p class="group inner list-group-item-text">
                                 Placa: ${obj_result.entidad_placa +"<br>Color:&nbsp;" +obj_result.color +"<br>" +obj_result.kilometros +" Km.<br>Transmisión:&nbsp;"+obj_result.transimision}
-                                <br>Combustible: ${obj_result.combustible +"<br>Color:&nbsp;" +obj_result.color +"<br>" +obj_result.no_puertas +" Puertas<br>Transmisión: "+obj_result.transimision}
+                                <br>Combustible: ${obj_result.combustible +"<br>" +obj_result.no_puertas +" Puertas"}
                                 </p>
                             </div>
                             <div class="row">
@@ -229,6 +228,33 @@ $(document).ready(function () {
                             </div>
                             <div class="col-xs-12 col-md-6 py-3">
                             <a class="btn btn-primary" href="new-sale.php?id=0&vehiculo=${obj_result.no_vehiculo}">Vender</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+                templateGridSell +=`
+                <div class="item col-xs-4 col-lg-4">
+                    <div class="thumbnail card position-relative">
+                    
+                        <div class="img-event">
+                            <div class="position-absolute top-0 start-0 p-1"><h2><span class="badge badge-secondary">$${obj_result.precio_contado}</span></h2></div>
+                                <img class="group list-group-image img-fluid" src="https://aacarsdna.com/images/vehicles/07/large/0520cd8f7f82b3c5d0cadafe9bb92f75.jpg" alt="" />
+                            </div>
+                            
+                            <div class="caption card-body">
+                                <h4 class="group card-title inner list-group-item-heading">${obj_result.marca_coche +" " +obj_result.modelo_coche +" " +obj_result.anio}</h4>
+                                <p class="group inner list-group-item-text">
+                                Placa: ${obj_result.entidad_placa +"<br>Color:&nbsp;" +obj_result.color +"<br>" +obj_result.kilometros +" Km.<br>Transmisión:&nbsp;"+obj_result.transimision}
+                                <br>Combustible: ${obj_result.combustible +"<br>" +obj_result.no_puertas +" Puertas"}
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs col-md-7">
+                                </div>
+                            <div class="col-xs-12 col-md-5 py-3" >
+                                <button type="button" class="btnSelectCar btn-success w-100 aling-self-center" id="btn-select${obj_result.no_vehiculo} " no_vehiculo="${obj_result.no_vehiculo}">Seleccionar</button>
                             </div>
                         </div>
                         </div>
@@ -273,9 +299,10 @@ $(document).ready(function () {
             $("#cont-cat-cars").html(obj_result.length);
 
             $("#cars").html(template);
-            
+
             $("#products").html(templateGrid);
-            },
+            $("#productsSell").html(templateGridSell);
+        },
         });
       //-------------- AJAX pedira la info de los datos
     }
@@ -322,4 +349,47 @@ $(document).ready(function () {
       }
 
   });
-  
+
+$(document).on("click", ".btnSelectCar", function () {
+    //eliminar cuando confirme
+    let carSelect = $(this)[0];
+    let idCarSelect = $(carSelect).attr("no_vehiculo");
+    /*console.log(idCarSelect);*/
+    cargaDatosCocheCompra(idCarSelect);
+});
+
+function cargaDatosCocheCompra(idClienteSelect) {
+    //Traer con ajax los datos del cliente
+    //alert("Buscando el id cliente"+idClienteSelect);
+    $.ajax({
+        url: "../control/cars-list.php",
+        type: "POST",
+        data: { idCoche: idClienteSelect,
+                details: true,
+        },
+        success: function (response) {
+            console.log(response);
+            //COnvertimos el string a JSON
+            let obj_users = JSON.parse(response);
+            console.log(obj_users);
+            let obj = obj_users[0];
+            let pathimg = obj_users[0][1][0];
+            let template =" ";
+            template = `
+                <div class="position-absolute top-0 start-0 p-1"><h2><span id="precioCarSelect" class="badge badge-secondary">${obj.precio_contado}"</span></h2></div>
+                                            <img src="${pathimg.path}" class="img-thumbnail" alt="...">
+                `;
+            console.log(pathimg.path);
+            console.log(obj.no_vehiculo);
+            $("#vehiculoSelect").val(obj.marca_coche+" "+obj.modelo_coche+" "+obj.anio);
+            $("#colorCarSelect").val(obj.color);
+            $("#kmCarSelect").val(obj.kilometros);
+            $("#transCarSelect").val(obj.transimision == "AU"? "Automatica":"Manual");
+            $("#precioCarSelect").val(obj.precio_contado);
+            $("#id_car_select").val(obj.no_vehiculo);
+            $("#imgCarSelect").html(template);
+
+        },
+    });
+
+}
