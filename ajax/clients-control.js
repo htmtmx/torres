@@ -384,7 +384,6 @@ function cargaDatosClienteCompra(idClienteSelect) {
       $("#nombreCliente").val(obj.nombre+" "+obj.apaterno+" "+obj.amaterno);
       $("#contacto").val(obj.telefono+" / "+obj.celular);
       $("#correoCliente").val(obj.correo);
-      $("#rfcCliente").val(obj.rfc);
       $("#id_cliente").val(obj.no_cliente);
     },
   });

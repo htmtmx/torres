@@ -255,6 +255,7 @@
                       </div>
                   </div> 
                 <div id="products" class="row view-group">
+                    <!--AJAX-->
                 </div>
                 </div>
               </section>

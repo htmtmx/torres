@@ -226,15 +226,15 @@ include("includes/modal-add-client.php");
                                             <input type="text" id="id_cliente" class="form-control" placeholder="idCliente" hidden/>
                                             <div class="form-group">
                                                 <label class="control-label">Cliente</label>
-                                                <input type="text" id="nombreCliente" class="form-control" placeholder="Enter First Name" />
+                                                <input required="required" type="text" id="nombreCliente" class="form-control" placeholder="Enter First Name" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Contacto</label>
                                                 <label class="col-md-3 control-label">Correo</label>
                                                 <label class="col-md-3 control-label">RFC</label>
-                                                <input type="text" id="contacto" class="col-sm-3 " placeholder="Telefono / Celular" />
-                                                <input type="text" id="correoCliente" class="col-sm-3 " placeholder="Correo" />
-                                                <input type="text" id="rfcCliente" class="col-sm-3 " placeholder="RFC" />
+                                                <input required="required" type="text" id="contacto" class="col-sm-3 " placeholder="Telefono / Celular" />
+                                                <input required="required" type="text" id="correoCliente" class="col-sm-3 " placeholder="Correo" />
+                                                <input  type="text" id="rfcCliente" class="col-sm-3 " placeholder="RFC" />
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12 offset-md-11 py-3">
@@ -285,7 +285,7 @@ include("includes/modal-add-client.php");
                                                     </div>
                                                 </div>
                                             </section>
-                                            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -293,9 +293,10 @@ include("includes/modal-add-client.php");
                                     <div class="col-md-12">
                                         <div class="col-md-12">
                                             <h3>Vechiculo Seleccionado</h3>
+                                            <input type="text" id="id_car_select" class="form-control" placeholder="idCarSelect" hidden/>
                                             <div class="form-group">
-                                                <label class="control-label">Vehiculo</label>
-                                                <input maxlength="200" type="text" required="required" class="form-control" placeholder="Nombre del vehiculo" />
+                                                <label class="col-md-3 control-label">Vehiculo</label>
+                                                <input id="vehiculoSelect" maxlength="200" type="text" required="required" class="form-control" placeholder="Vehiculo" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Color</label>
@@ -307,10 +308,14 @@ include("includes/modal-add-client.php");
                                             </div>
                                             <div class="img-event" id="imgCarSelect">
                                                 <!--Imagen del vehiculo seleccionado-->
-                                                <div class="position-absolute top-0 start-0 p-1"><h2><span class="badge badge-secondary">$${obj_result.precio_contado}</span></h2></div>
-                                                <img class="group list-group-image img-fluid" src="https://aacarsdna.com/images/vehicles/07/large/0520cd8f7f82b3c5d0cadafe9bb92f75.jpg" alt="" />
+
                                             </div>
-                                            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                                            <div class="row">
+                                                <button class="btn btn-primary backBtn btn-md pull-left" type="button">Back</button>
+                                                <label class="col-md-10 hidden"></label>
+                                                <button class=" btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
+                                            </div>
+                                            href="#step-1"
                                         </div>
                                     </div>
                                     <section class="bg-grey py-3">
@@ -331,7 +336,11 @@ include("includes/modal-add-client.php");
                                                 <label class="control-label">Company Address</label>
                                                 <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
                                             </div>
-                                            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                                            <div class="row">
+                                                <button class="btn btn-primary backBtn btn-md pull-left" type="button">Back</button>
+                                                <label class="col-md-10 hidden"></label>
+                                                <button class=" btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

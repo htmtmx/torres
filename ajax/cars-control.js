@@ -14,7 +14,6 @@ $(document).ready(function () {
       $.ajax({
         url: "../control/marcas-list.php",
         type: "POST",
-        data: { placa: "0" },
         success: function (response) 
         {
             //COnvertimos el string a JSON
@@ -26,7 +25,7 @@ $(document).ready(function () {
                     template += `<option value="${obj_result.id_marca}">${obj_result.nombre}</option>`;
                 }
             );
-            $("#marcas").html(template);
+            /*$("#marcas").html(template);*/
             },
         });
       //-------------- AJAX pedira la info de los datos
@@ -135,7 +134,7 @@ $(document).ready(function () {
           $("#opc_credito").val(obj.opc_credito);
           $("#observaciones").val(obj.observaciones);
           $("#estatus").val(getEstado(obj.estatus));
-          $("#marcas").val(obj.marca_coche);
+          $("#marca").val(obj.marca_coche);
           $("#modelo_id").val(obj.id_modelo);
           $("#modelo_coche").val(obj.modelo_coche);
           
@@ -240,7 +239,7 @@ $(document).ready(function () {
                     
                         <div class="img-event">
                             <div class="position-absolute top-0 start-0 p-1"><h2><span class="badge badge-secondary">$${obj_result.precio_contado}</span></h2></div>
-                                <img class="group list-group-image img-fluid" src="https://aacarsdna.com/images/vehicles/07/large/0520cd8f7f82b3c5d0cadafe9bb92f75.jpg" alt="" />
+                                <img class="group list-group-image img-fluid" src="${obj_result[1][0].path}" alt="" />
                             </div>
                             
                             <div class="caption card-body">
@@ -297,16 +296,13 @@ $(document).ready(function () {
             //Selecciono el elemento donde voy a pintar el template
             $("#contador-rows").html("Encontramos " + obj_result.length + " vehiculos en el sistema");
             $("#cont-cat-cars").html(obj_result.length);
-
             $("#cars").html(template);
-
             $("#products").html(templateGrid);
             $("#productsSell").html(templateGridSell);
         },
         });
       //-------------- AJAX pedira la info de los datos
     }
-    
   
     function humanizeNumber(n) 
     {
@@ -318,7 +314,6 @@ $(document).ready(function () {
         }
         return n
     }
-
 
     function getEstado(n) {
         var edo = "";
@@ -376,7 +371,7 @@ function cargaDatosCocheCompra(idClienteSelect) {
             let pathimg = obj_users[0][1][0];
             let template =" ";
             template = `
-                <div class="position-absolute top-0 start-0 p-1"><h2><span id="precioCarSelect" class="badge badge-secondary">${obj.precio_contado}"</span></h2></div>
+                <div class="position-absolute top-0 start-0 p-1"><h2><span id="precioCarSelect" class="badge badge-secondary">$${obj.precio_contado}</span></h2></div>
                                             <img src="${pathimg.path}" class="img-thumbnail" alt="...">
                 `;
             console.log(pathimg.path);

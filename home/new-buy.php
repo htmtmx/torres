@@ -225,26 +225,28 @@ include("includes/modal-add-client.php");
                                     <div class="col-md-12">
                                         <h3>Cliente Seleccionado</h3>
                                         <input type="text" id="id_cliente" class="form-control" placeholder="idCliente" hidden/>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Cliente</label>
-                                            <input type="text" id="nombreCliente" class="form-control" placeholder="Nombre Cliente" /><span id="nombreCliente"></span>
+                                            <form>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-4">
+                                                        <label for="inputState">Cliente</label>
+                                                        <input required="required" type="text" id="nombreCliente" class="form-control" placeholder="Nombre Cliente" /><span id="nombreCliente"></span>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="inputState">Telefono/Celular</label>
+                                                        <input required="required" type="text" id="contacto" class="form-control" placeholder="Telefono / Celular" />
+                                                    </div>
+                                                    <div class="form-group col-md-5">
+                                                        <label for="inputState">Correo</label>
+                                                        <input required="required" type="text" id="correoCliente" class="form-control" placeholder="Correo" />
+                                                    </div>
+                                                    <div class="form-group col-md-1 offset-md-11 ">
+                                                        <button class="btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">Contacto</label>
-                                            <label class="col-md-3 control-label">Correo</label>
-                                            <label class="col-md-3 control-label">RFC</label>
-                                            <input type="text" id="contacto" class="col-sm-3 " placeholder="Telefono / Celular" />
-                                            <input type="text" id="correoCliente" class="col-sm-3 " placeholder="Correo" />
-                                            <input type="text" id="rfcCliente" class="col-sm-3 " placeholder="RFC" />
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12 offset-md-11 py-3">
-                                                <button class="btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                        <section class="bg-mix py-5">
+                                    <hr>
+                                        <section class="bg-mix py-2">
                                             <div class="container">
                                                 <div class="form-group row">
                                                     <label class="col-sm-2 col-form-label">Buscar cliente</label>
@@ -290,27 +292,114 @@ include("includes/modal-add-client.php");
                                         </section>
                                     </div>
                                 </div>
-                            </div>
+
+                            <!-- P A S O    2    C O M P R A -->
+
                             <div class="row setup-content" id="step-2">
                                 <div class="col-md-12">
                                     <div class="col-md-12">
-                                        <h3>Vechiculo Seleccionado</h3>
+                                        <h3>Registro de Vechiculo</h3>
                                         <input type="text" id="id_car_select" class="form-control" placeholder="idCarSelect" hidden/>
-                                        <div class="form-group">
+                                        <div class="form-group" >
                                             <label class="control-label">Vehiculo</label>
-                                            <input id="vehiculoSelect" maxlength="200" type="text" required="required" class="form-control" placeholder="Vehiculo" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">Color</label>
-                                            <label class="col-md-3 control-label">Kilometraje</label>
-                                            <label class="col-md-3 control-label">Transmision</label>
-                                            <input type="text" id="colorCarSelect" class="col-sm-3 " placeholder="Color" />
-                                            <input type="text" id="kmCarSelect" class="col-sm-3 " placeholder="Kilometraje" />
-                                            <input type="text" id="transCarSelect" class="col-sm-3 " placeholder="Transmision" />
-                                        </div>
-                                        <div id="imgCarSelect">
-                                            <!--Imagen del vehiculo seleccionado-->
+                                            <form>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-3">
+                                                        <label for="inputState">Marca</label>
+                                                        <select class="form-control" id="marcas" name="marcas">
+                                                                <!--AJAX-->
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="inputState">Modelo</label>
+                                                        <select class="form-control" id="modelos" name="modelos">
+                                                            <!--AJAX-->
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState">Año</label>
+                                                        <select class="form-control" id="anio" name="anio">
+                                                            <!--AJAX-->
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState">Placa</label>
+                                                        <input type="text" class="form-control" id="placa" name="placa" placeholder="Placa">
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState">Entidad Placa</label>
+                                                        <select class="form-control" id="entidad_placa">
+                                                            <option value="CDMX">Ciudad de México</option>
+                                                            <option value="AGS">Aguascalientes</option>
+                                                            <option value="BCN">Baja California</option>
+                                                            <option value="BCS">Baja California Sur</option>
+                                                            <option value="CAM">Campeche</option>
+                                                            <option value="CHP">Chiapas</option>
+                                                            <option value="CHI">Chihuahua</option>
+                                                            <option value="COA">Coahuila</option>
+                                                            <option value="COL">Colima</option>
+                                                            <option value="DUR">Durango</option>
+                                                            <option value="GTO">Guanajuato</option>
+                                                            <option value="GRO">Guerrero</option>
+                                                            <option value="HGO">Hidalgo</option>
+                                                            <option value="JAL">Jalisco</option>
+                                                            <option value="MEX">M&eacute;xico</option>
+                                                            <option value="MIC">Michoac&aacute;n</option>
+                                                            <option value="MOR">Morelos</option>
+                                                            <option value="NAY">Nayarit</option>
+                                                            <option value="NLE">Nuevo Le&oacute;n</option>
+                                                            <option value="OAX">Oaxaca</option>
+                                                            <option value="PUE">Puebla</option>
+                                                            <option value="QRO">Quer&eacute;taro</option>
+                                                            <option value="ROO">Quintana Roo</option>
+                                                            <option value="SLP">San Luis Potos&iacute;</option>
+                                                            <option value="SIN">Sinaloa</option>
+                                                            <option value="SON">Sonora</option>
+                                                            <option value="TAB">Tabasco</option>
+                                                            <option value="TAM">Tamaulipas</option>
+                                                            <option value="TLX">Tlaxcala</option>
+                                                            <option value="VER">Veracruz</option>
+                                                            <option value="YUC">Yucat&aacute;n</option>
+                                                            <option value="ZAC">Zacatecas</option>
+                                                        </select>
 
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState">Color</label>
+                                                        <input required="required" type="text" id="colorCarBuy" class="form-control" placeholder="Color" />
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState">Kilometraje</label>
+                                                        <input required="required" type="number" id="kmCarBuy" class="form-control" placeholder="Kilometraje" />
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState">Transmision</label>
+                                                        <select class="form-control" id="transimision" name="transimision">
+                                                            <option value="MA">Manual</option>
+                                                            <option value="AU">Automatica</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState">Combustible</label>
+                                                        <select class="form-control" id="combustible" name="combustible">
+                                                            <option value="GAS">Gasolina</option>
+                                                            <option value="DIE">Diesel</option>
+                                                            <option value="HIB">Hibrido</option>
+                                                            <option value="ELE">Eléctrico</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState">No Puertas</label>
+                                                        <select class="form-control" id="noPuertas" name="noPuertas">
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                        </select>
+                                                    </div>
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <button class="btn btn-primary backBtn btn-md pull-left" type="button">Back</button>
@@ -319,11 +408,7 @@ include("includes/modal-add-client.php");
                                         </div>
                                     </div>
                                 </div>
-                                <section class="bg-grey py-3">
-                                    <div id="productsSell" class="row view-group">
-                                        <!--AJAX -->
-                                    </div>
-                                </section>
+
                             </div>
                             <div class="row setup-content" id="step-3">
                                 <div class="col-md-12">
@@ -353,6 +438,7 @@ include("includes/modal-add-client.php");
                                     </div>
                                 </div>
                             </div>
+                    </div>
                     </div>
                 </section>
             </div>
@@ -420,7 +506,8 @@ include("includes/modal-add-client.php");
 <script>
     var id_page = 0;
 </script>
-<script src="../ajax/cars-control.js"></script>
+<!--<script src="../ajax/cars-control.js"></script>-->
+<script src="../ajax/car-buy-control.js"></script>
 <script src="../ajax/clients-control.js"></script>
 <div id="mensaje"></div>
 

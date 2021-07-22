@@ -2,12 +2,12 @@
 /********************************************************************
  *                  C O N S U L T A   M O D E L O S
  *******************************************************************/
-function consultaModelos()
+function consultaModelos($idMarca)
 {
-    include_once "../../model/MODELO.php";
+    include_once "../model/MODELO.php";
     $obj_modelo = new MODELO();
-    $obj_modelo->setIdMarcaFk(3);
+    $obj_modelo->setIdMarcaFk($idMarca);
     $result= $obj_modelo->consultaModelos($obj_modelo->getIdMarcaFk());
-    var_dump($result);
+    return json_encode($result);
 }
 

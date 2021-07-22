@@ -82,7 +82,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Marca</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text" id="marcas" name="marcas" require  disabled>
+                                            <input class="form-control" type="text" id="marca" name="marca" require  disabled>
                                         </div>
                                     </div>
                                     <div class="form-group row">
