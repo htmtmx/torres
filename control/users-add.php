@@ -8,7 +8,7 @@
         && isset($_POST['puesto_user'])&& isset($_POST['sexo_user'])
         && isset($_POST['acceso_user'])&& isset($_POST['estatus_user'])) {
 
-        $no_empleado=  isset($_POST['id'])? $_POST['id']:0;
+        $no_empleado=  isset($_POST['id']) ? $_POST['id']:0;
         $accion = isset($_POST['id'])? 0:1;
         //Varibales generales
         $nombre_user =  $_POST['nombre_user'];

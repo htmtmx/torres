@@ -30,25 +30,6 @@ function verificaCuentaUser($correo,$pw){
     return false;
 }
 
-function addEmpleado()
-{
-
-    include_once "../model/EMPLEADO.php";
-    $objEmpleado = new EMPLEADO();
-    $objEmpleado->setNoEmpleado(84198);
-    $objEmpleado->setIdEmpresaFk(2);
-    $objEmpleado->setNombre("Jorge");
-    $objEmpleado->setApaterno("Lopez");
-    $objEmpleado->setAmaterno("Abarca");
-    $objEmpleado->setTelefono("0005856");
-    $objEmpleado->setCelular("648821");
-    $objEmpleado->setSexo(0);
-    $objEmpleado->setCorreoUser("jorge@gmail.com");
-    $objEmpleado->setPuesto("Admin");
-    $objEmpleado->setNivelAcceso(2);
-    echo $result = $objEmpleado->addEmpleado()?"Se registro correctamente al empleado ".$objEmpleado->getNoEmpleado():"Error al intentar registrar";
-}
-
 function addUpdateEmpleado($accion,$no_empleado,$nombre,$app,$apm,$tel,$cel,
                            $correo,$puesto,$sexo,$acceso,$estatus)
 {
@@ -114,6 +95,12 @@ echo $result = $objEmpleado->updateStatusEmpleado(84196,1)?"Se actualizo correct
 /********************************************************************
  *                   D E L E T E    E M P L E A D O
  *******************************************************************/
-/*include_once "../model/EMPLEADO.php";
-$objEmpleado = new EMPLEADO();
-echo $result = $objEmpleado->deleteEmpleado(84196)? "Se elimino correctamente al empleado":"Error al intentar eliminar";*/
+function eliminarEmpleado($no_empleado)
+{
+    include_once "../model/EMPLEADO.php";
+    $objEmpleado = new EMPLEADO();
+    $objEmpleado->eliminarEmpleado($no_empleado);
+}
+
+
+

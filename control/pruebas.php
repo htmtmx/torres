@@ -189,6 +189,6 @@ $objContrato = new CONTRATO();
 echo $result = $objContrato->deleteContrato(2)?"Se elimino correctamente el contrato": "Error al intentar eliminar el contrato";*/
 
 
-include "./controlCoche.php";
-echo consultaCocheDetallesCompletos(true,0);
+
+
 

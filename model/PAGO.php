@@ -187,7 +187,7 @@ class PAGO extends CONEXION implements I_PAGO
         return $result;
     }
 
-    public function addPAgo()
+    public function addPago()
     {
         $query = "INSERT INTO `pago` (`folio`, `no_contrato_fk`, `no_transaccion`, `concepto`, 
                 `tipo`, `total`, `fecha_hora_creacion`, `no_pago`, `detalles`, `estatus_pago`) 
@@ -200,22 +200,21 @@ class PAGO extends CONEXION implements I_PAGO
         return $result;
     }
 
-    public function updatePago()
+    public function updateEstatusPago($folio,$estatus_pago)
     {
-        $query = "UPDATE `pago` 
-                SET `no_contrato_fk` = '".$this->getNoContratoFk()."', 
-                `no_transaccion` = '".$this->getNoTransaccion()."', 
-                `concepto` = '".$this->getConcepto()."', `tipo` = '".$this->getTipo()."', 
-                `total` = '".$this->getTotal()."', `no_pago` = '".$this->getNoPago()."', 
-                `detalles` = '".$this->getDetalles()."' WHERE `pago`.`folio` = ".$this->getFolio();
+        $query = "UPDATE `pago` SET `estatus_pago` = '".$estatus_pago."' WHERE `pago`.`folio` = ".$folio;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
         return $result;
     }
 
-    public function updateEstatusPago($folio)
+    public function eliminaPago($folio)
     {
-        $query = "";
+        $query = "UPDATE `pago` SET folio =folio*(-1) WHERE `pago`.`folio` = ".$folio;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
 }

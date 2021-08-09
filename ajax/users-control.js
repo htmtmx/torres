@@ -6,6 +6,7 @@ $(document).ready(function(){
         console.log("estamos en la otra pagina");
         getOnlyUser();
     }
+
     //Funcion, Carga
     function getAllUsers() 
     {

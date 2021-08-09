@@ -26,7 +26,7 @@ function updateCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoClien
 function queryCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoCliente,
                     $telefonoCliente,$celularCliente,$correoCliente,$suscripcionCliente,
                     $empresaCliente,$medioIdentificacion,$folioCliente,$tipoCliente,
-                    $rfcCliente, $actionToRealize)
+                    $rfcCliente, $estatus, $actionToRealize)
 {
     include_once "../model/CLIENTES.php";
     $objCliente = new CLIENTES();
@@ -55,6 +55,7 @@ function queryCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoClient
     }
     else{
         //voy a solo actualizar los datos del cliente
+        $objCliente->setEstatus($estatus);
         $result = $objCliente-> updateCliente();
     }
 

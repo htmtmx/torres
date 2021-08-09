@@ -4,7 +4,7 @@
 interface I_PAGO
 {
     function consultaPago($folio);
-    function addPAgo();
-    function updatePago();
-    function updateEstatusPago($folio);
+    function addPago();
+    function updateEstatusPago($folio,$estatus_pago);
+    function eliminaPago($folio);
 }
