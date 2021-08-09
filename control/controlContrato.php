@@ -15,21 +15,27 @@ function consultaContrato($no_contrato)
 /********************************************************************
  *                       A D D     C O N T R A T O
  *******************************************************************/
-include_once "../model/CONTRATO.php";
-$objContrato = new CONTRATO();
-$objContrato->setNoContrato(2);
-$objContrato->setNoEmpleadoFk(58655210);
-$objContrato->setNoClienteFk(2572742);
-$objContrato->setNoVehiculoFk(1234);
-$objContrato->setTipoContrato(1);
-$objContrato->setPlazo(12);
-$objContrato->setEnganche(45000);
-$objContrato->setSaldo(100000);
-$objContrato->setFormaPago("Efectivo");
-$objContrato->setSubtotal($objContrato->getSaldo());
-$objContrato->setIva($objContrato->getSubtotal()*0.16);
-$objContrato->setTotal($objContrato->getSubtotal()+$objContrato->getIva());
-echo $result = $objContrato->addContrato()? "Se registro correctamente el contrato ".$objContrato->getNoContrato():"Error al intentar registrar";
+function addContrato($no_contrato,$no_empleado,$no_cliente,
+                    $no_vehiculo,$tipo_contrato,$plazo,$enganche,
+                    $saldo,$forma_pago)
+{
+    include_once "../model/CONTRATO.php";
+    $objContrato = new CONTRATO();
+    $objContrato->setNoContrato($no_contrato);
+    $objContrato->setNoEmpleadoFk($no_empleado);
+    $objContrato->setNoClienteFk($no_cliente);
+    $objContrato->setNoVehiculoFk($no_vehiculo);
+    $objContrato->setTipoContrato($tipo_contrato);
+    $objContrato->setPlazo($plazo);
+    $objContrato->setEnganche($enganche);
+    $objContrato->setSaldo($saldo);
+    $objContrato->setFormaPago($forma_pago);
+    $objContrato->setSubtotal($objContrato->getSaldo());
+    $objContrato->setIva($objContrato->getSubtotal()*0.16);
+    $objContrato->setTotal($objContrato->getSubtotal()+$objContrato->getIva());
+    echo $result = $objContrato->addContrato()? "Se registro correctamente el contrato ".$objContrato->getNoContrato():"Error al intentar registrar";
+}
+
 /********************************************************************
  *         U P D A T E     E S T A T U S     C O N T R A T O
  *******************************************************************/

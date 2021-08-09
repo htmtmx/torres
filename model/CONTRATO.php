@@ -276,11 +276,6 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         return $result;
     }
 
-    public function consultaArchivosContrato($no_contrato)
-    {
-        $query = "";
-    }
-
     public function addContrato()
     {
         $query = "INSERT INTO `contrato` (`no_contrato`, `no_empleado_fk`, `no_cliente_fk`, 

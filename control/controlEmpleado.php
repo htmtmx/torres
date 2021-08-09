@@ -13,7 +13,6 @@ function verificaCuentaUser($correo,$pw){
     $obj_empleado = new EMPLEADO();
     $obj_empleado->setCorreoUser($correo);
     $obj_empleado->setPw(md5($pw));
-
     $obj_user = $obj_empleado->verificaCountUser();
     if(count($obj_user) > 0 ){
         //creamos la sesion
@@ -48,7 +47,6 @@ function addUpdateEmpleado($accion,$no_empleado,$nombre,$app,$apm,$tel,$cel,
     $objEmpleado->setPuesto($puesto);
     $objEmpleado->setNivelAcceso($acceso);
     $objEmpleado->setEstatus($estatus);
-
     $actionMje = $accion == 0 ? " actualizó ": " registró ";
 
     if ($accion == 1 && $no_empleado ==0) {
