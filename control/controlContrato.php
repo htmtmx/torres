@@ -33,12 +33,18 @@ echo $result = $objContrato->addContrato()? "Se registro correctamente el contra
 /********************************************************************
  *         U P D A T E     E S T A T U S     C O N T R A T O
  *******************************************************************/
-/*include_once "../model/CONTRATO.php";
-$objContrato = new CONTRATO();
-echo $result = $objContrato->updateEstatusContrato(2,0)? "Se actualizo correctamente el estatus": "Error al intentar actualizar estatus";*/
+function ($no_contrato,$estatus)
+{
+    include_once "../model/CONTRATO.php";
+    $objContrato = new CONTRATO();
+    echo $result = $objContrato->updateEstatusContrato($no_contrato,$estatus)? "Se actualizo correctamente el estatus": "Error al intentar actualizar estatus";
+}
 /********************************************************************
  *                   D E L E T E     C O N T R A T O
  *******************************************************************/
-/*include_once "../model/CONTRATO.php";
-$objContrato = new CONTRATO();
-echo $result = $objContrato->deleteContrato(2)?"Se elimino correctamente el contrato": "Error al intentar eliminar el contrato";*/
+function deleteContrato($no_contrato)
+{
+    include_once "../model/CONTRATO.php";
+    $objContrato = new CONTRATO();
+    $objContrato->deleteContrato($no_contrato);
+}

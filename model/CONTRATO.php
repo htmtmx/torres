@@ -310,8 +310,9 @@ class CONTRATO extends CONEXION implements I_CONTRATO
 
     public function deleteContrato($no_contrato)
     {
-        $query = "DELETE FROM `contrato` 
-        WHERE `contrato`.`no_contrato` = ".$no_contrato;
+        $query = "UPDATE `contrato` 
+                    SET `no_contrato` = no_contrato * (-1)  
+                    WHERE `contrato`.`no_contrato` = ".$no_contrato;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
