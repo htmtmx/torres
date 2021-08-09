@@ -199,7 +199,8 @@ include("includes/modal-add-client.php");
                 </section>
 
                 <section class="bg-mix">
-                    <div class="container">
+                    <div class="alert alert-success" id="alerta" style="display: none;">&nbsp;</div>
+                    <div class="container" id="form-add-car-buy">
                         <div class="stepwizard">
                             <div class="stepwizard-row setup-panel">
                                 <div class="stepwizard-step">
@@ -208,7 +209,7 @@ include("includes/modal-add-client.php");
                                 </div>
                                 <div class="stepwizard-step">
                                     <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-                                    <p>Vechiculo</p>
+                                    <p>Veh&iacuteculo</p>
                                 </div>
                                 <div class="stepwizard-step">
                                     <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
@@ -229,7 +230,7 @@ include("includes/modal-add-client.php");
                                                 <div class="form-row">
                                                     <div class="form-group col-md-4">
                                                         <label for="inputState">Cliente</label>
-                                                        <input required="required" type="text" id="nombreCliente" class="form-control" placeholder="Nombre Cliente" /><span id="nombreCliente"></span>
+                                                        <input required="required" type="text" id="nombreCliente" name="nombreCliente" class="form-control" placeholder="Nombre Cliente" /><span id="nombreCliente"></span>
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label for="inputState">Telefono/Celular</label>
@@ -301,8 +302,10 @@ include("includes/modal-add-client.php");
                                         <h3>Registro de Vechiculo</h3>
                                         <input type="text" id="id_car_select" class="form-control" placeholder="idCarSelect" hidden/>
                                         <div class="form-group" >
+                                            <form id="formAddCarBuy" class="form" role="form">
                                             <label class="control-label">Vehiculo</label>
-                                            <form>
+                                            <input type="text" id="noVehiculo" class="form-control" placeholder="noVehiculo" />
+
                                                 <div class="form-row">
                                                     <div class="form-group col-md-3">
                                                         <label for="inputState">Marca</label>
@@ -399,13 +402,13 @@ include("includes/modal-add-client.php");
                                                             <option value="7">7</option>
                                                         </select>
                                                     </div>
+                                                    <div class="form-group col-md-12 ">
+                                                            <button class="btn btn-primary backBtn btn-md pull-left" type="button">Back</button>
+                                                            <button class="btn btn-primary nextBtn btn-md pull-right offset-md-10" type="button">Next</button>
+                                                    </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <button class="btn btn-primary backBtn btn-md pull-left" type="button">Back</button>
-                                            <label class="col-md-10 hidden"></label>
-                                            <button class=" btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
-                                        </div>
+
                                     </div>
                                 </div>
 
@@ -413,19 +416,81 @@ include("includes/modal-add-client.php");
                             <div class="row setup-content" id="step-3">
                                 <div class="col-md-12">
                                     <div class="col-md-12">
-                                        <h3>Informacion de pago y Credito</h3>
+                                        <h3>Informacion de pago</h3>
                                         <div class="form-group">
-                                            <label class="control-label">Vehiculo</label>
-                                            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">Company Address</label>
-                                            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
-                                        </div>
-                                        <div class="row">
-                                                <button class="btn btn-primary backBtn btn-md pull-left" type="button">Back</button>
-                                                <label class="col-md-10 hidden"></label>
-                                                <button class=" btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
+                                            <!--<label class="control-label">Vehiculo</label>-->
+                                            <form>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-3">
+                                                        <label>Valor del veh&iacuteculo</label>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">$</span>
+                                                            </div>
+                                                            <input required="required" type="number" class="text-right form-control" id="montoPagarCompra" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label >Forma de Pago</label>
+                                                        <select class="form-control" id="formaPagoCompra" name="formaPagoCompra">
+                                                            <option value="0">Efectivo</option>
+                                                            <option value="1">Credito</option>
+                                                            <option value="2">Transferencia</option>
+                                                            <option value="3">Deposito</option>
+                                                            <option value="4">Cambio</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label >Enganche</label>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">$</span>
+                                                            </div>
+                                                            <input required="required" type="number" class="text-right form-control" id="engancheCompra" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-3 offset-md-1">
+                                                        <label >Subtotal</label>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">$</span>
+                                                            </div>
+                                                            <input type="number" min="0" class="text-right form-control" id="subtotalCompra">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-3 offset-md-5">
+                                                        <label >Saldo</label>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">$</span>
+                                                            </div>
+                                                            <input type="number" class="text-right form-control" id="saldoCompra" placeholder="Saldo a pagar">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-3 offset-md-1">
+                                                        <label >IVA</label>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">$</span>
+                                                            </div>
+                                                            <input type="number" min="0" class="text-right form-control" id="ivaCompra" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-3 offset-md-9">
+                                                        <label >Total para liquidar</label>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">$</span>
+                                                            </div>
+                                                            <input type="number" class="text-right form-control" id="totalCompra" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-12 ">
+                                                        <button class="btn btn-primary backBtn btn-md pull-left" type="button">Back</button>
+                                                        <button class="btn btn-primary nextBtn btn-md pull-right offset-md-10" type="button">Next</button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -434,7 +499,7 @@ include("includes/modal-add-client.php");
                                 <div class="col-md-12">
                                     <div class="col-md-12">
                                         <h3>Confirmar</h3>
-                                        <button class="btn btn-success btn-lg pull-right" type="submit">Confirmar!</button>
+                                        <button class="btnConfirm btn-success btn-lg pull-right" type="submit">Confirmar!</button>
                                     </div>
                                 </div>
                             </div>

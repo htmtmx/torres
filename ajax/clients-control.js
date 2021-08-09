@@ -185,9 +185,9 @@ $(document).ready(function () {
         let templateCompra = "";
         let template_page = "";
         let cont = 0;
-        console.log(response);
+        /*console.log(response);
         console.log("******************");
-        console.log(obj_result);
+        console.log(obj_result);*/
         obj_result.forEach((obj_result) => {
           cont++;
           template += `
@@ -376,10 +376,8 @@ function cargaDatosClienteCompra(idClienteSelect) {
     type: "POST",
     data: { id: idClienteSelect },
     success: function (response) {
-      console.log(response);
       //COnvertimos el string a JSON
       let obj_users = JSON.parse(response);
-      console.log(obj_users);
       let obj = obj_users[0];
       $("#nombreCliente").val(obj.nombre+" "+obj.apaterno+" "+obj.amaterno);
       $("#contacto").val(obj.telefono+" / "+obj.celular);

@@ -12,5 +12,5 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
 
-    <title><?php echo "$tittle";?></title></title>
+    <title><?php echo "$tittle";?></title>
   </head>

@@ -25,6 +25,7 @@
     $tittle = "Usuarios del Sistema";
     include("includes/header.php");
     include("includes/modal_add_user.php");
+
     ?>
   <body class="body-home">
   <div class="d-flex">

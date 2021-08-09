@@ -3,6 +3,7 @@ $(document).ready(function(){
         getMarcas();
         getModelos();
         getAnios();
+        addCar();
     }else {
 
     }
@@ -65,7 +66,7 @@ function getAnios() {
                 let yearToday = today.getFullYear();
                 yearToday++;
                 let template = "";
-                for (i=yearToday;i>=1950;i--) {
+                for (i=yearToday;i>=anioBase;i--) {
                     template += `<option value="${i}">${i}</option>`;
                 }
                 $("#anio").html(template);
@@ -73,6 +74,8 @@ function getAnios() {
         }
     )
 }
+
+
 
 $("#marcas").change(function ()
 {
@@ -85,4 +88,62 @@ $("#marcas").change(function ()
         alert("No selecciono ningun elemento");
         modelo.find('option').remove();
     }
+});
+$("#engancheCompra").change(function () {
+    var valorVehiculo = $("#montoPagarCompra").val();
+    var engancheVehiculo = $("#engancheCompra").val();
+    var saldoVehiculo = valorVehiculo-engancheVehiculo;
+    $("#saldoCompra").val(saldoVehiculo);
+    $("#totalCompra").val(saldoVehiculo);
+    var totalCompra = $("#totalCompra").val();
+    var subtotalCompra = totalCompra/1.16;
+    $("#subtotalCompra").val(subtotalCompra.toFixed(2));
+    $("#ivaCompra").val((totalCompra-subtotalCompra).toFixed(2));
+});
+
+function addCar() {
+        $.ajax({
+            type:   "POST",
+            url:    "../control/car-add.php",
+            data: {
+                modelo: $("#modelos").val(),
+                anio: $("#anio").val(),
+                placa: $("#placa").val(),
+                entidad_placa: $("#entidad_placa").val(),
+                color: $("#colorCarBuy").val(),
+                kilometros: $("#kmCarBuy").val(),
+                transmision: $("#transimision").val(),
+                combustible: $("#combustible").val(),
+                nopuertas: $("#noPuertas").val(),
+            }, success: function () {
+                console.log(response);
+                }
+        }
+        )
+    }
+function registraCompra() {
+    $.ajax({
+        type:   "POST",
+        url:    "../control/contrato-add-compra.php",
+        data:{
+            noContrato: $("#noContrato").val(),
+            noEmpleado: $("#").val(),
+            noCliente: $("#id_cliente").val(),
+            noVehiculo: $("#"),
+            tipoContrato: $("#").val(),
+            plazo: $("#").val(),
+            engancheVehiculo: $("#").val(),
+            saldoVehiculo: $("#").val(),
+            formaPagoCompra: $("#").val(),
+            subtotalCompra: $("#").val(),
+            ivaCompra: $("#").val(),
+            totalCompra: $("#").val(),
+        }, success: function(){
+
+        }
+    })
+}
+$(document).on("click", ".btnConfirm", function () {
+    //eliminar cuando confirme
+    addCar();
 });

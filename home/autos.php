@@ -169,7 +169,7 @@
                                   <div class="card-body">
                                   <h5 class="card-title font-weight-bold">Vender</h5>
                                   <p class="card-text text-muted">Registre la venta de un vehiculo</p>
-                                  <button type="button" class="btn btn-primary btn-sm">Iniciar Proceso de Venta</button>
+                                  <button type="button" class="btn btn-primary btn-sm"><a href="new-sale.php?id=0&vehiculo=0">Iniciar Proceso de Venta</button>
                                   </div>
                               </div>
                           </div>

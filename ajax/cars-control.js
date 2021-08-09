@@ -213,7 +213,7 @@ $(document).ready(function () {
                     <div class="thumbnail card position-relative">
                         <div class="img-event">
                             <div class="position-absolute top-0 start-0 p-1"><h2><span class="badge badge-secondary">${obj_result.precio_contado}</span></h2></div>
-                                <img class="group list-group-image img-fluid" src="https://aacarsdna.com/images/vehicles/07/large/0520cd8f7f82b3c5d0cadafe9bb92f75.jpg" alt="" />
+                                <img class="group list-group-image img-fluid" src="${obj_result[1][0].path}" alt="" />
                             </div>
                             <div class="caption card-body">
                                 <h4 class="group card-title inner list-group-item-heading">${obj_result.marca_coche +" " +obj_result.modelo_coche +" " +obj_result.anio}</h4>
