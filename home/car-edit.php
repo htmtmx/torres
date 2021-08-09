@@ -77,7 +77,7 @@
                                 <h3 class="mb-0">ID: <?php echo $id; ?></h3>
                             </div>
                             <div class="card-body">
-                                <form class="form" id="form-update-client">
+                                <form class="form" id="form-update-car">
                                 <input class="form-control" type="hidden"  id="car-id" placeholder="AUTO" value="<?php echo $id; ?>" disabled>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Marca</label>
