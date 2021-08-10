@@ -277,12 +277,9 @@ class CLIENTES extends CONEXION implements I_CLIENTES
         $this->system_state = $system_state;
     }
 
-    public function consultaCliente($no_cliente)
+    public function queryconsultaCliente($no_cliente)
     {
-        $concat="";
-        if ($no_cliente!=0) {
-            $concat = " AND `cliente`.`no_cliente` = ".$no_cliente;
-        }
+        $concat=$no_cliente>0 ? " AND `cliente`.`no_cliente` = ".$no_cliente : " ";
         $query = "SELECT `no_cliente`, `nombre`, `apaterno`, `amaterno`, `telefono`,
             `celular`, `correo`, `subscripcion`, `empresa`, `rfc`, `fecha_registro`,
             `medio_identificación`, `folio`, `tipo_cliente`, `estatus`
@@ -294,7 +291,7 @@ class CLIENTES extends CONEXION implements I_CLIENTES
 
     }
 
-    public function addCliente()
+    public function queryaddCliente()
     {
         $query = "INSERT INTO `cliente` (
                 `no_cliente`, `nombre`, `apaterno`, `amaterno`, `telefono`, `celular`, `correo`, 
@@ -311,7 +308,7 @@ class CLIENTES extends CONEXION implements I_CLIENTES
         return $result;
     }
 
-    public function updateCliente()
+    public function queryupdateCliente()
     {
         $query = "UPDATE `cliente` 
                 SET `nombre` = '".$this->getNombre()."', `apaterno` = '".$this->getApaterno()."', 
@@ -329,7 +326,7 @@ class CLIENTES extends CONEXION implements I_CLIENTES
     }
 
 
-    public function deleteCliente($no_cliente)
+    public function querydeleteCliente($no_cliente)
     {
         $query = "UPDATE `cliente` 
                 SET `system_state` = `system_state`*(-1) 
@@ -339,7 +336,7 @@ class CLIENTES extends CONEXION implements I_CLIENTES
         $this->close();
         return $result;
     }
-    public function direccionCliente($no_cliente)
+    public function querydireccionCliente($no_cliente)
     {
         include_once "../model/DIRECCIONES.php";
         $tempDireccion = new DIRECCIONES();

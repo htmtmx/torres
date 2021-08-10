@@ -1,7 +1,7 @@
 <?php
 
-
-class DETALLE
+include_once "CONEXION.php";
+class DETALLE extends CONEXION
 {
     private $id_detalle;
     private $nombre;
@@ -106,5 +106,42 @@ class DETALLE
         $this->estatus = $estatus;
     }
 
+    //QUERY para traer los detalles
+    public function queryConsultaDetalles($id_detalle)
+    {
+        $filter = $id_detalle>0 ? " WHERE id_detalle=".$id_detalle : "";
+        $query="SELECT `id_detalle`, `nombre`, `categoria`, `visible`, `oblogatorio`, `estatus` FROM `detalle` ". $filter;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 
+    public function queryAddDetalle(){
+        $query="INSERT INTO `detalle` (`id_detalle`, `nombre`, `categoria`, `visible`, `oblogatorio`, `estatus`) 
+        VALUES (NULL, '".$this->getNombre()."', '".$this->getCategoria()."', '".$this->getVisible()."', 
+        '".$this->getOblogatorio()."', '".$this->getEstatus()."')";
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
+    public function queryUpdateDetalle($id_detalle){
+        $query="UPDATE `detalle` SET `nombre`='".$this->getNombre()."',`categoria`='".$this->getCategoria()."',
+        `visible`='".$this->getVisible()."',`oblogatorio`='".$this->getOblogatorio()."',`estatus`='".$this->getEstatus()."'
+        WHERE id_detalle=".$id_detalle;
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
+    public function queryDeleteDetalle($id_detalle){
+        $query= "UPDATE `detalle` SET id_detalle= id_detalle*(-1) WHERE id_detalle=".$id_detalle;
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

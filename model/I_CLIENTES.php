@@ -3,9 +3,9 @@
 
 interface I_CLIENTES
 {
-    function consultaCliente($no_cliente);
-    function addCliente();
-    function updateCliente();
-    function deleteCliente($no_cliente);
-    function direccionCliente($no_cliente);
+    function queryconsultaCliente($no_cliente);
+    function queryaddCliente();
+    function queryupdateCliente();
+    function querydeleteCliente($no_cliente);
+    function querydireccionCliente($no_cliente);
 }

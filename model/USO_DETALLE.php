@@ -1,7 +1,7 @@
 <?php
 
-
-class USO_DETALLE
+include_once "CONEXION.php";
+class USO_DETALLE extends  CONEXION
 {
     private $no_vehiculo_fk;
     private $id_detalle_fk;
@@ -73,4 +73,20 @@ class USO_DETALLE
     }
 
 
+    public function queryConsultaUsoDetalle(){
+        $query="SELECT `no_vehiculo_fk`, `id_detalle_fk`, `valor`, `estatus` FROM `uso_detalle`";
+        $this->connect();
+        $result=$this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+    public function queryDeleteUsoDetalle($id_detalle_fk,$n_coche_fk)
+    {
+        $query="DELETE FROM `uso_detalle` WHERE `no_vehiculo_fk`=".$n_coche_fk." AND `id_detalle_fk`=".$id_detalle_fk;
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }
