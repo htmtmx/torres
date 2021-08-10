@@ -4,17 +4,20 @@ function consultaEmpleado($idEmpleado)
 {
     include_once "../model/EMPLEADO.php";
     $objEmpleado = new EMPLEADO();
-    $result = $objEmpleado->consultaEmpleado($idEmpleado);
+    $result = $objEmpleado->queryconsultaEmpleado($idEmpleado);
     return json_encode($result);
 }
 
-function verificaCuentaUser($correo,$pw){
+function verificaCuentaUser($correo,$pw)
+{
     include_once "../model/EMPLEADO.php";
     $obj_empleado = new EMPLEADO();
     $obj_empleado->setCorreoUser($correo);
     $obj_empleado->setPw(md5($pw));
 
+
     $obj_user = $obj_empleado->queryverificaCountUser();
+
     if(count($obj_user) > 0 ){
         //creamos la sesion
         session_start();
@@ -48,16 +51,15 @@ function addUpdateEmpleado($accion,$no_empleado,$nombre,$app,$apm,$tel,$cel,
     $objEmpleado->setPuesto($puesto);
     $objEmpleado->setNivelAcceso($acceso);
     $objEmpleado->setEstatus($estatus);
-
     $actionMje = $accion == 0 ? " actualizó ": " registró ";
 
     if ($accion == 1 && $no_empleado ==0) {
         include_once "./tool_ids_generate.php";
         $objEmpleado->setNoEmpleado(gen_user_id());
         $objEmpleado->setPw(md5("0000"));
-        $result = $objEmpleado->addEmpleado();
+        $result = $objEmpleado->queryaddEmpleado();
     }else {
-        $result = $objEmpleado->updateEmpleado();
+        $result = $objEmpleado->queryupdateEmpleado();
     }
     $msjReturn = $result? "Se ".$actionMje." correctamente al empleado ":"Error";
     echo $msjReturn;
@@ -103,6 +105,4 @@ function deleteEmpleado($no_empleado)
     $objEmpleado = new EMPLEADO();
     return $objEmpleado->queryeliminarEmpleado($no_empleado);
 }
-
-
 

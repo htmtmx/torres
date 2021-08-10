@@ -1,7 +1,8 @@
 <?php
 
-
-class FILE_CONTRATO
+include_once "CONEXION.php";
+include_once "I_FILE_CONTRATO.php";
+class FILE_CONTRATO extends CONEXION implements I_FILE_CONTRATO
 {
     private $id_file_c;
     private $id_tipo_archivo_fk;
@@ -140,5 +141,36 @@ class FILE_CONTRATO
         $this->estatus = $estatus;
     }
 
-
+    public function addFileContrato()
+    {
+        $query = "INSERT INTO `file_contrato` (`id_file_c`, `id_tipo_archivo_fk`, `no_contrato_fk`, 
+                             `nombre`, `path`, `ext`, `nivel_acceso`, `estatus`) 
+                    VALUES (NULL, '".$this->getIdTipoArchivoFk()."', '".$this->getNoContratoFk()."', '"
+                            .$this->getNombre()."', '".$this->getPath()."', '".$this->getExt()."', '"
+                            .$this->getNivelAcceso()."', '1')";
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    public function removeFileContrato($idFileContrato)
+    {
+        $query = "UPDATE `file_contrato` 
+                SET `id_file_c` = id_file_c*(-1) 
+                WHERE `file_contrato`.`id_file_c` = ".$idFileContrato;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    public function updateNivelAcceso($idFileContrato,$nivel_acceso)
+    {
+        $query = "UPDATE `file_contrato` 
+                SET `nivel_acceso` = '".$nivel_acceso."' 
+                WHERE `file_contrato`.`id_file_c` = ".$idFileContrato;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }
