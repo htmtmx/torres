@@ -22,6 +22,43 @@ class COCHE extends CONEXION implements I_COCHE
     private $observaciones;
     private $estatus;
 
+    /********* AGREGACION  **********/
+
+    private  $lsDetalles;
+    private  $lsArchivos;
+
+    /**
+     * @return mixed
+     */
+    public function getLsArchivos()
+    {
+        return $this->queryConsultaArchivosCoche($this->getNoVehiculo());
+    }
+
+    /**
+     * @param mixed $lsArchivos
+     */
+    public function setLsArchivos($lsArchivos): void
+    {
+        $this->lsArchivos = $lsArchivos;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLsDetalles()
+    {
+        return $this->queryconsultaDetallesCoche($this->getNoVehiculo());
+    }
+
+    /**
+     * @param mixed $lsDetalles
+     */
+    public function setLsDetalles($lsDetalles): void
+    {
+        $this->lsDetalles = $lsDetalles;
+    }
+
     /**
      * @return mixed
      */
@@ -278,12 +315,9 @@ class COCHE extends CONEXION implements I_COCHE
         $this->estatus = $estatus;
     }
 
-    public function consultaCoches($no_vehiculo)
+    public function queryconsultaCoches($no_vehiculo)
     {
-        $concat="";
-        if ($no_vehiculo!=0) {
-            $concat = " AND co.no_vehiculo = ".$no_vehiculo;
-        }
+        $concat=$no_vehiculo>0 ? " AND co.no_vehiculo = ".$no_vehiculo: "";
         $query = "SELECT co.no_vehiculo, co.id_modelo_fk, co.fecha_registro, co.anio,
                 co.placa, co.entidad_placa, co.color, co.kilometros, co.transimision,
                 co.combustible, co.no_puertas, co.precio_contado, co.precio_credito,
@@ -292,13 +326,13 @@ class COCHE extends CONEXION implements I_COCHE
                 FROM coche co, modelo mo, marca mar 
                 WHERE co.id_modelo_fk = mo.id_modelo 
                 AND co.no_vehiculo > 0
-                AND mar.id_marca = mo.id_marca_fk ".$concat;
+                AND mar.id_marca = mo.id_marca_fk ".$concat." ORDER BY co.estatus DESC ";
         $this->connect();
         $result = $this->getData($query);
         $this->close();
         return $result;
     }
-    public function addCoche()
+    public function queryaddCoche()
     {
         $query = "INSERT INTO `coche` 
                 (`no_vehiculo`, `id_modelo_fk`, `fecha_registro`, `anio`, `placa`, 
@@ -316,7 +350,7 @@ class COCHE extends CONEXION implements I_COCHE
         $this->close();
         return $result;
     }
-    public function updateCoche()
+    public function queryupdateCoche()
     {
         $query="UPDATE `coche` 
                 SET `id_modelo_fk` = '".$this->getIdModeloFk()."', 
@@ -333,7 +367,7 @@ class COCHE extends CONEXION implements I_COCHE
         return $result;
     }
 
-    public function updateEstatusCoche($no_vehiculo, $estatus)
+    public function queryupdateEstatusCoche($no_vehiculo, $estatus)
     {
         $query = "UPDATE `coche` SET `estatus` = '".$estatus."' 
                 WHERE `coche`.`no_vehiculo` = ".$no_vehiculo;
@@ -343,7 +377,7 @@ class COCHE extends CONEXION implements I_COCHE
         return $result;
     }
 
-    public function deleteCoche($no_vehiculo)
+    public function querydeleteCoche($no_vehiculo)
     {
         $query = "UPDATE autostorres.coche 
                 SET no_vehiculo= no_vehiculo * (-1) 
@@ -354,31 +388,18 @@ class COCHE extends CONEXION implements I_COCHE
         return $result;
     }
 
-    public function consultaDetallesCoche($no_vehiculo)
+    public function queryconsultaDetallesCoche($no_vehiculo)
     {
-        $query = "SELECT det.`id_detalle`, det.`nombre`, det.`categoria`, 
-                det.`visible`, det.`oblogatorio`, det.`estatus` AS estatus_detalle, 
-                uso.`no_vehiculo_fk`, uso.`id_detalle_fk`, uso.`valor`, 
-                uso.`estatus` AS estatus_uso, coc.`no_vehiculo` 
-                FROM `detalle` det, `uso_detalle` uso, `coche` coc 
-                WHERE coc.`no_vehiculo` = ".$no_vehiculo." 
-                AND uso.`no_vehiculo_fk`= coc.`no_vehiculo` 
-                AND det.`id_detalle` = uso.`id_detalle_fk`";
-        $this->connect();
-        $result = $this->getData($query);
-        $this->close();
-        return $result;
+       include_once "../model/USO_DETALLE.php";
+       $obj_listDV= new USO_DETALLE();
+        return $obj_listDV->queryDetallesVehiculo($no_vehiculo);
     }
 
-    public function consultaArchivosCoche($no_vehiculo)
+    public function queryConsultaArchivosCoche($no_vehiculo)
     {
-        $query = "select * from tipo_archivo ta,  file_vechiculo fv 
-                    where  ta.id_tipo_archivo  = fv.id_tipo_archivo_fk 
-                    and fv.no_vehiculo_fk = ".$no_vehiculo;
-        $this->connect();
-        $result = $this->getData($query);
-        $this->close();
-        return $result;
+        include_once "../model/FILE_VEHICULO.php";
+        $obj_listAC= new FILE_VEHICULO();
+        return $obj_listAC->queryArchivosVehiculo($no_vehiculo);
     }
 
 }

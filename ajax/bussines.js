@@ -43,7 +43,7 @@ $(document).ready(function(){
             web: $('#web').val(),
             seccion: "1"
         };
-        let url = '../control/bussines-edit-data.php';
+        let url = '../webhook/bussines-edit-data.php';
         $.post(url,valoresCajas,function (response) {
             console.log(response);
             var template = `<div class=" alert1 alert alert-success" role="alert">
@@ -69,7 +69,7 @@ $(document).ready(function(){
             cp: $('#cp').val(),
             seccion: "2"
         };
-        let url = '../control/bussines-edit-data.php';
+        let url = '../webhook/bussines-edit-data.php';
         $.post(url,valoresCajas,function (response) {
             console.log(response);
             var template = `<div class=" alert1 alert alert-success" role="alert">

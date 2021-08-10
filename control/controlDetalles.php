@@ -1,7 +1,7 @@
 <?php
  include_once "../model/DETALLE.php";
 
-//Funciones para el control de Detalle
+//Funciones para el webhook de Detalle
 function consultaDetalle($id_detalle)
 {
 $obj_detalle = new DETALLE();

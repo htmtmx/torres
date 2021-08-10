@@ -2,10 +2,10 @@
 
 interface I_COCHE
 {
-    function consultaCoches($no_vehiculo);
-    function addCoche();
-    function updateCoche();
-    function updateEstatusCoche($no_vehiculo,$estatus);
-    function deleteCoche($no_vehiculo);
-    function consultaDetallesCoche($no_vehiculo);
+    function queryconsultaCoches($no_vehiculo);
+    function queryaddCoche();
+    function queryupdateCoche();
+    function queryupdateEstatusCoche($no_vehiculo,$estatus);
+    function querydeleteCoche($no_vehiculo);
+    function queryconsultaDetallesCoche($no_vehiculo);
 }

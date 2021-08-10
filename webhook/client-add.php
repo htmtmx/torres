@@ -10,7 +10,7 @@ if (isset($_POST['nombre_cliente']) && isset($_POST['apaterno_cliente'])
     && isset($_POST['empresa_cliente']) && isset($_POST['rfc_cliente'])
     && isset($_POST['estatus_cliente'])) {
 
-    $idCliente              = isset($_POST['id'])? $_POST['id'] : 0 ;
+    $idCliente              = isset($_POST['id']) ? $_POST['id'] : 0 ;
     $actionR                = isset($_POST['id'])? 0:1; //0 update (agregar 0 registros ; 1 insertar 1 (un) registro
     $nombre_cliente         =  $_POST['nombre_cliente'];
     $apaterno_cliente       =  $_POST['apaterno_cliente'];
@@ -26,10 +26,10 @@ if (isset($_POST['nombre_cliente']) && isset($_POST['apaterno_cliente'])
     $rfc_cliente            =  $_POST['rfc_cliente'];
     $estatus                =  $_POST['estatus_cliente'] = 0 ? 1 : 0;
 
-    include_once "./controlCliente.php";
+    include_once "../control/controlCliente.php";
     queryCliente($idCliente,$nombre_cliente,$apaterno_cliente,$amaterno_cliente,
         $telefono_cliente,$celular_cliente,$correo_cliente,$subscripcion_cliente,
         $empresa_cliente,$medio_identificación_cliente,$folio_cliente,
         $tipo_cliente,$rfc_cliente,$estatus,$actionR);
 
-}
+} else echo "Los datos estan incompletos";

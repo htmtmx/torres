@@ -1,7 +1,7 @@
 <?php
 
-
-class FILE_VEHICULO
+include_once "CONEXION.php";
+class FILE_VEHICULO extends  CONEXION
 {
     private $id_file_v;
     private $id_tipo_archivo_fk;
@@ -140,5 +140,14 @@ class FILE_VEHICULO
         $this->estatus = $estatus;
     }
 
-
+    public function queryArchivosVehiculo($no_vehiculo){
+        $query = "SELECT fv.`id_file_v`, fv.`id_tipo_archivo_fk`, fv.`no_vehiculo_fk`, fv.`nombre` AS nombreArchivo, fv.`path`, 
+            fv.`ext`, fv.`nivel_acceso`, fv.`estatus`, tp.nombre AS nombreTipo ,tp.id_tipo_archivo,tp.tipo_Archivo FROM `file_vechiculo` 
+            fv, tipo_archivo tp 
+            WHERE tp.id_tipo_archivo=fv.id_tipo_archivo_fk AND fv.no_vehiculo_fk=".$no_vehiculo;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 }

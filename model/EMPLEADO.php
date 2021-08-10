@@ -260,7 +260,7 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
         $this->system_state = $system_state;
     }
 
-    public function consultaEmpleado($no_empleado)
+    public function queryconsultaEmpleado($no_empleado)
     {
         $concat="";
         if ($no_empleado!=0) {
@@ -280,7 +280,7 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
         return $result;
     }
 
-    public function addEmpleado()
+    public function queryaddEmpleado()
     {
         $query = "INSERT INTO `empleado` (
                 `no_empleado`, `id_empresa_fk`, `nombre`, `apaterno`, `amaterno`, `telefono`, 
@@ -299,7 +299,7 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
         return $result;
     }
 
-    public function updateEmpleado()
+    public function queryupdateEmpleado()
     {
         $query = "UPDATE `empleado` 
         SET `id_empresa_fk` = '".$this->getIdEmpresaFk()."', `nombre` = '".$this->getNombre()."', 
@@ -314,7 +314,7 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
         return $result;
     }
 
-    public function updatePw($no_empleado, $pwd)
+    public function queryupdatePw($no_empleado, $pwd)
     {
         $query = "UPDATE `empleado` 
         SET `pw` = '".md5($pwd)."' 
@@ -325,18 +325,18 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
         return $result;
     }
 
-    public function updateStatusEmpleado($no_empleado, $estatus)
+    public function queryUpdateStatusE($idUser,$status)
     {
         $query = "UPDATE `empleado` 
-        SET `estatus` = '".$estatus."'
-        WHERE `empleado`.`no_empleado` = ".$no_empleado;
+        SET `estatus` = ".$status."
+        WHERE `empleado`.`no_empleado` = ".$idUser;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
         return $result;
     }
 
-    public function verificaCountUser()
+    public function queryverificaCountUser()
     {
         $query = "SELECT `no_empleado`, `nombre`, `apaterno`, `amaterno`, 
         `telefono`, `celular`, `sexo`, `fecha_registro`, `correo_user`, `pw`, `puesto`, `nivel_acceso`, `estatus` 
@@ -348,7 +348,7 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
         return $result;
     }
 
-    public function eliminarEmpleado($no_empleado)
+    public function queryeliminarEmpleado($no_empleado)
     {
         $query = "UPDATE `empleado` SET `no_empleado` = no_empleado*(-1) WHERE `empleado`.`no_empleado` = ".$no_empleado;
         $this->connect();

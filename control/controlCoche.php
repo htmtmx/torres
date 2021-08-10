@@ -3,14 +3,14 @@ function consultaCoches($show_detalles,$noVehiculo)
 {
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    $result = $objCoche->consultaCoches($noVehiculo);
+    $result = $objCoche->queryconsultaCoches($noVehiculo);
     var_dump($result);
 }
 
 function consultaCocheDetallesCompletos($show_detalles,$noVehiculo){
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    $arrayCoches = $objCoche->consultaCoches($noVehiculo);
+    $arrayCoches = $objCoche->queryconsultaCoches($noVehiculo);
     $cochesData = array();
     //obtengo la lista de coches en
     if ($show_detalles) {
@@ -30,7 +30,8 @@ function consultaDetallesCoche($noVehiculo)
 {
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    $result = $objCoche->consultaDetallesCoche($noVehiculo);
+    $objCoche->setNoVehiculo($noVehiculo);
+    $result = $objCoche->getLsDetalles();
     return  $result;
 }
 
@@ -38,7 +39,8 @@ function consultaArchivos($noVehiculo)
 {
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    $result = $objCoche->consultaArchivosCoche($noVehiculo);
+    $objCoche->setNoVehiculo($noVehiculo);
+    $result = $objCoche->getLsArchivos($noVehiculo);
     return  $result;
 }
 
@@ -58,7 +60,7 @@ function addCoche(  $idModeloFk,$anio,$placa,$entidadPlaca,$color,
     $objCoche->setTransimision($transmision);
     $objCoche->setCombustible($combustible);
     $objCoche->setNoPuertas($noPuertas);
-    echo $result = $objCoche->addCoche()?"Se registro correctamente el coche ".$objCoche->getNoVehiculo():"Error al intentar registrar";
+    echo $result = $objCoche->queryaddCoche()?"Se registro correctamente el coche ".$objCoche->getNoVehiculo():"Error al intentar registrar";
 }
 
 function updateCoche($noVehiculo,$idModeloFk,$anio,$placa,$entidadPlaca,$color,
@@ -81,19 +83,19 @@ function updateCoche($noVehiculo,$idModeloFk,$anio,$placa,$entidadPlaca,$color,
     $objCoche->setPrecioCredito($precioCredito);
     $objCoche->setOpcCredito($opcCredito);
     $objCoche->setObservaciones($observaciones);
-    echo $result = $objCoche->updateCoche() ? "Se actualizo correctamente el coche ".$objCoche->getNoVehiculo():"Error al intentar actualizar";
+    echo $result = $objCoche->queryupdateCoche() ? "Se actualizo correctamente el coche ".$objCoche->getNoVehiculo():"Error al intentar actualizar";
 }
 
 function updateEstatusCoche($noVehiculo,$estatus)
 {
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    echo $result = $objCoche->updateEstatusCoche($noVehiculo,$estatus)? "Se actualizo correctamente el estado del coche":"Error al intentar actualizar el estado del coche";
+    echo $result = $objCoche->queryupdateEstatusCoche($noVehiculo,$estatus)? "Se actualizo correctamente el estado del coche":"Error al intentar actualizar el estado del coche";
 }
 
 function deleteCoche($noVehiculo)
 {
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    echo $result = $objCoche->deleteCoche($noVehiculo)?"Se elimino correctamente el coche":"Error al intentar eliminar";
+    echo $result = $objCoche->querydeleteCoche($noVehiculo)?"Se elimino correctamente el coche":"Error al intentar eliminar";
 }

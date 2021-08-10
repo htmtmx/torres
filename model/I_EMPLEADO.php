@@ -3,9 +3,9 @@
 
 interface I_EMPLEADO
 {
-    function consultaEmpleado($no_empleado);
-    function addEmpleado();
-    function updateEmpleado();
-    function updatePw($no_empleado, $pwd);
-    function updateStatusEmpleado($no_empleado, $estatus);
+    function queryconsultaEmpleado($no_empleado);
+    function queryaddEmpleado();
+    function queryupdateEmpleado();
+    function queryupdatePw($no_empleado, $pwd);
+    function queryupdateStatusE($no_empleado, $estatus);
 }

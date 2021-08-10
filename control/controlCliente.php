@@ -20,7 +20,7 @@ function updateCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoClien
     $objCliente->setFolio($folioCliente);
     $objCliente->setTipoCliente($tipoCliente);
     $objCliente->setEstatus($statuscliente);
-    echo $result = $objCliente->updateCliente() ? "Se actualizo correctamente al cliente ".$objCliente->getNoCliente():"Error al intentar actualizar";
+    return $objCliente->queryupdateCliente();
 }
 
 function queryCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoCliente,
@@ -67,20 +67,33 @@ function consultaCliente($idCliente)
 {
     include_once "../model/CLIENTES.php";
     $objCliente = new CLIENTES();
-    $result = $objCliente->consultaCliente($idCliente);
-    return json_encode($result);;
+    $result = $objCliente->queryconsultaCliente($idCliente);
+    return json_encode($result);
+}
+
+/********************************************************************
+ *                 U P D A T E    S T A T U S     C L I E N T E
+ *******************************************************************/
+
+function updateStatus($idCliente){
+    include_once "../model/CLIENTES.php";
+    $objCliente = new CLIENTES();
+    return $objCliente->queryUpdateStatus($idCliente);
 }
 
 /********************************************************************
  *                 U P D A T E    C L I E N T E
  *******************************************************************/
 
+
 /********************************************************************
  *                 D E L E T E    C L I E N T E
  *******************************************************************/
-/*include_once "../model/CLIENTES.php";
-$objCliente = new CLIENTES();
-echo $result = $objCliente->deleteCliente(666)?"Se elimino correctamente el cliente":"Error al intentar eliminar";*/
+function deleteCliente($idCliente){
+    include_once "../model/CLIENTES.php";
+    $objCliente = new CLIENTES();
+    return $objCliente->querydeleteCliente($idCliente);
+}
 /********************************************************************
  *              D I R E C C I O N    C L I E N T E
  *******************************************************************/

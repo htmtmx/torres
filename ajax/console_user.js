@@ -25,7 +25,7 @@ $(document).ready(function(){
                     user: user,
                     pw : pw
                 };
-                let url = './control/c_verifica_usuario.php';
+                let url = './webhook/c_verifica_usuario.php';
                 //funcion propia de jQuery para POST (a doinde enviar, que enviar, resultado devuelto)
                 $.post(url,valoresCajas, function (response) {
                     //tratamos los datos y hacemos acciones

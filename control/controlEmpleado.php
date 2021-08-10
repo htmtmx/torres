@@ -14,7 +14,7 @@ function verificaCuentaUser($correo,$pw){
     $obj_empleado->setCorreoUser($correo);
     $obj_empleado->setPw(md5($pw));
 
-    $obj_user = $obj_empleado->verificaCountUser();
+    $obj_user = $obj_empleado->queryverificaCountUser();
     if(count($obj_user) > 0 ){
         //creamos la sesion
         session_start();
@@ -89,17 +89,19 @@ echo $result = $objEmpleado->updatePw(84196,1111)?"Se actualizo correctamente la
 /********************************************************************
  *           U P D A T E    E S T A T U S    E M P L E A D O
  *******************************************************************/
-/*include_once "../model/EMPLEADO.php";
-$objEmpleado = new EMPLEADO();
-echo $result = $objEmpleado->updateStatusEmpleado(84196,1)?"Se actualizo correctamente el estado del empleado ":"Error al intentar actualizar";*/
+function updateStatusE($idUser,$status){
+    include_once "../model/EMPLEADO.php";
+    $objEmpleado = new EMPLEADO();
+    return $objEmpleado->queryUpdateStatusE($idUser,$status);
+}
 /********************************************************************
  *                   D E L E T E    E M P L E A D O
  *******************************************************************/
-function eliminarEmpleado($no_empleado)
+function deleteEmpleado($no_empleado)
 {
     include_once "../model/EMPLEADO.php";
     $objEmpleado = new EMPLEADO();
-    $objEmpleado->eliminarEmpleado($no_empleado);
+    return $objEmpleado->queryeliminarEmpleado($no_empleado);
 }
 
 

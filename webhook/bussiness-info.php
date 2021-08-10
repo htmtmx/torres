@@ -1,6 +1,5 @@
 <?php
     //regresa el valor especifico dependiendo el id
-    include('./db.php');
     $rfc = $_POST['rfc'];
     $query = "SELECT `rfc`, `nombre`, `calle`, `no_ext`, `no_int`, `colonia`, `cp`, `de_mun`, `estado`, 
         `telefono`, `correo`, `sitio_web`, `path_logo`, `version`, `licencia` FROM `empresa` ";

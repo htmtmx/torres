@@ -1,4 +1,4 @@
 <?php
     $id = $_POST['id'];
-    include_once "./controlCliente.php";
+    include_once "../control/controlCliente.php";
     echo consultaCliente($id);

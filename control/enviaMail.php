@@ -6,7 +6,7 @@ function enviaCorreo($nombre, $correo)
     date_default_timezone_set('America/Mexico_City');
     setlocale(LC_TIME, 'es_MX.UTF-8');
     $fecha_hora = date("Y-m-d H:i:s");
-    require ("./lib-mail/class.phpmailer.php");
+    require("./lib-mail/class.phpmailer.php");
     $mail = new PHPMailer();
     $mail->IsSMTP();
     $mail->CharSet = 'UTF-8';

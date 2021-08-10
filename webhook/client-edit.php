@@ -22,7 +22,7 @@ if (isset($_POST['id'])&& isset(_POST['nombre_cliente'])
     $rfcCliente=$_POST['rfc_cliente'];
     $statuscliente=$_POST['estatus_cliente'];
     $accion=$_POST['accion'];
-    include_once "./ctrl/controlCliente.php";
+    include_once "../control/controlCliente.php";
     updateCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoCliente,
         $telefonoCliente,$celularCliente,$correoCliente,$suscripcionCliente,
         $empresaCliente,$medioIdentificacion,$folioCliente,$tipoCliente,$rfcCliente,

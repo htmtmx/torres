@@ -3,7 +3,7 @@ if (isset($_POST['pw']) && isset($_POST['user'])) {
     $pw = ($_POST['pw']);
     $user = $_POST['user'];
 
-    include_once "./controlEmpleado.php";
+    include_once "../control/controlEmpleado.php";
     if(verificaCuentaUser($user,$pw)){
         $mje = array(
             "mjeType" => "1",

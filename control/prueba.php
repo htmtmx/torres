@@ -1,2 +1,2 @@
 <?php
-include_once "./delete-uso_detalle.php";
+include_once "../webhook/user-delete.php";

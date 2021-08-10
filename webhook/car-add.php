@@ -14,7 +14,7 @@ if( isset($_POST['modelo']) && isset($_POST['anio'])
     $combustible    = $_POST['combustible'];
     $nopuertas      = $_POST['nopuertas'];
 
-    include_once "./controlCoche.php";
-    addCoche($modelo, $anio, $placa, $entidad_placa, $color,$kilometros,
+    include_once "../control/controlCoche.php";
+    return addCoche($modelo, $anio, $placa, $entidad_placa, $color,$kilometros,
     $transmision,$combustible,$nopuertas);
-}
+} else echo "Los datos estan incompletos";
