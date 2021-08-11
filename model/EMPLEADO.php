@@ -151,22 +151,6 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
     /**
      * @return mixed
      */
-    public function getFechaRegistro()
-    {
-        return $this->fecha_registro;
-    }
-
-    /**
-     * @param mixed $fecha_registro
-     */
-    public function setFechaRegistro($fecha_registro)
-    {
-        $this->fecha_registro = $fecha_registro;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getCorreoUser()
     {
         return $this->correo_user;
@@ -339,9 +323,10 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
     public function queryverificaCountUser()
     {
         $query = "SELECT `no_empleado`, `nombre`, `apaterno`, `amaterno`, 
-        `telefono`, `celular`, `sexo`, `fecha_registro`, `correo_user`, `pw`, `puesto`, `nivel_acceso`, `estatus` 
-            FROM `empleado` WHERE `correo_user` = '".$this->getCorreoUser()."' 
-            AND `pw` = '".$this->getPw()."' AND `estatus` = 1 ";
+                `telefono`, `celular`, `sexo`, `fecha_registro`, `correo_user`, 
+                `pw`, `puesto`, `nivel_acceso`, `estatus` 
+                FROM `empleado` WHERE `correo_user` = '".$this->getCorreoUser()."' 
+                AND `pw` = '".$this->getPw()."' AND `estatus` = 1 ";
         $this->connect();
         $result = $this->getData($query);
         $this->close();
@@ -350,7 +335,9 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
 
     public function queryeliminarEmpleado($no_empleado)
     {
-        $query = "UPDATE `empleado` SET `no_empleado` = no_empleado*(-1) WHERE `empleado`.`no_empleado` = ".$no_empleado;
+        $query = "UPDATE `empleado` 
+                SET `no_empleado` = no_empleado*(-1) 
+                WHERE `empleado`.`no_empleado` = ".$no_empleado;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

@@ -175,12 +175,12 @@ class PAGO extends CONEXION implements I_PAGO
         $this->estatus_pago = $estatus_pago;
     }
 
-    public function consultaPago($folio)
+    public function consultaPago($no_contrato_fk)
     {
         $query = "SELECT `folio`, `no_contrato_fk`, `no_transaccion`, `concepto`, `tipo`, `total`, 
-                `fecha_hora_creacion`, `no_pago`, `detalles`, `estatus_pago` 
-                FROM `pago` 
-                WHERE `no_contrato_fk`= ".$folio;
+                        `fecha_hora_creacion`, `no_pago`, `detalles`, `estatus_pago` 
+                    FROM `pago` 
+                    WHERE `no_contrato_fk`= ".$no_contrato_fk;
         $this->connect();
         $result = $this->getData($query);
         $this->close();
@@ -202,7 +202,9 @@ class PAGO extends CONEXION implements I_PAGO
 
     public function updateEstatusPago($folio,$estatus_pago)
     {
-        $query = "UPDATE `pago` SET `estatus_pago` = '".$estatus_pago."' WHERE `pago`.`folio` = ".$folio;
+        $query = "UPDATE `pago` 
+                    SET `estatus_pago` = '".$estatus_pago."' 
+                    WHERE `pago`.`folio` = ".$folio;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
@@ -211,7 +213,9 @@ class PAGO extends CONEXION implements I_PAGO
 
     public function eliminaPago($folio)
     {
-        $query = "UPDATE `pago` SET folio =folio*(-1) WHERE `pago`.`folio` = ".$folio;
+        $query = "UPDATE `pago` 
+                    SET folio =folio*(-1) 
+                    WHERE `pago`.`folio` = ".$folio;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

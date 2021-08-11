@@ -14,10 +14,7 @@ function verificaCuentaUser($correo,$pw)
     $obj_empleado = new EMPLEADO();
     $obj_empleado->setCorreoUser($correo);
     $obj_empleado->setPw(md5($pw));
-
-
     $obj_user = $obj_empleado->queryverificaCountUser();
-
     if(count($obj_user) > 0 ){
         //creamos la sesion
         session_start();
@@ -36,7 +33,6 @@ function verificaCuentaUser($correo,$pw)
 function addUpdateEmpleado($accion,$no_empleado,$nombre,$app,$apm,$tel,$cel,
                            $correo,$puesto,$sexo,$acceso,$estatus)
 {
-
     include_once "../model/EMPLEADO.php";
     $objEmpleado = new EMPLEADO();
     $objEmpleado->setNoEmpleado($no_empleado);
@@ -52,7 +48,6 @@ function addUpdateEmpleado($accion,$no_empleado,$nombre,$app,$apm,$tel,$cel,
     $objEmpleado->setNivelAcceso($acceso);
     $objEmpleado->setEstatus($estatus);
     $actionMje = $accion == 0 ? " actualizó ": " registró ";
-
     if ($accion == 1 && $no_empleado ==0) {
         include_once "./tool_ids_generate.php";
         $objEmpleado->setNoEmpleado(gen_user_id());
@@ -66,28 +61,16 @@ function addUpdateEmpleado($accion,$no_empleado,$nombre,$app,$apm,$tel,$cel,
 }
 
 /********************************************************************
- *                  U P D A T E    E M P L E A D O
- *******************************************************************/
-/*include_once "../model/EMPLEADO.php";
-$objEmpleado = new EMPLEADO();
-$objEmpleado->setNoEmpleado(84196);
-$objEmpleado->setIdEmpresaFk(2);
-$objEmpleado->setNombre("Jorge");
-$objEmpleado->setApaterno("Lopez");
-$objEmpleado->setAmaterno("Abarca");
-$objEmpleado->setTelefono("0005856");
-$objEmpleado->setCelular("648821");
-$objEmpleado->setSexo(0);
-$objEmpleado->setCorreoUser("jorge@gmail.com");
-$objEmpleado->setPuesto("Admin");
-$objEmpleado->setNivelAcceso(2);
-echo $result = $objEmpleado->updateEmpleado()?"Se actualizo correctamente al empleado ".$objEmpleado->getNoEmpleado():"Error al intentar actualizar";*/
-/********************************************************************
  *                  U P D A T E    P W D    E M P L E A D O
  *******************************************************************/
-/*include_once "../model/EMPLEADO.php";
-$objEmpleado = new EMPLEADO();
-echo $result = $objEmpleado->updatePw(84196,1111)?"Se actualizo correctamente la contraseña ":"Error al intentar actualizar";*/
+
+function updatePwdEmpleado($no_empleado,$pwd)
+{
+    include_once "../model/EMPLEADO.php";
+    $objEmpleado = new EMPLEADO();
+    echo $result = $objEmpleado->queryupdatePw($no_empleado,$pwd) ? "Se actualizo correctamente la contraseña ":"Error al intentar actualizar";
+}
+
 /********************************************************************
  *           U P D A T E    E S T A T U S    E M P L E A D O
  *******************************************************************/

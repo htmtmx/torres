@@ -23,9 +23,12 @@
         $estatus_user = $_POST['estatus_user'];
 
         include_once "../control/controlEmpleado.php";
-        addUpdateEmpleado($accion,$no_empleado,$nombre_user,$apaterno_user,$amaterno_user,$telefono_user,
-                            $celular_user,$correo_user,$puesto_user,$sexo_user,$acceso_user,
-                            $estatus_user);
+        if (addUpdateEmpleado($accion,$no_empleado,$nombre_user,$apaterno_user,$amaterno_user,$telefono_user,
+            $celular_user,$correo_user,$puesto_user,$sexo_user,$acceso_user,
+            $estatus_user)) {
+            echo "Se ha guardado con exito";
+        } else echo "Ha falaldo";
+
     }
 
 

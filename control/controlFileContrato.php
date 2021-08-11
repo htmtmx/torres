@@ -10,19 +10,22 @@ function addFileContrato($id_tipo_archivo, $no_contrato,$nombre,
     $objFileContrato->setPath($path);
     $objFileContrato->setExt($ext);
     $objFileContrato->setNivelAcceso($nivel_acceso);
-    $objFileContrato->addFileContrato();
+    $result = $objFileContrato->addFileContrato();
+    return $result;
 }
 
 function removeFileContrato($idFileContrato)
 {
     include_once "../model/FILE_CONTRATO.php";
     $objFileContrato = new FILE_CONTRATO();
-    $objFileContrato->removeFileContrato($idFileContrato);
+    $result = $objFileContrato->removeFileContrato($idFileContrato);
+    return $result;
 }
 
 function updateNivelAcceso($idFileContrato,$nivel_acceso)
 {
     include_once "../model/FILE_CONTRATO.php";
     $objFileContrato = new FILE_CONTRATO();
-    $objFileContrato->updateNivelAcceso($idFileContrato,$nivel_acceso,);
+    $result = $objFileContrato->updateNivelAcceso($idFileContrato,$nivel_acceso);
+    return $result;
 }

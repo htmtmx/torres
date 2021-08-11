@@ -294,11 +294,11 @@ class EMPRESA extends CONEXION implements I_EMPRESA
         $this->licencia = $licencia;
     }
 
-    public function consultaEmpresa($id_empresa_fk)
+    public function consultaEmpresa($id_empresa)
     {
         $concat="";
-        if ($id_empresa_fk!=0) {
-            $concat = " WHERE `id_empresa` = ".$id_empresa_fk;
+        if ($id_empresa!=0) {
+            $concat = " WHERE `id_empresa` = ".$id_empresa;
         }
         $query = "SELECT `id_empresa`, `rfc`, `nombre`, `calle`, `no_ext`, 
        `no_int`, `colonia`, `cp`, `de_mun`, `estado`, `telefono`, `correo`, 
