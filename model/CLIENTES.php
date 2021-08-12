@@ -286,12 +286,10 @@ class CLIENTES extends CONEXION implements I_CLIENTES
             . $this->getSubscripcion() . "', '" . $this->getEmpresa() . "', '" . $this->getRfc() . "', '"
             . date('Y-m-d H:i:s') . "', '" . $this->getMedioIdentificación() . "', '"
             . $this->getFolio() . "', '" . $this->getTipoCliente() . "', '1')";
-        echo $query;
-        /*$this->connect();
+        $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
-        return $result;*/
-        return true;
+        return $result;
     }
 
     public function queryupdateCliente()
@@ -305,12 +303,10 @@ class CLIENTES extends CONEXION implements I_CLIENTES
                 `folio` = '" . $this->getFolio() . "', `tipo_cliente` = '" . $this->getTipoCliente() . "', 
                 `estatus` = '" . $this->getEstatus() . "' 
                 WHERE `cliente`.`no_cliente` = " . $this->getNoCliente();
-        echo $query;
-        /*$this->connect();
+        $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
-        return $result;*/
-        return true;
+        return $result;
     }
 
 

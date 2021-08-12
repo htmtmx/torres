@@ -3,7 +3,8 @@
     /*INICIA PRUEBA DE ARRAY*/
 $params = [
     //AGREGA COCHE
-    "id_modelo_fk" => "1",
+    "no_vehiculo" => "0",
+    "id_modelo_fk" => "2",
     "fecha_registro_coche" => "14-jun-20021",
     "anio" => "2021",
     "placa" => "JHGKFO-25542",
@@ -19,13 +20,13 @@ $params = [
     "observaciones" => "",
     "estatusC" => 1,
     //CLIENTE - VENDEDOR DATOS
-    "no_cliente" => "777",
-    "nombre" => "Fernando",
-    "apaterno" => "Hernandez",
-    "amaterno" => "Ledezma",
+    "no_cliente" => "0",
+    "nombre" => "Christian",
+    "apaterno" => "Pioquinto",
+    "amaterno" => "Hernandez",
     "telefono" => "5597091960",
-    "celular" => "5537091960",
-    "correo" => "fernando@gmail.com",
+    "celular" => "55987541365",
+    "correo" => "chris@gmail.com",
     "subscripcion" => "1",
     "empresa" => "ReckreaStudios",
     "fecha_registro" => "FECHA AQUI",

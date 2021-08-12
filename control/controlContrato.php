@@ -60,11 +60,99 @@ function deleteContrato($no_contrato)
  *******************************************************************/
 function creaContratoCompra($params)
 {
+    $COCHE = constructObjCoche($params);
+
+    $resultCoche = $COCHE->getNoVehiculo()>0 ? $COCHE->queryaddCoche() : false;
+
+    $VENDEDOR = construcObjtCliente($params);
+    $resultVendedor = $params['no_cliente']>0 ? $VENDEDOR->queryupdateCliente(): $VENDEDOR->queryaddCliente();
+
+    if($resultVendedor && $resultCoche){
+        $CONTRATO = constructObjContrato($params,$VENDEDOR->getNoCliente(),$COCHE->getNoVehiculo());
+
+        $resultContrato = $CONTRATO->addContrato();
+        if($resultContrato){
+            include_once "./controlPago.php";
+            $numGen = 62376723;
+            $concepto="Pago de Compra";
+            $tipo="CARGO";
+            $detalles = "Se compró un vehiculo con placa ".$COCHE->getPlaca()." año ".$COCHE->getAnio();
+            $resultPago = addPago($CONTRATO->getNoContrato(),$numGen,$concepto,$tipo,$CONTRATO->getTotal(),
+                1,$detalles,1);
+
+            return $resultPago;
+        } else return  false;
+    } else return false;
+
+}
+
+//FUNCION PARA CONSTRUIR UN OBJETO CLIENTE
+
+function construcObjtCliente($params){
+    include_once "../model/CLIENTES.php";
+    include_once  "./tool_ids_generate.php";
+    $obj_user = new CLIENTES();
+    $claveGen = gen_user_id();
+    $idCliente=$params['no_cliente']>0 ? $params['no_cliente'] : $claveGen;
+    $obj_user->setNoCliente($idCliente);
+    $obj_user->setNombre($params['nombre']);
+    $obj_user->setApaterno($params['apaterno']);
+    $obj_user->setAmaterno($params['amaterno']);
+    $obj_user->setTelefono($params['telefono']);
+    $obj_user->setCelular($params['celular']);
+    $obj_user->setCorreo($params['correo']);
+    $obj_user->setSubscripcion($params['subscripcion']);
+    $obj_user->setEmpresa($params['empresa']);
+    $obj_user->setFechaRegistro(date('Y-m-d H:i:s'));
+    $obj_user->setMedioIdentificación($params['medio_identificacion']);
+    $obj_user->setFolio($params['folio']);
+    $obj_user->setTipoCliente($params['tipo_cliente']);
+    $obj_user->setEstatus($params['estatusUs']);
+    //REGRESAMOS EL OBJETO COMPLETO
+    return $obj_user;
+}
+
+function constructObjContrato($params,$noCliente,$noVehiculo){
+    session_start();
+    include_once "../model/CONTRATO.php";
+    include_once  "./tool_ids_generate.php";
+    $obj_cont = new CONTRATO();
+    $claveContrato=gen_no_contrato();
+    $obj_cont->setNoContrato($claveContrato);
+
+    //Cuando se implemente el JS se cambiara el id empleado por el $_SESSION[no_empleado]
+
+    $idEmpleado=7056282536482632;
+    $obj_cont->setNoEmpleadoFk($idEmpleado);
+    $obj_cont->setNoClienteFk($noCliente);
+    $obj_cont->setNoVehiculoFk($noVehiculo);
+    $obj_cont->setHoraFechaCreacion(date('Y-m-d H:i:s'));
+    $obj_cont->setTipoContrato(1);
+    $obj_cont->setPlazo($params['plazo']);
+    $obj_cont->setFechaPrimerPago($params['fecha_primer_pago']);
+    $obj_cont->setEnganche($params['enganche']);
+    $obj_cont->setSaldo($params['saldo']);
+    $obj_cont->setFormaPago($params['forma_pago']);
+    $obj_cont->setSubtotal($params['subtotal']);
+    $obj_cont->setIva(16);
+    $obj_cont->setTotal($params['total']);
+    $obj_cont->setEstatus($params['estatusCon']);
+
+    //Todos los demas atributos
+
+    return $obj_cont;
+}
+
+//FUNCION PARA CONSTRUIR UN OBJETO COCHE
+
+function constructObjCoche($params){
     //CREA EL COCHE PARA EL CONTRATO
     include_once "../model/COCHE.php";
+    include_once  "./tool_ids_generate.php";
     $obj_coche = new COCHE();
-    $claveGeneradas = 5435;
+    $claveGeneradas = gen_no_vehiculo();
     $obj_coche -> setNoVehiculo($claveGeneradas);
+    $obj_coche->setIdModeloFk($params['id_modelo_fk']);
     $obj_coche->setFechaRegistro(date('Y-m-d H:i:s'));
     $obj_coche -> setAnio($params['anio']);
     $obj_coche->setPlaca($params['placa']);
@@ -79,50 +167,6 @@ function creaContratoCompra($params)
     $obj_coche->setOpcCredito($params['opc_credito']);
     $obj_coche->setObservaciones($params['observaciones']);
     $obj_coche->setEstatus($params['estatusC']);
-    $addCoche = $obj_coche->queryaddCoche();
+    return $obj_coche;
 
-    $VENDEDOR = construcObjtCliente($params);
-    $resultVendedor = $params['no_cliente']>0 ? $VENDEDOR->queryupdateCliente(): $VENDEDOR->queryaddCliente();
-
-    if($resultVendedor && $addCoche){
-        $CONTRATO = constructObjContrato($params,$VENDEDOR->getNoCliente(),$obj_coche->getNoVehiculo());
-        return $CONTRATO->addContrato();
-    } else return false;
-
-}
-
-//FUNCION PARA CONSTRUIR UN OBJETO CLIENTE
-
-function construcObjtCliente($params){
-    include_once "../model/CLIENTES.php";
-    $obj_user = new CLIENTES();
-    $claveGen = 555;
-    $idCliente=$params['no_cliente']>0 ? $params['no_cliente'] : $claveGen;
-    $obj_user->setNoCliente($idCliente);
-    $obj_user->setNombre($params['nombre']);
-
-    //Todos los demas atributos
-
-    return $obj_user;
-}
-
-function constructObjContrato($params,$noCliente,$noVehiculo){
-    session_start();
-    include_once "../model/CONTRATO.php";
-    $obj_cont = new CONTRATO();
-    $claveContrato=545436;
-    $obj_cont->setNoContrato($claveContrato);
-
-    //Cuando se implemente el JS se cambiara el id empleado por el $_SESSION[no_empleado]
-
-    $idEmpleado=7056282536482632;
-    $obj_cont->setNoEmpleadoFk($idEmpleado);
-    $obj_cont->setNoClienteFk($noCliente);
-    $obj_cont->setNoVehiculoFk($noVehiculo);
-    $obj_cont->setHoraFechaCreacion(date('Y-m-d H:i:s'));
-    $obj_cont->setTipoContrato(1);
-
-    //Todos los demas atributos
-
-    return $obj_cont;
 }

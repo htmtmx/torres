@@ -6,7 +6,7 @@ function updateEstatusPago($folio,$estatus_pago)
 {
     include_once "../model/PAGO.php";
     $objPago = new PAGO();
-    $result = $objPago->updateEstatusPago($folio,$estatus_pago);
+    $result = $objPago->queryupdateEstatusPago($folio,$estatus_pago);
     return $result;
 }
 /********************************************************************
@@ -16,14 +16,14 @@ function deletePago($folio)
 {
     include_once "../model/PAGO.php";
     $objPago = new PAGO();
-    $result = $objPago->eliminaPago($folio);
+    $result = $objPago->queryeliminaPago($folio);
     return $result;
 }
 /********************************************************************
  *         A D D     P A G O
  *******************************************************************/
 function addPago($no_contrato_fk,$no_transaccion,$concepto,$tipo,
-                    $total,$no_pago,$detalles)
+                    $total,$no_pago,$detalles,$estatus_pago)
 {
     include_once "../model/PAGO.php";
     $objPago = new PAGO();
@@ -32,9 +32,11 @@ function addPago($no_contrato_fk,$no_transaccion,$concepto,$tipo,
     $objPago->setConcepto($concepto);
     $objPago->setTipo($tipo);
     $objPago->setTotal($total);
+    $objPago->setFechaHoraCreacion(date('Y-m-d H:i:s'));
     $objPago->setNoPago($no_pago);
     $objPago->setDetalles($detalles);
-    $result = $objPago->addPago();
+    $objPago->setEstatusPago($estatus_pago);
+    $result = $objPago->queryaddPago();
     return  $result;
 }
 /********************************************************************
@@ -44,6 +46,6 @@ function consultaPago($no_contrato_fk)
 {
     include_once "../model/PAGO.php";
     $objPago = new PAGO();
-    $result = $objPago->consultaPago($no_contrato_fk);
+    $result = $objPago->queryconsultaPago($no_contrato_fk);
     return json_encode($result);
 }

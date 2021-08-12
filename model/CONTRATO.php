@@ -282,16 +282,14 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         `no_vehiculo_fk`, `hora_fecha_creacion`, `tipo_contrato`, `plazo`, `fecha_primer_pago`, 
         `enganche`, `saldo`, `forma_pago`, `subtotal`, `iva`, `total`, `estatus`) 
         VALUES ('".$this->getNoContrato()."', '".$this->getNoEmpleadoFk()."', '"
-            .$this->getNoClienteFk()."', '".$this->getNoVehiculoFk()."', '".date('Y-m-d H:i:s')."', '"
-            .$this->getTipoContrato()."', '".$this->getPlazo()."', '".date('Y-m-d')."', '"
+            .$this->getNoClienteFk()."', '".$this->getNoVehiculoFk()."', '".$this->getHoraFechaCreacion()."', '"
+            .$this->getTipoContrato()."', '".$this->getPlazo()."', '".$this->getFechaPrimerPago()."', '"
             .$this->getEnganche()."', '".$this->getSaldo()."', '".$this->getFormaPago()."', '"
             .$this->getSubtotal()."', '".$this->getIva()."', '".$this->getTotal()."', '1')";
-        echo $query;
-        /*$this->connect();
+        $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
-        return $result;*/
-        return true;
+        return $result;
     }
 
     public function updateEstatusContrato($no_contrato, $estatus)
