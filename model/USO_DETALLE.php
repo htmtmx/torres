@@ -83,7 +83,8 @@ class USO_DETALLE extends  CONEXION
     public function queryDetallesVehiculo($no_vehiculo){
         $query = "SELECT det.`id_detalle`, det.`nombre`, det.`categoria`, 
                 det.`visible`, det.`oblogatorio`, det.`estatus` AS estatus_detalle, 
-                uso.`no_vehiculo_fk`, uso.`id_detalle_fk`, uso.`valor`, 
+                uso.`no_vehiculo_fk`, uso.`id_detalle_fk`, uso.`valor`,
+       
                 uso.`estatus` AS estatus_uso, coc.`no_vehiculo` 
                 FROM `detalle` det, `uso_detalle` uso, `coche` coc 
                 WHERE coc.`no_vehiculo` = ".$no_vehiculo." 

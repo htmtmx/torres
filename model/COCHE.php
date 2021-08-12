@@ -345,10 +345,12 @@ class COCHE extends CONEXION implements I_COCHE
                 .$this->getTransimision()."', '".$this->getCombustible()."', '".$this->getNoPuertas()."', '"
                 .$this->getPrecioContado()."', '".$this->getPrecioCredito()."', '1', '"
                 .$this->getObservaciones()."', '1')";
-        $this->connect();
+        echo $query;
+        /*$this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
-        return $result;
+        return $result;*/
+        return true;
     }
     public function queryupdateCoche()
     {

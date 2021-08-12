@@ -51,12 +51,12 @@ function queryCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoClient
         //genero la  clave del cliente
         include_once "./tool_ids_generate.php";
         $objCliente-> setNoCliente(gen_client_id());
-        $result = $objCliente-> addCliente();
+        $result = $objCliente-> queryaddCliente();
     }
     else{
         //voy a solo actualizar los datos del cliente
         $objCliente->setEstatus($estatus);
-        $result = $objCliente-> updateCliente();
+        $result = $objCliente-> queryupdateCliente();
     }
 
     $mjeReturn = $result ? "Se ".$actionMje." correctamente al cliente " :"Error al intentar registrar";

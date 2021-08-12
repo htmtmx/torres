@@ -19,7 +19,6 @@ class CLIENTES extends CONEXION implements I_CLIENTES
     private $folio;
     private $tipo_cliente;
     private $estatus;
-    private $system_state;
 
     /**
      * @return mixed
@@ -261,21 +260,6 @@ class CLIENTES extends CONEXION implements I_CLIENTES
         $this->estatus = $estatus;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSystemState()
-    {
-        return $this->system_state;
-    }
-
-    /**
-     * @param mixed $system_state
-     */
-    public function setSystemState($system_state)
-    {
-        $this->system_state = $system_state;
-    }
 
     public function queryconsultaCliente($no_cliente)
     {
@@ -296,16 +280,18 @@ class CLIENTES extends CONEXION implements I_CLIENTES
         $query = "INSERT INTO `cliente` (
                 `no_cliente`, `nombre`, `apaterno`, `amaterno`, `telefono`, `celular`, `correo`, 
                 `subscripcion`, `empresa`, `rfc`, `fecha_registro`, `medio_identificación`, 
-                `folio`, `tipo_cliente`, `estatus`, `system_state`) VALUES ('" . $this->getNoCliente() . "', '"
+                `folio`, `tipo_cliente`, `estatus`) VALUES ('" . $this->getNoCliente() . "', '"
             . $this->getNombre() . "', '" . $this->getApaterno() . "', '" . $this->getAmaterno() . "', '"
             . $this->getTelefono() . "', '" . $this->getCelular() . "', '" . $this->getCorreo() . "', '"
             . $this->getSubscripcion() . "', '" . $this->getEmpresa() . "', '" . $this->getRfc() . "', '"
             . date('Y-m-d H:i:s') . "', '" . $this->getMedioIdentificación() . "', '"
-            . $this->getFolio() . "', '" . $this->getTipoCliente() . "', '1', '1')";
-        $this->connect();
+            . $this->getFolio() . "', '" . $this->getTipoCliente() . "', '1')";
+        echo $query;
+        /*$this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
-        return $result;
+        return $result;*/
+        return true;
     }
 
     public function queryupdateCliente()
@@ -319,10 +305,12 @@ class CLIENTES extends CONEXION implements I_CLIENTES
                 `folio` = '" . $this->getFolio() . "', `tipo_cliente` = '" . $this->getTipoCliente() . "', 
                 `estatus` = '" . $this->getEstatus() . "' 
                 WHERE `cliente`.`no_cliente` = " . $this->getNoCliente();
-        $this->connect();
+        echo $query;
+        /*$this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
-        return $result;
+        return $result;*/
+        return true;
     }
 
 

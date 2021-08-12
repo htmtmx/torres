@@ -286,10 +286,12 @@ class CONTRATO extends CONEXION implements I_CONTRATO
             .$this->getTipoContrato()."', '".$this->getPlazo()."', '".date('Y-m-d')."', '"
             .$this->getEnganche()."', '".$this->getSaldo()."', '".$this->getFormaPago()."', '"
             .$this->getSubtotal()."', '".$this->getIva()."', '".$this->getTotal()."', '1')";
-        $this->connect();
+        echo $query;
+        /*$this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
-        return $result;
+        return $result;*/
+        return true;
     }
 
     public function updateEstatusContrato($no_contrato, $estatus)
