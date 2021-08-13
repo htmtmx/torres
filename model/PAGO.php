@@ -177,10 +177,17 @@ class PAGO extends CONEXION implements I_PAGO
 
     public function  queryconsultaPago($no_contrato_fk)
     {
-        $query = "SELECT `folio`, `no_contrato_fk`, `no_transaccion`, `concepto`, `tipo`, `total`, 
-                        `fecha_hora_creacion`, `no_pago`, `detalles`, `estatus_pago` 
-                    FROM `pago` 
-                    WHERE `no_contrato_fk`= ".$no_contrato_fk;
+        $query = "SELECT p.id_pago, p.no_transaccion, p.concepto, p.total, p.fecha_hora_creacion as fecha_pago, 
+                    c.fecha_primer_pago as pagar_antes_de, p.no_pago, p.estatus_pago, 
+		            case
+				        when p.estatus_pago = 0 and p.fecha_hora_creacion > c.fecha_primer_pago then 'ADEUDO'
+				        when p.estatus_pago = 0  and p.fecha_hora_creacion < c.fecha_primer_pago then 'PENDIENTE'
+				        when p.estatus_pago = 1 and p.fecha_hora_creacion < c.fecha_primer_pago then 'PAGADO' 
+		                else 'DESCONOCIDO' 
+			        end as estatus_del_pago, p.tipo, p.no_contrato_fk, c.no_contrato, p.detalles
+                    FROM pago p, contrato c 
+                    where p.no_contrato_fk = c.no_contrato
+                    and p.no_contrato_fk = ".$no_contrato_fk;
         $this->connect();
         $result = $this->getData($query);
         $this->close();
