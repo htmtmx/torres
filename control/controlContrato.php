@@ -13,30 +13,6 @@ function consultaContrato($no_contrato)
 }
 
 /********************************************************************
- *                       A D D     C O N T R A T O
- *******************************************************************/
-function addContrato($no_contrato,$no_empleado,$no_cliente,
-                    $no_vehiculo,$tipo_contrato,$plazo,$enganche,
-                    $saldo,$forma_pago)
-{
-    include_once "../model/CONTRATO.php";
-    $objContrato = new CONTRATO();
-    $objContrato->setNoContrato($no_contrato);
-    $objContrato->setNoEmpleadoFk($no_empleado);
-    $objContrato->setNoClienteFk($no_cliente);
-    $objContrato->setNoVehiculoFk($no_vehiculo);
-    $objContrato->setTipoContrato($tipo_contrato);
-    $objContrato->setPlazo($plazo);
-    $objContrato->setEnganche($enganche);
-    $objContrato->setSaldo($saldo);
-    $objContrato->setFormaPago($forma_pago);
-    $objContrato->setSubtotal($objContrato->getSaldo());
-    $objContrato->setIva($objContrato->getSubtotal()*0.16);
-    $objContrato->setTotal($objContrato->getSubtotal()+$objContrato->getIva());
-    echo $result = $objContrato->addContrato()? "Se registro correctamente el contrato ".$objContrato->getNoContrato():"Error al intentar registrar";
-}
-
-/********************************************************************
  *         U P D A T E     E S T A T U S     C O N T R A T O
  *******************************************************************/
 function updateEstatusContrato ($no_contrato,$estatus)
@@ -112,6 +88,8 @@ function construcObjtCliente($params){
     return $obj_user;
 }
 
+
+//Construimos el objeto contrato
 function constructObjContrato($params,$noCliente,$noVehiculo){
     session_start();
     include_once "../model/CONTRATO.php";
@@ -137,9 +115,6 @@ function constructObjContrato($params,$noCliente,$noVehiculo){
     $obj_cont->setIva(16);
     $obj_cont->setTotal($params['total']);
     $obj_cont->setEstatus($params['estatusCon']);
-
-    //Todos los demas atributos
-
     return $obj_cont;
 }
 
@@ -168,5 +143,4 @@ function constructObjCoche($params){
     $obj_coche->setObservaciones($params['observaciones']);
     $obj_coche->setEstatus($params['estatusC']);
     return $obj_coche;
-
 }
