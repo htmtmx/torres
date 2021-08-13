@@ -1,7 +1,7 @@
 <?php
 
-
-class TIPO_ARCHIVO
+include_once "CONEXION.php";
+class TIPO_ARCHIVO extends CONEXION
 {
     private $id_tipo_archivo;
     private $nombre;
@@ -89,5 +89,13 @@ class TIPO_ARCHIVO
         $this->estatus = $estatus;
     }
 
+    function consultaTiposArchivo(){
+        $query = "SELECT `id_tipo_archivo`, `nombre`, `tipo_Archivo`, `prioridad`, `estatus` 
+                  FROM `tipo_archivo` WHERE `estatus`>0 ORDER BY `tipo_archivo`.`nombre` ASC";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 
 }

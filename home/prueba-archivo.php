@@ -7,12 +7,23 @@
 <body>
 
     <form enctype="multipart/form-data" id="formuploadajax" method="post">
-    Nombre: <input type="text" name="nombre" placeholder="Escribe tu nombre">
-        <br />
-        <input  type="file" id="archivo1" name="archivo1"/>
-        <br />
-        <input  type="file" id="archivo2" name="archivo2"/>
-        <br />
+        <input type="text" id="idContrato" name="idContrato" value="555555">
+        <select name="tipoArchivo" id="tipoArchivo">
+            <option value="1">Foto</option>
+            <option value="2">Placa</option>
+            <option value="3">Tenencia</option>
+            <option value="4">Ultima Verificacion</option>
+            <option value="5">Factura</option>
+            <option value="6">Targeta de Circulacion</option>
+        </select>
+<!--
+https://developer.mozilla.org/es/docs/Web/HTML/Attributes/accept
+-->
+        <input  type="file" id="archivo1" name="archivo1" accept="image/*"/>
+        <select name="visibilidad" id="visibilidad">
+            <option value="1">Vible</option>
+            <option value="0">Oculto</option>
+        </select>
         <input type="submit" value="Subir archivos"/>
     </form>
     <div id="mensaje"></div>
