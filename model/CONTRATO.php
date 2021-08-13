@@ -264,12 +264,24 @@ class CONTRATO extends CONEXION implements I_CONTRATO
     {
         $concat = "";
         if ($no_contrato!= 0) {
-            $concat = "WHERE `no_contrato` = ".$no_contrato;
+            $concat = " and `no_contrato` = ".$no_contrato;
         }
-        $query = "SELECT `no_contrato`, `no_empleado_fk`, `no_cliente_fk`, `no_vehiculo_fk`, 
-       `hora_fecha_creacion`, `tipo_contrato`, `plazo`, `fecha_primer_pago`, `enganche`, 
-       `saldo`, `forma_pago`, `subtotal`, `iva`, `total`, `estatus` 
-        FROM `contrato` ".$concat;
+        $query = "SELECT con.no_contrato, concat_ws(' ',e.apaterno, e.amaterno, e.nombre) as empleado, e.telefono as emp_tel, e.celular as emp_cel,
+		e.sexo as emp_sex, e.fecha_registro as emp_fe_re, e.correo_user as emp_email, e.puesto as emp_puesto, 
+		e.nivel_acceso as emp_lv_access, e.estatus as emp_status,
+		concat_ws(' ',cli.apaterno, cli.amaterno, cli.nombre) as cliente, cli.telefono as cli_tel, cli.celular as cli_cel,
+		cli.correo as cli_email, cli.subscripcion as cli_suscripcion, cli.empresa as cli_empresa, cli.rfc as cli_rfc, 
+		cli.fecha_registro as cli_fe_re, cli.medio_identificación as cli_med_ide, 
+		cli.folio as cli_folio, cli.tipo_cliente as cli_tipo, cli.estatus as cli_status,
+		concat_ws(' ',ma.nombre, mo.nombre, v.anio) as vehiculo, v.color, v.kilometros, v.placa, v.fecha_registro as veh_fe_re, 
+		v.entidad_placa,  v.transimision, v.combustible, v.no_puertas, v.precio_contado, v.precio_credito,
+		v.opc_credito, v.observaciones, v.estatus as veh_status,
+		con.hora_fecha_creacion as cont_date_creacion, con.tipo_contrato, con.plazo, con.fecha_primer_pago, 
+		con.enganche, con.saldo, con.forma_pago, con.subtotal, con.iva, con.total, con.estatus as cont_status,
+		con.no_empleado_fk, con.no_cliente_fk, con.no_vehiculo_fk,v.id_modelo_fk,mo.id_marca_fk 
+        FROM contrato con, empleado e, cliente cli, coche v, marca ma, modelo mo 
+        where con.no_empleado_fk = e.no_empleado and con.no_cliente_fk = cli.no_cliente 
+        and con.no_vehiculo_fk = v.no_vehiculo and ma.id_marca = mo.id_marca_fk and v.id_modelo_fk = mo.id_modelo ".$concat;
         $this->connect();
         $result = $this->getData($query);
         $this->close();
