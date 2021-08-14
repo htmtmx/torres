@@ -132,7 +132,7 @@ function constructObjContrato($params,$noCliente,$noVehiculo){
     $obj_cont->setNoClienteFk($noCliente);
     $obj_cont->setNoVehiculoFk($noVehiculo);
     $obj_cont->setHoraFechaCreacion(date('Y-m-d H:i:s'));
-    $obj_cont->setTipoContrato(1);
+    $obj_cont->setTipoContrato($params['tipo_contrato']);
     $obj_cont->setPlazo($params['plazo']);
     $obj_cont->setFechaPrimerPago($params['fecha_primer_pago']);
     $obj_cont->setEnganche($params['enganche']);
