@@ -34,10 +34,12 @@ function deleteContrato($no_contrato)
 /********************************************************************
  *                  FUNCIONES DE CONTRATO ADD DESDE WEB HOOK
  *******************************************************************/
+/********************************************************************
+ *                  CREAR CONTRATO COMPRA
+ *******************************************************************/
 function creaContratoCompra($params)
 {
     $COCHE = constructObjCoche($params);
-
     $resultCoche = $COCHE->getNoVehiculo()>0 ? $COCHE->queryaddCoche() : false;
 
     $VENDEDOR = construcObjtCliente($params);
@@ -61,7 +63,32 @@ function creaContratoCompra($params)
     } else return false;
 
 }
+/********************************************************************
+ *                  CREAR CONTRATO VENTA
+ *******************************************************************/
+function creaContratoVenta($params)
+{
+    $COCHE = constructObjCoche($params);
+    $resultCoche = $COCHE->getNoVehiculo()>0 ? $COCHE->queryupdateCoche() : false;
 
+    $COMPRADOR = construcObjtCliente($params);
+    $resultComprador = $params['no_cliente']>0 ? $COMPRADOR->queryupdateCliente() : $COMPRADOR->queryaddCliente();
+
+    if ($resultComprador && $resultCoche) {
+        $CONTRATO = constructObjContrato($params,$COMPRADOR->getNoCliente(),$COCHE->getNoVehiculo());
+        $resultContrato = $CONTRATO->addContrato();
+        if ($resultContrato) {
+            include_once "./controlPago.php";
+            $numGen = 123;
+            $concepto="Pago de Venta";
+            $tipo="ABONO";
+            $detalles = "Se vendió un vehiculo con placa ".$COCHE->getPlaca()." año ".$COCHE->getAnio();
+            $resultPago = addPago($CONTRATO->getNoContrato(),$numGen,$concepto,$tipo,$CONTRATO->getTotal(),
+                1,$detalles,0);
+            return $resultPago;
+        }else return  false;
+    }else return  false;
+}
 //FUNCION PARA CONSTRUIR UN OBJETO CLIENTE
 
 function construcObjtCliente($params){
@@ -100,7 +127,7 @@ function constructObjContrato($params,$noCliente,$noVehiculo){
 
     //Cuando se implemente el JS se cambiara el id empleado por el $_SESSION[no_empleado]
 
-    $idEmpleado=7056282536482632;
+    $idEmpleado=58655210;
     $obj_cont->setNoEmpleadoFk($idEmpleado);
     $obj_cont->setNoClienteFk($noCliente);
     $obj_cont->setNoVehiculoFk($noVehiculo);
@@ -126,7 +153,8 @@ function constructObjCoche($params){
     include_once  "./tool_ids_generate.php";
     $obj_coche = new COCHE();
     $claveGeneradas = gen_no_vehiculo();
-    $obj_coche -> setNoVehiculo($claveGeneradas);
+    $no_vehiculo = $params['no_vehiculo'] > 0 ? $params['no_vehiculo'] : $claveGeneradas;
+    $obj_coche -> setNoVehiculo($no_vehiculo);
     $obj_coche->setIdModeloFk($params['id_modelo_fk']);
     $obj_coche->setFechaRegistro(date('Y-m-d H:i:s'));
     $obj_coche -> setAnio($params['anio']);

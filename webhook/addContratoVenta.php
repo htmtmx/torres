@@ -1,26 +1,24 @@
 <?php
-
-    /*INICIA PRUEBA DE ARRAY*/
 $params = [
-    //AGREGA COCHE
-    "no_vehiculo" => "0",
-    "id_modelo_fk" => "2",
-    "fecha_registro_coche" => "14-jun-20021",
+// COCHE SELECCIONADO PARA VENDER
+    "no_vehiculo" => "7630948104250906",
+    "id_modelo_fk" => "139",
+    "fecha_registro_coche" => "14-jun-2021",
     "anio" => "2021",
-    "placa" => "JHGKFO-25542",
+    "placa" => "FFFFF-25542",
     "entidad_placa" => "",
-    "color" => "Rojo",
+    "color" => "Amarillo",
     "kilometros" => "15000",
     "transmision" => "MA",
-    "combustible" => "DISEL",
+    "combustible" => "DIESEL",
     "no_puertas" => 4,
     "precio_contado" => 10000.00,
     "precio_credito" => 15000.00,
     "opc_credito" => 1,
     "observaciones" => "",
     "estatusC" => 1,
-    //CLIENTE - VENDEDOR DATOS
-    "no_cliente" => "0",
+    //CLIENTE - COMPRADOR DATOS
+    "no_cliente" => "2572742",
     "nombre" => "Christian",
     "apaterno" => "Pioquinto",
     "amaterno" => "Hernandez",
@@ -39,8 +37,8 @@ $params = [
     "no_cliente_fk" => "0",
     "no_vehiculo_fk" => "0",
     "hora_fecha_creacion" => "FechaDeCreacion",
-    "tipo_contrato" => "1",
-    "plazo" => "365",
+    "tipo_contrato" => "0",
+    "plazo" => "6",
     "fecha_primer_pago" => "FechaDePago1",
     "enganche" => "2000",
     "saldo" => "0",
@@ -48,25 +46,8 @@ $params = [
     "subtotal" => "8000",
     "iva" => "10",
     "total" => "8800",
-    "estatusCon" => "1",
+    "estatusCon" => "0",
 ];
 
 include_once "../control/controlContrato.php";
-echo creaContratoCompra($params) ? "Se ha creado un contrato de Compra": "error al crear contrato";
-/*
- *
- * Metodo para cuando se haga el JS, aqui ya llega por input.
-$method = $_SERVER['REQUEST_METHOD'];
-if ($method == 'POST') {
-    $requestBody = file_get_contents("php://input");
-    $params = json_decode($requestBody);
-
-    //de jsno a array
-    //
-    $params = (array)$params;
-
-    include_once "../control/controlContrato.php";
-    echo creaContratoCompra($params) ? "Se ha creado contrato": "error al crear contrato";
-
-}
-*/
+echo creaContratoVenta($params) ? "Se ha creado un contrato de Venta" : "Error al crear contrato";

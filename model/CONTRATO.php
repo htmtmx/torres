@@ -297,7 +297,7 @@ class CONTRATO extends CONEXION implements I_CONTRATO
             .$this->getNoClienteFk()."', '".$this->getNoVehiculoFk()."', '".$this->getHoraFechaCreacion()."', '"
             .$this->getTipoContrato()."', '".$this->getPlazo()."', '".$this->getFechaPrimerPago()."', '"
             .$this->getEnganche()."', '".$this->getSaldo()."', '".$this->getFormaPago()."', '"
-            .$this->getSubtotal()."', '".$this->getIva()."', '".$this->getTotal()."', '1')";
+            .$this->getSubtotal()."', '".$this->getIva()."', '".$this->getTotal()."', '".$this->getEstatus()."')";
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
