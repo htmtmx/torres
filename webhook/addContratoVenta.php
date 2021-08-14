@@ -1,22 +1,7 @@
 <?php
 $params = [
 // COCHE SELECCIONADO PARA VENDER
-    "no_vehiculo" => "7630948104250906",
-    "id_modelo_fk" => "139",
-    "fecha_registro_coche" => "14-jun-2021",
-    "anio" => "2021",
-    "placa" => "FFFFF-25542",
-    "entidad_placa" => "",
-    "color" => "Amarillo",
-    "kilometros" => "15000",
-    "transmision" => "MA",
-    "combustible" => "DIESEL",
-    "no_puertas" => 4,
-    "precio_contado" => 10000.00,
-    "precio_credito" => 15000.00,
-    "opc_credito" => 1,
-    "observaciones" => "",
-    "estatusC" => 1,
+    "no_vehiculo" => "9533917065821094",
     //CLIENTE - COMPRADOR DATOS
     "no_cliente" => "2572742",
     "nombre" => "Christian",

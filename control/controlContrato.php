@@ -68,23 +68,23 @@ function creaContratoCompra($params)
  *******************************************************************/
 function creaContratoVenta($params)
 {
-    $COCHE = constructObjCoche($params);
-    $resultCoche = $COCHE->getNoVehiculo()>0 ? $COCHE->queryupdateCoche() : false;
 
     $COMPRADOR = construcObjtCliente($params);
     $resultComprador = $params['no_cliente']>0 ? $COMPRADOR->queryupdateCliente() : $COMPRADOR->queryaddCliente();
 
-    if ($resultComprador && $resultCoche) {
-        $CONTRATO = constructObjContrato($params,$COMPRADOR->getNoCliente(),$COCHE->getNoVehiculo());
+    if ($resultComprador) {
+        $CONTRATO = constructObjContrato($params,$COMPRADOR->getNoCliente(),$params['no_vehiculo']);
         $resultContrato = $CONTRATO->addContrato();
         if ($resultContrato) {
             include_once "./controlPago.php";
             $numGen = 123;
             $concepto="Pago de Venta";
             $tipo="ABONO";
-            $detalles = "Se vendió un vehiculo con placa ".$COCHE->getPlaca()." año ".$COCHE->getAnio();
+            $detalles = "Se vendió un vehiculo";
             $resultPago = addPago($CONTRATO->getNoContrato(),$numGen,$concepto,$tipo,$CONTRATO->getTotal(),
                 1,$detalles,0);
+            include_once  "./controlCoche.php";
+            updateEstatusCoche($params['no_vehiculo'],0);
             return $resultPago;
         }else return  false;
     }else return  false;
