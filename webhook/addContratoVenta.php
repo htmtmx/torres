@@ -17,10 +17,10 @@ $params = [
     "tipo_cliente" => "1",
     //CONTRATO DATOS
     "plazo" => "6",
-    "fecha_primer_pago" => "FechaDePago1",
+    "fecha_primer_pago" => "2021-06-01",
     "enganche" => "2000",
     "forma_pago" => "1",
-    "total" => "8800",
+    "total" => "100000",
 ];
 
 include_once "../control/controlContrato.php";

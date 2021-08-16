@@ -35,30 +35,49 @@ function deleteContrato($no_contrato)
  *                  FUNCIONES DE CONTRATO ADD DESDE WEB HOOK
  *******************************************************************/
 /********************************************************************
- *                  CREAR CONTRATO COMPRA
+ *                  CREAR CONTRATO DE ADQUISICION
  *******************************************************************/
 function creaContratoCompra($params)
 {
+    //Ya registre un coche nuevo
     $COCHE = constructObjCoche($params);
-    $resultCoche = $COCHE->getNoVehiculo()>0 ? $COCHE->queryaddCoche() : false;
-
+    $resultCoche = $COCHE->queryaddCoche();
     $VENDEDOR = construcObjtCliente($params);
     $resultVendedor = $params['no_cliente']>0 ? $VENDEDOR->queryupdateCliente(): $VENDEDOR->queryaddCliente();
 
     if($resultVendedor && $resultCoche){
-        $CONTRATO = constructObjContrato($params,$VENDEDOR->getNoCliente(),$COCHE->getNoVehiculo());
+        // 1 - C_COMPRA 0-Contrato_Vta
+        $tipoContrato = 1; // Compra de vehiculo
+        $plazos = 1; // Porque defino que ya lo pago TORRES
+        $fechaPrimerPago = date('Y-m-d');
+        $totalCoche = $params['total'];
+        $enganche = $totalCoche;
+        $estatusContrato = 1; // va  a ser terminado
+        $formaPago = $params['forma_pago'];
+        $CONTRATO = constructObjContrato($formaPago,$VENDEDOR->getNoCliente(),$COCHE->getNoVehiculo(),
+            $tipoContrato,$plazos,$fechaPrimerPago, $totalCoche, $enganche,$estatusContrato);
 
         $resultContrato = $CONTRATO->addContrato();
+
         if($resultContrato){
             include_once "./controlPago.php";
-            $numGen = 62376723;
-            $concepto="Pago de Compra";
+            $noDePago = 1;
+            $concepto="Pago de Adquisición de Vehiculo";
             $tipo="CARGO";
+            $fechaLimiTePago = date('Y-m-d H:i:s');
+            $StatusPago = 1; //Liquidado de forma automatica
             $detalles = "Se compró un vehiculo con placa ".$COCHE->getPlaca()." año ".$COCHE->getAnio();
-            $resultPago = addPago($CONTRATO->getNoContrato(),$numGen,$concepto,$tipo,$CONTRATO->getTotal(),
-                1,$detalles,1);
+            //Funcion para Insertar y crear un objeto PAGO
+            include_once "tool_ids_generate.php";
+            $idPago = gen_noPago();
+            $resultPago = insertaObjPago($idPago,$CONTRATO->getNoContrato(),$concepto,$tipo,$CONTRATO->getTotal(),$noDePago,$detalles,$StatusPago,$fechaLimiTePago);
+            //SI YA SE CREO EL PAGO CREO EL ABONO
+            if ($resultPago){
+                //Crerar el OBJ de abono
+                $resutlAbono = insertaAbono($idPago,$CONTRATO->getTotal(),"Este abono es por la compra de la nueva adquisicion");
+                return $resutlAbono;
+            }
 
-            return $resultPago;
         } else return  false;
     } else return false;
 
@@ -73,11 +92,13 @@ function creaContratoVenta($params)
 
     if ($resultComprador) {
         $CONTRATO = constructObjContrato($params,$COMPRADOR->getNoCliente(),$params['no_vehiculo']);
+        //OK
         $resultContrato = $CONTRATO->addContrato();
         if ($resultContrato) {
 
             include_once "./controlPago.php";
-            $PAGO = constructObjPago($params,$CONTRATO->getNoContrato());
+            //$noContrato,$concepto,$tipo,$total,$noPago,$detalles,$StatusPago
+            $PAGO = insertaObjPago($params,$CONTRATO->getNoContrato());
             $resultPago = tipoPagoPlazo($PAGO);
 
             include_once  "./controlCoche.php";
@@ -107,38 +128,50 @@ function construcObjtCliente($params){
     $obj_user->setMedioIdentificación($params['medio_identificacion']);
     $obj_user->setFolio($params['folio']);
     $obj_user->setTipoCliente($params['tipo_cliente']);
-    $obj_user->setEstatus($params['estatusUs']);
     //REGRESAMOS EL OBJETO COMPLETO
     return $obj_user;
 }
 
 
 //Construimos el objeto contrato
-function constructObjContrato($params,$noCliente,$noVehiculo){
+function constructObjContrato($formaPago,$noCliente,$noVehiculo, $tipoContrato,
+                              $plazo,$fechaPrimerPago, $totalCoche, $enganche, $estatusContrato){
     session_start();
     include_once "../model/CONTRATO.php";
     include_once  "./tool_ids_generate.php";
     $obj_cont = new CONTRATO();
     $claveContrato=gen_no_contrato();
     $obj_cont->setNoContrato($claveContrato);
-
     //Cuando se implemente el JS se cambiara el id empleado por el $_SESSION[no_empleado]
-
     $idEmpleado=58655210;
     $obj_cont->setNoEmpleadoFk($idEmpleado);
     $obj_cont->setNoClienteFk($noCliente);
     $obj_cont->setNoVehiculoFk($noVehiculo);
     $obj_cont->setHoraFechaCreacion(date('Y-m-d H:i:s'));
-    $obj_cont->setTipoContrato($params['tipo_contrato']);
-    $obj_cont->setPlazo($params['plazo']);
-    $obj_cont->setFechaPrimerPago($params['fecha_primer_pago']);
-    $obj_cont->setEnganche($params['enganche']);
-    $obj_cont->setSaldo($params['saldo']);
-    $obj_cont->setFormaPago($params['forma_pago']);
-    $obj_cont->setSubtotal($params['subtotal']);
-    $obj_cont->setIva(16);
-    $obj_cont->setTotal($params['total']);
-    $obj_cont->setEstatus($params['estatusCon']);
+    $obj_cont->setTipoContrato($tipoContrato);
+    $obj_cont->setPlazo($plazo);
+    $obj_cont->setFechaPrimerPago($fechaPrimerPago);
+    $obj_cont->setEnganche($enganche);
+    //Lo que falta pagar del carro
+    $saldo =  $totalCoche-$enganche;
+    $obj_cont->setSaldo($saldo);
+    $obj_cont->setFormaPago($formaPago);
+    /*
+     * SUBTOTAL $: 84,000
+     * + IVA $: 16,000  +
+     * COSTO TOTAL DEL COCHE: $100,000
+     *
+     *
+     * TOTAL DEL COCHE: $100,000
+     * PAGO ENGANCHE: $ 35,000
+     * SALDO: $65,000
+     * */
+    $IVA = $totalCoche * .16;
+    $subTotal = $totalCoche - $IVA;
+    $obj_cont->setSubtotal($subTotal);
+    $obj_cont->setIva($IVA);
+    $obj_cont->setTotal($totalCoche);
+    $obj_cont->setEstatus($estatusContrato);
     return $obj_cont;
 }
 
@@ -149,8 +182,7 @@ function constructObjCoche($params){
     include_once "../model/COCHE.php";
     include_once  "./tool_ids_generate.php";
     $obj_coche = new COCHE();
-    $claveGeneradas = gen_no_vehiculo();
-    $no_vehiculo = $params['no_vehiculo'] > 0 ? $params['no_vehiculo'] : $claveGeneradas;
+    $no_vehiculo = gen_no_vehiculo();
     $obj_coche -> setNoVehiculo($no_vehiculo);
     $obj_coche->setIdModeloFk($params['id_modelo_fk']);
     $obj_coche->setFechaRegistro(date('Y-m-d H:i:s'));
@@ -166,22 +198,32 @@ function constructObjCoche($params){
     $obj_coche->setPrecioCredito($params['precio_credito']);
     $obj_coche->setOpcCredito($params['opc_credito']);
     $obj_coche->setObservaciones($params['observaciones']);
-    $obj_coche->setEstatus($params['estatusC']);
+    $obj_coche->setEstatus(0); // automaticamente lo pongo en venta
     return $obj_coche;
 }
 
-function constructObjPago($params,$no_contrato_fk)
+function insertaObjPago($idPago,$noContrato,$concepto,$tipo,$total,$noPago,$detalles,$StatusPago, $fechaParaHacerPago)
 {
     include_once "../model/PAGO.php";
     $objPago = new PAGO();
-    $objPago->setIdPago($params['id_pago']);
-    $objPago->setNoContratoFk($no_contrato_fk);
-    $objPago->setConcepto($params['concepto_pago']);
-    $objPago->setTipo($params['tipo_pago']);
-    $objPago->setTotal($params['total_pago']);
-    $objPago->setFechaHoraCreacion(date('Y-m-d H:i:s'));
-    $objPago->setNoPago($params['no_pago']);
-    $objPago->setDetalles($params['detalles_pago']);
-    $objPago->setEstatusPago($params['status_pago']);
-    return $objPago;
+    $objPago->setIdPago($idPago);
+    $objPago->setNoContratoFk($noContrato);
+    $objPago->setConcepto($concepto);
+    $objPago->setTipo($tipo);
+    $objPago->setTotal($total);
+    $objPago->setFechaHoraCreacion($fechaParaHacerPago);
+    $objPago->setNoPago($noPago);
+    $objPago->setDetalles($detalles);
+    $objPago->setEstatusPago($StatusPago);
+    return $objPago->queryaddPago();
+}
+
+function insertaAbono($idPago,$monto,$notas){
+    include_once "../model/ABONOS.php";
+    $obj_Abono = new ABONOS();
+    $obj_Abono-> setIdPagoFk($idPago);
+    $obj_Abono->setMonto($monto);
+    $obj_Abono->setFechaRegistro(date('Y-m-d H:i:s'));
+    $obj_Abono->setNotas($notas);
+    return $obj_Abono->addAbono();
 }

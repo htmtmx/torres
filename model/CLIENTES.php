@@ -300,9 +300,8 @@ class CLIENTES extends CONEXION implements I_CLIENTES
                 `celular` = '" . $this->getCelular() . "', `correo` = '" . $this->getCorreo() . "', 
                 `subscripcion` = '" . $this->getSubscripcion() . "', `empresa` = '" . $this->getEmpresa() . "', 
                 `rfc` = '" . $this->getRfc() . "', `medio_identificación` = '" . $this->getMedioIdentificación() . "', 
-                `folio` = '" . $this->getFolio() . "', `tipo_cliente` = '" . $this->getTipoCliente() . "', 
-                `estatus` = '" . $this->getEstatus() . "' 
-                WHERE `cliente`.`no_cliente` = " . $this->getNoCliente();
+                `folio` = '" . $this->getFolio() . "', `tipo_cliente` = '" . $this->getTipoCliente() . "'
+                 WHERE `cliente`.`no_cliente` = " . $this->getNoCliente();
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

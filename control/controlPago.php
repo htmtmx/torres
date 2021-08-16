@@ -22,11 +22,10 @@ function deletePago($folio)
 /********************************************************************
  *         A D D     P A G O
  *******************************************************************/
-function addPago($pago)
+function addPago()
 {
     include_once "../model/PAGO.php";
-    $result = $pago->queryaddPago();
-    return  $result;
+    return  queryaddPago();
 }
 /********************************************************************
  * C O N S U L T A     P A G O S     P O R     N O      C O N T R A T O

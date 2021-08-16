@@ -1,5 +1,5 @@
 <?php
-include "./model/CONEXION.php";
+include_once "CONEXION.php";
 class ABONOS extends CONEXION
 {
     private $folio;
@@ -92,8 +92,11 @@ class ABONOS extends CONEXION
     {
         $query = "INSERT INTO `abonos` 
                 (`folio`, `id_pago_fk`, `monto`, `fecha_registro`, `notas`) 
-                VALUES (NULL, '".$this->getIdPagoFk()."', '".$this->getMonto."', '"
+                VALUES (NULL, '".$this->getIdPagoFk()."', '".$this->getMonto()."', '"
                 .$this->getFechaRegistro()."', '".$this->getNotas()."')";
-        echo $query;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
     }
 }

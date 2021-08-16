@@ -200,7 +200,7 @@ class PAGO extends CONEXION implements I_PAGO
     {
         $query = "INSERT INTO `pago` (`id_pago`, `no_contrato_fk`, `no_transaccion`, `concepto`, 
                 `tipo`, `total`, `fecha_hora_creacion`, `no_pago`, `detalles`, `estatus_pago`) 
-                VALUES (NULL, '".$this->getNoContratoFk()."', '".$this->getNoTransaccion()."', '"
+                VALUES (".$this->getIdPago().", '".$this->getNoContratoFk()."', '".$this->getNoTransaccion()."', '"
                 .$this->getConcepto()."', '".$this->getTipo()."', '".$this->getTotal()."', '"
                 .$this->getFechaHoraCreacion()."', '".$this->getNoPago()."', '".$this->getDetalles().
                 "', '".$this->getEstatusPago()."')";

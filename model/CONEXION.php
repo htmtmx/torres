@@ -16,7 +16,7 @@ class CONEXION
             $this->pass,
             $this->db
         );
-
+        date_default_timezone_set("America/Mexico_City");
         $this->connection->set_charset("utf8");
 
         if (mysqli_connect_errno()) {
