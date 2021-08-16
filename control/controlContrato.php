@@ -68,7 +68,6 @@ function creaContratoCompra($params)
  *******************************************************************/
 function creaContratoVenta($params)
 {
-
     $COMPRADOR = construcObjtCliente($params);
     $resultComprador = $params['no_cliente']>0 ? $COMPRADOR->queryupdateCliente() : $COMPRADOR->queryaddCliente();
 
@@ -76,13 +75,11 @@ function creaContratoVenta($params)
         $CONTRATO = constructObjContrato($params,$COMPRADOR->getNoCliente(),$params['no_vehiculo']);
         $resultContrato = $CONTRATO->addContrato();
         if ($resultContrato) {
+
             include_once "./controlPago.php";
-            $numGen = 123;
-            $concepto="Pago de Venta";
-            $tipo="ABONO";
-            $detalles = "Se vendió un vehiculo";
-            $resultPago = addPago($CONTRATO->getNoContrato(),$numGen,$concepto,$tipo,$CONTRATO->getTotal(),
-                1,$detalles,0);
+            $PAGO = constructObjPago($params,$CONTRATO->getNoContrato());
+            $resultPago = tipoPagoPlazo($PAGO);
+
             include_once  "./controlCoche.php";
             updateEstatusCoche($params['no_vehiculo'],0);
             return $resultPago;
@@ -171,4 +168,20 @@ function constructObjCoche($params){
     $obj_coche->setObservaciones($params['observaciones']);
     $obj_coche->setEstatus($params['estatusC']);
     return $obj_coche;
+}
+
+function constructObjPago($params,$no_contrato_fk)
+{
+    include_once "../model/PAGO.php";
+    $objPago = new PAGO();
+    $objPago->setIdPago($params['id_pago']);
+    $objPago->setNoContratoFk($no_contrato_fk);
+    $objPago->setConcepto($params['concepto_pago']);
+    $objPago->setTipo($params['tipo_pago']);
+    $objPago->setTotal($params['total_pago']);
+    $objPago->setFechaHoraCreacion(date('Y-m-d H:i:s'));
+    $objPago->setNoPago($params['no_pago']);
+    $objPago->setDetalles($params['detalles_pago']);
+    $objPago->setEstatusPago($params['status_pago']);
+    return $objPago;
 }

@@ -22,21 +22,10 @@ function deletePago($folio)
 /********************************************************************
  *         A D D     P A G O
  *******************************************************************/
-function addPago($no_contrato_fk,$no_transaccion,$concepto,$tipo,
-                    $total,$no_pago,$detalles,$estatus_pago)
+function addPago($pago)
 {
     include_once "../model/PAGO.php";
-    $objPago = new PAGO();
-    $objPago->setNoContratoFk($no_contrato_fk);
-    $objPago->setNoTransaccion($no_transaccion);
-    $objPago->setConcepto($concepto);
-    $objPago->setTipo($tipo);
-    $objPago->setTotal($total);
-    $objPago->setFechaHoraCreacion(date('Y-m-d H:i:s'));
-    $objPago->setNoPago($no_pago);
-    $objPago->setDetalles($detalles);
-    $objPago->setEstatusPago($estatus_pago);
-    $result = $objPago->queryaddPago();
+    $result = $pago->queryaddPago();
     return  $result;
 }
 /********************************************************************
@@ -48,4 +37,28 @@ function consultaPago($no_contrato_fk)
     $objPago = new PAGO();
     $result = $objPago->queryconsultaPago($no_contrato_fk);
     return json_encode($result);
+}
+
+function tipoPagoPlazo($pago)
+{
+    switch ($pago->getTipo()){
+        //Contado
+        case 0:
+
+            $pago->setTipo(0);
+            $pago->setNoPago(1);
+            $pago->setNoTransaccion(date('YmdHis'));
+            $result = addPago($pago);
+            return $result;
+            break;
+        //Apartado
+        case 1:
+
+            break;
+        //Credito
+        case 2:
+
+            break;
+
+    }
 }

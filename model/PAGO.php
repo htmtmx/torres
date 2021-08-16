@@ -4,11 +4,11 @@ include_once "I_PAGO.php";
 
 class PAGO extends CONEXION implements I_PAGO
 {
-    private $folio;
+    private $id_pago;
     private $no_contrato_fk;
     private $no_transaccion;
     private $concepto;
-    private $tipo;
+    private $tipo;//Credito,contado,apartado
     private $total;
     private $fecha_hora_creacion;
     private $no_pago;
@@ -18,18 +18,20 @@ class PAGO extends CONEXION implements I_PAGO
     /**
      * @return mixed
      */
-    public function getFolio()
+    public function getIdPago()
     {
-        return $this->folio;
+        return $this->id_pago;
     }
 
     /**
-     * @param mixed $folio
+     * @param mixed $id_pago
      */
-    public function setFolio($folio)
+    public function setIdPago($id_pago): void
     {
-        $this->folio = $folio;
+        $this->id_pago = $id_pago;
     }
+
+
 
     /**
      * @return mixed
