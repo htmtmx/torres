@@ -30,7 +30,7 @@ $params = [
     "folio" => "50",
     "tipo_cliente" => "1",
     //CONTRATO DATOS
-    //tuipo de pago CONTADO -> 0 APARTADO -> 1 CREDITO -> 2
+    //tuipo de pago CONTADO -> 0 APARTADO -> 0 CREDITO -> 1
     "forma_pago" => "0",
     "total" => "100000"
 ];

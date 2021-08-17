@@ -91,18 +91,118 @@ function creaContratoVenta($params)
     $resultComprador = $params['no_cliente']>0 ? $COMPRADOR->queryupdateCliente() : $COMPRADOR->queryaddCliente();
 
     if ($resultComprador) {
-        $CONTRATO = constructObjContrato($params,$COMPRADOR->getNoCliente(),$params['no_vehiculo']);
-        //OK
+        //Variables ´poara copnstruir obj Contrato
+        /*$formaPago,$noCliente,$noVehiculo, ,
+                              $plazo,$fechaPrimerPago, $totalCoche, $enganche, $estatusContrato*/
+        $formaPago = $params['forma_pago'];
+        $noVehiculo= $params['no_vehiculo'];
+        $tipoContrato = 0; // Es una venta
+        $plazo = $params['plazo'];
+        $enganche = $params['enganche'];
+        $totalCoche=$params['total'];
+        //Definir si es contado (contado, apartado), credito
+        //Los plazos son los meses.
+        $forma_pago = "";
+        $estatusContrato="";
+        if ($plazo == 0 && $enganche==$totalCoche){
+            //Presiono el boiton apartar y se despliega un modal de ¿Con cuanto
+            //deseas apartarlo?
+            // esto es un apartado Apartado con $10,000 y el total es de $100,000
+            $forma_pago = "CONTADO";
+            $estatusContrato = 1;
+            $fechaPrimerPago = date('Y-m-d');
+        }else if($plazo==0 && $enganche<$totalCoche){
+            //Este es un  pago de contado
+            //Enganche de 100,000 y el carro cuesta $100,000
+            $forma_pago = "CONTADO";
+            $estatusContrato = 0;
+            $fechaPrimerPago = date('Y-m-d');
+            //Si estatus de contrato es 0 y la forma de pago es cfontado significa que es APARTADO
+        }else{
+            //Es un pago a credito
+            //Meses: 3,6,9,12
+            $fechaPrimerPago = $params['fecha_primer_pago'];
+            $forma_pago = "CREDITO";
+            $estatusContrato = 0;
+        }
+
+        $CONTRATO = constructObjContrato($forma_pago,$COMPRADOR->getNoCliente(),$noVehiculo,
+        $tipoContrato,$plazo,$fechaPrimerPago, $totalCoche, $enganche,$estatusContrato);
+
         $resultContrato = $CONTRATO->addContrato();
         if ($resultContrato) {
 
             include_once "./controlPago.php";
             //$noContrato,$concepto,$tipo,$total,$noPago,$detalles,$StatusPago
-            $PAGO = insertaObjPago($params,$CONTRATO->getNoContrato());
-            $resultPago = tipoPagoPlazo($PAGO);
+            //¿Cuantos pagos voy a hacer?
+            //Contado 1 pago  CREDITO n pagos
+
+            // en cualquiera de los dos casos voy a crear el pago 0
+            $noDePago = 0;
+            $concepto="";
+            $detalles = "";
+            $tipo="ABONO"; //DINERO QUE ENTRA A LA EMPRESA
+
+            if ($plazo == 0 && $enganche==$totalCoche){
+                $concepto="PAGO COMPLETO";
+                $noDePago = 1;
+                $detalles = "PAGO 1/1";
+                $fechaLimiTePago = date('Y-m-d H:i:s');
+                $StatusPago = 1; //Liquidado de forma automatica
+            }else if($plazo==0 && $enganche<$totalCoche){
+                $concepto="PAGO POR APARTADO";
+                $noDePago = 1;
+                $detalles = "PAGO 1/1";
+
+                $fecha = date('Y-m-d');
+                $nuevafecha = strtotime ( '+15 day' , strtotime ( $fecha ) ) ;
+                $fechaLimiTePago = date ( 'Y-m-d' , $nuevafecha );
+
+                $StatusPago = 0; //Pendiente por liquidar
+            }else{
+                $concepto="PAGO DE ENGANCHE";
+                $noDePago = 0; //EL el pago 0, despues vienen los plazos
+                $detalles = "PAGO 0/".$plazo;
+                $fechaLimiTePago = date('Y-m-d');
+                $StatusPago = 1; //Liquidado de forma automatica
+            }
 
             include_once  "./controlCoche.php";
-            updateEstatusCoche($params['no_vehiculo'],0);
+            updateEstatusCoche($params['no_vehiculo'],($plazo == 0 && $enganche==$totalCoche)||($plazo > 0) ? 1:0);
+
+            //Funcion para Insertar y crear un objeto PAGO
+
+            include_once "tool_ids_generate.php";
+            $idPago = gen_noPago();
+            $resultPago = insertaObjPago($idPago,$CONTRATO->getNoContrato(),$concepto,$tipo,
+                $CONTRATO->getTotal(),$noDePago,$detalles,$StatusPago,$fechaLimiTePago);
+            //SI YA SE CREO EL PAGO CREO EL ABONO
+
+            if ($resultPago){
+                //Crerar el OBJ de abono
+                $resutlAbono = insertaAbono($idPago,$enganche,$concepto);
+                $fechaLimiTePago= $params['fecha_primer_pago'];
+
+                //Crear los demas pagos para credito *
+                if ($plazo>0){
+                    //voy a crear n cantidad de pagos para el caso del credito
+                    for ($i = 0; $i<$plazo;$i++){
+                        $concepto="PAGO MENSUAL  ".($i+1)." de ". $plazo;
+                        $detalles = "PAGO ".($i+1)."/".$plazo;
+                        $StatusPago = 0;
+                        $MontoACubrir = ($CONTRATO->getTotal()-$enganche)/$plazo;
+                        $idPago = gen_noPago();
+                        insertaObjPago($idPago,$CONTRATO->getNoContrato(),$concepto,$tipo,
+                            $MontoACubrir,($i+1),$detalles,$StatusPago,$fechaLimiTePago);
+
+                        $nuevafecha = strtotime ( '+1 month' , strtotime ( $fechaLimiTePago ) ) ;
+                        $fechaLimiTePago = date ( 'Y-m-d' , $nuevafecha );
+
+                    }
+                }
+                return $resutlAbono;
+            }
+
             return $resultPago;
         }else return  false;
     }else return  false;

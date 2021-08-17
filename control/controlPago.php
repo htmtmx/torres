@@ -38,26 +38,3 @@ function consultaPago($no_contrato_fk)
     return json_encode($result);
 }
 
-function tipoPagoPlazo($pago)
-{
-    switch ($pago->getTipo()){
-        //Contado
-        case 0:
-
-            $pago->setTipo(0);
-            $pago->setNoPago(1);
-            $pago->setNoTransaccion(date('YmdHis'));
-            $result = addPago($pago);
-            return $result;
-            break;
-        //Apartado
-        case 1:
-
-            break;
-        //Credito
-        case 2:
-
-            break;
-
-    }
-}
