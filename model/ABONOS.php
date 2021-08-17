@@ -99,4 +99,14 @@ class ABONOS extends CONEXION
         $this->close();
         return $result;
     }
+
+    function consultaAbonos($id_pago_fk)
+    {
+        $query = "select a.folio, a.id_pago_fk , a.monto , a.fecha_registro , a.notas 
+                from abonos a where a.id_pago_fk = ".$id_pago_fk;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 }

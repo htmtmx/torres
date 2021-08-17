@@ -3,13 +3,52 @@
  *               C O N S U L T A     C O N T R A T O
  *******************************************************************/
 function consultaContrato($no_contrato)
-{
+{//3724786545073591
     include_once "../model/CONTRATO.php";
     $objContrato = new CONTRATO();
-    $objContrato->setNoContrato(0);
-    $result = $objContrato->consultaContrato($objContrato->getNoContrato());
-    //var_dump($result);
-    return json_encode($result);
+    $objContrato->setNoContrato($no_contrato);
+    //3724786545073591
+    $resultContrato = $objContrato->consultaContrato($objContrato->getNoContrato());
+    echo "<br>*******************************************************";
+    echo "<br> CONTRATO";
+    echo "<br>*******************************************************<br>";
+    var_dump($resultContrato);
+    include_once "../model/PAGO.php";
+    $objPago = new PAGO();
+    $resultPago = $objPago->queryconsultaPago($no_contrato);
+    //3724786545073591
+    echo "<br>*******************************************************";
+    echo "<br> PAGOS";
+    echo "<br>*******************************************************<br>";
+    var_dump($resultPago);
+    echo "<br>*******************************************************";
+    echo "<br> ABONOS";
+    echo "<br>*******************************************************<br>";
+    include_once "../model/ABONOS.php";
+    $objAbono = new ABONOS();
+
+    foreach ($resultPago as $clave => $valor) {
+        foreach ($valor as $clavePago => $valorPago) {
+            //echo ("<br> Clave ".$clavePago.", Valor ".$valorPago."<br>");
+
+            if ($clavePago == "id_pago") {
+                $resutlAbono = $objAbono->consultaAbonos($valorPago);
+                foreach ($valor as $clavePagon => $valorPagon) {
+                    if ($clavePagon == "no_pago") {
+                        $noPago = $valorPagon;
+                        $noAbonos = count($resutlAbono);
+                        echo "<br>*******************************************************";
+                        echo "<br> EL PAGO ".$noPago."/".$resultContrato[0]['plazo']." TIENE ".$noAbonos." ABONO(S)";
+                        echo "<br>*******************************************************<br>";
+                    }
+                }
+                var_dump($resutlAbono);
+            }
+        }
+        /*echo ("<br> Clave ".$clave."<br> ");*/
+
+    }
+//    return json_encode($result);
 }
 
 /********************************************************************
