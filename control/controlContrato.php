@@ -175,7 +175,7 @@ function creaContratoVenta($params)
             include_once "tool_ids_generate.php";
             $idPago = gen_noPago();
             $resultPago = insertaObjPago($idPago,$CONTRATO->getNoContrato(),$concepto,$tipo,
-                $CONTRATO->getTotal(),$noDePago,$detalles,$StatusPago,$fechaLimiTePago);
+                $CONTRATO->getEnganche(),$noDePago,$detalles,$StatusPago,$fechaLimiTePago);
             //SI YA SE CREO EL PAGO CREO EL ABONO
 
             if ($resultPago){
