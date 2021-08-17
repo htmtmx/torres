@@ -1,2 +1,2 @@
 <?php
-include_once "../webhook/addContratoVenta.php";
+include_once "../webhook/addContratoCompra.php";

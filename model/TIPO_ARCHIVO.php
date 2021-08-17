@@ -98,4 +98,13 @@ class TIPO_ARCHIVO extends CONEXION
         return $result;
     }
 
+    function queryAddTipoArchivo(){
+        $query="INSERT INTO `tipo_archivo` (`id_tipo_archivo`, `nombre`, `tipo_Archivo`, `prioridad`, `estatus`) VALUES (NULL, '".$this->getNombre().
+            "', '".$this->getTipoUso()."', '".$this->getPrioridad()."', '".$this->getEstatus()."')";
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
 }

@@ -5,54 +5,56 @@
     <title>Upload de archivos con Ajax</title>
 </head>
 <body>
-
-    <form enctype="multipart/form-data" id="formuploadajax" method="post">
-        <input type="text" id="idContrato" name="idContrato" value="555555">
+    <h1>Subir Documentos Contrato</h1>
+    <form enctype="multipart/form-data" id="frm_Subir_Doc_Contrato" method="post">
+        <input type="text" id="noVehiculo" name="noVehiculo" value="2903067539687445" >
+        <input type="text" id="idContrato" name="idContrato" value="7781136411318793">
         <select name="tipoArchivo" id="tipoArchivo">
-            <option value="1">Foto</option>
-            <option value="2">Placa</option>
-            <option value="3">Tenencia</option>
-            <option value="4">Ultima Verificacion</option>
-            <option value="5">Factura</option>
-            <option value="6">Targeta de Circulacion</option>
         </select>
 <!--
 https://developer.mozilla.org/es/docs/Web/HTML/Attributes/accept
--->
-        <input  type="file" id="archivo1" name="archivo1" accept="image/*"/>
+    -->
+        <input  type="file" id="archivo1" name="archivo1" >
+        <h4>¿Desea que el archivo aparezca en el catalogo?</h4>
         <select name="visibilidad" id="visibilidad">
-            <option value="1">Vible</option>
-            <option value="0">Oculto</option>
+            <option value="1">Si</option>
+            <option value="0">No</option>
         </select>
         <input type="submit" value="Subir archivos"/>
     </form>
     <div id="mensaje"></div>
+    <hr>
+    <h1>Subir Documentos Coches</h1>
+    <form enctype="multipart/form-data" id="frm_Doc_Coch" method="post">
+        <input type="text" id="noVehiculo" name="noVehiculo" value="2903067539687445">
+        <select name="tipoArchivo2" id="tipoArchivo3">
+        </select>
+<!--
+https://developer.mozilla.org/es/docs/Web/HTML/Attributes/accept
+    -->
+        <input  type="file" id="archivo1" name="archivo1" >
+        <h4>¿Desea que el archivo aparezca en el catalogo?</h4>
+        <select name="visibilidad" id="visibilidad">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+        </select>
+        <input type="submit" value="Subir archivos"/>
+    </form>
+    <div id="mensaje3"></div>
+    <hr>
+    <h1>Subir Imagenes Coches</h1>
+    <form enctype="multipart/form-data" id="frm_Foto_Coch" method="post">
+        <input type="text" id="noVehiculo" name="noVehiculo" value="2903067539687445">
+<!--
+https://developer.mozilla.org/es/docs/Web/HTML/Attributes/accept
+    -->
+        <input  type="file" id="archivo1" name="archivo1" accept="image/*">
+        <input type="submit" value="Subir archivos"/>
+    </form>
+    <div id="mensaje4"></div>
 
 
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script>
-$(function(){
-    $("#formuploadajax").on("submit", function(e){
-        e.preventDefault();
-        var f = $(this);
-        var formData = new FormData(document.getElementById("formuploadajax"));
-        formData.append("dato", "valor");
-        //formData.append(f.attr("name"), $(this)[0].files[0]);
-        $.ajax({
-                url: "../webhook/recibe-documento-contrato.php",
-                type: "post",
-                dataType: "html",
-                data: formData,
-                cache: false,
-                contentType: false,
-	     processData: false
-            })
-                .done(function(res){
-                    console.log(res);
-            $("#mensaje").html("Respuesta: " + res);
-        });
-        });
-});
-    </script>
+<script src="../ajax/sendDocmentos.js"></script>
 </body>
 </html>

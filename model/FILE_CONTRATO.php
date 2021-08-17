@@ -1,8 +1,7 @@
 <?php
 
 include_once "CONEXION.php";
-include_once "I_FILE_CONTRATO.php";
-class FILE_CONTRATO extends CONEXION implements I_FILE_CONTRATO
+class FILE_CONTRATO extends CONEXION
 {
     private $id_file_c;
     private $id_tipo_archivo_fk;
@@ -141,7 +140,7 @@ class FILE_CONTRATO extends CONEXION implements I_FILE_CONTRATO
         $this->estatus = $estatus;
     }
 
-    public function addFileContrato()
+    public function queryaddFileContrato()
     {
         $query = "INSERT INTO `file_contrato` (`id_file_c`, `id_tipo_archivo_fk`, `no_contrato_fk`, 
                              `nombre`, `path`, `ext`, `nivel_acceso`, `estatus`) 
@@ -153,7 +152,7 @@ class FILE_CONTRATO extends CONEXION implements I_FILE_CONTRATO
         $this->close();
         return $result;
     }
-    public function removeFileContrato($idFileContrato)
+    public function queryremoveFileContrato($idFileContrato)
     {
         $query = "UPDATE `file_contrato` 
                 SET `id_file_c` = id_file_c*(-1) 
@@ -163,7 +162,7 @@ class FILE_CONTRATO extends CONEXION implements I_FILE_CONTRATO
         $this->close();
         return $result;
     }
-    public function updateNivelAcceso($idFileContrato,$nivel_acceso)
+    public function queryupdateNivelAcceso($idFileContrato,$nivel_acceso)
     {
         $query = "UPDATE `file_contrato` 
                 SET `nivel_acceso` = '".$nivel_acceso."' 

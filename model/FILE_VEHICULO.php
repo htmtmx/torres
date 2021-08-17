@@ -150,4 +150,14 @@ class FILE_VEHICULO extends  CONEXION
         $this->close();
         return $result;
     }
+
+    function queryAddArchivosCoche(){
+        $query = "INSERT INTO `file_vechiculo` (`id_file_v`, `id_tipo_archivo_fk`, `no_vehiculo_fk`, `nombre`, `path`, `ext`, `nivel_acceso`, `estatus`) 
+                VALUES (NULL, '".$this->getIdTipoArchivoFk()."', '".$this->getNoVehiculoFk()."', '".$this->getNombre()."'
+                , '".$this->getPath()."', '".$this->getExt()."', '".$this->getNivelAcceso()."', '1')";
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }
