@@ -288,6 +288,15 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         return $result;
     }
 
+    public function consultaPagosAbonosDeContrato($no_contrato)
+    {
+        $query = "";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
     public function addContrato()
     {
         $query = "INSERT INTO `contrato` (`no_contrato`, `no_empleado_fk`, `no_cliente_fk`, 
