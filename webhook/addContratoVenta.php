@@ -15,6 +15,8 @@ $params = [
     "medio_identificacion" => "1",
     "folio" => "50",
     "tipo_cliente" => "1",
+    //DATOS DIRECCION
+    //Añadir o actualizar Direccion de un cliente
     //CONTRATO DATOS
     "plazo" => "6",
     "fecha_primer_pago" => "2021-09-01",

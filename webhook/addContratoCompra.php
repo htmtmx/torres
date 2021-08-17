@@ -16,6 +16,8 @@ $params = [
     "precio_credito" => 15000.00,
     "opc_credito" => 1,
     "observaciones" => "",
+    //DATOS DIRECCION
+    //Añadir o actualizar Direccion de un cliente
     //CLIENTE - VENDEDOR DATOS
     "no_cliente" => "0",
     "nombre" => "Christian",

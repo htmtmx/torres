@@ -192,7 +192,7 @@ class DIRECCIONES extends CONEXION implements I_DIRECCIONES
         $this->estado = $estado;
     }
 
-    public function consultaDireccion($no_cliente)
+    public function queryconsultaDireccion($no_cliente)
     {
         $query = "SELECT `id_direccion`, `no_cliente_fk`, `calle`, `no_ext`, `no_int`, 
         `colonia`, `municipio`, `estado_republica`, `CP`, `referencias`, `estado` 

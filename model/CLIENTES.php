@@ -20,6 +20,24 @@ class CLIENTES extends CONEXION implements I_CLIENTES
     private $tipo_cliente;
     private $estatus;
 
+    /***********Agregacion **********/
+    private $list_direcciones;
+
+    /**
+     * @return mixed
+     */
+    public function getListDirecciones()
+    {
+        return $this->querydireccionCliente($this->getNoCliente());
+    }
+
+    /**
+     * @param mixed $list_direcciones
+     */
+    public function setListDirecciones($list_direcciones): void
+    {
+        $this->list_direcciones = $list_direcciones;
+    }
     /**
      * @return mixed
      */
@@ -319,11 +337,11 @@ class CLIENTES extends CONEXION implements I_CLIENTES
         return $result;
     }
 
-    public function querydireccionCliente($no_cliente)
+    private function querydireccionCliente($no_cliente)
     {
         include_once "../model/DIRECCIONES.php";
         $tempDireccion = new DIRECCIONES();
-        $direccionCliente = $tempDireccion->consultaDireccion($no_cliente);
+        $direccionCliente = $tempDireccion->queryconsultaDireccion($no_cliente);
         return $direccionCliente;
     }
 

@@ -1,27 +1,4 @@
 <?php
-function updateCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoCliente,
-                    $telefonoCliente,$celularCliente,$correoCliente,$suscripcionCliente,
-                    $empresaCliente,$medioIdentificacion,$folioCliente,$tipoCliente,
-                    $rfcCliente,$statuscliente)
-{
-    include_once "../model/CLIENTES.php";
-    $objCliente = new CLIENTES();
-    $objCliente->setNoCliente($noCliente);
-    $objCliente->setNombre($nombreCliente);
-    $objCliente->setApaterno($apaternoCliente);
-    $objCliente->setAmaterno($amaternoCliente);
-    $objCliente->setTelefono($telefonoCliente);
-    $objCliente->setCelular($celularCliente);
-    $objCliente->setCorreo($correoCliente);
-    $objCliente->setSubscripcion($suscripcionCliente);
-    $objCliente->setEmpresa($empresaCliente);
-    $objCliente->setRfc($rfcCliente);
-    $objCliente->setMedioIdentificación($medioIdentificacion);
-    $objCliente->setFolio($folioCliente);
-    $objCliente->setTipoCliente($tipoCliente);
-    $objCliente->setEstatus($statuscliente);
-    return $objCliente->queryupdateCliente();
-}
 
 function queryCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoCliente,
                     $telefonoCliente,$celularCliente,$correoCliente,$suscripcionCliente,
@@ -62,7 +39,9 @@ function queryCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoClient
     $mjeReturn = $result ? "Se ".$actionMje." correctamente al cliente " :"Error al intentar registrar";
     echo  $mjeReturn;
 }
-
+/*****************************
+Trae consulta de clientes 1 o N
+ */
 function consultaCliente($idCliente)
 {
     include_once "../model/CLIENTES.php";
@@ -84,7 +63,29 @@ function updateStatus($idCliente){
 /********************************************************************
  *                 U P D A T E    C L I E N T E
  *******************************************************************/
-
+function updateCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoCliente,
+                       $telefonoCliente,$celularCliente,$correoCliente,$suscripcionCliente,
+                       $empresaCliente,$medioIdentificacion,$folioCliente,$tipoCliente,
+                       $rfcCliente,$statuscliente)
+{
+    include_once "../model/CLIENTES.php";
+    $objCliente = new CLIENTES();
+    $objCliente->setNoCliente($noCliente);
+    $objCliente->setNombre($nombreCliente);
+    $objCliente->setApaterno($apaternoCliente);
+    $objCliente->setAmaterno($amaternoCliente);
+    $objCliente->setTelefono($telefonoCliente);
+    $objCliente->setCelular($celularCliente);
+    $objCliente->setCorreo($correoCliente);
+    $objCliente->setSubscripcion($suscripcionCliente);
+    $objCliente->setEmpresa($empresaCliente);
+    $objCliente->setRfc($rfcCliente);
+    $objCliente->setMedioIdentificación($medioIdentificacion);
+    $objCliente->setFolio($folioCliente);
+    $objCliente->setTipoCliente($tipoCliente);
+    $objCliente->setEstatus($statuscliente);
+    return $objCliente->queryupdateCliente();
+}
 
 /********************************************************************
  *                 D E L E T E    C L I E N T E
@@ -97,8 +98,10 @@ function deleteCliente($idCliente){
 /********************************************************************
  *              D I R E C C I O N    C L I E N T E
  *******************************************************************/
-/*include_once "../model/CLIENTES.php";
-$objCliente = new CLIENTES();
-$objCliente->setNoCliente(297659297675);
-$result = $objCliente->direccionCliente($objCliente->getNoCliente());
-var_dump($result);*/
+function listDireccionesCliente($noCliente){
+    include_once "../model/CLIENTES.php";
+    $objCliente = new CLIENTES();
+    $objCliente->setNoCliente($noCliente);
+    $result = $objCliente->getListDirecciones();
+    return json_encode($result);
+}

@@ -106,5 +106,27 @@ class TIPO_ARCHIVO extends CONEXION
         $this->close();
         return $result;
     }
-
+    function queryUpdateTipoArchivo(){
+        $query="UPDATE `tipo_archivo` SET `nombre`='".$this->getNombre()."',`tipo_Archivo`='".$this->getIdTipoArchivo()."',
+                `prioridad`='".$this->getPrioridad()."'WHERE `id_tipo_archivo`=".$this->getIdTipoArchivo();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    function queryDeleteTipoArchivo(){
+        $query="DELETE FROM `tipo_archivo` WHERE id_tipo_archivo= ".$this->getIdTipoArchivo();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    function queryUpdateStatusTipoArchivo(){
+        $query="UPDATE `tipo_archivo` SET `estatus`='".$this->getEstatus()."' 
+        WHERE id_tipo_archivo=".$this->getIdTipoArchivo();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

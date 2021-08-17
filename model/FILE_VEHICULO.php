@@ -160,4 +160,14 @@ class FILE_VEHICULO extends  CONEXION
         $this->close();
         return $result;
     }
+    public function queryupdateNivelAcceso($idFileVehiculo,$nivel_acceso)
+    {
+        $query = "UPDATE `file_contrato` 
+                SET `nivel_acceso` = '".$nivel_acceso."' 
+                WHERE `file_contrato`.`id_file_c` = ".$idFileVehiculo;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

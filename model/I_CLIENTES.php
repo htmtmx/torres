@@ -7,5 +7,4 @@ interface I_CLIENTES
     function queryaddCliente();
     function queryupdateCliente();
     function querydeleteCliente($no_cliente);
-    function querydireccionCliente($no_cliente);
 }

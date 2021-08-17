@@ -12,19 +12,20 @@ function addTipoArchivo($nombre,$tipo_uso,$prioridad){
     $result = $obj_arch->queryAddTipoArchivo();
     return $result;
 }
-function updateTipoArchivo(){
+function updateTipoArchivo($idtipoArchivo,$nombre,$tipo_uso,$prioridad){
     include_once "../model/TIPO_ARCHIVO.php";
     $obj_arch = new TIPO_ARCHIVO();
-    $obj_arch->setNombre();
-    $obj_arch->setTipoUso();
-    $obj_arch->setPrioridad();
+    $obj_arch->setIdTipoArchivo($idtipoArchivo);
+    $obj_arch->setNombre($nombre);
+    $obj_arch->setTipoUso($tipo_uso);
+    $obj_arch->setPrioridad($prioridad);
     $result = $obj_arch->queryUpdateTipoArchivo();
     return $result;
 }
-function deleteTipoArchivo(){
+function deleteTipoArchivo($idtipoArchivo){
     include_once "../model/TIPO_ARCHIVO.php";
     $obj_arch = new TIPO_ARCHIVO();
-    $obj_arch->setIdTipoArchivo();
+    $obj_arch->setIdTipoArchivo($idtipoArchivo);
     $result= $obj_arch->queryDeleteTipoArchivo();
     return $result;
 }
@@ -33,10 +34,11 @@ function consultTipoArchivo(){
     $listaArchivostmp = SINGLETON_TIPOS_ARCHIVOS::getInst()->consultaTiposDocumento();
     return json_encode($listaArchivostmp);
 }
-function updateStatusTipoArchivo(){
+function updateStatusTipoArchivo($idtipoArchivo,$status){
     include_once "../model/TIPO_ARCHIVO.php";
     $obj_arch = new TIPO_ARCHIVO();
-    $obj_arch->setEstatus();
+    $obj_arch->setIdTipoArchivo($idtipoArchivo);
+    $obj_arch->setEstatus($status);
     $result = $obj_arch->queryUpdateStatusTipoArchivo();
     return $result;
 }
