@@ -11,7 +11,15 @@ class FILE_VEHICULO extends  CONEXION
     private $ext;
     private $nivel_acceso;
     private $estatus;
+    private $ruta;
 
+    /**
+     * @return mixed
+     */
+    public function getRuta()
+    {
+        return $this->obtenerRuta();
+    }
     /**
      * @return mixed
      */
@@ -167,6 +175,20 @@ class FILE_VEHICULO extends  CONEXION
                 WHERE `file_contrato`.`id_file_c` = ".$this->getIdFileV();
         $this->connect();
         $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    public function queryDeleteFileVehiculo(){
+        $query="DELETE FROM `file_vechiculo` WHERE `id_file_v`=".$this->getIdFileV();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    private function obtenerRuta(){
+        $query="SELECT `path`  as ruta FROM `file_vechiculo` WHERE `id_file_v`=".$this->getIdFileV();
+        $this->connect();
+        $result = $this->getData($query);
         $this->close();
         return $result;
     }
