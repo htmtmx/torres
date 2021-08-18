@@ -2,5 +2,5 @@
 
 interface I_MARCA
 {
-    function listMarcas ();
+    function querylistMarcas ();
 }

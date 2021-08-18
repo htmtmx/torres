@@ -294,7 +294,7 @@ class EMPRESA extends CONEXION implements I_EMPRESA
         $this->licencia = $licencia;
     }
 
-    public function consultaEmpresa($id_empresa)
+    public function queryconsultaEmpresa($id_empresa)
     {
         $concat="";
         if ($id_empresa!=0) {
@@ -310,7 +310,7 @@ class EMPRESA extends CONEXION implements I_EMPRESA
         return $result;
     }
 
-    public function updateEmpresa()
+    public function queryupdateEmpresa()
     {
         $query = "UPDATE `empresa` SET `rfc` = '".$this->getRfc()."', 
         `nombre` = '".$this->getNombre()."', `calle` = '".$this->getCalle()."', 

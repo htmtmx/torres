@@ -3,7 +3,7 @@ function consultaEmpresa($id_empresa)
 {
     include_once "../model/EMPRESA.php";
     $objEmpresa = new EMPRESA();
-    $result = $objEmpresa->consultaEmpresa($id_empresa);
+    $result = $objEmpresa->queryconsultaEmpresa($id_empresa);
     return json_encode($result);
 }
 
@@ -28,6 +28,6 @@ function updateEmpresa($id_empresa,$rfc,$nombre,$calle,$no_ext,$no_int,$colonia,
     $objEmpresa->setPathLogo($path_logo);
     $objEmpresa->setVersion($version);
     $objEmpresa->setLicencia($licencia);
-    $result = $objEmpresa->updateEmpresa();
+    $result = $objEmpresa->queryupdateEmpresa();
     return $result;
 }

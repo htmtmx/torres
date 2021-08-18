@@ -3,6 +3,6 @@
 
 interface I_EMPRESA
 {
-    function consultaEmpresa($id_empresa_fk);
-    function updateEmpresa();
+    function queryconsultaEmpresa($id_empresa_fk);
+    function queryupdateEmpresa();
 }

@@ -32,7 +32,7 @@ function consultaContrato($no_contrato)
             //echo ("<br> Clave ".$clavePago.", Valor ".$valorPago."<br>");
 
             if ($clavePago == "id_pago") {
-                $resutlAbono = $objAbono->consultaAbonos($valorPago);
+                $resutlAbono = $objAbono->queryconsultaAbonos($valorPago);
                 foreach ($valor as $clavePagon => $valorPagon) {
                     if ($clavePagon == "no_pago") {
                         $noPago = $valorPagon;
@@ -96,7 +96,7 @@ function creaContratoCompra($params)
         $CONTRATO = constructObjContrato($formaPago,$VENDEDOR->getNoCliente(),$COCHE->getNoVehiculo(),
             $tipoContrato,$plazos,$fechaPrimerPago, $totalCoche, $enganche,$estatusContrato);
 
-        $resultContrato = $CONTRATO->addContrato();
+        $resultContrato = $CONTRATO->queryaddContrato();
 
         if($resultContrato){
             include_once "./controlPago.php";
@@ -168,7 +168,7 @@ function creaContratoVenta($params)
         $CONTRATO = constructObjContrato($forma_pago,$COMPRADOR->getNoCliente(),$noVehiculo,
         $tipoContrato,$plazo,$fechaPrimerPago, $totalCoche, $enganche,$estatusContrato);
 
-        $resultContrato = $CONTRATO->addContrato();
+        $resultContrato = $CONTRATO->queryaddContrato();
         if ($resultContrato) {
 
             include_once "./controlPago.php";
@@ -364,5 +364,5 @@ function insertaAbono($idPago,$monto,$notas){
     $obj_Abono->setMonto($monto);
     $obj_Abono->setFechaRegistro(date('Y-m-d H:i:s'));
     $obj_Abono->setNotas($notas);
-    return $obj_Abono->addAbono();
+    return $obj_Abono->queryaddAbono();
 }

@@ -88,7 +88,7 @@ class ABONOS extends CONEXION
         $this->notas = $notas;
     }
 
-    function addAbono()
+    function queryaddAbono()
     {
         $query = "INSERT INTO `abonos` 
                 (`folio`, `id_pago_fk`, `monto`, `fecha_registro`, `notas`) 
@@ -100,7 +100,7 @@ class ABONOS extends CONEXION
         return $result;
     }
 
-    function consultaAbonos($id_pago_fk)
+    function queryconsultaAbonos($id_pago_fk)
     {
         $query = "select a.folio, a.id_pago_fk , a.monto , a.fecha_registro , a.notas 
                 from abonos a where a.id_pago_fk = ".$id_pago_fk;

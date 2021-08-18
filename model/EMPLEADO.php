@@ -298,22 +298,22 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
         return $result;
     }
 
-    public function queryupdatePw($no_empleado, $pwd)
+    public function queryupdatePw()
     {
         $query = "UPDATE `empleado` 
-        SET `pw` = '".md5($pwd)."' 
-        WHERE `empleado`.`no_empleado` = ".$no_empleado ;
+        SET `pw` = '".$this->getPw()."' 
+        WHERE `empleado`.`no_empleado` = ".$this->getNoEmpleado() ;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
         return $result;
     }
 
-    public function queryUpdateStatusE($idUser,$status)
+    public function queryUpdateStatusE()
     {
         $query = "UPDATE `empleado` 
-        SET `estatus` = ".$status."
-        WHERE `empleado`.`no_empleado` = ".$idUser;
+        SET `estatus` = ".$this->getEstatus()."
+        WHERE `empleado`.`no_empleado` = ".$this->getNoEmpleado();
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

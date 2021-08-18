@@ -287,7 +287,9 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         $this->close();
         return $result;
     }
-
+/*********************
+ * Preguntar si se utiliza
+**********************/
     public function consultaPagosAbonosDeContrato($no_contrato)
     {
         $query = "";
@@ -297,7 +299,7 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         return $result;
     }
 
-    public function addContrato()
+    public function queryaddContrato()
     {
         $query = "INSERT INTO `contrato` (`no_contrato`, `no_empleado_fk`, `no_cliente_fk`, 
         `no_vehiculo_fk`, `hora_fecha_creacion`, `tipo_contrato`, `plazo`, `fecha_primer_pago`, 
@@ -313,7 +315,7 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         return $result;
     }
 
-    public function updateEstatusContrato($no_contrato, $estatus)
+    public function queryupdateEstatusContrato($no_contrato, $estatus)
     {
         $query = "UPDATE `contrato` 
                 SET `estatus` = '".$estatus."' 
@@ -324,7 +326,7 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         return $result;
     }
 
-    public function deleteContrato($no_contrato)
+    public function querydeleteContrato($no_contrato)
     {
         $query = "UPDATE `contrato` 
                     SET `no_contrato` = no_contrato * (-1)  

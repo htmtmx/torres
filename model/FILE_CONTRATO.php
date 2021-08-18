@@ -162,11 +162,11 @@ class FILE_CONTRATO extends CONEXION
         $this->close();
         return $result;
     }
-    public function queryupdateNivelAcceso($idFileContrato,$nivel_acceso)
+    public function queryupdateNivelAcceso()
     {
         $query = "UPDATE `file_contrato` 
-                SET `nivel_acceso` = '".$nivel_acceso."' 
-                WHERE `file_contrato`.`id_file_c` = ".$idFileContrato;
+                SET `nivel_acceso` = '".$this->getNivelAcceso()."' 
+                WHERE `file_contrato`.`id_file_c` = ".$this->getIdFileC();
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

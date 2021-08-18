@@ -302,7 +302,7 @@ class CLIENTES extends CONEXION implements I_CLIENTES
             . $this->getNombre() . "', '" . $this->getApaterno() . "', '" . $this->getAmaterno() . "', '"
             . $this->getTelefono() . "', '" . $this->getCelular() . "', '" . $this->getCorreo() . "', '"
             . $this->getSubscripcion() . "', '" . $this->getEmpresa() . "', '" . $this->getRfc() . "', '"
-            . date('Y-m-d H:i:s') . "', '" . $this->getMedioIdentificación() . "', '"
+            . $this->getFechaRegistro() . "', '" . $this->getMedioIdentificación() . "', '"
             . $this->getFolio() . "', '" . $this->getTipoCliente() . "', '1')";
         $this->connect();
         $result = $this->executeInstruction($query);

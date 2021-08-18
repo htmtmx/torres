@@ -19,14 +19,7 @@ function deletePago($folio)
     $result = $objPago->queryeliminaPago($folio);
     return $result;
 }
-/********************************************************************
- *         A D D     P A G O
- *******************************************************************/
-function addPago()
-{
-    include_once "../model/PAGO.php";
-    return  queryaddPago();
-}
+
 /********************************************************************
  * C O N S U L T A     P A G O S     P O R     N O      C O N T R A T O
  *******************************************************************/

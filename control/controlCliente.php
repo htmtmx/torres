@@ -28,6 +28,7 @@ function queryCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoClient
         //genero la  clave del cliente
         include_once "./tool_ids_generate.php";
         $objCliente-> setNoCliente(gen_client_id());
+        $objCliente->setFechaRegistro(date('Y-m-d H:i:s'));
         $result = $objCliente-> queryaddCliente();
     }
     else{

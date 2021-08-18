@@ -52,6 +52,7 @@ function addCoche(  $idModeloFk,$anio,$placa,$entidadPlaca,$color,
     $objCoche = new COCHE();
     $objCoche->setNoVehiculo(gen_no_vehiculo());
     $objCoche->setIdModeloFk($idModeloFk);
+    $objCoche->setFechaRegistro(date('Y-m-d H:i:s'));
     $objCoche->setAnio($anio);
     $objCoche->setPlaca($placa);
     $objCoche->setEntidadPlaca($entidadPlaca);

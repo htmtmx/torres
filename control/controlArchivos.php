@@ -109,3 +109,21 @@ function consultaListaArchivos(){
     $objTiposFile = new TIPO_ARCHIVO();
     return $objTiposFile->consultaTiposArchivo();
 }
+/**************FUNCION PARA ACTUALIZAR NIVEL ACCESO FILE COCHE DOCUMENTOS******************/
+
+function updateNivelAccesoFV($idFileVehiculo,$nivel_acceso){
+    include_once  "../model/FILE_VEHICULO.php";
+    $obj_FCD = new FILE_VEHICULO();
+    $obj_FCD->setIdFileV($idFileVehiculo);
+    $obj_FCD->setNivelAcceso($nivel_acceso);
+    return $obj_FCD->queryupdateNivelAcceso();
+}
+/**************FUNCION PARA ACTUALIZAR NIVEL ACCESO FILE CONTRATO DOCUMENTOS******************/
+
+function updateNivelAccesoFC($idFileContrato,$nivel_acceso){
+    include_once  "../model/FILE_CONTRATO.php";
+    $obj_FCD = new FILE_CONTRATO();
+    $obj_FCD->setIdFileV($idFileContrato);
+    $obj_FCD->setNivelAcceso($nivel_acceso);
+    return $obj_FCD->queryupdateNivelAcceso();
+}

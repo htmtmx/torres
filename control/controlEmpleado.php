@@ -68,7 +68,9 @@ function updatePwdEmpleado($no_empleado,$pwd)
 {
     include_once "../model/EMPLEADO.php";
     $objEmpleado = new EMPLEADO();
-    echo $result = $objEmpleado->queryupdatePw($no_empleado,$pwd) ? "Se actualizo correctamente la contraseña ":"Error al intentar actualizar";
+    $objEmpleado->setNoEmpleado($no_empleado);
+    $objEmpleado->setPw(md5($pwd));
+    echo $result = $objEmpleado->queryupdatePw() ? "Se actualizo correctamente la contraseña ":"Error al intentar actualizar";
 }
 
 /********************************************************************
@@ -77,7 +79,9 @@ function updatePwdEmpleado($no_empleado,$pwd)
 function updateStatusE($idUser,$status){
     include_once "../model/EMPLEADO.php";
     $objEmpleado = new EMPLEADO();
-    return $objEmpleado->queryUpdateStatusE($idUser,$status);
+    $objEmpleado->setNoEmpleado($idUser);
+    $objEmpleado->setEstatus($status);
+    return $objEmpleado->queryUpdateStatusE();
 }
 /********************************************************************
  *                   D E L E T E    E M P L E A D O

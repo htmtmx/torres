@@ -340,7 +340,7 @@ class COCHE extends CONEXION implements I_COCHE
                 `no_puertas`, `precio_contado`, `precio_credito`, `opc_credito`, 
                 `observaciones`, `estatus`) 
                 VALUES ('".$this->getNoVehiculo()."', '".$this->getIdModeloFk()."', '"
-                .date('Y-m-d H:i:s')."', '".$this->getAnio()."', '".$this->getPlaca()."', '"
+                .$this->getFechaRegistro()."', '".$this->getAnio()."', '".$this->getPlaca()."', '"
                 .$this->getEntidadPlaca()."', '".$this->getColor()."', '".$this->getKilometros()."', '"
                 .$this->getTransimision()."', '".$this->getCombustible()."', '".$this->getNoPuertas()."', '"
                 .$this->getPrecioContado()."', '".$this->getPrecioCredito()."', '1', '"
