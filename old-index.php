@@ -82,7 +82,7 @@
                                     </div>
                                     <div id="mensaje"></div>
                                     <div class="row mb-4 px-3"> 
-                                        <small class="font-weight-bold">No tiene una cuenta <a href="home/index.php" class="text-danger ">Solicite una</a></small> 
+                                        <small class="font-weight-bold">No tiene una cuenta <a href="home2/index.php" class="text-danger ">Solicite una</a></small>
                                     </div>
                                 </div>
                             </form>

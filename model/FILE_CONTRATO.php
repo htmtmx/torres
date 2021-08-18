@@ -11,6 +11,15 @@ class FILE_CONTRATO extends CONEXION
     private $ext;
     private $nivel_acceso;
     private $estatus;
+    private $ruta;
+
+    /**
+     * @return mixed
+     */
+    public function getRuta()
+    {
+        return $this->obtenerRuta();
+    }
 
     /**
      * @return mixed
@@ -152,11 +161,9 @@ class FILE_CONTRATO extends CONEXION
         $this->close();
         return $result;
     }
-    public function queryremoveFileContrato($idFileContrato)
+    public function queryremoveFileContrato()
     {
-        $query = "UPDATE `file_contrato` 
-                SET `id_file_c` = id_file_c*(-1) 
-                WHERE `file_contrato`.`id_file_c` = ".$idFileContrato;
+        $query = "DELETE FROM `file_contrato` WHERE ".$this->getIdFileC();
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
@@ -169,6 +176,13 @@ class FILE_CONTRATO extends CONEXION
                 WHERE `file_contrato`.`id_file_c` = ".$this->getIdFileC();
         $this->connect();
         $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    private function obtenerRuta(){
+        $query="SELECT `path`  as ruta FROM `file_contrato` WHERE `id_file_c`=".$this->getIdFileC();
+        $this->connect();
+        $result = $this->getData($query);
         $this->close();
         return $result;
     }

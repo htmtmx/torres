@@ -22,9 +22,9 @@ function agregaDocumentoContrato($noVehiculo,$nombreIMG1,$archivo1,$idContrato,$
     rename ($ruta1, $carpeta.'/'.$nombre.'.'.$extension); // RUTA1 EXAMPLE: "/24072019.24/tarjetaCirc.jpg"
     //Guardar en el modelo de arhcivo
 
-    $path = $carpeta.'/'.$tipoArchivo.'.'.$extension;
-    $FC= constructObjFC($nombre,$tipoArchivo,$idContrato,$path,$extension,$privado);
-    return $FC;
+    $path = $carpeta.'/'.$nombre.'.'.$extension;
+    return constructObjFC($nombre,$tipoArchivo,$idContrato,$path,$extension,$privado);
+
 }
 
 function agregaDocumentoCoche($noVehiculo, $nombreIMG1, $archivo1, $tipoArchivo, $privado){
@@ -48,7 +48,7 @@ function agregaDocumentoCoche($noVehiculo, $nombreIMG1, $archivo1, $tipoArchivo,
     rename ($ruta1, $carpeta.'/'.$nombre.'.'.$extension); // RUTA1 EXAMPLE: "/24072019.24/tarjetaCirc.jpg"
     //Guardar en el modelo de arhcivo
 
-    $path = $carpeta.'/'.$tipoArchivo.'.'.$extension;
+    $path = $carpeta.'/'.$nombre.'.'.$extension;
     $result = insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado);
     return $result;
 }
@@ -59,7 +59,6 @@ function agregaImagenCoche($noVehiculo, $nombreIMG1, $archivo1){
         mkdir($carpeta, 0777, true);
     }
     include "../model/SINGLETON_TIPOS_ARCHIVOS.php";
-    $listaArchivostmp = SINGLETON_TIPOS_ARCHIVOS::getInst()->consultaTiposDocumento();
     $nombre = "foto-".date('Y-m-d-His');
     $nombre =str_replace(' ', '', $nombre);
     $ruta1 = $carpeta.'/'.$nombreIMG1; // RUTA1 EXAMPLE: "/24072019.24/e-r.jpg"
@@ -93,6 +92,7 @@ function constructObjFC($nombre,$tipoArchivo,$idContrato,$path,$extension,$priva
 
 function insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado){
      include_once "../model/FILE_VEHICULO.php";
+    //FCD = File Contrato Documento
     $obj_FCD= new FILE_VEHICULO();
     $obj_FCD->setIdTipoArchivoFk($tipoArchivo);
     $obj_FCD->setNoVehiculoFk($noVehiculo);
@@ -113,6 +113,7 @@ function consultaListaArchivos(){
 
 function updateNivelAccesoFV($idFileVehiculo,$nivel_acceso){
     include_once  "../model/FILE_VEHICULO.php";
+    //FCD = File Contrato Documento
     $obj_FCD = new FILE_VEHICULO();
     $obj_FCD->setIdFileV($idFileVehiculo);
     $obj_FCD->setNivelAcceso($nivel_acceso);
@@ -122,14 +123,36 @@ function updateNivelAccesoFV($idFileVehiculo,$nivel_acceso){
 
 function updateNivelAccesoFC($idFileContrato,$nivel_acceso){
     include_once  "../model/FILE_CONTRATO.php";
+    //FCD = File Contrato Documento
     $obj_FCD = new FILE_CONTRATO();
     $obj_FCD->setIdFileV($idFileContrato);
     $obj_FCD->setNivelAcceso($nivel_acceso);
     return $obj_FCD->queryupdateNivelAcceso();
 }
 
-function consultaImagenCoche($no_vehiculo)
-{
+function removeFileVehiculo($id_archivo_vehiculo){
     include_once "../model/FILE_VEHICULO.php";
+    $objFileVehiculo= new FILE_VEHICULO();
+    $objFileVehiculo->setIdFileV($id_archivo_vehiculo);
+    $ruta= $objFileVehiculo->getRuta();
+    $rutaFile = $ruta[0]['ruta'];
+    $resultEliminaFileFisico = removeArchivoFisico($rutaFile);
+    if($resultEliminaFileFisico)
+        return $objFileVehiculo->queryDeleteFileVehiculo();
+     else return false;
+}
+function removeFileContrato($idNoContrato){
+    include_once "../model/FILE_CONTRATO.php";
+    $objFileContrato= new FILE_CONTRATO();
+    $objFileContrato->setIdFileC($idNoContrato);
+    $ruta= $objFileContrato->getRuta();
+    $rutaFile = $ruta[0]['ruta'];
+    $resultEliminaFileFisico = removeArchivoFisico($rutaFile);
+    if($resultEliminaFileFisico)
+        return $objFileContrato->queryremoveFileContrato();
+    else return false;
+}
 
+function removeArchivoFisico($ruta){
+    return unlink($ruta);
 }
