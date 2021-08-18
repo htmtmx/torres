@@ -170,4 +170,43 @@ class FILE_VEHICULO extends  CONEXION
         $this->close();
         return $result;
     }
+
+    function queryConsultaImagenCoche($no_vehiculo)
+    {
+        $query = "select c.no_vehiculo , ta.nombre as file_nombre ,fv.`path` , fv.ext 
+from coche c , file_vechiculo fv ,   tipo_archivo ta
+where c.no_vehiculo = fv.no_vehiculo_fk
+and ta.id_tipo_archivo = fv.id_tipo_archivo_fk 
+and fv.id_tipo_archivo_fk = 1 and c.no_vehiculo = ".$no_vehiculo." limit 1";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryConsultaImagenesCoche($no_vehiculo)
+    {
+        $query = "select c.no_vehiculo , ta.nombre as file_nombre ,fv.`path` , fv.ext 
+from coche c , file_vechiculo fv ,   tipo_archivo ta
+where c.no_vehiculo = fv.no_vehiculo_fk
+and ta.id_tipo_archivo = fv.id_tipo_archivo_fk 
+and fv.id_tipo_archivo_fk = 1 and c.no_vehiculo = ".$no_vehiculo;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryConsultaDocumentosCoche($no_vehiculo)
+    {
+        $query = "select c.no_vehiculo , ta.nombre as file_nombre ,fv.`path` , fv.ext 
+from coche c , file_vechiculo fv ,   tipo_archivo ta
+where c.no_vehiculo = fv.no_vehiculo_fk
+and ta.id_tipo_archivo = fv.id_tipo_archivo_fk 
+and fv.id_tipo_archivo_fk != 1 and c.no_vehiculo = ".$no_vehiculo;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 }

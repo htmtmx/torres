@@ -127,3 +127,9 @@ function updateNivelAccesoFC($idFileContrato,$nivel_acceso){
     $obj_FCD->setNivelAcceso($nivel_acceso);
     return $obj_FCD->queryupdateNivelAcceso();
 }
+
+function consultaImagenCoche($no_vehiculo)
+{
+    include_once "../model/FILE_VEHICULO.php";
+
+}
