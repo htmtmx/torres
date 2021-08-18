@@ -7,7 +7,7 @@ if (isset($_POST['pw']) && isset($_POST['user'])) {
     if(verificaCuentaUser($user,$pw)){
         $mje = array(
             "mjeType" => "1",
-            "Mensaje" => "Cuenta verificcada"
+            "Mensaje" => "Cuenta verificada"
         );
     }
     else{
