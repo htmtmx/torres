@@ -402,4 +402,11 @@ class COCHE extends CONEXION implements I_COCHE
         return $obj_listAC->queryArchivosVehiculo($no_vehiculo);
     }
 
+    function queryConsultaDocumentosCoche($no_vehiculo)
+    {
+        include_once "../model/FILE_VEHICULO.php";
+        $objDocsCoche = new FILE_VEHICULO();
+        return $objDocsCoche->queryConsultaDocumentosCoche($no_vehiculo);
+    }
+
 }

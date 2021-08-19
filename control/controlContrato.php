@@ -9,28 +9,33 @@ function consultaContrato($no_contrato)
     $objContrato->setNoContrato($no_contrato);
     //3724786545073591
     $resultContrato = $objContrato->consultaContrato($objContrato->getNoContrato());
-    echo "<br>*******************************************************";
+    /*echo "<br>*******************************************************";
     echo "<br> CONTRATO";
     echo "<br>*******************************************************<br>";
-    var_dump($resultContrato);
+    var_dump($resultContrato);*/
     include_once "../model/PAGO.php";
     $objPago = new PAGO();
-    $resultPago = $objPago->queryconsultaPago($no_contrato);
+    $arrayPagos = $objPago->queryconsultaPago($no_contrato);
     //3724786545073591
-    echo "<br>*******************************************************";
+    /*echo "<br>*******************************************************";
     echo "<br> PAGOS";
     echo "<br>*******************************************************<br>";
-    var_dump($resultPago);
+    var_dump($arrayPagos);
     echo "<br>*******************************************************";
     echo "<br> ABONOS";
-    echo "<br>*******************************************************<br>";
+    echo "<br>*******************************************************<br>";*/
     include_once "../model/ABONOS.php";
     $objAbono = new ABONOS();
-
-    foreach ($resultPago as $clave => $valor) {
+    foreach ($arrayPagos as $pago) {
+        $arrayAbonos = $objAbono->queryconsultaAbonos($pago['id_pago']);
+        array_push($pago, $arrayAbonos);
+        array_push($resultContrato, $pago);
+    }
+    var_dump($resultContrato);
+    /***************B A S U R A***********************/
+    /*foreach ($arrayPagos as $clave => $valor) {
         foreach ($valor as $clavePago => $valorPago) {
             //echo ("<br> Clave ".$clavePago.", Valor ".$valorPago."<br>");
-
             if ($clavePago == "id_pago") {
                 $resutlAbono = $objAbono->queryconsultaAbonos($valorPago);
                 foreach ($valor as $clavePagon => $valorPagon) {
@@ -46,9 +51,9 @@ function consultaContrato($no_contrato)
             }
         }
         /*echo ("<br> Clave ".$clave."<br> ");*/
-
-    }
-//    return json_encode($result);
+    //}
+    /***************B A S U R A***********************/
+    //    return json_encode($result);
 }
 
 /********************************************************************

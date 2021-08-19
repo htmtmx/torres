@@ -7,6 +7,71 @@ function consultaCoches($show_detalles,$noVehiculo)
     var_dump($result);
 }
 
+function consultaAllCochesOneFoto()
+{
+    include_once "../model/COCHE.php";
+    $objCoche = new COCHE();
+    include_once "../model/FILE_VEHICULO.php";
+    $objFoto = new FILE_VEHICULO();
+    $arrayCoches = $objCoche->queryconsultaCoches(0);
+    $noCoches = count($arrayCoches);
+    $dataCochesFoto = array();
+    /*echo "<br>*******************************************************";
+    echo "<br> Encontramos ".$noCoches." COCHES";
+    echo "<br>*******************************************************<br>";
+    var_dump($arrayCoches);
+    echo "<br>*******************************************************";
+    echo "<br> FOTOS DE LOS COCHES, SE MUESTRA UNA SOLA FOTO POR COCHE AUNQUE TENGA MÁS REGISTRADAS";
+    echo "<br>*******************************************************<br>";*/
+    foreach ($arrayCoches as $coche) {
+        $arrayFotos = $objFoto->queryConsultaImagenCoche($coche["no_vehiculo"]);
+        array_push($coche,$arrayFotos);
+        array_push($dataCochesFoto, $coche);
+    }
+    /*echo "<br>*******************************************************";
+    echo("<br> INTENTO DE AGREGAR ARRAY DE FOTOS A COCHES");
+    echo "<br>*******************************************************";*/
+    var_dump($dataCochesFoto);
+
+    /*foreach($arrayCoches as $clave => $valor){
+        foreach ($valor as $clave1 =>$valor1) {
+            if ($clave1 == "no_vehiculo") {
+                echo "<br>*******************************************************";
+                echo("<br> FOTO DEL COCHE no_vehiculo = ".$valor1);
+                echo "<br>*******************************************************";
+                $resultFoto = $objFoto->queryConsultaImagenCoche($valor1);
+                var_dump($resultFoto);
+                array_push($arrayCoches,$resultFoto);
+            }
+        }
+    }
+    echo "<br>*******************************************************";
+    echo("<br> INTENTO DE AGREGAR ARRAY DE FOTOS A COCHES");
+    echo "<br>*******************************************************";
+
+    var_dump($arrayCoches);*/
+}
+
+function consultaCocheDetallesDocumentosFotos($no_vehiculo)
+{
+    include_once "../model/COCHE.php";
+    $objCoche = new COCHE();
+    include_once "../model/FILE_VEHICULO.php";
+    $objFilesFotosCoche = new FILE_VEHICULO();
+    $arrayCoche = $objCoche->queryconsultaCoches($no_vehiculo);
+    $dataCoche = array();
+    foreach ($arrayCoche as $coche) {
+        $arrayDetails = consultaDetallesCoche($coche["no_vehiculo"]);
+        $arrayDocumentos = $objCoche->queryConsultaDocumentosCoche($coche["no_vehiculo"]);
+        $arrayFotos = $objFilesFotosCoche->queryConsultaImagenesCoche($coche["no_vehiculo"]);
+        array_push($coche,$arrayDetails);
+        array_push($coche,$arrayDocumentos);
+        array_push($coche,$arrayFotos);
+        array_push($dataCoche,$coche);
+    }
+    var_dump($dataCoche);
+}
+
 function consultaCocheDetallesCompletos($show_detalles,$noVehiculo){
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
@@ -23,6 +88,7 @@ function consultaCocheDetallesCompletos($show_detalles,$noVehiculo){
             array_push($cochesData,$coche);
         }
     }
+    var_dump($cochesData);
     return json_encode($cochesData);
 }
 
