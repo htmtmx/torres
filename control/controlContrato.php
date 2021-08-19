@@ -2,58 +2,30 @@
 /********************************************************************
  *               C O N S U L T A     C O N T R A T O
  *******************************************************************/
-function consultaContrato($no_contrato)
-{//3724786545073591
+function consultaDetallesContrato($no_contrato)
+{
     include_once "../model/CONTRATO.php";
     $objContrato = new CONTRATO();
     $objContrato->setNoContrato($no_contrato);
-    //3724786545073591
-    $resultContrato = $objContrato->consultaContrato($objContrato->getNoContrato());
-    /*echo "<br>*******************************************************";
-    echo "<br> CONTRATO";
-    echo "<br>*******************************************************<br>";
-    var_dump($resultContrato);*/
-    include_once "../model/PAGO.php";
-    $objPago = new PAGO();
-    $arrayPagos = $objPago->queryconsultaPago($no_contrato);
-    //3724786545073591
-    /*echo "<br>*******************************************************";
-    echo "<br> PAGOS";
-    echo "<br>*******************************************************<br>";
-    var_dump($arrayPagos);
-    echo "<br>*******************************************************";
-    echo "<br> ABONOS";
-    echo "<br>*******************************************************<br>";*/
-    include_once "../model/ABONOS.php";
-    $objAbono = new ABONOS();
-    foreach ($arrayPagos as $pago) {
-        $arrayAbonos = $objAbono->queryconsultaAbonos($pago['id_pago']);
-        array_push($pago, $arrayAbonos);
-        array_push($resultContrato, $pago);
+    $arrayContrato = $objContrato->consultaContrato($objContrato->getNoContrato());
+    return json_encode($arrayContrato);
+}
+
+/********************************************************************
+ * C O N S U L T A   P A G O S    A B O N O S  C O N T R A T O
+ *******************************************************************/
+function consultaPagosAbonosDeContrato($no_contrato)
+{//3724786545073591
+    include_once "../control/controlPago.php";
+    $listaPagos = consultaPago($no_contrato);
+    $arrayPagosContrato = array();
+    foreach ($listaPagos as $pago) {
+        $listaAbonos = consultaAbonosDePago($pago['id_pago']);
+        array_push($pago, $listaAbonos);
+        array_push($arrayPagosContrato,$pago);
     }
-    var_dump($resultContrato);
-    /***************B A S U R A***********************/
-    /*foreach ($arrayPagos as $clave => $valor) {
-        foreach ($valor as $clavePago => $valorPago) {
-            //echo ("<br> Clave ".$clavePago.", Valor ".$valorPago."<br>");
-            if ($clavePago == "id_pago") {
-                $resutlAbono = $objAbono->queryconsultaAbonos($valorPago);
-                foreach ($valor as $clavePagon => $valorPagon) {
-                    if ($clavePagon == "no_pago") {
-                        $noPago = $valorPagon;
-                        $noAbonos = count($resutlAbono);
-                        echo "<br>*******************************************************";
-                        echo "<br> EL PAGO ".$noPago."/".$resultContrato[0]['plazo']." TIENE ".$noAbonos." ABONO(S)";
-                        echo "<br>*******************************************************<br>";
-                    }
-                }
-                var_dump($resutlAbono);
-            }
-        }
-        /*echo ("<br> Clave ".$clave."<br> ");*/
-    //}
-    /***************B A S U R A***********************/
-    //    return json_encode($result);
+    //var_dump($arrayPagosContrato);
+    return json_encode($arrayPagosContrato);
 }
 
 /********************************************************************

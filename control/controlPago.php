@@ -28,6 +28,15 @@ function consultaPago($no_contrato_fk)
     include_once "../model/PAGO.php";
     $objPago = new PAGO();
     $result = $objPago->queryconsultaPago($no_contrato_fk);
-    return json_encode($result);
+    return $result;
 }
 
+/********************************************************************
+ * C O N S U L T A     A B O N O S    D E     U N      P A G O
+ *******************************************************************/
+function consultaAbonosDePago($id_pago)
+{
+    include_once "../model/ABONOS.php";
+    $obj_Abono = new ABONOS();
+    return $obj_Abono->queryconsultaAbonos($id_pago);
+}

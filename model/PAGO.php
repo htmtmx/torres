@@ -231,4 +231,11 @@ class PAGO extends CONEXION implements I_PAGO
         $this->close();
         return $result;
     }
+
+    public function consultaAbonos ($id_pago)
+    {
+        include_once "./ABONOS.php";
+        $objAbono = new ABONOS();
+        return $objAbono->queryconsultaAbonos($id_pago);
+    }
 }
