@@ -68,49 +68,6 @@
                             <tbody id="tbl-clientes">
                             <tr idcliente="987568611049">
                                 <th scope="row">
-                                    987568611049
-                                </th>
-                                <td><i class="fas fa-user-tie"></i>
-                                    Ernesto Dominguez Alfaro
-                                    <span class="badge badge-success">Activo</span>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li><i class="fas fa-phone"></i>6352015248</li> <li><i class="fas fa-mobile-alt"></i>5514784916</li> <li><i class="far fa-envelope"></i>ernestotelapresto@gmail.com</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    Hombre
-                                </td>
-                                <td>
-                                    2021-05-15 10:34:06
-                                </td>
-                                <td>
-                                    <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#cuentaUser">
-                                        <span class="btn-inner--icon"><i class="fas fa-edit text-green"></i>Gerente</span>
-                                    </button>
-
-                                </td>
-                                <td>
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cuentaUser">
-                                        <i class="fas fa-edit text-green"></i> Administrador
-                                    </button>
-                                </td>
-                                <td>
-                                    <label class="custom-toggle">
-                                        <input type="checkbox" checked>
-                                        <span class="custom-toggle-slider rounded-circle" data-label-off="Inactivo" data-label-on="Activo"></span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr idcliente="987568611049">
-                                <th scope="row">
                                     1561561561
                                 </th>
                                 <td><i class="fas fa-user-tie"></i>
@@ -167,7 +124,7 @@
 </body>
 <?php include './include/js.php'; ?>
 </html>
-<!--
-<script src="../ajax/cliente-list.js"></script>
--->
+
+<script src="../ajax/usuario-list.js"></script>
+
 

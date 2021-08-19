@@ -1,5 +1,5 @@
 <?php
-function addDireccion($idCliente,$calle,$noExt,$noInt,$colonia,$estado,$cp,$referencias){
+function addDireccion($idCliente,$calle,$noExt,$noInt,$colonia,$municipio,$estado,$cp,$referencias){
     include_once "../model/DIRECCIONES.php";
     $objDir = new DIRECCIONES();
     $objDir->setNoClienteFk($idCliente);
@@ -7,6 +7,7 @@ function addDireccion($idCliente,$calle,$noExt,$noInt,$colonia,$estado,$cp,$refe
     $objDir->setNoExt($noExt);
     $objDir->setNoInt($noInt);
     $objDir->setColonia($colonia);
+    $objDir->setMunicipio($municipio);
     $objDir->setEstadoRepublica($estado);
     $objDir->setCP($cp);
     $objDir->setReferencias($referencias);

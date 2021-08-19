@@ -126,7 +126,7 @@ $("#frm-add-direccion").on("submit", function(e){
             $("#mensajeAddDireccion").html(alerta);
         });
     $('#frm-add-direccion').trigger('reset');
-   // e.preventDefault();
+    e.preventDefault();
     consultaDirecciones();
 
 });

@@ -9,7 +9,7 @@
         <div class="col-lg-6">
             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                 <li class="nav-item">
-                    <a href="https://reckreastudios.com/" class="nav-link" target="_blank">ReCkrea Studios</a>
+                    <a href="#" class="nav-link" target="_blank"><?php echo $_SESSION['rfc_empresa']?></a>
                 </li>
                 <li class="nav-item">
                     <a href="https://www.facebook.com/ReCkreaStuDios" class="nav-link" target="_blank">Facebook</a>

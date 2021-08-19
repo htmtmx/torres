@@ -24,9 +24,9 @@
         <div class="container-fluid d-flex align-items-center">
             <div class="row">
                 <div class="col-lg-12 col-md-10">
-                    <h1 class="display-2 text-white">Hola <?php echo $_SESSION['usuario']; ?></h1>
+                    <h1 class="display-2 text-white" id ="nombreTitulo"> </h1>
                     <p class="text-white mt-0 mb-5">Modifica tus datos, recuerda que estos datos se imprimen en los contratos que realices</p>
-                    <a href="#!" class="btn btn-neutral"><i class="fas fa-key"></i> Cambiar Contraseña</a>
+                    <a href="#" class="btn btn-neutral" data-toggle="modal" data-target="#updatepassword"><i class="fas fa-key"></i> Cambiar Contraseña</a>
                 </div>
             </div>
         </div>
@@ -44,26 +44,26 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form id="frm-datos-empleado">
                             <h6 class="heading-small text-muted mb-4">Información Personal</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="nombre">Nombre</label>
-                                            <input type="text" id="nombre" class="form-control" required>
+                                            <input type="text" id="nombre" name="nombre" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="apaterno">Primer Apellido</label>
-                                            <input type="text" id="apaterno" class="form-control" required>
+                                            <input type="text" id="apaterno" name="apaterno" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="amaterno">Segundo Apellido</label>
-                                            <input type="text" id="amaterno" class="form-control" required>
+                                            <input type="text" id="amaterno" name="amaterno" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
@@ -71,13 +71,13 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="telefono">Telefono</label>
-                                            <input type="tel" id="telefono" class="form-control" required>
+                                            <input type="tel" id="telefono" name="telefono" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="celular">Celular</label>
-                                            <input type="tel" id="celular" class="form-control">
+                                            <input type="tel" id="celular" name="celular" class="form-control">
                                         </div>
                                     </div>
 
@@ -86,7 +86,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="correo">Correo</label>
-                                            <input type="email" id="correo" class="form-control" required >
+                                            <input type="email" id="correo" name="correo" class="form-control" required >
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -108,13 +108,13 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="puesto">Puesto</label>
-                                            <input type="email" id="puesto" class="form-control" disabled>
+                                            <input type="text" id="puesto" name="puesto" class="form-control" disabled>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="nvl_acceso">Nivel de Acceso</label>
-                                            <input type="email" id="nvl_acceso" class="form-control" disabled>
+                                            <input type="text" id="nvl_acceso" name="nvl_acceso" class="form-control" disabled>
                                         </div>
                                     </div>
 
@@ -136,4 +136,7 @@
 
 </body>
 <?php include './include/js.php'; ?>
+<?php include './modals/modal-actualiza-contraseña.php'; ?>
 </html>
+<script src="../ajax/usuario-detalle.js"></script>
+<script src="../ajax/tools.js"></script>

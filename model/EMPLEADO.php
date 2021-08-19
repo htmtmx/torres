@@ -254,10 +254,10 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
                 empl.`apaterno`, empl.`amaterno`, empl.`telefono`, empl.`celular`, 
                 empl.`sexo`, empl.`fecha_registro`, empl.`correo_user`, 
                 empl.`pw`, empl.`puesto`, empl.`nivel_acceso`, empl.`estatus`, 
-                empl.`system_state`,  empr.`id_empresa`, empr.`nombre` AS nombre_empresa
+                empr.`id_empresa`, empr.`nombre` AS nombre_empresa
                 FROM `empleado` empl, `empresa` empr
                 WHERE empr.`id_empresa` = empl.`id_empresa_fk` 
-                AND empl.no_empleado > 0 AND empl.`system_state`>0 ".$concat;
+                AND empl.no_empleado > 0 ".$concat;
         $this->connect();
         $result = $this->getData($query);
         $this->close();
@@ -286,11 +286,10 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
     public function queryupdateEmpleado()
     {
         $query = "UPDATE `empleado` 
-        SET `id_empresa_fk` = '".$this->getIdEmpresaFk()."', `nombre` = '".$this->getNombre()."', 
+        SET `nombre` = '".$this->getNombre()."', 
         `apaterno` = '".$this->getApaterno()."', `amaterno` = '".$this->getAmaterno()."', 
         `telefono` = '".$this->getTelefono()."', `celular` = '".$this->getCelular()."', 
-        `sexo` = '".$this->getSexo()."', `correo_user` = '".$this->getCorreoUser()."', 
-        `puesto` = '".$this->getPuesto()."', `nivel_acceso` = '".$this->getNivelAcceso()."' 
+        `sexo` = '".$this->getSexo()."', `correo_user` = '".$this->getCorreoUser()."' 
         WHERE `empleado`.`no_empleado` = ".$this->getNoEmpleado();
         $this->connect();
         $result = $this->executeInstruction($query);
@@ -322,7 +321,7 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
 
     public function queryverificaCountUser()
     {
-        $query = "SELECT `no_empleado`, `nombre`, `apaterno`, `amaterno`, 
+        $query = "SELECT `no_empleado`, id_empresa_fk, `nombre`, `apaterno`, `amaterno`, 
                 `telefono`, `celular`, `sexo`, `fecha_registro`, `correo_user`, 
                 `pw`, `puesto`, `nivel_acceso`, `estatus` 
                 FROM `empleado` WHERE `correo_user` = '".$this->getCorreoUser()."' 
@@ -340,6 +339,14 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
                 WHERE `empleado`.`no_empleado` = ".$no_empleado;
         $this->connect();
         $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    function modifyPw(){
+        $query="UPDATE `empleado` SET `pw` = '".$this->getPw()."' 
+        WHERE `empleado`.`no_empleado` = ".$this->getNoEmpleado();
+        $this->connect();
+        $result=$this->executeInstruction($query);
         $this->close();
         return $result;
     }
