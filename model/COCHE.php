@@ -326,7 +326,7 @@ class COCHE extends CONEXION implements I_COCHE
                 FROM coche co, modelo mo, marca mar 
                 WHERE co.id_modelo_fk = mo.id_modelo 
                 AND co.no_vehiculo > 0
-                AND mar.id_marca = mo.id_marca_fk ".$concat." ORDER BY co.estatus DESC ";
+                AND mar.id_marca = mo.id_marca_fk ".$concat." ORDER BY co.estatus ASC ";
         $this->connect();
         $result = $this->getData($query);
         $this->close();

@@ -24,9 +24,9 @@
                             <span class="nav-link-text">Autos</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="./catalogo.php">Ver Catálogo</a>
                             <a class="dropdown-item" href="#">Registrar Adquisicion</a>
                             <a class="dropdown-item" href="#">Vender</a>
-                            <a class="dropdown-item" href="#">Ver Catálogo</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
