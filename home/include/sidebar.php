@@ -35,7 +35,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#">Agregar Nuevo</a>
-                            <a class="dropdown-item" href="#">Ver Todos</a>
+                            <a class="dropdown-item" href="./clientes.php">Ver Todos</a>
                         </div>
                     </li>
                 </ul>

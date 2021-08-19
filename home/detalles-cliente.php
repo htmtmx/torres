@@ -1,3 +1,6 @@
+<?php
+$idCliente=$_GET['idCliente'];
+?>
 <?php include_once "./include/session.php"?>
 <?php $titulo = "Inicio " ?>
 <!DOCTYPE html>
@@ -27,7 +30,9 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="./">Inicio</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Template</li>
+                                <li class="breadcrumb-item"><a href="./clientes.php">Clientes</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Detalles del cliente</li>
+
                             </ol>
                         </nav>
                     </div>
@@ -159,3 +164,4 @@
 </body>
 <?php include './include/js.php'; ?>
 </html>
+

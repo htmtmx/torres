@@ -4,21 +4,7 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-    <meta name="author" content="Creative Tim">
-    <title><?php echo $titulo; ?> - Autos Torres</title>
-    <!-- Favicon -->
-    <link rel="icon" href="../assets/img/logo.png" type="image/png">
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-    <!-- Icons -->
-    <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
-    <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
-    <!-- Page plugins -->
-    <!-- Argon CSS -->
-    <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+    <?php include_once "./include/header.php"?>
 </head>
 
 <style>
@@ -264,20 +250,20 @@
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <div class="col text-center position-absolute align-text-bottom py-3">
-                                        <a href="#!" class="btn btn-sm btn-primary">Vender</a>
+                                        <a href="#!" class="btn btn-sm btn-success">Vender</a>
                                     </div>
                                     <img class="d-block w-100" src="https://cdn.motor1.com/images/mgl/zOvpW/s3/volkswagen-id.4-2021-primera-prueba.jpg" alt="First slide">
 
                                 </div>
                                 <div class="carousel-item">
                                     <div class="col text-center position-absolute align-text-bottom py-3">
-                                        <a href="#!" class="btn btn-sm btn-primary">Vender</a>
+                                        <a href="#!" class="btn btn-sm btn-success">Vender</a>
                                     </div>
                                     <img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6TZcPrBm2u3Oyue4hyqmcg-dAH-DP70USMl9sXtoxHVAtx8cTCezjBPTYMJVBflZXMtQ&usqp=CAU" alt="Second slide">
                                 </div>
                                 <div class="carousel-item">
                                     <div class="col text-center position-absolute align-text-bottom py-3">
-                                        <a href="#!" class="btn btn-sm btn-primary">Vender</a>
+                                        <a href="#!" class="btn btn-sm btn-success">Vender</a>
                                     </div>
                                     <img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3QGQiLmpW3-AkMAjnc_2axgkkEPv1QrTT8g&usqp=CAU" alt="Third slide">
                                 </div>
@@ -356,11 +342,8 @@
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <span class="mr-2">60%</span>
                                         <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                                            </div>
+                                            <i class="fas fa-dollar-sign text-green"></i> 150,000
                                         </div>
                                     </div>
                                 </td>
