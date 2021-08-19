@@ -11,7 +11,6 @@ function consultaClientes(){
         {
             //COnvertimos el string a JSON
             let obj_result = JSON.parse(response);
-            console.log(obj_result);
             //Utilizamos los objetos a y los tratamos en una plantilla en tbody
             let template = "";
             let cont = 0;

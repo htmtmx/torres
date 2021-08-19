@@ -55,20 +55,27 @@ $idCliente=$_GET['idCliente'];
                         </div>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form id="frm-datos-cliente">
+                            <input type="hidden" id="idCliente" value="<?php echo $idCliente ?>">
                             <h6 class="heading-small text-muted mb-4">Información del Cliente</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-username">Username</label>
-                                            <input type="text" id="input-username" class="form-control" placeholder="Username" value="lucky.jesse">
+                                            <label class="form-control-label" for="nombre">Nombre</label>
+                                            <input type="text" id="nombre" class="form-control" placeholder="Nombre">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-email">Email address</label>
-                                            <input type="email" id="input-email" class="form-control" placeholder="jesse@example.com">
+                                            <label class="form-control-label" for="apaterno">Primer Apellido</label>
+                                            <input type="email" id="apaterno" class="form-control" placeholder="jesse@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="amaterno">Segundo Apellido</label>
+                                            <input type="email" id="amaterno" class="form-control" placeholder="jesse@example.com">
                                         </div>
                                     </div>
                                 </div>
@@ -173,4 +180,4 @@ $idCliente=$_GET['idCliente'];
 </body>
 <?php include './include/js.php'; ?>
 </html>
-
+<script src="../ajax/cliente-detalles.js"></script>
