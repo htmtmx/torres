@@ -119,7 +119,6 @@
         <?php include './include/footer.php'; ?>
     </div>
 </div>
-<?php include './modals/modal-add-cliente.php'; ?>
 </body>
 <?php include './include/js.php'; ?>
 </html>
