@@ -61,6 +61,7 @@
                                 <th scope="col">Registro</th>
                                 <th scope="col">Puesto</th>
                                 <th scope="col">Nivel de Acceso</th>
+                                <th scope="col">Estatus</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                             </thead>
@@ -69,7 +70,7 @@
                                 <th scope="row">
                                     987568611049
                                 </th>
-                                <td>
+                                <td><i class="fas fa-user-tie"></i>
                                     Ernesto Dominguez Alfaro
                                     <span class="badge badge-success">Activo</span>
                                 </td>
@@ -85,29 +86,72 @@
                                     2021-05-15 10:34:06
                                 </td>
                                 <td>
-                                    Jefe De Ventas
+                                    <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#cuentaUser">
+                                        <span class="btn-inner--icon"><i class="fas fa-edit text-green"></i>Gerente</span>
+                                    </button>
+
                                 </td>
                                 <td>
-                                    Administrador
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cuentaUser">
+                                        <i class="fas fa-edit text-green"></i> Administrador
+                                    </button>
                                 </td>
                                 <td>
-                                    <ul class="nav align-items-center ml-md-auto ">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">
-                                                <i class="fas fa-eye text-blue"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">
-                                                <i class="fas fa-pause-circle text-yellow"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">
-                                                <i class="fas fa-trash-alt text-red"></i>
-                                            </a>
-                                        </li>
+                                    <label class="custom-toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="custom-toggle-slider rounded-circle" data-label-off="Inactivo" data-label-on="Activo"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <button class="btn btn-icon btn-secondary" type="button">
+                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr idcliente="987568611049">
+                                <th scope="row">
+                                    1561561561
+                                </th>
+                                <td><i class="fas fa-user-tie"></i>
+                                    Gloria Ramirez Garza
+                                    <span class="badge badge-warning">Inactiva</span>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><i class="fas fa-phone"></i>6352015248</li>
+                                        <li><i class="fas fa-mobile-alt"></i>5514784916</li>
+                                        <li><i class="far fa-envelope"></i>ernestotelapresto@gmail.com</li>
                                     </ul>
+                                </td>
+                                <td>
+                                    Mujer
+                                </td>
+                                <td>
+                                    2021-05-15 10:34:06
+                                </td>
+                                <td>
+                                    <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#cuentaUser">
+                                        <span class="btn-inner--icon"><i class="fas fa-edit text-green"></i>  Jefe De Ventas</span>
+                                    </button>
+
+                                </td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cuentaUser">
+                                        <i class="fas fa-edit text-green"></i> Vendedor
+                                    </button>
+                                </td>
+                                <td>
+                                    <label class="custom-toggle">
+                                        <input type="checkbox">
+                                        <span class="custom-toggle-slider rounded-circle" data-label-off="Inactivo" data-label-on="Activo"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <button class="btn btn-icon btn-secondary" type="button">
+                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
@@ -119,6 +163,7 @@
         <?php include './include/footer.php'; ?>
     </div>
 </div>
+<?php include './modals/modal-cambia-accesos-usuario.php'; ?>
 </body>
 <?php include './include/js.php'; ?>
 </html>
