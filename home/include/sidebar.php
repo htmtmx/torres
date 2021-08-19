@@ -1,4 +1,5 @@
-
+<?php include './modals/modal-add-cliente.php'; ?>
+<?php include './modals/modal-add-usuario.php'; ?>
 <!-- Sidenav -->
 <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div class="scrollbar-inner">
@@ -34,7 +35,7 @@
                             <span class="nav-link-text">Clientes</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Agregar Nuevo</a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addCliente">Agregar Nuevo</a>
                             <a class="dropdown-item" href="./clientes.php">Ver Todos</a>
                         </div>
                     </li>
@@ -83,7 +84,7 @@
                             <span class="nav-link-text">Cuentas</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="./usuarios.php">Agregar Nuevo</a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addUsuario">Agregar Nuevo</a>
                             <a class="dropdown-item" href="./usuarios.php">Ver Todos</a>
                         </div>
                     </li>

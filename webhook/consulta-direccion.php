@@ -1,4 +1,6 @@
 <?php
-$noCliente="1";
-include_once "../control/controlCliente.php";
-var_dump(listDireccionesCliente($noCliente));
+if(isset($_POST['id'])){
+    $noCliente=$_POST['id'];
+    include_once "../control/controlCliente.php";
+    echo listDireccionesCliente($noCliente);
+} else echo "Faltan datos";

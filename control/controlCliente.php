@@ -65,9 +65,9 @@ function updateStatus($idCliente){
  *                 U P D A T E    C L I E N T E
  *******************************************************************/
 function updateCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoCliente,
-                       $telefonoCliente,$celularCliente,$correoCliente,$suscripcionCliente,
+                       $telefonoCliente,$celularCliente,$correoCliente,
                        $empresaCliente,$medioIdentificacion,$folioCliente,$tipoCliente,
-                       $rfcCliente,$statuscliente)
+                       $rfcCliente)
 {
     include_once "../model/CLIENTES.php";
     $objCliente = new CLIENTES();
@@ -78,13 +78,13 @@ function updateCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoClien
     $objCliente->setTelefono($telefonoCliente);
     $objCliente->setCelular($celularCliente);
     $objCliente->setCorreo($correoCliente);
-    $objCliente->setSubscripcion($suscripcionCliente);
+    $objCliente->setSubscripcion(1);
     $objCliente->setEmpresa($empresaCliente);
     $objCliente->setRfc($rfcCliente);
     $objCliente->setMedioIdentificación($medioIdentificacion);
     $objCliente->setFolio($folioCliente);
     $objCliente->setTipoCliente($tipoCliente);
-    $objCliente->setEstatus($statuscliente);
+    $objCliente->setEstatus(1);
     return $objCliente->queryupdateCliente();
 }
 

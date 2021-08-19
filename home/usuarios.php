@@ -45,7 +45,7 @@
                                 <h3 class="mb-0">Usuarios del sistema</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addCliente"> <i class="fas fa-plus"></i> Nuevo Usuario</a>
+                                <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addUsuario"> <i class="fas fa-plus"></i> Nuevo Usuario</a>
                             </div>
                         </div>
                     </div>

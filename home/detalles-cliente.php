@@ -56,73 +56,111 @@ $idCliente=$_GET['idCliente'];
                     </div>
                     <div class="card-body">
                         <form id="frm-datos-cliente">
-                            <input type="hidden" id="idCliente" value="<?php echo $idCliente ?>">
+                            <input type="hidden" name="idCliente" id="idCliente" value="<?php echo $idCliente ?>">
                             <h6 class="heading-small text-muted mb-4">Información del Cliente</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="nombre">Nombre</label>
-                                            <input type="text" id="nombre" class="form-control" placeholder="Nombre">
+                                            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="apaterno">Primer Apellido</label>
-                                            <input type="email" id="apaterno" class="form-control" placeholder="jesse@example.com">
+                                            <input type="text" name="apaterno"id="apaterno" class="form-control" placeholder="Primer Apellido">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="amaterno">Segundo Apellido</label>
-                                            <input type="email" id="amaterno" class="form-control" placeholder="jesse@example.com">
+                                            <input type="text" name="amaterno" id="amaterno" class="form-control" placeholder="Segundo Apellido">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-first-name">First name</label>
-                                            <input type="text" id="input-first-name" class="form-control" placeholder="First name" value="Lucky">
+                                            <label class="form-control-label" for="correo">Correo Electronico</label>
+                                            <input type="email"name="correo" id="correo" class="form-control" placeholder="example@gmail.com">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-last-name">Last name</label>
-                                            <input type="text" id="input-last-name" class="form-control" placeholder="Last name" value="Jesse">
+                                            <label class="form-control-label" for="telefono">Telefono</label>
+                                            <input type="text" name="telefono" id="telefono" class="form-control" placeholder="No. Telefono">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="celular">Celular</label>
+                                            <input type="text" id="celular" name="celular" class="form-control" placeholder="No. Celular">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <hr class="my-4" />
                             <!-- Address -->
-                            <h6 class="heading-small text-muted mb-4">Datos de Empresa</h6>
+                            <h6 class="heading-small text-muted mb-4">Otros datos</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-address">Address</label>
-                                            <input id="input-address" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                                            <label class="form-control-label" for="empresa">Empresa / Organizacion</label>
+                                            <input id="empresa" name="empresa"class="form-control" placeholder="Nombre Empresa" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="rfc">RFC</label>
+                                            <input id="rfc" name="rfc" class="form-control" placeholder="RFC" >
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-city">City</label>
-                                            <input type="text" id="input-city" class="form-control" placeholder="City" value="New York">
+                                            <label class="form-control-label" for="medio_identificacion_cliente">Se identifica con:</label>
+                                            <select id="medio_identificacion_cliente" name="medio_identificación_cliente" class="form-control">
+                                                <option value="INE">INE</option>
+                                                <option value="PASAPORTE">Pasaporte</option>
+                                                <option value="CEDULA">Cédula Profesional</option>
+                                                <option value="LICENCIA">Licencia de Conducir</option>
+                                                <option value="INAPAM">INAPAM</option>
+                                                <option value="ESCOLAR">Credencial de Estudiante</option>
+                                                <option value="CERTIFICADO">Certificado Escolar</option>
+                                                <option value="TITULO">Título Profesional</option>
+                                                <option value="CARTILLA">Cartilla de Servicio Militar</option>
+                                                <option value="SEGURO">Credencial IMSS ISSSTE</option>
+                                                <option value="CEDULA">Cédula de Idedntificacion Ciudadana</option>
+                                                <option value="OTRO">Otro</option>
+                                                <option value="NONE" >Ninguna</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-country">Country</label>
-                                            <input type="text" id="input-country" class="form-control" placeholder="Country" value="United States">
+                                            <label class="form-control-label" for="folio">Folio</label>
+                                            <input type="text" name="folio" id="folio" class="form-control" placeholder="Folio">
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-country">Postal code</label>
-                                            <input type="number" id="input-postal-code" class="form-control" placeholder="Postal code">
+                                            <label class="form-control-label" for="tipo_cliente">Tipo de cliente</label>
+                                            <select id="tipo_cliente" name="tipo_cliente" class="form-control">
+                                                <option value="0">Persona Física</option>
+                                                <option value="1">Persona Moral</option>
+                                                <option value="2">NA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="fecha_registro">Fecha Registro</label>
+                                            <input type="text" id="fecha_registro" class="form-control" placeholder="Falló" disabled="">
                                         </div>
                                     </div>
                                 </div>
@@ -130,6 +168,7 @@ $idCliente=$_GET['idCliente'];
                             <hr class="my-4" />
                             <!-- Description -->
                             <div class="col-lg-12 col-auto text-right">
+                                <span class="d-flex position-absolute w-100" id="mensajeUpdateCliente"></span>
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                         </form>
@@ -146,7 +185,7 @@ $idCliente=$_GET['idCliente'];
                                 <h3 class="mb-0">Direcciones</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addCliente">
+                                <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addDireccion">
                                     <i class="fas fa-plus"></i> Nueva Dirección</a>
                             </div>
                         </div>
@@ -157,15 +196,15 @@ $idCliente=$_GET['idCliente'];
                             <thead class="thead-light">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">No</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Contacto</th>
-                                <th scope="col">Detalles</th>
-                                <th scope="col">Registro</th>
+                                <th scope="col">Calle</th>
+                                <th scope="col">Colonia</th>
+                                <th scope="col">Municipio</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col"></th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
-                            <tbody id="tbl-clientes">
+                            <tbody id="tbl-direcciones">
 
                             </tbody>
                         </table>
@@ -179,5 +218,7 @@ $idCliente=$_GET['idCliente'];
 
 </body>
 <?php include './include/js.php'; ?>
+<?php include './modals/modal-add-direccion.php'; ?>
 </html>
 <script src="../ajax/cliente-detalles.js"></script>
+<script src="../ajax/tools.js"></script>
