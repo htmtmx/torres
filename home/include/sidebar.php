@@ -26,7 +26,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#">Registrar Adquisicion</a>
                             <a class="dropdown-item" href="#">Vender</a>
-                            <a class="dropdown-item" href="#">Ver Todos</a>
+                            <a class="dropdown-item" href="#">Ver Catálogo</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -89,7 +89,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="tables.html">
+                        <a class="nav-link" href="./configuracion.php">
                             <i class="ni ni-bullet-list-67 text-default"></i>
                             <span class="nav-link-text">Configuración</span>
                         </a>

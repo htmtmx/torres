@@ -30,6 +30,9 @@
                             </ol>
                         </nav>
                     </div>
+                    <div class="col-lg-6 col-auto text-right">
+                        <a href="#" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#addCliente"> <i class="fas fa-plus"></i> Nuevo Cliente</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -45,13 +48,22 @@
                                 <h3 class="mb-0">Clientes registrados</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addCliente"> <i class="fas fa-plus"></i> Nuevo Cliente</a>
+                                <div class="form-group mb-0">
+                                    <div class="input-group input-group-alternative input-group-merge">
+                                        <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-search"></i>
+                                                </span>
+                                        </div>
+                                        <input class="form-control" id="myInput" type="text" placeholder="Nombrer del cliente..">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="table-responsive">
                         <!-- Projects table -->
-                        <table class="table align-items-center table-flush">
+                        <table class="table align-items-center table-flush" >
                             <thead class="thead-light">
                             <tr>
                                 <th scope="col">#</th>
@@ -78,4 +90,13 @@
 <?php include './include/js.php'; ?>
 </html>
 <script src="../ajax/cliente-list.js"></script>
-
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#tbl-clientes tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
