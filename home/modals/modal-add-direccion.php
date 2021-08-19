@@ -9,12 +9,12 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <input type="hidden" id="idCliente" name="idCLiente" value="<?php echo $idCliente ?>">
+                <input type="hidden" id="idCliente" name="idCliente" value="<?php echo $idCliente ?>">
                 <div class="modal-body">
                     <div class="form-group row">
                         <label for="calle" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> Calle</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" id="calle" name="calle" required="" value="" >
+                            <input class="form-control" type="text" id="calle" name="calle" required="">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -26,7 +26,7 @@
                     <div class="form-group row">
                         <label for="noint" class="col-sm-2 col-form-label"> No interior</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" id="noint" name="noint" required>
+                            <input class="form-control" type="text" id="noint" name="noint">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -45,7 +45,6 @@
                         <label for="estado" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i>Estado</label>
                         <div class="col-lg-9">
                             <select name="estado" id="estado" class="form-control">
-                                <option value="no">Seleccione uno...</option>
                                 <option value="Aguascalientes">Aguascalientes</option>
                                 <option value="Baja California">Baja California</option>
                                 <option value="Baja California Sur">Baja California Sur</option>
@@ -56,7 +55,7 @@
                                 <option value="Coahuila">Coahuila</option>
                                 <option value="Colima">Colima</option>
                                 <option value="Durango">Durango</option>
-                                <option value="Estado de México">Estado de México</option>
+                                <option value="Estado de México" selected>Estado de México</option>
                                 <option value="Guanajuato">Guanajuato</option>
                                 <option value="Guerrero">Guerrero</option>
                                 <option value="Hidalgo">Hidalgo</option>
@@ -103,7 +102,6 @@
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
-
         </div>
     </div>
 </div>

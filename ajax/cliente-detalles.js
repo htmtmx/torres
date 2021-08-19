@@ -108,9 +108,7 @@ $("#frm-datos-cliente").on("submit", function(e){
 });
 
 $("#frm-add-direccion").on("submit", function(e){
-    //let tipocontrato = $('input[name="contrato"]:checked').val();
-    e.preventDefault();
-    var f = $(this);
+
     var formData = new FormData(document.getElementById("frm-add-direccion"));
     formData.append("dato", "valor");
     //formData.append(f.attr("name"), $(this)[0].files[0]);
@@ -128,5 +126,7 @@ $("#frm-add-direccion").on("submit", function(e){
             $("#mensajeAddDireccion").html(alerta);
         });
     $('#frm-add-direccion').trigger('reset');
+   // e.preventDefault();
     consultaDirecciones();
+
 });
