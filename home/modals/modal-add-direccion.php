@@ -9,17 +9,18 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <input type="hidden" id="idCliente" name="idCLiente" value="<?php echo $idCliente ?>">
                 <div class="modal-body">
                     <div class="form-group row">
                         <label for="calle" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> Calle</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" id="calle" name="calle" required="" >
+                            <input class="form-control" type="text" id="calle" name="calle" required="" value="" >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="noext" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> No exterior</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" id="noext" name="noext" required>
+                            <input class="form-control" type="text" id="noext" name="noext" required="">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -31,19 +32,19 @@
                     <div class="form-group row">
                         <label for="colonia" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> Colonia</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="tel" id="colonia" name="colonia" required>
+                            <input class="form-control" type="text" id="colonia" name="colonia" required="">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="municipio" class="col-sm-2 col-form-label">Municipio</label>
+                        <label for="municipio" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i>Municipio</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="tel" id="municipio" name="municipio">
+                            <input class="form-control" type="text" id="municipio" name="municipio">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="estado" class="col-sm-2 col-form-label">Estado</label>
+                        <label for="estado" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i>Estado</label>
                         <div class="col-lg-9">
-                            <select name="estado" class="form-control">
+                            <select name="estado" id="estado" class="form-control">
                                 <option value="no">Seleccione uno...</option>
                                 <option value="Aguascalientes">Aguascalientes</option>
                                 <option value="Baja California">Baja California</option>
@@ -81,7 +82,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="cp" class="col-sm-2 col-form-label">Codigo Postal</label>
+                        <label for="cp" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i>Codigo Postal</label>
                         <div class="col-lg-9">
                             <input class="form-control" type="text" id="cp" name="cp">
                         </div>
@@ -90,17 +91,19 @@
                         <label for="folio_cliente" class="col-sm-2 col-form-label">Referencias</label>
                         <div class="col-lg-9">
                             <div class="form-group">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea class="form-control" id="referencias" name="referencias" rows="3"></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
+                <span id="mensajeAddDireccion"></span>
                 <div class="modal-footer">
                     <span class="float-left"><i class="fas fa-asterisk text-red"></i> Obligatorio</span>
                     <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
+
         </div>
     </div>
-</div><?php
+</div>
