@@ -1,9 +1,16 @@
 <?php
 //include_once "../webhook/addContratoCompra.php";
 /*include_once "./controlContrato.php";
-echo consultaContrato(3724786545073591);
-*/
+echo consultaContrato(3724786545073591);*/
+
 /*include_once "../model/ABONOS.php";
 consultaAbonos();*/
+include_once "../control/controlCoche.php";
+
+consultaAllCochesOneFoto();
+echo "<br>*************";
+echo "<br>*************";
+echo "<br>*************";
+consultaCocheDetallesDocumentosFotos(1);
 //include_once "../webhook/consulta-direccion.php";
-include_once "../webhook/remove-file-vehiculo.php";
+//include_once "../webhook/remove-file-vehiculo.php";
