@@ -83,8 +83,8 @@
                             <span class="nav-link-text">Cuentas</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Agregar Nuevo</a>
-                            <a class="dropdown-item" href="#">Ver Todos</a>
+                            <a class="dropdown-item" href="./usuarios.php">Agregar Nuevo</a>
+                            <a class="dropdown-item" href="./usuarios.php">Ver Todos</a>
                         </div>
                     </li>
                     <li class="nav-item">
