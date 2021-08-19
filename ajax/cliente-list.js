@@ -22,7 +22,7 @@ function consultaClientes(){
                 let contacto="";
                 contacto += `<li><i class="fas fa-phone"></i>`+obj_result.telefono+`</li>`;
                 contacto += obj_result.celular.length>0 ? ` <li><i class="fas fa-mobile-alt"></i>`+obj_result.celular+`</li>`: "";
-                contacto += obj_result.correo.length>0 ? ` <li><i class="far fa-envelope"></i>`+obj_result.correo+`</li>`: "";
+                contacto += obj_result.correo.length>0 ? `<li><i class="far fa-envelope"></i> <a class="" href="mailto:${obj_result.correo}">${obj_result.correo}</a></li>`: "";
                 let detalles ="";
                 detalles += obj_result.empresa.length>0 ? obj_result.empresa: "";
                 detalles += obj_result.rfc.length>0 ? ` (`+obj_result.rfc+`)`: "";
@@ -34,7 +34,9 @@ function consultaClientes(){
                                     ${cont}
                                 </th>
                                 <td>
-                                    ${obj_result.no_cliente}
+                                    <a class="nav-link" href="./detalles-cliente.php?idCliente=${obj_result.no_cliente}">
+                                        ${obj_result.no_cliente}
+                                    </a>
                                 </td>
                                 <td>
                                     ${obj_result.nombre+" "+obj_result.apaterno+" "+obj_result.amaterno}
@@ -52,18 +54,23 @@ function consultaClientes(){
                                     ${obj_result.fecha_registro}
                                 </td>
                                 <td>
-                                    <div class="dropdown show">
-                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Acciones
-                                        </a>
-
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="./detalles-cliente.php?idCliente=${obj_result.no_cliente}"><i class="fas fa-eye text-blue"></i> Ver Detalles</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i> Suspender</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Eliminar</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-times text-red"></i> Cancelar</a>
-                                        </div>
-                                    </div>
+                                    <ul class="nav align-items-center ml-md-auto ">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="./detalles-cliente.php?idCliente=${obj_result.no_cliente}">
+                                                <i class="fas fa-eye text-blue"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">
+                                                <i class="fas fa-pause-circle text-yellow"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">
+                                                <i class="fas fa-trash-alt text-red"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </td>
                             </tr>`;
             });

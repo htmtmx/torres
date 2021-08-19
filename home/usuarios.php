@@ -99,12 +99,12 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="#">
-                                                <i class="fas fa-pause-circle text-orange"></i>
+                                                <i class="fas fa-pause-circle text-yellow"></i>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="#">
-                                                <i class="fas fa-times text-red"></i>
+                                                <i class="fas fa-trash-alt text-red"></i>
                                             </a>
                                         </li>
                                     </ul>
