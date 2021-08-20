@@ -49,7 +49,7 @@
                     <div class="form-group row">
                         <label for="subscripcion_cliente" class="col-sm-2 col-form-label">Subscripcion</label>
                         <div class="col-lg-9">
-                            <select id="subscripcion_cliente" name="subscripcion_clientee" class="form-control">
+                            <select id="subscripcion_cliente" name="subscripcion_cliente" class="form-control">
                                 <option value="0">Inactiva</option>
                                 <option value="1">Activa</option>
                             </select>
@@ -105,6 +105,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <span class="d-flex position-absolute w-100" id="mensajeAgregaCliente"></span>
                     <span class="float-left"><i class="fas fa-asterisk text-red"></i> Obligatorio</span>
                     <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">Guardar</button>

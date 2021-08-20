@@ -78,3 +78,26 @@ function consultaClientes(){
         },
     });
 }
+$("#frm-add-cliente").on("submit", function(e){
+
+    var formData = new FormData(document.getElementById("frm-add-cliente"));
+    formData.append("dato", "valor");
+    //formData.append(f.attr("name"), $(this)[0].files[0]);
+    $.ajax({
+        url: "../webhook/client-add.php",
+        type: "post",
+        dataType: "html",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false
+    })
+        .done(function(res){
+            //let alerta = cosntructMensaje("success",res);
+            alert(res);
+        });
+    $('#frm-add-cliente').trigger('reset');
+    consultaClientes();
+    e.preventDefault();
+
+});

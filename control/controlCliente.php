@@ -1,44 +1,30 @@
 <?php
 
-function queryCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoCliente,
+function queryCliente($nombreCliente,$apaternoCliente,$amaternoCliente,
                     $telefonoCliente,$celularCliente,$correoCliente,$suscripcionCliente,
                     $empresaCliente,$medioIdentificacion,$folioCliente,$tipoCliente,
-                    $rfcCliente, $estatus, $actionToRealize)
+                    $rfcCliente)
 {
     include_once "../model/CLIENTES.php";
+    include_once "../control/tool_ids_generate.php";
     $objCliente = new CLIENTES();
-    $objCliente->setNoCliente($noCliente);
-    $objCliente->setNombre("$nombreCliente");
-    $objCliente->setApaterno("$apaternoCliente");
-    $objCliente->setAmaterno("$amaternoCliente");
-    $objCliente->setTelefono("$telefonoCliente");
-    $objCliente->setCelular("$celularCliente");
+    $objCliente-> setNoCliente(gen_client_id());
+    $objCliente->setNombre($nombreCliente);
+    $objCliente->setApaterno($apaternoCliente);
+    $objCliente->setAmaterno($amaternoCliente);
+    $objCliente->setTelefono($telefonoCliente);
+    $objCliente->setCelular($celularCliente);
     $objCliente->setCorreo($correoCliente);
     $objCliente->setSubscripcion($suscripcionCliente);
-    $objCliente->setEmpresa("$empresaCliente");
-    $objCliente->setRfc("$rfcCliente");
-    $objCliente->setMedioIdentificación("$medioIdentificacion");
-    $objCliente->setFolio("$folioCliente");
+    $objCliente->setEmpresa($empresaCliente);
+    $objCliente->setRfc($rfcCliente);
+    $objCliente->setMedioIdentificación($medioIdentificacion);
+    $objCliente->setFolio($folioCliente);
     $objCliente->setTipoCliente($tipoCliente);
+    $objCliente->setFechaRegistro(date('Y-m-d H:i:s'));
+    return $objCliente-> queryaddCliente();
 
-    $actionMje = $actionToRealize == 0 ? " actualizó ": " registró ";
 
-    if ($actionToRealize== 1 && $noCliente == 0){
-        //voy a agregar un registro
-        //genero la  clave del cliente
-        include_once "./tool_ids_generate.php";
-        $objCliente-> setNoCliente(gen_client_id());
-        $objCliente->setFechaRegistro(date('Y-m-d H:i:s'));
-        $result = $objCliente-> queryaddCliente();
-    }
-    else{
-        //voy a solo actualizar los datos del cliente
-        $objCliente->setEstatus($estatus);
-        $result = $objCliente-> queryupdateCliente();
-    }
-
-    $mjeReturn = $result ? "Se ".$actionMje." correctamente al cliente " :"Error al intentar registrar";
-    echo  $mjeReturn;
 }
 /*****************************
 Trae consulta de clientes 1 o N
