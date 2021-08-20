@@ -29,7 +29,11 @@ function construyeGridCochesCatalogo(listaCoches) {
             switch (coche.estatus) {
                 case "0":
                     statusCche = `<div class="exclusive-price venta"><label>$ ${coche.precio_contado}</label></div>`;
-                    botonVender = `<a href="nuevaVenta.php?idCoche=${coche.no_vehiculo}" class="btn btn-sm btn-success float-right"> <i class="fas fa-dollar-sign text-white"></i> Vender</a>`;
+                    botonVender = `<a href="./nuevaVenta.php?idCoche=${coche.no_vehiculo}">
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cuentaUser">
+                                            <i class="fas fa-dollar-sign text-white"></i> Vender
+                                        </button>
+                                    </a>`;
                     break;
                 case "1":
                     statusCche =`<div class="exclusive-price vendido"><label>Vendido</label></div>`;
@@ -46,7 +50,8 @@ function construyeGridCochesCatalogo(listaCoches) {
               <div class="col-xl-4 order-xl-1">
                 <div class="card card-profile">
                 ${statusCche}
-                    <img src="${link}" alt="Image placeholder" class="card-img-top" style="max-height: 300px; width: auto;">
+                        <img src="${link}" alt="Image placeholder" class="card-img-top" style="max-height: 300px; width: auto;">
+                    </a>
                     <div class="card-body pt-0 py-3">
                         <div class="text-center">
                             <h5 class="h3">
@@ -86,7 +91,11 @@ function construyeGridCochesCatalogo(listaCoches) {
                     </div>
                     <div class="card-header text-center border-0">
                         <div class="d-flex justify-content-between">
-                            <a href="#" class="btn btn-sm btn-info  mr-4 "><i class="fas fa-list text-white"></i> Más Detalles</a>
+                            <a href="./detalles-coche.php?idCoche=${coche.no_vehiculo}">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cuentaUser">
+                                    <i class="fas fa-list text-white"></i> Mas detalles
+                                </button>
+                            </a>
                             ${botonVender}
                         </div>
                     </div>
