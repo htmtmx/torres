@@ -15,9 +15,9 @@ function consultaDetallesContrato($no_contrato)
  * C O N S U L T A   P A G O S    A B O N O S  C O N T R A T O
  *******************************************************************/
 function consultaPagosAbonosDeContrato($no_contrato)
-{//3724786545073591
+{
     include_once "../control/controlPago.php";
-    $listaPagos = consultaPago($no_contrato);
+    $listaPagos = consultaPagos($no_contrato);
     $arrayPagosContrato = array();
     foreach ($listaPagos as $pago) {
         $listaAbonos = consultaAbonosDePago($pago['id_pago']);

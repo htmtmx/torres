@@ -190,7 +190,9 @@ class PAGO extends CONEXION implements I_PAGO
 			        end as estatus_del_pago, p.tipo, p.no_contrato_fk, c.no_contrato, p.detalles
                     FROM pago p, contrato c 
                     where p.no_contrato_fk = c.no_contrato
-                    ".$filter;
+
+                    and p.no_contrato_fk = ".$no_contrato_fk." order by p.no_pago";
+
         $this->connect();
         $result = $this->getData($query);
         $this->close();
@@ -211,11 +213,11 @@ class PAGO extends CONEXION implements I_PAGO
         return $result;
     }
 
-    public function queryupdateEstatusPago($folio,$estatus_pago)
+    public function queryupdateEstatusPago($id_pago,$estatus_pago)
     {
         $query = "UPDATE `pago` 
                     SET `estatus_pago` = '".$estatus_pago."' 
-                    WHERE `pago`.`folio` = ".$folio;
+                    WHERE `pago`.`id_pago` = ".$id_pago;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

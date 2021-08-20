@@ -109,4 +109,15 @@ class ABONOS extends CONEXION
         $this->close();
         return $result;
     }
+
+    function querySumaAbonosPago($id_pago)
+    {
+        $query = "select sum(a.monto) as suma_abonos 
+                    from abonos a 
+                    where a.id_pago_fk = ".$id_pago;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 }
