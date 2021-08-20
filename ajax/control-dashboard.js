@@ -24,6 +24,8 @@ function consultaCochesDashBoard(){
         },
     });
 }
+
+
 function consultaAbonosContrato(){
     $.ajax({
         url: "../webhook/pagos-abonos-contrato.php",
@@ -39,6 +41,8 @@ function consultaAbonosContrato(){
         },
     });
 }
+
+
 function construyeAbonosContrato(listaAbonos) {
     let template="";
     let contador=0;

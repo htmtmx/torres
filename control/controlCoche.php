@@ -59,7 +59,6 @@ function consultaCocheDetallesCompletos($show_detalles,$noVehiculo){
             array_push($cochesData,$coche);
         }
     }
-    var_dump($cochesData);
     return json_encode($cochesData);
 }
 

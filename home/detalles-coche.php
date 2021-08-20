@@ -44,7 +44,7 @@ $noCoche = $_GET['idCoche'];
                     </nav>
                 </div>
                 <div class="col-lg-6 col-auto text-right">
-                    <input type="hidden" id="noCoche" value="<?php echo $noCoche;?>">
+                    <input type="text" id="noCoche" value="<?php echo $noCoche;?>">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cuentaUser">
                         <i class="fas fa-dollar-sign text-white"></i> Vender
                     </button>
@@ -112,7 +112,7 @@ $noCoche = $_GET['idCoche'];
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Precio a Credito</h5>
-                                    <span class="h1 font-weight-bold mb-0">$250,000</span>
+                                    <span class="h1 font-weight-bold mb-0" id="precioCredito">$</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -131,35 +131,8 @@ $noCoche = $_GET['idCoche'];
         <div class="row">
             <div class="col-xl-4 order-xl-1">
                 <div class="card card-profile">
-                    <div id="carouselExampleIndicators" class="carousel slide card-img-top" data-ride="carousel">
-
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="exclusive-price venta"><label>$ 100000.00</label></div>
-                                <img class="d-block w-100" src="https://cdn.motor1.com/images/mgl/zOvpW/s3/volkswagen-id.4-2021-primera-prueba.jpg" alt="First slide">
-                            </div>
-                            <div class="carousel-item">
-                                <div class="exclusive-price venta"><label>$ 100000.00</label></div>
-                                <img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6TZcPrBm2u3Oyue4hyqmcg-dAH-DP70USMl9sXtoxHVAtx8cTCezjBPTYMJVBflZXMtQ&usqp=CAU" alt="Second slide">
-                            </div>
-                            <div class="carousel-item">
-                                <div class="exclusive-price venta"><label>$ 100000.00</label></div>
-                                <img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3QGQiLmpW3-AkMAjnc_2axgkkEPv1QrTT8g&usqp=CAU" alt="Third slide">
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Anterior</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
+                    <div id="carouselCocheFotos" class="carousel slide card-img-top" data-ride="carousel">
+                        <!-- AJAX RESPONSE CAROUSEL-->
                     </div>
                     <div class="card-body pt-0 py-3">
                             <div class="card">
@@ -178,71 +151,8 @@ $noCoche = $_GET['idCoche'];
                                 <div class="table-responsive">
                                     <!-- Projects table -->
                                     <table class="table align-items-center table-flush">
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row">
-                                                Factura Original
-                                            </th>
-                                            <td>
-                                                SI
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                    <span class="btn-inner--icon"><i class="fas fa-pen text-primary"></i></span>
-                                                </button>
-                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                    <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                Gato Hidraulico
-                                            </th>
-                                            <td>
-                                                SI
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                    <span class="btn-inner--icon"><i class="fas fa-pen text-primary"></i></span>
-                                                </button>
-                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                    <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                Refaccion
-                                            </th>
-                                            <td>
-                                                NO
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                    <span class="btn-inner--icon"><i class="fas fa-pen text-primary"></i></span>
-                                                </button>
-                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                    <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                Factura Original
-                                            </th>
-                                            <td>
-                                                SI
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                    <span class="btn-inner--icon"><i class="fas fa-pen text-primary"></i></span>
-                                                </button>
-                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                    <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        <tbody id="tbl-detalles">
+                                        <!-- AJAX RESPONSE TABLA DETALLES -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -439,6 +349,7 @@ $noCoche = $_GET['idCoche'];
             </div>
         </div>
         <div class="row">
+            <!--- Tablas de documentos de vehiculo--->
             <div class="col-xl-6">
                 <div class="card">
                     <div class="card-header border-0">
@@ -464,122 +375,14 @@ $noCoche = $_GET['idCoche'];
                                 <th scope="col"></th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">
-                                    Factura <i class="fas fa-lock text-red"></i>
-                                </th>
-                                <td>
-                                    PDF
-                                </td>
-                                <td>
-                                    Archivo protegido
-                                </td>
-                                <td>
-                                    <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
-                                        <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Tarjeta de Circulacion
-                                </th>
-                                <td>
-                                    PDF
-                                </td>
-                                <td>
-                                    Disponible a vendedores
-                                </td>
-                                <td>
-                                    <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
-                                        <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Factura <i class="fas fa-lock text-red"></i>
-                                </th>
-                                <td>
-                                    PDF
-                                </td>
-                                <td>
-                                    Archivo protegido
-                                </td>
-                                <td>
-                                    <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
-                                        <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Factura <i class="fas fa-lock text-red"></i>
-                                </th>
-                                <td>
-                                    PDF
-                                </td>
-                                <td>
-                                    Archivo protegido
-                                </td>
-                                <td>
-                                    <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
-                                        <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Factura <i class="fas fa-lock text-red"></i>
-                                </th>
-                                <td>
-                                    PDF
-                                </td>
-                                <td>
-                                    Archivo protegido
-                                </td>
-                                <td>
-                                    <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
-                                        <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
+                            <tbody id="tblDocsCoche">
+                            <!-- AJAX RESPONSE DOCS CAR-->
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+            <!--- Tablas de fotos de vehiculo--->
             <div class="col-xl-6">
                 <div class="card">
                     <div class="card-header border-0">
@@ -603,67 +406,8 @@ $noCoche = $_GET['idCoche'];
                                 <th scope="col">Acciones</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <a href="#" class=" mr-3 align-items-center d-flex">
-                                            <img src="https://img.autocosmos.com/noticias/fotosprinc/NAZ_031b863b4cf04a76b56418ba039051f6.jpg" height="90" alt="Image placeholder" class="card-img-top">
-                                        </a>
-                                    </div>
-                                </th>
-                                <td>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <a href="#" class=" mr-3 align-items-center d-flex">
-                                            <img src="https://img.autocosmos.com/noticias/fotosprinc/NAZ_031b863b4cf04a76b56418ba039051f6.jpg" height="90" alt="Image placeholder" class="card-img-top">
-                                        </a>
-                                    </div>
-                                </th>
-                                <td>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <a href="#" class=" mr-3 align-items-center d-flex">
-                                            <img src="https://img.autocosmos.com/noticias/fotosprinc/NAZ_031b863b4cf04a76b56418ba039051f6.jpg" height="90" alt="Image placeholder" class="card-img-top">
-                                        </a>
-                                    </div>
-                                </th>
-                                <td>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
+                            <tbody id="tblfotosCoche">
+                            <!-- AJAX RESPONSE -->
                             </tbody>
                         </table>
                     </div>
@@ -1427,3 +1171,4 @@ $noCoche = $_GET['idCoche'];
 </body>
 <?php include './include/js.php'; ?>
 </html>
+<script src="../ajax/control-detalles-coche.js"></script>

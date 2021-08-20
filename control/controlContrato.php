@@ -20,6 +20,15 @@ function consultaContrato($no_contrato)
     $objContrato->setNoContrato($no_contrato);
     $arrayContrato = $objContrato->consultaContrato($objContrato->getNoContrato());
     return $arrayContrato;
+}/********************************************************************
+ *               C O N S U L T A   C O N T R A T O    P O R    No_vehiculo
+ *******************************************************************/
+function consultaContratosCoche($no_vehiculo)
+{
+    include_once "../model/CONTRATO.php";
+    $objContrato = new CONTRATO();
+    $arrayContrato = $objContrato->queryconsultaContratosPorCoche($no_vehiculo);
+    return json_encode($arrayContrato);
 }
 /********************************************************************
  * C O N S U L T A   P A G O S    A B O N O S  C O N T R A T O
