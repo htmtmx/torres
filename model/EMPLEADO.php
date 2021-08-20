@@ -321,10 +321,14 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
 
     public function queryverificaCountUser()
     {
-        $query = "SELECT `no_empleado`, id_empresa_fk, `nombre`, `apaterno`, `amaterno`, 
-                `telefono`, `celular`, `sexo`, `fecha_registro`, `correo_user`, 
-                `pw`, `puesto`, `nivel_acceso`, `estatus` 
-                FROM `empleado` WHERE `correo_user` = '".$this->getCorreoUser()."' 
+        $query = "SELECT empl.`no_empleado`, empl.`id_empresa_fk`, empl.`nombre`, 
+                empl.`apaterno`, empl.`amaterno`, empl.`telefono`, empl.`celular`, 
+                empl.`sexo`, empl.`fecha_registro`, empl.`correo_user`, 
+                empl.`pw`, empl.`puesto`, empl.`nivel_acceso`, empl.`estatus`, 
+                empr.`id_empresa`, empr.`nombre` AS nombre_empresa
+                FROM `empleado` empl, `empresa` empr
+                WHERE empr.`id_empresa` = empl.`id_empresa_fk`
+                AND `correo_user` = '".$this->getCorreoUser()."' 
                 AND `pw` = '".$this->getPw()."' AND `estatus` = 1 ";
         $this->connect();
         $result = $this->getData($query);

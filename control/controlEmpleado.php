@@ -28,6 +28,7 @@ function verificaCuentaUser($correo,$pw)
         $_SESSION['nivel_acceso']   = $obj_user[0]['nivel_acceso'];
         $_SESSION['correo_user']    = $obj_user[0]['correo_user'];
         $_SESSION['rfc_empresa']    = $obj_user[0]['id_empresa_fk'];
+        $_SESSION['nombre_empresa'] = $obj_user[0]['nombre_empresa'];
         return true;
     }
     return false;
@@ -103,7 +104,7 @@ function updateEmpleado($nombre,$apaterno_user,$amaterno_user,$telefono_user,$ce
     return $objEmpleado->queryupdateEmpleado();
 }
 
-function verficaUsuarioPw($pwa,$pwn){
+function verficaUsuarioPw($pwa,$pwn,$pwc){
     include_once "../model/EMPLEADO.php";
     session_start();
     $obj_empleado = new EMPLEADO();
@@ -112,9 +113,11 @@ function verficaUsuarioPw($pwa,$pwn){
     $md5PwActual = md5($pwa);
     $obj_empleado->setPw($md5PwActual);
     if($obj_empleado->queryconsultaEmpleado($obj_empleado->getNoEmpleado())){
-        $md5PwNew = md5($pwn);
-        $obj_empleado->setPw($md5PwNew);
-        return $obj_empleado->modifyPw();
+        if($pwa!=$pwn){
+            $md5PwNew = md5($pwn);
+            $obj_empleado->setPw($md5PwNew);
+            return $obj_empleado->modifyPw();
+        } else return false;
     }
     return false;
 }

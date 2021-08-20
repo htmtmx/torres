@@ -7,7 +7,7 @@ if(isset($_POST['pwo'])&& isset($_POST['pw']) && isset($_POST['cpw'])){
 
     if($pwn== $pwc){
         include_once "../control/controlEmpleado.php";
-        $result = verficaUsuarioPw($pwa,$pwn) ? "Se ha cambiado la contraseña correctamente" : "Tu contraseña actual es incorrecta";
+        $result = verficaUsuarioPw($pwa,$pwn,$pwc) ? "Se ha cambiado la contraseña correctamente" : "Tu contraseña actual es incorrecta";
         echo $result;
     }else  echo "Hubo un error";
 
