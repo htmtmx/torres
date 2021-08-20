@@ -259,7 +259,7 @@ function constructObjContrato($formaPago,$noCliente,$noVehiculo, $tipoContrato,
     $claveContrato=gen_no_contrato();
     $obj_cont->setNoContrato($claveContrato);
     //Cuando se implemente el JS se cambiara el id empleado por el $_SESSION[no_empleado]
-    $idEmpleado=58655210;
+    $idEmpleado=7056282536482632;
     $obj_cont->setNoEmpleadoFk($idEmpleado);
     $obj_cont->setNoClienteFk($noCliente);
     $obj_cont->setNoVehiculoFk($noVehiculo);

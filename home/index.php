@@ -155,70 +155,8 @@
                                 <th scope="col"></th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">
-                                   1
-                                </th>
-                                <td>
-                                  HMK9393
-                                </td>
-                                <td>
-                                   Nissan Tiida 2015
-                                </td>
-                                <td>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                </td>
-                                <td>
-                                    <i class="fas fa-dollar-sign text-green"></i> 150,000
-                                </td>
-                                <td>
-                                    <i class="fas fa-tag text-green"></i> EN VENTA
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Acciones
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#"><i class="fas fa-dollar-sign text-green"></i> Vender</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver mas</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    1
-                                </th>
-                                <td>
-                                    HMK9393
-                                </td>
-                                <td>
-                                    Nissan Tiida 2015
-                                </td>
-                                <td>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                </td>
-                                <td>
-                                    <i class="fas fa-dollar-sign text-green"></i> 150,000
-                                </td>
-                                <td>
-                                    <i class="fas fa-tag text-green"></i> EN VENTA
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Acciones
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#"><i class="fas fa-dollar-sign text-green"></i> Vender</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver mas</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                            <tbody id="tblCoches">
+
                             </tbody>
                         </table>
                     </div>
@@ -226,7 +164,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-4">
+            <div class="col-xl-6">
                 <div class="card">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
@@ -239,47 +177,16 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <!-- Projects table -->
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="col text-center position-absolute align-text-bottom py-3">
-                                        <a href="#!" class="btn btn-sm btn-success">Vender</a>
-                                    </div>
-                                    <img class="d-block w-100" src="https://cdn.motor1.com/images/mgl/zOvpW/s3/volkswagen-id.4-2021-primera-prueba.jpg" alt="First slide">
-
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="col text-center position-absolute align-text-bottom py-3">
-                                        <a href="#!" class="btn btn-sm btn-success">Vender</a>
-                                    </div>
-                                    <img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6TZcPrBm2u3Oyue4hyqmcg-dAH-DP70USMl9sXtoxHVAtx8cTCezjBPTYMJVBflZXMtQ&usqp=CAU" alt="Second slide">
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="col text-center position-absolute align-text-bottom py-3">
-                                        <a href="#!" class="btn btn-sm btn-success">Vender</a>
-                                    </div>
-                                    <img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3QGQiLmpW3-AkMAjnc_2axgkkEPv1QrTT8g&usqp=CAU" alt="Third slide">
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Anterior</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
+                        <!-- CAROUSEL COCHES -->
+                        <div id="caroucelCochesDinamico" class="carousel slide" data-ride="carousel">
+                            <!--
+                            AJAX CAROUSEL
+                            -->
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-8">
+            <div class="col-xl-6">
                 <div class="card">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
@@ -482,3 +389,4 @@
 </body>
 <?php include './include/js.php'; ?>
 </html>
+<script src="../ajax/control-dashboard.js"></script>

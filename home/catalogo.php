@@ -41,8 +41,8 @@ $no_vehiculo = 0;
                     </div>
                     <div class="col-lg-3 col-6 d-flex py-3 w-100">
                         <select id="filtro" name="filtro" class="form-control">
-                            <option value="0">Vendidos</option>
-                            <option value="1">En Venta</option>
+                            <option value="0">En venta</option>
+                            <option value="1">Vendidos</option>
                             <option value="-1">Apartados</option>
                             <option value="999" selected>Todos</option>
                         </select>
