@@ -50,6 +50,9 @@ a:hover{
     right: 5px;
 }
 
+.nonePunto{
+    text-decoration: none !important;
+}
 .avatar{
     max-width: 35px;
 }

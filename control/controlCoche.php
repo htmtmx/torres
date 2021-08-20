@@ -7,12 +7,12 @@ function consultaCoches($show_detalles,$noVehiculo)
     var_dump($result);
 }
 
-function consultaAllCochesOneFoto($noVehiculo)
+function consultaAllCochesOneFoto($noVehiculo,$filter)
 {
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
     include_once "../control/controlFileVehiculo.php";
-    $arrayCoches = $objCoche->queryconsultaCoches($noVehiculo);
+    $arrayCoches = $objCoche->queryconsultaCoches($noVehiculo,$filter);
     $dataCochesFoto = array();
     foreach ($arrayCoches as $coche) {
         $arrayFotos = consultaFotoCoche($coche["no_vehiculo"]);

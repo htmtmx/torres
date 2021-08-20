@@ -8,7 +8,9 @@ function consultaCochesOneFoto(){
     $.ajax({
         url: "../webhook/car-list-one-foto.php",
         type: "POST",
-        data: { id: $("#no_vehiculo").val() },
+        data: { id: $("#no_vehiculo").val(),
+            filter: $("#filtro").val()
+        },
         success: function (response)
         {
             let obj_result = JSON.parse(response);
@@ -45,7 +47,7 @@ function construyeGridCochesCatalogo(listaCoches) {
             let foto = coche[0];
             let link = foto.length < 1 ? "https://hescorp.com.mx/wp-content/themes/consultix/images/no-image-found-360x250.png" : foto[0].path;
             let credito = coche.opc_credito == "1" && coche.estatus== "0" ? `<li><strong>Costo a Credito: $</strong>${coche.precio_credito}</li>`:"";
-            let contado = coche.opc_credito == "1" && coche.estatus== "0" ? `<li><strong>Precio de Lista: $</strong>${coche.precio_contado}</li>`:"";
+            let contado = coche.estatus== "0" ? `<li><strong>Precio de Lista: $</strong>${coche.precio_contado}</li>`:"";
             template += `
               <div class="col-xl-4 order-xl-1">
                 <div class="card card-profile">
@@ -106,3 +108,8 @@ function construyeGridCochesCatalogo(listaCoches) {
     );
     return template;
 }
+
+$("#filtro").change(function ()
+{
+    consultaCochesOneFoto();
+});

@@ -179,6 +179,7 @@ class PAGO extends CONEXION implements I_PAGO
 
     public function  queryconsultaPago($no_contrato_fk)
     {
+        $filter = $no_contrato_fk>0?" AND p.no_contrato_fk = ".$no_contrato_fk : "";
         $query = "SELECT p.id_pago, p.no_transaccion, p.concepto, p.total, p.fecha_hora_creacion as fecha_pago, 
                     c.fecha_primer_pago as pagar_antes_de, p.no_pago, p.estatus_pago, 
 		            case
@@ -189,7 +190,9 @@ class PAGO extends CONEXION implements I_PAGO
 			        end as estatus_del_pago, p.tipo, p.no_contrato_fk, c.no_contrato, p.detalles
                     FROM pago p, contrato c 
                     where p.no_contrato_fk = c.no_contrato
+
                     and p.no_contrato_fk = ".$no_contrato_fk." order by p.no_pago";
+
         $this->connect();
         $result = $this->getData($query);
         $this->close();
