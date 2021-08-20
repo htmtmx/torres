@@ -71,14 +71,13 @@ function consultaDirecciones(){
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <a class="dropdown-item" href="#"><i class="fas fa-edit text-blue"></i> Editar</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-trash-alt text-red"></i> Eliminar</a>
+                                            <a class="dropdown-item btnEliminaDireccion" "href="#"> <i class="fas fa-trash-alt text-red"></i> Eliminar</a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>`;
             });
             $("#tbl-direcciones").html(template);
-
         },
     });
 }
@@ -130,3 +129,31 @@ $("#frm-add-direccion").on("submit", function(e){
     consultaDirecciones();
 
 });
+
+
+//LISTENER PARA ELIMINAR DIRECCIONES
+$(document).on("click", ".btnEliminaDireccion", function () {
+    if (confirm("¿Esta seguro de que desea eliminar esta direccion?")){
+        let elementDireccionSelect = $(this)[0].parentElement.parentElement.parentElement.parentElement;
+        let idDireccion = $(elementDireccionSelect).attr("iddireccion");
+        eliminarDireccion(idDireccion)
+    }
+
+});
+
+
+//FUNCION PARA ELIMINAR DIRECCION
+function  eliminarDireccion(idDireccion){
+    $.ajax({
+        url: "../webhook/direccion-delete.php",
+        type: 'POST',
+        data: {
+            idDir: idDireccion
+        },
+        success: function (mje) {
+            consultaDirecciones();
+            console.log(mje);
+            alert(mje);
+        }
+    });
+}

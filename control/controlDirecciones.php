@@ -13,3 +13,10 @@ function addDireccion($idCliente,$calle,$noExt,$noInt,$colonia,$municipio,$estad
     $objDir->setReferencias($referencias);
     return $objDir->queryaddDireccion();
 }
+
+function deleteDireccion($idDir){
+    include_once "../model/DIRECCIONES.php";
+    $objDir = new DIRECCIONES();
+    $objDir->setIdDireccion($idDir);
+    return $objDir->querydeleteDireccion();
+}

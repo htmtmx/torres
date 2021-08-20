@@ -232,10 +232,10 @@ class DIRECCIONES extends CONEXION implements I_DIRECCIONES
         $this->close();
         return $result;
     }
-    public function querydeleteDireccion($id_direccion)
+    public function querydeleteDireccion()
     {
         $query = "DELETE FROM `direcciones` 
-                WHERE `direcciones`.`id_direccion` = ".$id_direccion;
+                WHERE `direcciones`.`id_direccion` = ".$this->getIdDireccion();
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
