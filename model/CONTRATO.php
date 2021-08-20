@@ -260,7 +260,7 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         $this->estatus = $estatus;
     }
 
-    public function consultaContrato($no_contrato)
+    public function consultaDetallesContrato($no_contrato)
     {
         $concat = "";
         if ($no_contrato!= 0) {
@@ -282,6 +282,25 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         FROM contrato con, empleado e, cliente cli, coche v, marca ma, modelo mo 
         where con.no_empleado_fk = e.no_empleado AND con.no_cliente_fk = cli.no_cliente 
         AND con.no_vehiculo_fk = v.no_vehiculo AND ma.id_marca = mo.id_marca_fk AND v.id_modelo_fk = mo.id_modelo ".$concat;
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+    function consultaContrato($no_contrato)
+    {
+        $query = "SELECT con.no_contrato,con.plazo,con.fecha_primer_pago, con.enganche, con.saldo,
+		con.subtotal, con.iva, con.total,con.no_vehiculo_fk, con.no_empleado_fk, con.no_cliente_fk, 
+		con.hora_fecha_creacion as cont_date_creacion,  
+		 con.forma_pago,  con.tipo_contrato, 
+		case 
+			when con.tipo_contrato = 0 then 'Venta de Vehiculo'
+			when con.tipo_contrato = 1 then 'Adquisición de Vehiculo'
+			else 'Tipo de contrato desconocido'
+			end as nombre_tipo_de_contrato,con.estatus as cont_status
+        FROM contrato con 
+        where con.no_contrato = ".$no_contrato;
         $this->connect();
         $result = $this->getData($query);
         $this->close();

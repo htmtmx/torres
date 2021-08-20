@@ -7,7 +7,7 @@ function consultaDetallesContrato($no_contrato)
     include_once "../model/CONTRATO.php";
     $objContrato = new CONTRATO();
     $objContrato->setNoContrato($no_contrato);
-    $arrayContrato = $objContrato->consultaContrato($objContrato->getNoContrato());
+    $arrayContrato = $objContrato->consultaDetallesContrato($objContrato->getNoContrato());
     return json_encode($arrayContrato);
 }
 /********************************************************************
@@ -377,7 +377,7 @@ function consultaAvancePago($no_contrato)
     }
     $totalContrato = $arrayContrato[0]['total'];
     $avance = ($totalAbonos*100)/$totalContrato;
-    array_push($arrayContrato,$avance);
+    array_push($arrayContrato[0],$avance);
     var_dump($arrayContrato);
 }
 
