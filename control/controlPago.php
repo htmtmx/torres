@@ -2,11 +2,11 @@
 /********************************************************************
  *         U P D A T E     E S T A T U S     P A G O
  *******************************************************************/
-function updateEstatusPago($folio,$estatus_pago)
+function updateEstatusPago($id_pago,$estatus_pago)
 {
     include_once "../model/PAGO.php";
     $objPago = new PAGO();
-    $result = $objPago->queryupdateEstatusPago($folio,$estatus_pago);
+    $result = $objPago->queryupdateEstatusPago($id_pago,$estatus_pago);
     return $result;
 }
 /********************************************************************
@@ -23,7 +23,7 @@ function deletePago($folio)
 /********************************************************************
  * C O N S U L T A     P A G O S     P O R     N O      C O N T R A T O
  *******************************************************************/
-function consultaPago($no_contrato_fk)
+function consultaPagos($no_contrato_fk)
 {
     include_once "../model/PAGO.php";
     $objPago = new PAGO();
