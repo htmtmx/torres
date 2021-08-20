@@ -1,6 +1,6 @@
 <?php
 /********************************************************************
- *               C O N S U L T A     C O N T R A T O
+ *               C O N S U L T A    D E T A L L E S    C O N T R A T O
  *******************************************************************/
 function consultaDetallesContrato($no_contrato)
 {
@@ -10,7 +10,17 @@ function consultaDetallesContrato($no_contrato)
     $arrayContrato = $objContrato->consultaContrato($objContrato->getNoContrato());
     return json_encode($arrayContrato);
 }
-
+/********************************************************************
+ *               C O N S U L T A    C O N T R A T O
+ *******************************************************************/
+function consultaContrato($no_contrato)
+{
+    include_once "../model/CONTRATO.php";
+    $objContrato = new CONTRATO();
+    $objContrato->setNoContrato($no_contrato);
+    $arrayContrato = $objContrato->consultaContrato($objContrato->getNoContrato());
+    return $arrayContrato;
+}
 /********************************************************************
  * C O N S U L T A   P A G O S    A B O N O S  C O N T R A T O
  *******************************************************************/
@@ -343,3 +353,22 @@ function insertaAbono($idPago,$monto,$notas){
     $obj_Abono->setNotas($notas);
     return $obj_Abono->queryaddAbono();
 }
+
+function consultaAvancePago($no_contrato)
+{
+    include_once "../control/controlPago.php";
+    include_once "../control/controlAbonos.php";
+    $arrayContrato = consultaContrato($no_contrato);
+    $arrayPagos = consultaPagos($no_contrato);
+    $totalAbonos = 0;
+    foreach ($arrayPagos as $pago) {
+        $arraySumaAbonos = sumatoriaDeAbonos($pago['id_pago']);
+        $sumaDeAbonos = $arraySumaAbonos[0]['suma_abonos'];
+        $totalAbonos = $totalAbonos+$sumaDeAbonos;
+    }
+    $totalContrato = $arrayContrato[0]['total'];
+    $avance = ($totalAbonos*100)/$totalContrato;
+    array_push($arrayContrato,$avance);
+    var_dump($arrayContrato);
+}
+

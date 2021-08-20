@@ -29,3 +29,7 @@ echo verificaAbono($no_contrato,$monto);*/
 
 /*include_once "../control/controlAbonos.php";
 echo sumatoriaDeAbonos(20210817576779);*/
+
+include_once "../control/controlContrato.php";
+$no_contrato = 3724786545073591;
+consultaAvancePago($no_contrato);
