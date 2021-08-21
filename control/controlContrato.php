@@ -401,3 +401,22 @@ function consultaAvanceDeCadaPagoDeContrato($no_contrato)
     }
     var_dump($arrayAvance);
 }
+
+function consultaPagosAbonosDeContratoCompleto($no_contrato)
+{
+    include_once "../control/controlPago.php";
+    $arrayContrato = consultaContrato($no_contrato);
+    $listaPagos = consultaPagos($no_contrato);
+    $arrayPagosContrato = array();
+    foreach ($listaPagos as $pago) {
+        $listaAbonos = consultaAbonosDePago($pago['id_pago']);
+        array_push($pago, $listaAbonos);
+        array_push($arrayPagosContrato,$pago);
+    }
+    foreach ($arrayContrato as $contrato) {
+        array_push($contrato,$arrayPagosContrato);
+    }
+    //var_dump($contrato);
+    return json_encode($contrato);
+    //return json_encode($arrayPagosContrato);
+}

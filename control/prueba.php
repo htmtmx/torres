@@ -37,4 +37,6 @@ consultaAvancePago($no_contrato);
 */
 include_once "../control/controlContrato.php";
 $no_contrato = 3724786545073591;
-consultaAvanceDeCadaPagoDeContrato($no_contrato);
+consultaPagosAbonosDeContratoCompleto($no_contrato);
+/*$no_contrato = 3724786545073591;
+consultaAvanceDeCadaPagoDeContrato($no_contrato);*/
