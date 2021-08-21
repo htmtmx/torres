@@ -363,7 +363,7 @@ function insertaAbono($idPago,$monto,$notas){
     return $obj_Abono->queryaddAbono();
 }
 
-function consultaAvancePago($no_contrato)
+function consultaAvancePagoGeneralDeContrato($no_contrato)
 {
     include_once "../control/controlPago.php";
     include_once "../control/controlAbonos.php";
@@ -381,3 +381,23 @@ function consultaAvancePago($no_contrato)
     var_dump($arrayContrato);
 }
 
+function consultaAvanceDeCadaPagoDeContrato($no_contrato)
+{
+    include_once "../control/controlPago.php";
+    include_once "../control/controlAbonos.php";
+    $arrayPagos = consultaPagos($no_contrato);
+    $arrayAvance = array();
+    foreach ($arrayPagos as $pago) {
+        $totalAbonos = 0;
+        $arraySumaAbonos = sumatoriaDeAbonos($pago['id_pago']);
+        $sumaDeAbonos = $arraySumaAbonos[0]['suma_abonos'];
+        $totalAbonos = $totalAbonos+$sumaDeAbonos;
+
+        $totalPago = $pago['total'];
+        $avance = ($totalAbonos*100)/$totalPago;
+        array_push($pago,$arraySumaAbonos);
+        array_push($pago,$avance);
+        array_push($arrayAvance,$pago);
+    }
+    var_dump($arrayAvance);
+}

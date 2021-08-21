@@ -1,5 +1,5 @@
 <?php
-include_once "../webhook/addContratoCompra.php";
+//include_once "../webhook/addContratoCompra.php";
 /*include_once "./controlContrato.php";
 echo "<br>***************************************************************";
 echo "<br>**            CONSULTA CONTRATO CON PAGOS Y ABONOS           **";
@@ -35,3 +35,6 @@ include_once "../control/controlContrato.php";
 $no_contrato = 3724786545073591;
 consultaAvancePago($no_contrato);
 */
+include_once "../control/controlContrato.php";
+$no_contrato = 3724786545073591;
+consultaAvanceDeCadaPagoDeContrato($no_contrato);
