@@ -46,7 +46,7 @@ function consultaCocheDetallesDocumentosFotos($no_vehiculo)
 function consultaCocheDetallesCompletos($show_detalles,$noVehiculo){
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    $arrayCoches = $objCoche->queryconsultaCoches($noVehiculo);
+    $arrayCoches = $objCoche->queryconsultaCoches($noVehiculo,99);
     $cochesData = array();
     //obtengo la lista de coches en
     if ($show_detalles) {

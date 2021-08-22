@@ -17,12 +17,10 @@ function consultaDetallesCoche(){
             console.log(obj_result);
             let obj_carro= obj_result[0];
             cargaDatosCarro(obj_carro);
-            let carousel = construyeCarouselFotosCoche(obj_carro[1]);
-            $("#carouselCocheFotos").html(carousel);
+            $("#carouselCocheFotos").html(construyeCarouselFotosCoche(obj_carro[1]));
             $("#tblfotosCoche").html(construyeCocheTablaFotos(obj_carro[1]));
             $("#tblDocsCoche").html(construyeCocheTablaDocumentos(obj_carro[1]));
             $("#tbl-detalles").html(contruyeTablaDetalles(obj_carro[0]));
-
         },
     });
 }
@@ -162,7 +160,7 @@ function construyeCocheTablaDocumentos(docs){
         template+=`
                     <tr>
                         <th scope="row">
-                            Factura <i class="fas fa-lock text-red"></i>
+                            ${archivo.nombreTipo} <i class="fas fa-lock text-red"></i>
                         </th>
                         <td>
                             PDF
@@ -200,7 +198,6 @@ function consultaDetallesContrato(){
         },
         success: function (response)
         {
-            console.log(response);
             let obj_result = JSON.parse(response);
             //esta siempre va a existir
             let contratoAdquisicion = getContrato(obj_result,"0"); // 0 -> Adquisicion
