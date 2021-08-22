@@ -12,6 +12,7 @@ function consultaDetallesCoche(){
         },
         success: function (response)
         {
+           // console.log(response);
             let obj_result = JSON.parse(response);
             console.log(obj_result);
             let obj_carro= obj_result[0];
@@ -199,6 +200,7 @@ function consultaDetallesContrato(){
         },
         success: function (response)
         {
+            console.log(response);
             let obj_result = JSON.parse(response);
             //esta siempre va a existir
             let contratoAdquisicion = getContrato(obj_result,"0"); // 0 -> Adquisicion
