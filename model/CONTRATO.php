@@ -357,22 +357,21 @@ class CONTRATO extends CONEXION implements I_CONTRATO
     }
     public function queryconsultaContratosPorCoche($no_vehiculo)
     {
-        $query = "SELECT con.no_contrato, concat_ws(' ',e.apaterno, e.amaterno, e.nombre) as empleado, e.telefono as emp_tel, e.celular as emp_cel,
-		e.sexo as emp_sex, e.fecha_registro as emp_fe_re, e.correo_user as emp_email, e.puesto as emp_puesto, 
-		e.nivel_acceso as emp_lv_access, e.estatus as emp_status,
-		concat_ws(' ',cli.apaterno, cli.amaterno, cli.nombre) as cliente, cli.telefono as cli_tel, cli.celular as cli_cel,
-		cli.correo as cli_email, cli.subscripcion as cli_suscripcion, cli.empresa as cli_empresa, cli.rfc as cli_rfc, 
-		cli.fecha_registro as cli_fe_re, cli.medio_identificación as cli_med_ide, 
-		cli.folio as cli_folio, cli.tipo_cliente as cli_tipo, cli.estatus as cli_status,
-		concat_ws(' ',ma.nombre, mo.nombre, v.anio) as vehiculo, v.color, v.kilometros, v.placa, v.fecha_registro as veh_fe_re, 
-		v.entidad_placa,  v.transimision, v.combustible, v.no_puertas, v.precio_contado, v.precio_credito,
-		v.opc_credito, v.observaciones, v.estatus as veh_status,
-		con.hora_fecha_creacion as cont_date_creacion, con.tipo_contrato, con.plazo, con.fecha_primer_pago, 
-		con.enganche, con.saldo, con.forma_pago, con.subtotal, con.iva, con.total, con.estatus as cont_status,
-		con.no_empleado_fk, con.no_cliente_fk, con.no_vehiculo_fk,v.id_modelo_fk,mo.id_marca_fk 
+        $query = "SELECT con.no_contrato, concat_ws(' ',cli.apaterno, cli.amaterno, cli.nombre) as cliente , 
+		concat_ws(' ',e.apaterno, e.amaterno, e.nombre) as vendido_comprado_por , 
+		concat_ws(' ',ma.nombre, mo.nombre, v.anio, v.color) as vehiculo, 
+		con.forma_pago , con.subtotal, con.iva, con.total , con.enganche , con.saldo ,  
+		con.tipo_contrato, con.estatus as cont_status,
+		con.no_empleado_fk, con.no_cliente_fk, con.no_vehiculo_fk,v.id_modelo_fk,mo.id_marca_fk, 
+		case 
+			when con.tipo_contrato = 0 then 'Venta de Vehiculo'
+			when con.tipo_contrato = 1 then 'Adquisición de Vehiculo'
+			else 'Tipo de contrato desconocido'
+			end as nombre_tipo_de_contrato
         FROM contrato con, empleado e, cliente cli, coche v, marca ma, modelo mo 
         where con.no_empleado_fk = e.no_empleado AND con.no_cliente_fk = cli.no_cliente 
-        AND con.no_vehiculo_fk = v.no_vehiculo AND ma.id_marca = mo.id_marca_fk AND v.id_modelo_fk = mo.id_modelo AND no_vehiculo_fk=".$no_vehiculo;
+        AND con.no_vehiculo_fk = v.no_vehiculo AND ma.id_marca = mo.id_marca_fk 
+        AND v.id_modelo_fk = mo.id_modelo AND no_vehiculo_fk= ".$no_vehiculo." order by con.tipo_contrato";
         $this->connect();
         $result = $this->getData($query);
         $this->close();
