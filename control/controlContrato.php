@@ -28,7 +28,7 @@ function consultaContratosCoche($no_vehiculo)
     include_once "../model/CONTRATO.php";
     $objContrato = new CONTRATO();
     $arrayContrato = $objContrato->queryconsultaContratosPorCoche($no_vehiculo);
-    return json_encode($arrayContrato);
+    return $arrayContrato;
 }
 /********************************************************************
  * C O N S U L T A   P A G O S    A B O N O S  C O N T R A T O
@@ -402,21 +402,41 @@ function consultaAvanceDeCadaPagoDeContrato($no_contrato)
     var_dump($arrayAvance);
 }
 
-function consultaPagosAbonosDeContratoCompleto($no_contrato)
+function consultaPagosAbonosDocsDeContratoCompleto($no_vehiculo)
 {
     include_once "../control/controlPago.php";
-    $arrayContrato = consultaContrato($no_contrato);
-    $listaPagos = consultaPagos($no_contrato);
+    $arrayContrato = consultaContratosCoche($no_vehiculo);
+    $arrayPagosContratoFinal = array();
+    $arrayDocsContrato = array();
     $arrayPagosContrato = array();
-    foreach ($listaPagos as $pago) {
-        $listaAbonos = consultaAbonosDePago($pago['id_pago']);
-        array_push($pago, $listaAbonos);
-        array_push($arrayPagosContrato,$pago);
-    }
     foreach ($arrayContrato as $contrato) {
+        $listaPagos = consultaPagos($contrato['no_contrato']);
+        $listaDocs = consultaDocsContrato($contrato['no_contrato']);
+        foreach ($listaPagos as $pago) {
+            $listaAbonos = consultaAbonosDePago($pago['id_pago']);
+            array_push($pago, $listaAbonos);
+            array_push($arrayPagosContrato,$pago);
+        }
         array_push($contrato,$arrayPagosContrato);
+        foreach ($listaDocs as $doc) {
+            array_push($arrayDocsContrato,$doc);
+        }
+        array_push($contrato,$arrayDocsContrato);
+        foreach ($arrayPagosContrato as $clave=>$valor) {
+            $newArray = array();
+            $arrayPagosContrato = $newArray;
+            $arrayDocsContrato = $newArray;
+            //unset($arrayPagosContrato[$clave]);
+        }
+        array_push($arrayPagosContratoFinal,$contrato);
     }
-    //var_dump($contrato);
-    return json_encode($contrato);
-    //return json_encode($arrayPagosContrato);
+    return json_encode($arrayPagosContratoFinal);
+}
+
+function consultaDocsContrato($no_contrato)
+{
+    include_once "../model/FILE_CONTRATO.php";
+    $objDocs = new FILE_CONTRATO();
+    $arrayDocs = $objDocs->queryConsultaDocs($no_contrato);
+    return $arrayDocs;
 }

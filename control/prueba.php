@@ -22,10 +22,10 @@ consultaCocheDetallesDocumentosFotos(1);*/
 /**
  * Reigstro de Abonos
  * */
-/*include_once "../control/controlAbonos.php";
+include_once "../control/controlContrato.php";
 $no_contrato = 3724786545073591;
 $monto = 35000;
-echo verificaAbono($no_contrato,$monto);*/
+echo consultaPagosAbonosDeContratoCompleto($no_contrato);
 
 /*include_once "../control/controlAbonos.php";
 echo sumatoriaDeAbonos(20210817576779);*/
