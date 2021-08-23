@@ -320,7 +320,7 @@ class COCHE extends CONEXION implements I_COCHE
         $filter= $filter>=-1 && $filter<=1 ? "AND co.estatus=".$filter : "";
 
         $concat=$no_vehiculo>0 ? " AND co.no_vehiculo = ".$no_vehiculo: "";
-        $query = "SELECT co.no_vehiculo, co.id_modelo_fk, co.fecha_registro, co.anio,
+        $query = "SELECT co.no_vehiculo, co.id_modelo_fk, co.NIV , co.fecha_registro, co.anio,
                 co.placa, co.entidad_placa, co.color, co.kilometros, co.transimision,
                 co.combustible, co.no_puertas, co.precio_contado, co.precio_credito,
                 co.opc_credito,co.observaciones,co.estatus, mo.id_modelo, mo.id_marca_fk, 
