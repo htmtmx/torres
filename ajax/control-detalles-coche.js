@@ -94,7 +94,7 @@ function construyeCocheTablaFotos(docs){
 console.log(fotos);
     fotos.forEach((foto)=>{
         template+= `
-                             <tr>
+                             <tr idFile="${foto.id_file_v}">
                                 <th scope="row">
                                     <div class="media align-items-center">
                                         <a href="#" class=" mr-3 align-items-center d-flex">
@@ -109,7 +109,7 @@ console.log(fotos);
                                     <button class="btn btn-icon btn-secondary" type="button">
                                         <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
                                     </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
+                                    <button class="btn btn-icon btn-secondary btnEliminarFotoCoche" type="button">
                                         <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
                                     </button>
                                 </td>

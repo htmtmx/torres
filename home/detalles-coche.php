@@ -353,7 +353,7 @@ $noCoche = $_GET['idCoche'];
                                 <h3 class="mb-0">Documentos del Vehiculo</h3>
                             </div>
                             <div class="col text-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cuentaUser">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addArchivoCoche">
                                     <i class="fas fa-file-upload text-white"></i>  Agregar Archivo
                                 </button>
                             </div>
@@ -441,7 +441,9 @@ $noCoche = $_GET['idCoche'];
 </body>
 <?php include './include/js.php'; ?>
 <?php include './modals/modal-add-caracteristica.php'; ?>
+<?php include './modals/modal-add-archivo-vehiculo.php'; ?>
 </html>
 <script src="../ajax/control-detalles-coche.js"></script>
 <script src="../ajax/control-botones-detalles-coche.js"></script>
+<script src="../ajax/sendDocmentos.js"></script>
 

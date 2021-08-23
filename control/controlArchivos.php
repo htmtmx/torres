@@ -39,8 +39,8 @@ function agregaDocumentoCoche($noVehiculo, $nombreIMG1, $archivo1, $tipoArchivo,
         if ($file['id_tipo_archivo'] == $tipoArchivo)
             $nombre = $file['nombre'];
     }
-
-    echo $privado == 1 ? "PUBLICO": "PRIVADO";
+    $hoy= date('Y-m-d-His');
+    $nombre=$nombre.'-'.$hoy;
     $nombre =str_replace(' ', '', $nombre);
     $ruta1 = $carpeta.'/'.$nombreIMG1; // RUTA1 EXAMPLE: "/24072019.24/e-r.jpg"
     $extension = pathinfo($ruta1, PATHINFO_EXTENSION);
