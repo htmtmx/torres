@@ -186,4 +186,18 @@ class FILE_CONTRATO extends CONEXION
         $this->close();
         return $result;
     }
+
+    function queryConsultaDocumentosContrato()
+    {
+        $query = "select fc.id_file_c, fc.nombre , fc.nivel_acceso, fc.path, fc.ext, fc.nivel_acceso , ta.* 
+                    from file_contrato fc ,   tipo_archivo ta
+                    where ta.id_tipo_archivo = fc.id_tipo_archivo_fk  
+                    and fc.no_contrato_fk  = ".$this->getNoContratoFk();
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+
 }

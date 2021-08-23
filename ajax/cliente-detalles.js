@@ -22,8 +22,7 @@ function consultaDetallesCliente(){
             $("#folio").val(obj.folio);
             $("#fecha_registro").val(obj.fecha_registro);
             $("#celular").val(obj.celular);
-            $("#celular").val(obj.celular);
-            $("#celular").val(obj.celular);
+            $("#medio_identificacion_cliente").val(obj.medio_identificación);
 
         },
     });
@@ -128,9 +127,8 @@ $("#frm-add-direccion").on("submit", function(e){
             $("#mensajeAddDireccion").html(alerta);
         });
     $('#frm-add-direccion').trigger('reset');
-    e.preventDefault();
     consultaDirecciones();
-
+    e.preventDefault();
 });
 
 

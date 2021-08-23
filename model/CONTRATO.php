@@ -361,7 +361,7 @@ class CONTRATO extends CONEXION implements I_CONTRATO
 		concat_ws(' ',e.apaterno, e.amaterno, e.nombre) as vendido_comprado_por , 
 		concat_ws(' ',ma.nombre, mo.nombre, v.anio, v.color) as vehiculo, 
 		con.forma_pago , con.subtotal, con.iva, con.total , con.enganche , con.saldo ,  
-		con.tipo_contrato, con.estatus as cont_status,
+		con.tipo_contrato, con.estatus as cont_status,con.hora_fecha_creacion,
 		con.no_empleado_fk, con.no_cliente_fk, con.no_vehiculo_fk,v.id_modelo_fk,mo.id_marca_fk, 
 		case 
 			when con.tipo_contrato = 0 then 'Venta de Vehiculo'
