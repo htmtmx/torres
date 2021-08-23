@@ -677,7 +677,6 @@ function buildTblPagos(pagos) {
                 <td colspan="5" class="p-0">
                     <div id="collapse${contador}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
-                        Aqui hay un error
                             <table class="table table-hover">
                                 <thead>
                                     <tr>

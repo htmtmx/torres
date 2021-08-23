@@ -157,3 +157,11 @@ function removeFileContrato($idNoContrato){
 function removeArchivoFisico($ruta){
     return unlink($ruta);
 }
+
+function consultaArchivosContrato($noContrato){
+    include_once  "../model/FILE_CONTRATO.php";
+    //FCD = File Contrato Documento
+    $obj_FCD = new FILE_CONTRATO();
+    $obj_FCD->setNoContratoFk($noContrato);
+    return $obj_FCD->queryConsultaDocumentosContrato();
+}
