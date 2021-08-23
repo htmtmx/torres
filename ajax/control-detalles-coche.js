@@ -14,7 +14,6 @@ function consultaDetallesCoche(){
         {
             //console.log(response);
             let obj_result = JSON.parse(response);
-            console.log(obj_result);
             let obj_carro= obj_result[0];
             cargaDatosCarro(obj_carro);
             $("#carouselCocheFotos").html(construyeCarouselFotosCoche(obj_carro[1]));
@@ -94,7 +93,7 @@ function construyeCocheTablaFotos(docs){
 console.log(fotos);
     fotos.forEach((foto)=>{
         template+= `
-                             <tr>
+                             <tr idFile="${foto.id_file_v}">
                                 <th scope="row">
                                     <div class="media align-items-center">
                                         <a href="#" class=" mr-3 align-items-center d-flex">
@@ -109,7 +108,7 @@ console.log(fotos);
                                     <button class="btn btn-icon btn-secondary" type="button">
                                         <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
                                     </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
+                                    <button class="btn btn-icon btn-secondary btnEliminarFotoCoche" type="button">
                                         <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
                                     </button>
                                 </td>
@@ -121,7 +120,6 @@ console.log(fotos);
 
 function contruyeTablaDetalles(detalles){
     let template="";
-
     detalles.forEach((detalle)=>{
         template+= `
                              <tr idCarac="${detalle.id_detalle}">
@@ -233,7 +231,10 @@ function consultaDetallesContrato(){
         },
         success: function (response)
         {
+            console.log(response);
             let obj_result = JSON.parse(response);
+            console.log("CONTRATOS");
+            console.log(obj_result);
             //esta siempre va a existir
             let contratoAdquisicion = getContrato(obj_result,"0"); // 0 -> Adquisicion
             let contratoVenta = getContrato(obj_result,"1"); // 1 -> venta
@@ -260,7 +261,8 @@ function constuyeContainersContratos(contratoAdquisicion,contratoVenta) {
 
 function getTemplateContratoVenta(contrato) {
     let template = "";
-    let templateTablaArchivos = buildTblFileContratoVenta(contrato);
+    let templateTablaArchivos = buildTblFileContratoVenta(contrato[1]);
+    let templatePagos = buildTblPagos(contrato[0]);
     template += `
                 <!-- CONTRATO DE VENTA-->
                                 <div class="tab-pane fade show active" id="venta" role="tabpanel" aria-labelledby="home-tab">
@@ -273,7 +275,7 @@ function getTemplateContratoVenta(contrato) {
                                                             <h3 class="mb-0">Contrato de Venta</h3>
                                                         </div>
                                                         <div class="col text-right">
-                                                            <i class="fas fa-calendar-alt"></i>  25 Septiembre de 2021
+                                                            <i class="fas fa-calendar-alt"></i>  ${contrato.hora_fecha_creacion}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -454,6 +456,11 @@ function getTemplateContratoVenta(contrato) {
                                                         <div class="col">
                                                             <h3 class="mb-0">Pagos del Credito</h3>
                                                         </div>
+                                                        <div class="col text-right">
+                                                            <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#addAbono">
+                                                                <span class="btn-inner--icon"><i class="fas fa-coins text-green"></i> Abonar</span>
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <hr class="my-3">
@@ -468,173 +475,14 @@ function getTemplateContratoVenta(contrato) {
                                                                 <th scope="col">Total</th>
                                                                 <th scope="col">Saldo</th>
                                                                 <th scope="col">Estatus</th>
-                                                                <th scope="col"></th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1" class="mano">
-                                                                    <th scope="row" >
-                                                                        Pago de Enganche
-                                                                    </th>
-                                                                    <td>
-                                                                        15 AGO 2021
-                                                                    </td>
-                                                                    <td>
-                                                                        $50,000.00
-                                                                    </td>
-                                                                    <td>
-                                                                        $0.00
-                                                                    </td>
-                                                                <td>
-                                                              <span class="badge badge-dot mr-4">
-                                                                <i class="bg-success"></i>
-                                                                <span class="status">PAGADO</span>
-                                                              </span>
-                                                                </td>
-                                                                <td>
-                                                                    <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#addAbono">
-                                                                        <span class="btn-inner--icon"><i class="fas fa-coins text-green"></i> Abonar</span>
-                                                                    </button>
-                                                                </td>
-                                                            </tr>
-                                                                <tr>
-                                                                    <td colspan="6" class="p-0">
-                                                                        <div id="collapse1" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                                                                            <div class="card-body">
-                                                                                <table class="table table-hover">
-                                                                                    <thead>
-                                                                                    <tr>
-                                                                                        <th scope="col">#</th>
-                                                                                        <th scope="col">Fecha</th>
-                                                                                        <th scope="col">Monto</th>
-                                                                                        <th scope="col">Detalles</th>
-                                                                                        <th scope="col"></th>
-                                                                                    </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                    <tr>
-                                                                                        <th scope="row">1</th>
-                                                                                        <td>14 Ago 2021 12:00</td>
-                                                                                        <td>$50,000</td>
-                                                                                        <td>Primer Pago</td>
-                                                                                        <td>
-                                                                                            <button class="btn btn-icon btn-secondary" type="button">
-                                                                                                <span class="btn-inner--icon"><i class="fas fa-paper-plane text-orange"></i> Enviar Recibo</span>
-                                                                                            </button>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">2</th>
-                                                                                        <td>14 Sep 2021 17:00</td>
-                                                                                        <td>$50,000</td>
-                                                                                        <td>Primer Pago</td>
-                                                                                        <td>
-                                                                                            <button class="btn btn-icon btn-secondary" type="button">
-                                                                                                <span class="btn-inner--icon"><i class="fas fa-paper-plane text-orange"></i> Enviar Recibo</span>
-                                                                                            </button>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">2</th>
-                                                                                        <td>14 Sep 2021 17:00</td>
-                                                                                        <td>$50,000</td>
-                                                                                        <td>Primer Pago</td>
-                                                                                        <td>
-                                                                                            <button class="btn btn-icon btn-secondary" type="button">
-                                                                                                <span class="btn-inner--icon"><i class="fas fa-paper-plane text-orange"></i> Enviar Recibo</span>
-                                                                                            </button>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2" class="mano">
-                                                                    <th scope="row" >
-                                                                        Pago 1/6
-                                                                    </th>
-                                                                    <td>
-                                                                        15 AGO 2021
-                                                                    </td>
-                                                                    <td>
-                                                                        $50,000.00
-                                                                    </td>
-                                                                    <td>
-                                                                        $0.00
-                                                                    </td>
-                                                                    <td>
-                                                              <span class="badge badge-dot mr-4">
-                                                                <i class="bg-success"></i>
-                                                                <span class="status">PAGADO</span>
-                                                              </span>
-                                                                    </td>
-                                                                    <td>
-                                                                        <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#addAbono">
-                                                                            <span class="btn-inner--icon"><i class="fas fa-coins text-green"></i> Abonar</span>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="6" class="p-0">
-                                                                        <div id="collapse2" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                                                                            <div class="card-body">
-                                                                                <table class="table table-hover">
-                                                                                    <thead>
-                                                                                    <tr>
-                                                                                        <th scope="col">#</th>
-                                                                                        <th scope="col">Fecha</th>
-                                                                                        <th scope="col">Monto</th>
-                                                                                        <th scope="col">Detalles</th>
-                                                                                        <th scope="col"></th>
-                                                                                    </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                    <tr>
-                                                                                        <th scope="row">1</th>
-                                                                                        <td>14 Ago 2021 12:00</td>
-                                                                                        <td>$50,000</td>
-                                                                                        <td>Primer Pago</td>
-                                                                                        <td>
-                                                                                            <button class="btn btn-icon btn-secondary" type="button">
-                                                                                                <span class="btn-inner--icon"><i class="fas fa-paper-plane text-orange"></i> Enviar Recibo</span>
-                                                                                            </button>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">2</th>
-                                                                                        <td>14 Sep 2021 17:00</td>
-                                                                                        <td>$50,000</td>
-                                                                                        <td>Primer Pago</td>
-                                                                                        <td>
-                                                                                            <button class="btn btn-icon btn-secondary" type="button">
-                                                                                                <span class="btn-inner--icon"><i class="fas fa-paper-plane text-orange"></i> Enviar Recibo</span>
-                                                                                            </button>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">2</th>
-                                                                                        <td>14 Sep 2021 17:00</td>
-                                                                                        <td>$50,000</td>
-                                                                                        <td>Primer Pago</td>
-                                                                                        <td>
-                                                                                            <button class="btn btn-icon btn-secondary" type="button">
-                                                                                                <span class="btn-inner--icon"><i class="fas fa-paper-plane text-orange"></i> Enviar Recibo</span>
-                                                                                            </button>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
+                                                                ${templatePagos}
                                                             </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -646,6 +494,7 @@ function getTemplateContratoVenta(contrato) {
 
 function getTemplateContratoAdq(contrato) {
     let template = "";
+    let documentos = buildTblFileContratoVenta(contrato[1]);
     template+= `
                 <!-- CONTRATO DE ADQUISICION-->
                                 <div class="tab-pane fade" id="adq" role="tabpanel" aria-labelledby="profile-tab">
@@ -658,7 +507,7 @@ function getTemplateContratoAdq(contrato) {
                                                             <h3 class="mb-0">Adquisición</h3>
                                                         </div>
                                                         <div class="col text-right">
-                                                            <i class="fas fa-calendar-alt"></i>  15 Agosto de 2021
+                                                            <i class="fas fa-calendar-alt"></i>  ${contrato.hora_fecha_creacion}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -669,20 +518,20 @@ function getTemplateContratoAdq(contrato) {
                                                             <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <label class="form-control-label" for="medio_identificacion_cliente">No de Contrato</label>
-                                                                    <input type="text" name="noContratoVta" id="noContratoVta" class="form-control" value="${contrato.no_contrato}" readonly>
+                                                                    <input type="text"  class="form-control" value="${contrato.no_contrato}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <label class="form-control-label" for="medio_identificacion_cliente">Vendedor</label>
-                                                                    <input type="text" name="telefono" id="telefono" class="form-control">
+                                                                    <input type="text" readonly class="form-control" value="${contrato.vendido_comprado_por}">
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="correo">Comprado por:</label>
-                                                                        <input type="text" name="telefono" id="telefono" class="form-control">
+                                                                        <input type="text" readonly class="form-control" value="${contrato.cliente}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -690,7 +539,7 @@ function getTemplateContratoAdq(contrato) {
                                                                 <div class="col-lg-12">
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="correo">Forma de Pago:</label>
-                                                                        <input type="text" name="telefono" id="telefono" class="form-control">
+                                                                        <input type="text" class="form-control">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -762,116 +611,8 @@ function getTemplateContratoAdq(contrato) {
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                Factura <i class="fas fa-lock text-red"></i>
-                                                            </th>
-                                                            <td>
-                                                                PDF
-                                                            </td>
-                                                            <td>
-                                                                Archivo protegido
-                                                            </td>
-                                                            <td>
-                                                                <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
-                                                                    <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                                                </button>
-                                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                                    <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                                                </button>
-                                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                                    <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                Tarjeta de Circulacion
-                                                            </th>
-                                                            <td>
-                                                                PDF
-                                                            </td>
-                                                            <td>
-                                                                Disponible a vendedores
-                                                            </td>
-                                                            <td>
-                                                                <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
-                                                                    <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                                                </button>
-                                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                                    <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                                                </button>
-                                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                                    <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                Factura <i class="fas fa-lock text-red"></i>
-                                                            </th>
-                                                            <td>
-                                                                PDF
-                                                            </td>
-                                                            <td>
-                                                                Archivo protegido
-                                                            </td>
-                                                            <td>
-                                                                <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
-                                                                    <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                                                </button>
-                                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                                    <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                                                </button>
-                                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                                    <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                Factura <i class="fas fa-lock text-red"></i>
-                                                            </th>
-                                                            <td>
-                                                                PDF
-                                                            </td>
-                                                            <td>
-                                                                Archivo protegido
-                                                            </td>
-                                                            <td>
-                                                                <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
-                                                                    <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                                                </button>
-                                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                                    <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                                                </button>
-                                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                                    <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                Factura <i class="fas fa-lock text-red"></i>
-                                                            </th>
-                                                            <td>
-                                                                PDF
-                                                            </td>
-                                                            <td>
-                                                                Archivo protegido
-                                                            </td>
-                                                            <td>
-                                                                <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
-                                                                    <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                                                </button>
-                                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                                    <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                                                </button>
-                                                                <button class="btn btn-icon btn-secondary" type="button">
-                                                                    <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                                        ${documentos}
+                                                        <!--CONSTRUCTOR TBL FILES-->
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -879,29 +620,102 @@ function getTemplateContratoAdq(contrato) {
                                         </div>
                                     </div>
                                 </div>
-                            
-            
-    `;
+                                `;
     return template;
 }
 
+function buildTblAbonosabonos(abonos) {
+    let templateAbonos;
+    let contador = 0;
+    abonos.forEach((abono)=>{
+        contador++;
+        templateAbonos += `
+              <tr>
+                <th scope="row">${contador}</th>
+                <td>${abono.fecha_registro}</td>
+                <td>$ ${abono.monto}</td>
+                <td>${abono.notas}</td>
+                <td>
+                    <button class="btn btn-icon btn-secondary" type="button">
+                        <span class="btn-inner--icon"><i class="fas fa-paper-plane text-orange"></i> Enviar Recibo</span>
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+    return templateAbonos;
+}
 
-
-function buildTblFileContratoVenta(contrato) {
+function buildTblPagos(pagos) {
     let template = "";
-    let visible = "";
-
-    for (let i = 0; i < 10; i++){
+    let contador = 0;
+    pagos.forEach((pago)=>{
+        contador++;
+        let abonos = buildTblAbonosabonos(pago[0]);
         template += `
-            <tr>
-                <th scope="row">
-                    Factura <i class="fas fa-lock text-red"></i>
+              <tr data-toggle="collapse" data-target="#collapse${contador}" aria-expanded="true" aria-controls="collapse${contador}" class="mano">
+                <th scope="row" >
+                    ${pago.concepto}
                 </th>
                 <td>
-                    PDF
+                    ${pago.fecha_pago}
                 </td>
                 <td>
-                    Archivo protegido
+                  $  ${pago.total}
+                </td>
+                <td>                    
+                   $ ${pago.saldo}
+                </td>
+                <td>
+                  <span class="badge badge-dot mr-4">
+                    <i class="bg-success"></i>
+                    <span class="status">PAGADO</span>
+                  </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="p-0">
+                    <div id="collapse${contador}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                        Aqui hay un error
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Monto</th>
+                                        <th scope="col">Detalles</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${abonos}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        `;
+    });
+    return template;
+}
+
+function buildTblFileContratoVenta(archivos) {
+    let template = "";
+    archivos.forEach((file)=>{
+        let visible =  file.nivel_acceso != 1 ? `<i class="fas fa-lock text-red"></i>`:"";
+        let visibleText =  file.nivel_acceso != 1 ? "Protegido":"Visile";
+        template += `
+            <tr id="${file.id_file_c}">
+                <th scope="row">
+                    ${file.nombre + " "+ visible} 
+                </th>
+                <td>
+                    ${file.nombre}
+                </td>
+                <td>
+                    ${visibleText}
                 </td>
                 <td>
                     <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
@@ -910,13 +724,13 @@ function buildTblFileContratoVenta(contrato) {
                     <button class="btn btn-icon btn-secondary" type="button">
                         <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
                     </button>
-                    <button class="btn btn-icon btn-secondary" type="button">
+                    <button class="btn btn-icon btn-secondary btnEliminaArchivoContrato" type="button">
                         <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
                     </button>
                 </td>
             </tr>
         `;
-    }
+    });
     return template;
 }
 
@@ -942,8 +756,6 @@ function constuyeNavContratos(contratoAdquisicion,contratoVenta) {
     `;
     return template;
 }
-
-
 
 
 function getContrato(listaContratos,tipo) {

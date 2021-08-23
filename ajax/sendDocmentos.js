@@ -63,10 +63,10 @@ $("#frm_Subir_Doc_Ven").on("submit", function(e){
 });
 
 //FUNCION SUBMIT PARA EL FORM DE DOC COCHE
-$("#frm_Doc_Coch").on("submit", function(e){
+$("#frm-add-archivo-coche").on("submit", function(e){
    e.preventDefault();
    var f = $(this);
-   var formData = new FormData(document.getElementById("frm_Doc_Coch"));
+   var formData = new FormData(document.getElementById("frm-add-archivo-coche"));
    formData.append("dato", "valor");
    //formData.append(f.attr("name"), $(this)[0].files[0]);
    $.ajax({
@@ -79,8 +79,10 @@ $("#frm_Doc_Coch").on("submit", function(e){
       processData: false
    })
        .done(function(res){
-          $("#mensaje3").html("Respuesta: " + res);
+          $("#mensajeAddArchivo").html(res);
        });
+   $('#frm-add-archivo-coche').trigger('reset');
+   e.preventDefault();
 });
 
 //FUNCION SUBMIT PARA EL FORM DE DOC COCHE

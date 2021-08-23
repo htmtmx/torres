@@ -187,17 +187,17 @@ class FILE_CONTRATO extends CONEXION
         return $result;
     }
 
-    function queryConsultaDocs($no_contrato)
+    function queryConsultaDocumentosContrato()
     {
-        $query= "select fc.id_file_c , ta.nombre as nombre_tipo_archivo, fc.no_contrato_fk , 
-                    fc.nombre as nombre_file_contrato, fc.`path` , fc.ext , fc.nivel_acceso , fc.estatus ,
-                    fc.id_tipo_archivo_fk , ta.id_tipo_archivo , ta.tipo_Archivo , ta.prioridad , ta.estatus as status_tipo_arch
-                from file_contrato fc , tipo_archivo ta 
-                where fc.id_tipo_archivo_fk = ta.id_tipo_archivo 
-                and fc.no_contrato_fk = ".$no_contrato;
+        $query = "select fc.id_file_c, fc.nombre , fc.nivel_acceso, fc.path, fc.ext, fc.nivel_acceso , ta.* 
+                    from file_contrato fc ,   tipo_archivo ta
+                    where ta.id_tipo_archivo = fc.id_tipo_archivo_fk  
+                    and fc.no_contrato_fk  = ".$this->getNoContratoFk();
         $this->connect();
         $result = $this->getData($query);
         $this->close();
         return $result;
     }
+
+  
 }
