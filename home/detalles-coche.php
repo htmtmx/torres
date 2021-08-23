@@ -443,4 +443,5 @@ $noCoche = $_GET['idCoche'];
 <?php include './modals/modal-add-caracteristica.php'; ?>
 </html>
 <script src="../ajax/control-detalles-coche.js"></script>
+<script src="../ajax/control-botones-detalles-coche.js"></script>
 
