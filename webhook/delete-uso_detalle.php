@@ -1,7 +1,9 @@
 <?php
 include_once "../control/controlUsoDetalle.php";
-$id_detalle_fk=1;
-$n_coche_fk=2;
-if(deleteUsoDetalle($id_detalle_fk,$n_coche_fk)){
-    echo "Se ha eliminado con exito";
-} else echo "Ha fallado";
+if(isset($_POST['idCarc']) && isset($_POST['no_vehiculo']) ){
+    $id_detalle_fk=$_POST['idCarc'];
+    $n_coche_fk=$_POST['no_vehiculo'];
+    if(deleteUsoDetalle($id_detalle_fk,$n_coche_fk)){
+        echo "Se ha eliminado con exito";
+    } else echo "Ha fallado";
+} else echo "Datos incompletos";

@@ -124,7 +124,7 @@ function contruyeTablaDetalles(detalles){
 
     detalles.forEach((detalle)=>{
         template+= `
-                             <tr>
+                             <tr idCarac="${detalle.id_detalle}">
                                 <th scope="row">
                                     ${detalle.nombre}
                                 </th>
@@ -135,7 +135,7 @@ function contruyeTablaDetalles(detalles){
                                     <button class="btn btn-icon btn-secondary" type="button">
                                         <span class="btn-inner--icon"><i class="fas fa-pen text-primary"></i></span>
                                     </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
+                                    <button class="btn btn-icon btn-secondary btnEliminarCaracteristicas" type="button">
                                         <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
                                     </button>
                                 </td>
@@ -158,12 +158,12 @@ function construyeCocheTablaDocumentos(docs){
     let template="";
     archivos.forEach((archivo)=>{
         template+=`
-                    <tr>
+                    <tr idDocCoch="${archivo.id_file_v}">
                         <th scope="row">
                             ${archivo.nombreTipo} <i class="fas fa-lock text-red"></i>
                         </th>
                         <td>
-                            PDF
+                            ${archivo.ext}
                         </td>
                         <td>
                             Archivo protegido
@@ -175,8 +175,8 @@ function construyeCocheTablaDocumentos(docs){
                             <button class="btn btn-icon btn-secondary" type="button">
                                 <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
                             </button>
-                            <button class="btn btn-icon btn-secondary" type="button">
-                                <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
+                            <button class="btn btn-icon btn-secondary btnEliminarDocumentoCoche" type="button">
+                                <span class="btn-inner--icon "><i class="fas fa-trash-alt text-red"></i></span>
                             </button>
                         </td>
                     </tr>
@@ -185,6 +185,41 @@ function construyeCocheTablaDocumentos(docs){
     return template;
 }
 
+/////////******BTN LISTEN PARA BOTONES *****////////
+
+$(document).on("click", ".btnEliminarCaracteristicas", function () {
+    if (confirm("¿Esta seguro de que desea eliminar este documento? Esta accion no podrá ser revertida")){
+        let elementCaracteristica = $(this)[0].parentElement.parentElement;
+        let idCaracteristica = $(elementCaracteristica).attr("idcarac")
+        eliminarDetalle(idCaracteristica);
+    }
+
+});
+
+/*
+$(document).on("click", ".btnEliminarDocumentoCoche", function () {
+    if (confirm("¿Esta seguro de que desea eliminar este documento? Esta accion no podrá ser revertida")){
+        console.log("Funciona");
+        //eliminarDireccion(idDireccion)
+    }
+
+});*/
+
+/////////******BTN LISTEN PARA BOTONES *****////////
+function eliminarDetalle(idCaracteristica){
+    $.ajax({
+        url: "../webhook/delete-uso_detalle.php",
+        type: 'POST',
+        data: {
+            idCarc: idCaracteristica,
+            no_vehiculo: $("#noCoche").val()
+        },
+        success: function (mje) {
+            consultaDetallesCoche();
+            alert(mje);
+        }
+    });
+}
 
 /*******************************
  *     DETALLES CONTRATO       *

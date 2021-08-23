@@ -22,6 +22,9 @@ function consultaDetallesCliente(){
             $("#folio").val(obj.folio);
             $("#fecha_registro").val(obj.fecha_registro);
             $("#celular").val(obj.celular);
+            $("#celular").val(obj.celular);
+            $("#celular").val(obj.celular);
+
         },
     });
 }

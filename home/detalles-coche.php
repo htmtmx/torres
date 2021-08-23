@@ -142,9 +142,7 @@ $noCoche = $_GET['idCoche'];
                                             <h3 class="mb-0">Mas caracteristicas:</h3>
                                         </div>
                                         <div class="col text-right">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cuentaUser">
-                                                <i class="fas fa-plus"></i> Añadir
-                                            </button>
+                                            <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addCaracteristicas"><i class="fas fa-plus"></i>  Añadir</a>
                                         </div>
                                     </div>
                                 </div>
@@ -175,38 +173,38 @@ $noCoche = $_GET['idCoche'];
                             <h6 class="heading-small text-muted mb-4">Detalles del coche</h6>
                             <div class="pl-lg-4"><div class="row">
                                     <div class="col-lg-12">
-                                        <label class="form-control-label" for="medio_identificacion_cliente">NIV</label>
-                                        <input type="text" name="telefono" id="telefono" class="form-control">
+                                        <label class="form-control-label" for="niv">NIV</label>
+                                        <input type="text" name="niv" id="niv" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <label class="form-control-label" for="medio_identificacion_cliente">Marca</label>
-                                        <select id="medio_identificacion_cliente" name="medio_identificación_cliente" class="form-control">
-                                            <option value="INE">Marca 1</option>
-                                            <option value="PASAPORTE">Marca 2</option>
+                                        <label class="form-control-label" for="marca">Marca</label>
+                                        <select id="marca" name="marca" class="form-control">
+                                            <option value="1">Marca 1</option>
+                                            <option value="2">Marca 2</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-6">
-                                        <label class="form-control-label" for="medio_identificacion_cliente">Modelo</label>
-                                        <select id="medio_identificacion_cliente" name="medio_identificación_cliente" class="form-control">
-                                            <option value="INE">Modelo 1</option>
-                                            <option value="PASAPORTE">Modelo 2</option>
+                                        <label class="form-control-label" for="modelo">Modelo</label>
+                                        <select id="modelo" name="modelo" class="form-control">
+                                            <option value="1">Modelo 1</option>
+                                            <option value="2">Modelo 2</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="correo">Año</label>
-                                            <input type="numeric" name="correo" id="correo" class="form-control">
+                                            <label class="form-control-label" for="año">Año</label>
+                                            <input type="numeric" name="año" id="año" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="telefono">Placa</label>
-                                            <input type="text" name="telefono" id="telefono" class="form-control">
+                                            <label class="form-control-label" for="placa">Placa</label>
+                                            <input type="text" name="placa" id="placa" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -257,54 +255,51 @@ $noCoche = $_GET['idCoche'];
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="empresa">Color</label>
-                                            <input id="empresa" name="empresa" class="form-control">
+                                            <label class="form-control-label" for="color">Color</label>
+                                            <input id="color" name="color" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="rfc">Kilometraje</label>
-                                            <input  class="form-control" type="number" id="km" name="km" min="0" max="1000000">
+                                            <label class="form-control-label" for="kilometraje">Kilometraje</label>
+                                            <input  class="form-control" type="number" id="kilometraje" name="kilometraje" min="0" max="1000000">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">
-                                        <label class="form-control-label" for="medio_identificacion_cliente">Trasmision</label>
-                                        <select id="medio_identificacion_cliente" name="medio_identificación_cliente" class="form-control">
-                                            <option value="INE">AUTOMATICA</option>
-                                            <option value="PASAPORTE">MANUAL</option>
-                                            <option value="PASAPORTE">DUAL</option>
+                                        <label class="form-control-label" for="transmision">Trasmision</label>
+                                        <select id="transmision" name="transmision" class="form-control">
+                                            <option value="AU">AUTOMATICA</option>
+                                            <option value="MA">MANUAL</option>
+                                            <option value="DU">DUAL</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-4">
-                                        <label class="form-control-label" for="medio_identificacion_cliente">Combustible</label>
-                                        <select id="medio_identificacion_cliente" name="medio_identificación_cliente" class="form-control">
-                                            <option value="INE">Gasolina</option>
-                                            <option value="PASAPORTE">Diesel</option>
-                                            <option value="PASAPORTE">Electrico</option>
+                                        <label class="form-control-label" for="combustible">Combustible</label>
+                                        <select id="combustible" name="combustible" class="form-control">
+                                            <option value="GAS">Gasolina</option>
+                                            <option value="DIE">Diesel</option>
+                                            <option value="ELE">Electrico</option>
+                                            <option value="HIB">Hibrido</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-4">
-                                        <label class="form-control-label" for="medio_identificacion_cliente">No de Puertas</label>
-                                        <input  class="form-control" type="number" id="km" name="km" min="0" max="6">
+                                        <label class="form-control-label" for="nopuertas">No de Puertas</label>
+                                        <input  class="form-control" type="number" id="nopuertas" name="nopuertas" min="0" max="6">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="tipo_cliente">Tipo de cliente</label>
-                                            <select id="tipo_cliente" name="tipo_cliente" class="form-control">
-                                                <option value="0">Persona Física</option>
-                                                <option value="1">Persona Moral</option>
-                                                <option value="2">NA</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="fecha_registro">Fecha Registro</label>
                                             <input type="text" id="fecha_registro" class="form-control" placeholder="Falló" disabled="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="fecha_registro">Observaciones</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -445,5 +440,7 @@ $noCoche = $_GET['idCoche'];
 </div>
 </body>
 <?php include './include/js.php'; ?>
+<?php include './modals/modal-add-caracteristica.php'; ?>
 </html>
 <script src="../ajax/control-detalles-coche.js"></script>
+
