@@ -12,7 +12,7 @@ function consultaDetallesCoche(){
         },
         success: function (response)
         {
-           // console.log(response);
+            //console.log(response);
             let obj_result = JSON.parse(response);
             console.log(obj_result);
             let obj_carro= obj_result[0];
@@ -35,7 +35,7 @@ function construyeCarouselFotosCoche(docs){
     var fotos = [];
     //FOR PARA EXTRAER LAS FOTOS
     docs.forEach((doc)=>{
-        if(doc.id_tipo_archivo==1){
+        if(doc.uso_archivo==1){
             //SI ES UNA IMAGEN
             fotos.push(doc);
             }
@@ -84,14 +84,14 @@ function construyeCocheTablaFotos(docs){
     var fotos = [];
     //FOR PARA EXTRAER LAS FOTOS
     docs.forEach((doc)=>{
-            if(doc.id_tipo_archivo==1){
+            if(doc.uso_archivo==1){
                 //SI ES UNA IMAGEN
                 fotos.push(doc);
             }
         }
     );
     let template="";
-
+console.log(fotos);
     fotos.forEach((foto)=>{
         template+= `
                              <tr>
@@ -149,7 +149,7 @@ function construyeCocheTablaDocumentos(docs){
     var archivos = [];
     //FOR PARA EXTRAER LAS FOTOS
     docs.forEach((doc)=>{
-            if(doc.id_tipo_archivo!=1){
+            if(doc.uso_archivo!=1){
                 //SI ES UNA IMAGEN
                 archivos.push(doc);
             }

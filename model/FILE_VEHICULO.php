@@ -12,6 +12,23 @@ class FILE_VEHICULO extends  CONEXION
     private $nivel_acceso;
     private $estatus;
     private $ruta;
+    private  $uso_archivo;
+
+    /**
+     * @return mixed
+     */
+    public function getUsoArchivo()
+    {
+        return $this->uso_archivo;
+    }
+
+    /**
+     * @param mixed $uso_archivo
+     */
+    public function setUsoArchivo($uso_archivo): void
+    {
+        $this->uso_archivo = $uso_archivo;
+    }
 
     /**
      * @return mixed
@@ -149,7 +166,7 @@ class FILE_VEHICULO extends  CONEXION
     }
 
     public function queryArchivosVehiculo($no_vehiculo){
-        $query = "SELECT fv.`id_file_v`, fv.`id_tipo_archivo_fk`, fv.`no_vehiculo_fk`, fv.`nombre` AS nombreArchivo, fv.`path`, 
+        $query = "SELECT fv.`id_file_v`, fv.`id_tipo_archivo_fk`, fv.`no_vehiculo_fk`, fv.`nombre` AS nombreArchivo, fv.`path`, fv.uso_archivo, 
             fv.`ext`, fv.`nivel_acceso`, fv.`estatus`, tp.nombre AS nombreTipo ,tp.id_tipo_archivo,tp.tipo_Archivo FROM `file_vechiculo` 
             fv, tipo_archivo tp 
             WHERE tp.id_tipo_archivo=fv.id_tipo_archivo_fk AND fv.no_vehiculo_fk=".$no_vehiculo;
@@ -160,8 +177,8 @@ class FILE_VEHICULO extends  CONEXION
     }
 
     function queryAddArchivosCoche(){
-        $query = "INSERT INTO `file_vechiculo` (`id_file_v`, `id_tipo_archivo_fk`, `no_vehiculo_fk`, `nombre`, `path`, `ext`, `nivel_acceso`, `estatus`) 
-                VALUES (NULL, '".$this->getIdTipoArchivoFk()."', '".$this->getNoVehiculoFk()."', '".$this->getNombre()."'
+        $query = "INSERT INTO `file_vechiculo` (`id_file_v`, `id_tipo_archivo_fk`, `no_vehiculo_fk`,`uso_archivo`, `nombre`, `path`, `ext`, `nivel_acceso`, `estatus`) 
+                VALUES (NULL, '".$this->getIdTipoArchivoFk()."', '".$this->getNoVehiculoFk()."', '".$this->getUsoArchivo()."','".$this->getNombre()."'
                 , '".$this->getPath()."', '".$this->getExt()."', '".$this->getNivelAcceso()."', '1')";
         $this->connect();
         $result = $this->executeInstruction($query);

@@ -49,7 +49,7 @@ function agregaDocumentoCoche($noVehiculo, $nombreIMG1, $archivo1, $tipoArchivo,
     //Guardar en el modelo de arhcivo
 
     $path = $carpeta.'/'.$nombre.'.'.$extension;
-    $result = insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado);
+    $result = insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado,0);
     return $result;
 }
 
@@ -70,7 +70,7 @@ function agregaImagenCoche($noVehiculo, $nombreIMG1, $archivo1){
     $path = $carpeta.'/'.$nombre.'.'.$extension;
     $tipoArchivo=1;
     $privado=1;
-    $result = insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado);
+    $result = insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado,1);
     return $result;
 
 }
@@ -90,12 +90,13 @@ function constructObjFC($nombre,$tipoArchivo,$idContrato,$path,$extension,$priva
 }
 /**************FUNCION PARA INSERTAR OBJETO FILE COCHE DOCUMENTOS******************/
 
-function insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado){
+function insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado,$uso){
      include_once "../model/FILE_VEHICULO.php";
     //FCD = File Contrato Documento
     $obj_FCD= new FILE_VEHICULO();
     $obj_FCD->setIdTipoArchivoFk($tipoArchivo);
     $obj_FCD->setNoVehiculoFk($noVehiculo);
+    $obj_FCD->setUsoArchivo($uso);
     $obj_FCD->setNombre($nombre);
     $obj_FCD->setPath($path);
     $obj_FCD->setExt($extension);
