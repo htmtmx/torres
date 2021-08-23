@@ -21,83 +21,14 @@ function consultaContrato($no_contrato)
     $arrayContrato = $objContrato->consultaContrato($objContrato->getNoContrato());
     return $arrayContrato;
 }/********************************************************************
- *        C O N S U L T A   C O N T R A T O    P O R    N O   D E  V E H I C U L O
+ *               C O N S U L T A   C O N T R A T O    P O R    No_vehiculo
  *******************************************************************/
 function consultaContratosCoche($no_vehiculo)
 {
     include_once "../model/CONTRATO.php";
     $objContrato = new CONTRATO();
-
-    $arrayContratos = $objContrato->queryconsultaContratosPorCoche($no_vehiculo);
-    $contratos = array();
-    foreach ($arrayContratos as $contrato){
-        $detalleContrato = consultaPagosAbonosDeContratoCompleto($contrato['no_contrato']);
-        $archivosContrato = consultaDocumentosContrato($contrato['no_contrato']);
-        array_push($contrato,$detalleContrato);
-        array_push($contrato,$archivosContrato);
-        array_push($contratos,$contrato);
-    }
-    return json_encode($contratos);
-}
-
-
-function consultaDocumentosContrato($noContrato){
-    include_once "controlArchivos.php";
-    $archivocContrato = consultaArchivosContrato($noContrato);
-    return $archivocContrato;
-}
-
-function consultaAvancePagoGeneralDeContrato($no_contrato)
-{
-    include_once "../control/controlPago.php";
-    include_once "../control/controlAbonos.php";
-    $arrayContrato = consultaContrato($no_contrato);
-    $arrayPagos = consultaPagos($no_contrato);
-    $totalAbonos = 0;
-    foreach ($arrayPagos as $pago) {
-        $arraySumaAbonos = sumatoriaDeAbonos($pago['id_pago']);
-        $sumaDeAbonos = $arraySumaAbonos[0]['suma_abonos'];
-        $totalAbonos = $totalAbonos+$sumaDeAbonos;
-    }
-    $totalContrato = $arrayContrato[0]['total'];
-    $avance = ($totalAbonos*100)/$totalContrato;
-    array_push($arrayContrato[0],$avance);
-    var_dump($arrayContrato);
-}
-
-function consultaAvanceDeCadaPagoDeContrato($no_contrato)
-{
-    include_once "../control/controlPago.php";
-    include_once "../control/controlAbonos.php";
-    $arrayPagos = consultaPagos($no_contrato);
-    $arrayAvance = array();
-    foreach ($arrayPagos as $pago) {
-        $totalAbonos = 0;
-        $arraySumaAbonos = sumatoriaDeAbonos($pago['id_pago']);
-        $sumaDeAbonos = $arraySumaAbonos[0]['suma_abonos'];
-        $totalAbonos = $totalAbonos+$sumaDeAbonos;
-
-        $totalPago = $pago['total'];
-        $avance = ($totalAbonos*100)/$totalPago;
-        array_push($pago,$arraySumaAbonos);
-        array_push($pago,$avance);
-        array_push($arrayAvance,$pago);
-    }
-    var_dump($arrayAvance);
-}
-
-function consultaPagosAbonosDeContratoCompleto($no_contrato)
-{
-    include_once "../control/controlPago.php";
-    $listaPagos = consultaPagos($no_contrato);
-    $arrayPagosContrato = array();
-    foreach ($listaPagos as $pago) {
-        $listaAbonos = consultaAbonosDePago($pago['id_pago']);
-        array_push($pago, $listaAbonos);
-        array_push($arrayPagosContrato,$pago);
-    }
-    return $arrayPagosContrato;
->>>>>>> Stashed changes
+    $arrayContrato = $objContrato->queryconsultaContratosPorCoche($no_vehiculo);
+    return json_encode($arrayContrato);
 }
 /********************************************************************
  * C O N S U L T A   P A G O S    A B O N O S  C O N T R A T O
@@ -231,7 +162,7 @@ function creaContratoVenta($params)
         }
 
         $CONTRATO = constructObjContrato($forma_pago,$COMPRADOR->getNoCliente(),$noVehiculo,
-        $tipoContrato,$plazo,$fechaPrimerPago, $totalCoche, $enganche,$estatusContrato);
+            $tipoContrato,$plazo,$fechaPrimerPago, $totalCoche, $enganche,$estatusContrato);
 
         $resultContrato = $CONTRATO->queryaddContrato();
         if ($resultContrato) {
@@ -430,4 +361,62 @@ function insertaAbono($idPago,$monto,$notas){
     $obj_Abono->setFechaRegistro(date('Y-m-d H:i:s'));
     $obj_Abono->setNotas($notas);
     return $obj_Abono->queryaddAbono();
+}
+
+function consultaAvancePagoGeneralDeContrato($no_contrato)
+{
+    include_once "../control/controlPago.php";
+    include_once "../control/controlAbonos.php";
+    $arrayContrato = consultaContrato($no_contrato);
+    $arrayPagos = consultaPagos($no_contrato);
+    $totalAbonos = 0;
+    foreach ($arrayPagos as $pago) {
+        $arraySumaAbonos = sumatoriaDeAbonos($pago['id_pago']);
+        $sumaDeAbonos = $arraySumaAbonos[0]['suma_abonos'];
+        $totalAbonos = $totalAbonos+$sumaDeAbonos;
+    }
+    $totalContrato = $arrayContrato[0]['total'];
+    $avance = ($totalAbonos*100)/$totalContrato;
+    array_push($arrayContrato[0],$avance);
+    var_dump($arrayContrato);
+}
+
+function consultaAvanceDeCadaPagoDeContrato($no_contrato)
+{
+    include_once "../control/controlPago.php";
+    include_once "../control/controlAbonos.php";
+    $arrayPagos = consultaPagos($no_contrato);
+    $arrayAvance = array();
+    foreach ($arrayPagos as $pago) {
+        $totalAbonos = 0;
+        $arraySumaAbonos = sumatoriaDeAbonos($pago['id_pago']);
+        $sumaDeAbonos = $arraySumaAbonos[0]['suma_abonos'];
+        $totalAbonos = $totalAbonos+$sumaDeAbonos;
+
+        $totalPago = $pago['total'];
+        $avance = ($totalAbonos*100)/$totalPago;
+        array_push($pago,$arraySumaAbonos);
+        array_push($pago,$avance);
+        array_push($arrayAvance,$pago);
+    }
+    var_dump($arrayAvance);
+}
+
+function consultaPagosAbonosDeContratoCompleto($no_contrato)
+{
+    include_once "../control/controlPago.php";
+    $arrayContrato = consultaContrato($no_contrato);
+    $listaPagos = consultaPagos($no_contrato);
+    $arrayPagosContrato = array();
+    foreach ($listaPagos as $pago) {
+        $listaAbonos = consultaAbonosDePago($pago['id_pago']);
+        array_push($pago, $listaAbonos);
+        array_push($arrayPagosContrato,$pago);
+    }
+    foreach ($arrayContrato as $contrato) {
+        array_push($contrato,$arrayPagosContrato);
+    }
+    //var_dump($contrato);
+    return json_encode($contrato);
+    //return json_encode($arrayPagosContrato);
 }

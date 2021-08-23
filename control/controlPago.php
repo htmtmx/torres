@@ -38,11 +38,6 @@ function consultaAbonosDePago($id_pago)
 {
     include_once "../model/ABONOS.php";
     $obj_Abono = new ABONOS();
-<<<<<<< Updated upstream
-    $result = $obj_Abono->queryconsultaAbonos($id_pago);
-    return $result;
-}
-=======
+
     return $obj_Abono->queryconsultaAbonos($id_pago);
 }
->>>>>>> Stashed changes
