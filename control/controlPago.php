@@ -38,5 +38,6 @@ function consultaAbonosDePago($id_pago)
 {
     include_once "../model/ABONOS.php";
     $obj_Abono = new ABONOS();
-    return $obj_Abono->queryconsultaAbonos($id_pago);
+    $result = $obj_Abono->queryconsultaAbonos($id_pago);
+    return $result;
 }

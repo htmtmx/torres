@@ -1,5 +1,5 @@
 <?php
-    $no_contrato = 3724786545073591;
+    $no_contrato = 1234;
 ?>
 <?php include_once "./include/session.php"?>
 <?php $titulo = "Inicio " ?>
