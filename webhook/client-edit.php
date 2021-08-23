@@ -17,7 +17,7 @@ if (isset($_POST['idCliente']) && isset($_POST['nombre'])
     include_once "../control/controlCliente.php";
     if(updateCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoCliente,
         $telefonoCliente,$celularCliente,$correoCliente,
-        $empresaCliente,$medioIdentificacion,$folioCliente,$tipoCliente,$rfcCliente,
+        $empresaCliente,$medioIdentificacion,$folioCliente,$tipoCliente,$rfcCliente
         )){
         echo "Se ha actualizado el usuario con éxito";
     } else "Hubo un error";
