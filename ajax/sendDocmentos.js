@@ -12,8 +12,6 @@ function getTiposArchivo() {
             template += `<option value="${obj_result.id_tipo_archivo}">${obj_result.nombre}</option> `;
          });
          $("#tipoArchivo").html(template);
-         $("#tipoArchivo2").html(template);
-         $("#tipoArchivo3").html(template);
       }
    });
 }
@@ -39,6 +37,7 @@ $("#frm_Subir_Doc_Contrato").on("submit", function(e){
           $("#mensaje").html("Respuesta: " + res);
        });
    $('#frm_Subir_Doc_Contrato').trigger('reset');
+
 });
 
 //FUNCION SUBMIT PARA EL FORM DE DOC CONTRATO VENTA
@@ -64,7 +63,6 @@ $("#frm_Subir_Doc_Ven").on("submit", function(e){
 
 //FUNCION SUBMIT PARA EL FORM DE DOC COCHE
 $("#frm-add-archivo-coche").on("submit", function(e){
-   e.preventDefault();
    var f = $(this);
    var formData = new FormData(document.getElementById("frm-add-archivo-coche"));
    formData.append("dato", "valor");
@@ -80,9 +78,12 @@ $("#frm-add-archivo-coche").on("submit", function(e){
    })
        .done(function(res){
           $("#mensajeAddArchivo").html(res);
+          consultaDetallesCoche();
+
        });
    $('#frm-add-archivo-coche').trigger('reset');
    e.preventDefault();
+
 });
 
 //FUNCION SUBMIT PARA EL FORM DE DOC COCHE

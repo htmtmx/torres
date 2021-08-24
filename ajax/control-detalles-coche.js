@@ -8,7 +8,7 @@ function consultaDetallesCoche(){
         url: "../webhook/cars-list.php",
         type: "POST",
         data: { idCoche: $("#noCoche").val(),
-                details:1
+            details:1
         },
         success: function (response)
         {
@@ -34,9 +34,9 @@ function construyeCarouselFotosCoche(docs){
     var fotos = [];
     //FOR PARA EXTRAER LAS FOTOS
     docs.forEach((doc)=>{
-        if(doc.uso_archivo==1){
-            //SI ES UNA IMAGEN
-            fotos.push(doc);
+            if(doc.uso_archivo==1){
+                //SI ES UNA IMAGEN
+                fotos.push(doc);
             }
         }
     );
@@ -90,7 +90,7 @@ function construyeCocheTablaFotos(docs){
         }
     );
     let template="";
-console.log(fotos);
+    console.log(fotos);
     fotos.forEach((foto)=>{
         template+= `
                              <tr idFile="${foto.id_file_v}">
@@ -181,42 +181,6 @@ function construyeCocheTablaDocumentos(docs){
         `
     });
     return template;
-}
-
-/////////******BTN LISTEN PARA BOTONES *****////////
-
-$(document).on("click", ".btnEliminarCaracteristicas", function () {
-    if (confirm("¿Esta seguro de que desea eliminar este documento? Esta accion no podrá ser revertida")){
-        let elementCaracteristica = $(this)[0].parentElement.parentElement;
-        let idCaracteristica = $(elementCaracteristica).attr("idcarac")
-        eliminarDetalle(idCaracteristica);
-    }
-
-});
-
-/*
-$(document).on("click", ".btnEliminarDocumentoCoche", function () {
-    if (confirm("¿Esta seguro de que desea eliminar este documento? Esta accion no podrá ser revertida")){
-        console.log("Funciona");
-        //eliminarDireccion(idDireccion)
-    }
-
-});*/
-
-/////////******BTN LISTEN PARA BOTONES *****////////
-function eliminarDetalle(idCaracteristica){
-    $.ajax({
-        url: "../webhook/delete-uso_detalle.php",
-        type: 'POST',
-        data: {
-            idCarc: idCaracteristica,
-            no_vehiculo: $("#noCoche").val()
-        },
-        success: function (mje) {
-            consultaDetallesCoche();
-            alert(mje);
-        }
-    });
 }
 
 /*******************************

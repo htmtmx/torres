@@ -13,7 +13,7 @@
                     <div class="pl-lg-4">
                         <div class="row">
                             <div class="col-lg-12">
-                                <input type="text" id="noVehiculo" name="noVehiculo" value="<?php echo $noCoche; ?>">
+                                <input type="hidden" id="noVehiculo" name="noVehiculo" value="<?php echo $noCoche; ?>">
                                 <div class="form-group">
                                     <label class="form-control-label" for="tipoArchivo">Tipo de Archivo</label>
                                     <select name="tipoArchivo" id="tipoArchivo" class="form-control">

@@ -44,7 +44,7 @@ $noCoche = $_GET['idCoche'];
                     </nav>
                 </div>
                 <div class="col-lg-6 col-auto text-right">
-                    <input type="text" id="noCoche" value="<?php echo $noCoche;?>">
+                    <input type="hidden" id="noCoche" value="<?php echo $noCoche;?>">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cuentaUser">
                         <i class="fas fa-dollar-sign text-white"></i> Vender
                     </button>
@@ -386,6 +386,7 @@ $noCoche = $_GET['idCoche'];
                                 <h3 class="mb-0">Fotos del vehiculo</h3>
                             </div>
                             <div class="col text-right">
+                                <input type="hidden" id="noVehiculo" name="noVehiculo" value="<?php echo $noCoche; ?>">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cuentaUser">
                                     <i class="fas fa-upload text-white"></i> Agregar Foto
                                 </button>
