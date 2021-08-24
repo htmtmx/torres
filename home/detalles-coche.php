@@ -293,13 +293,13 @@ $noCoche = $_GET['idCoche'];
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="fecha_registro">Fecha Registro</label>
-                                            <input type="text" id="fecha_registro" class="form-control" placeholder="Falló" disabled="">
+                                            <input type="text" name ="fecha_registro" id="fecha_registro" class="form-control" placeholder="Falló" disabled="">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="fecha_registro">Observaciones</label>
-                                            <textarea class="form-control" id="observaciones" rows="3"></textarea>
+                                            <textarea class="form-control" name="observaciones" id="observaciones" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -312,7 +312,7 @@ $noCoche = $_GET['idCoche'];
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label class="form-control-label" for="empresa">Ofrecer Credito</label>
-                                            <label class="custom-toggle text-center" id="checkOpcCredit">
+                                            <label class="custom-toggle text-center" id="checkOpcCredit" name="checkOpcCredit">
 
                                             </label>
                                         </div>
