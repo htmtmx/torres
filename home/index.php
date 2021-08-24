@@ -32,7 +32,7 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-auto text-right">
-                        <a href="#" class="btn btn-sm btn-neutral">Registrar Adquisicion</a>
+                        <a href="./ingreso.php" class="btn btn-sm btn-neutral">Registrar Adquisicion</a>
                         <a href="#" class="btn btn-sm btn-neutral">Nueva Venta</a>
                     </div>
                 </div>

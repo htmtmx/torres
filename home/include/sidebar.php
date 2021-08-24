@@ -54,7 +54,7 @@
                             <span class="nav-link-text">Adquisiciones</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Nueva Adquisición</a>
+                            <a class="dropdown-item" href="./ingreso.php">Nueva Adquisición</a>
                             <a class="dropdown-item" href="#">Ver Todos</a>
                         </div>
                     </li>

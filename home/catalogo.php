@@ -35,11 +35,7 @@ $no_vehiculo = 0;
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-lg-3 col-auto text-right">
-                        <a href="#" class="btn btn-sm btn-neutral"><i class="fas fa-file-invoice-dollar"></i> Registrar Adquisicion</a>
-                        <a href="#" class="btn btn-sm btn-neutral"><i class="fas fa-hand-holding-usd"></i> Nueva Venta</a>
-                    </div>
-                    <div class="col-lg-3 col-6 d-flex py-3 w-100">
+                    <div class="col-lg-6 col-auto text-right">
                         <select id="filtro" name="filtro" class="form-control">
                             <option value="0">En venta</option>
                             <option value="1">Vendidos</option>
