@@ -41,3 +41,4 @@ function consultaAbonosDePago($id_pago)
 
     return $obj_Abono->queryconsultaAbonos($id_pago);
 }
+

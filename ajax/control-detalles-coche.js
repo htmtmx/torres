@@ -8,7 +8,7 @@ function consultaDetallesCoche(){
         url: "../webhook/cars-list.php",
         type: "POST",
         data: { idCoche: $("#noCoche").val(),
-            details:1
+                details:1
         },
         success: function (response)
         {
@@ -34,9 +34,9 @@ function construyeCarouselFotosCoche(docs){
     var fotos = [];
     //FOR PARA EXTRAER LAS FOTOS
     docs.forEach((doc)=>{
-            if(doc.uso_archivo==1){
-                //SI ES UNA IMAGEN
-                fotos.push(doc);
+        if(doc.uso_archivo==1){
+            //SI ES UNA IMAGEN
+            fotos.push(doc);
             }
         }
     );
@@ -90,7 +90,7 @@ function construyeCocheTablaFotos(docs){
         }
     );
     let template="";
-    console.log(fotos);
+console.log(fotos);
     fotos.forEach((foto)=>{
         template+= `
                              <tr idFile="${foto.id_file_v}">
@@ -200,6 +200,7 @@ $(document).on("click", ".btnEliminarDocumentoCoche", function () {
         console.log("Funciona");
         //eliminarDireccion(idDireccion)
     }
+
 });*/
 
 /////////******BTN LISTEN PARA BOTONES *****////////
@@ -676,7 +677,6 @@ function buildTblPagos(pagos) {
                 <td colspan="5" class="p-0">
                     <div id="collapse${contador}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
-                        Aqui hay un error
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -765,3 +765,4 @@ function getContrato(listaContratos,tipo) {
     });
     return tmpContratoFound;
 }
+
