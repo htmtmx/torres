@@ -1,9 +1,9 @@
 <!-- Modal -->
 <div class="modal fade" id="addArchivoCoche" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Documento de Vehiculo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -34,7 +34,7 @@
                                     <label class="form-control-label" for="visibilidad">Privado</label>
                                     <select name="visibilidad" id="visibilidad" class="form-control">
                                         <option value="0">Si</option>
-                                        <option value="1">No</option>
+                                        <option value="1" selected>No</option>
                                     </select>
                                 </div>
                             </div>

@@ -386,7 +386,7 @@ $noCoche = $_GET['idCoche'];
                             </div>
                             <div class="col text-right">
                                 <input type="hidden" id="noVehiculo" name="noVehiculo" value="<?php echo $noCoche; ?>">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cuentaUser">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddFotoCoche">
                                     <i class="fas fa-upload text-white"></i> Agregar Foto
                                 </button>
                             </div>
@@ -435,6 +435,7 @@ $noCoche = $_GET['idCoche'];
         <?php include './include/footer.php'; ?>
         <?php include './modals/modal-view-pdf.php'; ?>
         <?php include './modals/modal-add-abono.php'; ?>
+        <?php include './modals/modal-add-foto-coche.php'; ?>
 
     </div>
 </div>
