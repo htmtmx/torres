@@ -27,7 +27,7 @@ $noCoche = $_GET['idCoche'];
         <div class="container-fluid align-items-center">
             <div class="row">
                 <div class="col-lg-7 col-md-10">
-                    <h1 class="display-2 text-white">Nissan Tiida 2015</h1>
+                    <h1 class="display-2 text-white" id="nameVehiculo"></h1>
                     <p class="text-white mt-0 mb-5">
                         Este coche ya fue vendido, por lo que puede agregar los documentos necesarios para respaldar
                     </p>
@@ -94,7 +94,7 @@ $noCoche = $_GET['idCoche'];
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Precio de Lista</h5>
-                                    <span class="h1 font-weight-bold mb-0">$250,000</span>
+                                    <span class="h1 font-weight-bold mb-0" id="precioLista">$250,000</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -211,38 +211,38 @@ $noCoche = $_GET['idCoche'];
                                         <div class="form-group">
                                             <label class="form-control-label" for="celular">Entidad Federativa</label>
                                             <select name="estado" id="estado" class="form-control">
-                                                <option value="Aguascalientes">Aguascalientes</option>
-                                                <option value="Baja California">Baja California</option>
-                                                <option value="Baja California Sur">Baja California Sur</option>
-                                                <option value="Campeche">Campeche</option>
-                                                <option value="Chiapas">Chiapas</option>
-                                                <option value="Chihuahua">Chihuahua</option>
+                                                <option value="AGU">Aguascalientes</option>
+                                                <option value="BCN">Baja California</option>
+                                                <option value="BCS">Baja California Sur</option>
+                                                <option value="CAM">Campeche</option>
+                                                <option value="CHP">Chiapas</option>
+                                                <option value="CHH">Chihuahua</option>
                                                 <option value="CDMX">Ciudad de México</option>
-                                                <option value="Coahuila">Coahuila</option>
-                                                <option value="Colima">Colima</option>
-                                                <option value="Durango">Durango</option>
-                                                <option value="Estado de México" selected="">Estado de México</option>
-                                                <option value="Guanajuato">Guanajuato</option>
-                                                <option value="Guerrero">Guerrero</option>
-                                                <option value="Hidalgo">Hidalgo</option>
-                                                <option value="Jalisco">Jalisco</option>
-                                                <option value="Michoacán">Michoacán</option>
-                                                <option value="Morelos">Morelos</option>
-                                                <option value="Nayarit">Nayarit</option>
-                                                <option value="Nuevo León">Nuevo León</option>
-                                                <option value="Oaxaca">Oaxaca</option>
-                                                <option value="Puebla">Puebla</option>
-                                                <option value="Querétaro">Querétaro</option>
-                                                <option value="Quintana Roo">Quintana Roo</option>
-                                                <option value="San Luis Potosí">San Luis Potosí</option>
-                                                <option value="Sinaloa">Sinaloa</option>
-                                                <option value="Sonora">Sonora</option>
-                                                <option value="Tabasco">Tabasco</option>
-                                                <option value="Tamaulipas">Tamaulipas</option>
-                                                <option value="Tlaxcala">Tlaxcala</option>
-                                                <option value="Veracruz">Veracruz</option>
-                                                <option value="Yucatán">Yucatán</option>
-                                                <option value="Zacatecas">Zacatecas</option>
+                                                <option value="COA">Coahuila</option>
+                                                <option value="COL">Colima</option>
+                                                <option value="DUR">Durango</option>
+                                                <option value="MEX">Estado de México</option>
+                                                <option value="GUA">Guanajuato</option>
+                                                <option value="GRO">Guerrero</option>
+                                                <option value="HID">Hidalgo</option>
+                                                <option value="JAL">Jalisco</option>
+                                                <option value="MIC">Michoacán</option>
+                                                <option value="MOR">Morelos</option>
+                                                <option value="NAY">Nayarit</option>
+                                                <option value="NLE">Nuevo León</option>
+                                                <option value="OAX">Oaxaca</option>
+                                                <option value="PUE">Puebla</option>
+                                                <option value="QUE">Querétaro</option>
+                                                <option value="ROO">Quintana Roo</option>
+                                                <option value="SLP">San Luis Potosí</option>
+                                                <option value="SIN">Sinaloa</option>
+                                                <option value="SON">Sonora</option>
+                                                <option value="TAB">Tabasco</option>
+                                                <option value="TAM">Tamaulipas</option>
+                                                <option value="TLA">Tlaxcala</option>
+                                                <option value="VER">Veracruz</option>
+                                                <option value="YUC">Yucatán</option>
+                                                <option value="ZAC">Zacatecas</option>
                                             </select>
                                         </div>
                                     </div>
@@ -299,7 +299,7 @@ $noCoche = $_GET['idCoche'];
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="fecha_registro">Observaciones</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <textarea class="form-control" id="observaciones" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -312,22 +312,21 @@ $noCoche = $_GET['idCoche'];
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label class="form-control-label" for="empresa">Ofrecer Credito</label>
-                                            <label class="custom-toggle text-center">
-                                                <input type="checkbox" checked>
-                                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
+                                            <label class="custom-toggle text-center" id="checkOpcCredit">
+
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label class="form-control-label" for="empresa">Precio de Lista</label>
-                                            <input  class="form-control" type="number" id="km" name="km" min="0" max="1000000">
+                                            <input  class="form-control" type="number" id="precioListaCoche" name="precioLista" min="0" max="1000000">
                                         </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label class="form-control-label" for="rfc">Precio a Credito</label>
-                                            <input  class="form-control" type="number" id="km" name="km" min="0" max="1000000">
+                                            <input  class="form-control" type="number" id="precioCreditoCoche" name="precioCredito" min="0" max="1000000">
                                         </div>
                                     </div>
                                 </div>

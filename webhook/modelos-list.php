@@ -1,6 +1,6 @@
 <?php
-if (isset($_POST['idMarca'])){
-    $idMarca = $_POST['idMarca'];
+if (isset($_POST['id'])){
+    $idMarca = $_POST['id'];
     include_once('../control/controlModelo.php');
     echo consultaModelos($idMarca);
 }else{
