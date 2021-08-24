@@ -168,8 +168,8 @@ $noCoche = $_GET['idCoche'];
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="frm-datos-cliente">
-                            <input type="hidden" name="idCliente" id="idCliente" value="896610125442">
+                        <form id="frm-update-datos-coche">
+                            <input type="hidden" name="idCoche" id="idCoche" >
                             <h6 class="heading-small text-muted mb-4">Detalles del coche</h6>
                             <div class="pl-lg-4"><div class="row">
                                     <div class="col-lg-12">
@@ -446,4 +446,5 @@ $noCoche = $_GET['idCoche'];
 <script src="../ajax/control-detalles-coche.js"></script>
 <script src="../ajax/control-botones-detalles-coche.js"></script>
 <script src="../ajax/sendDocmentos.js"></script>
+<script src="../ajax/car-update.js"></script>
 

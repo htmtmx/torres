@@ -31,6 +31,7 @@ function consultaDetallesCoche(){
 }
 
 function cargaDatosCarro(obj_carro){
+    $("#idCoche").val(obj_carro.no_vehiculo);
     $("#precioLista").html("$"+obj_carro.precio_contado);
     let credito = obj_carro.opc_credito>0 ? "$"+obj_carro.precio_credito : "NA";
     $("#precioCredito").html(credito);
