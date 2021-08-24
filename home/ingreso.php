@@ -213,41 +213,39 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <input type="hidden" name="idCliente" id="idCliente" value="896610125442">
+                                                                    <input type="hidden" name="noCoche" id="noCoche" value="0">
                                                                     <div class="pl-lg-4">
                                                                         <div class="row">
                                                                             <div class="col-lg-6">
-                                                                                <label class="form-control-label" for="marca">Marca</label>
-                                                                                <select id="marca" name="marca" class="form-control">
-                                                                                    <option value="1">Marca 1</option>
-                                                                                    <option value="2">Marca 2</option>
+                                                                                <label class="form-control-label" for="marcaCoche">Marca</label>
+                                                                                <select id="marcaCoche" name="marcaCoche" class="form-control">
+                                                                                    <!-- AJAX RESPONSE GENERAR MARCAS Y MODELOS -->
                                                                                 </select>
                                                                             </div>
                                                                             <div class="col-lg-6">
-                                                                                <label class="form-control-label" for="modelo">Modelo</label>
-                                                                                <select id="modelo" name="modelo" class="form-control">
-                                                                                    <option value="1">Modelo 1</option>
-                                                                                    <option value="2">Modelo 2</option>
+                                                                                <label class="form-control-label" for="modeloCoche">Modelo</label>
+                                                                                <select id="modeloCoche" name="modeloCoche" class="form-control">
+                                                                                    <!-- AJAX RESPONSE GENERAR MODELOS ON CHANGE MARCAS-->
                                                                                 </select>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="año">Año</label>
-                                                                                    <input type="numeric" name="año" id="año" class="form-control">
+                                                                                    <label class="form-control-label" for="añoCoche">Año</label>
+                                                                                    <input type="numeric" name="añoCoche" id="añoCoche" class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="placa">Placa</label>
-                                                                                    <input type="text" name="placa" id="placa" class="form-control">
+                                                                                    <label class="form-control-label" for="placaCoche">Placa</label>
+                                                                                    <input type="text" name="placaCoche" id="placaCoche" class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="celular">Entidad Federativa</label>
-                                                                                    <select name="estado" id="estado" class="form-control">
+                                                                                    <label class="form-control-label" for="entidadFedCoche">Entidad Federativa</label>
+                                                                                    <select name="entidadFedCoche" id="entidadFedCoche" class="form-control">
                                                                                         <option value="Aguascalientes">Aguascalientes</option>
                                                                                         <option value="Baja California">Baja California</option>
                                                                                         <option value="Baja California Sur">Baja California Sur</option>
@@ -292,21 +290,21 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="color">Color</label>
-                                                                                    <input id="color" name="color" class="form-control">
+                                                                                    <label class="form-control-label" for="colorCoche">Color</label>
+                                                                                    <input id="colorCoche" name="colorCoche" class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="kilometraje">Kilometraje</label>
-                                                                                    <input class="form-control" type="number" id="kilometraje" name="kilometraje" min="0" max="1000000">
+                                                                                    <label class="form-control-label" for="kilometrajeCoche">Kilometraje</label>
+                                                                                    <input class="form-control" type="number" id="kilometrajeCoche" name="kilometrajeCoche" min="0" max="1000000">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
-                                                                                <label class="form-control-label" for="transmision">Trasmision</label>
-                                                                                <select id="transmision" name="transmision" class="form-control">
+                                                                                <label class="form-control-label" for="transmisionCoche">Trasmision</label>
+                                                                                <select id="transmisionCoche" name="transmisionCoche" class="form-control">
                                                                                     <option value="AU">AUTOMATICA</option>
                                                                                     <option value="MA">MANUAL</option>
                                                                                     <option value="DU">DUAL</option>
@@ -322,21 +320,21 @@
                                                                                 </select>
                                                                             </div>
                                                                             <div class="col-lg-4">
-                                                                                <label class="form-control-label" for="nopuertas">No de Puertas</label>
-                                                                                <input class="form-control" type="number" id="nopuertas" name="nopuertas" min="0" max="6">
+                                                                                <label class="form-control-label" for="nopuertasCoche">No de Puertas</label>
+                                                                                <input class="form-control" type="number" id="nopuertasCoche" name="nopuertasCoche" min="0" max="6">
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="niv">NIV</label>
-                                                                                    <input type="text" id="niv" class="form-control" placeholder="Falló" >
+                                                                                    <label class="form-control-label" for="nivCoche">NIV</label>
+                                                                                    <input type="text" id="nivCoche" name="nivCoche" class="form-control" placeholder="Numero de Identificacion Vehicular" >
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="fecha_registro">Observaciones</label>
-                                                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                                                    <label class="form-control-label" for="observacionesCoche">Observaciones</label>
+                                                                                    <textarea class="form-control" id="observacionesCoche" name="observacionesCoche" rows="3"></textarea>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -362,46 +360,46 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <input type="hidden" name="idCliente" id="idCliente" value="987568611049">
+                                                                    <input type="hidden" name="idCliente" id="idCliente" value="0">
                                                                     <h6 class="heading-small text-muted mb-4">Información del Cliente</h6>
                                                                     <div class="pl-lg-4">
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="nombre">Nombre</label>
-                                                                                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+                                                                                    <label class="form-control-label" for="nombreCliente">Nombre</label>
+                                                                                    <input type="text" name="nombreCliente" id="nombreCliente" class="form-control" placeholder="Nombre">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="apaterno">Primer Apellido</label>
-                                                                                    <input type="text" name="apaterno" id="apaterno" class="form-control" placeholder="Primer Apellido">
+                                                                                    <label class="form-control-label" for="apaternoCliente">Primer Apellido</label>
+                                                                                    <input type="text" name="apaternoCliente" id="apaternoCliente" class="form-control" placeholder="Primer Apellido">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="amaterno">Segundo Apellido</label>
-                                                                                    <input type="text" name="amaterno" id="amaterno" class="form-control" placeholder="Segundo Apellido">
+                                                                                    <label class="form-control-label" for="amaternoCliente">Segundo Apellido</label>
+                                                                                    <input type="text" name="amaternoCliente" id="amaternoCliente" class="form-control" placeholder="Segundo Apellido">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="correo">Correo Electronico</label>
-                                                                                    <input type="email" name="correo" id="correo" class="form-control" placeholder="example@gmail.com">
+                                                                                    <label class="form-control-label" for="correoCliente">Correo Electronico</label>
+                                                                                    <input type="email" name="correoCliente" id="correoCliente" class="form-control" placeholder="example@gmail.com">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="telefono">Telefono</label>
-                                                                                    <input type="text" name="telefono" id="telefono" class="form-control" placeholder="No. Telefono">
+                                                                                    <label class="form-control-label" for="telefonoCliente">Telefono</label>
+                                                                                    <input type="text" name="telefonoCliente" id="telefonoCliente" class="form-control" placeholder="No. Telefono">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="celular">Celular</label>
-                                                                                    <input type="text" id="celular" name="celular" class="form-control" placeholder="No. Celular">
+                                                                                    <label class="form-control-label" for="celularCliente">Celular</label>
+                                                                                    <input type="text" id="celularCliente" name="celularCliente" class="form-control" placeholder="No. Celular">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -413,14 +411,14 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="empresa">Empresa / Organizacion</label>
-                                                                                    <input id="empresa" name="empresa" class="form-control" placeholder="Nombre Empresa">
+                                                                                    <label class="form-control-label" for="empresaCliente">Empresa / Organizacion</label>
+                                                                                    <input id="empresa" name="empresaCliente" class="form-control" placeholder="Nombre Empresa">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="rfc">RFC</label>
-                                                                                    <input id="rfc" name="rfc" class="form-control" placeholder="RFC">
+                                                                                    <label class="form-control-label" for="rfcCliente">RFC</label>
+                                                                                    <input id="rfcCliente" name="rfcCliente" class="form-control" placeholder="RFC">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -447,8 +445,8 @@
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="folio">Folio</label>
-                                                                                    <input type="text" name="folio" id="folio" class="form-control" placeholder="Folio">
+                                                                                    <label class="form-control-label" for="folioCliente">Folio</label>
+                                                                                    <input type="text" name="folioCliente" id="folioCliente" class="form-control" placeholder="Folio">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -465,8 +463,8 @@
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="fecha_registro">Fecha Registro</label>
-                                                                                    <input type="text" id="fecha_registro" class="form-control" placeholder="Falló" disabled="">
+                                                                                    <label class="form-control-label" for="fecha_registro_Cliente">Fecha Registro</label>
+                                                                                    <input type="text" id="fecha_registro_Cliente" name="fecha_registro_Cliente" class="form-control" placeholder="Falló" disabled="">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -507,6 +505,7 @@
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody id="tbl-clientes">
+                                                                        <!-- AJAX RESPONSE TBL CLIENTES TODOS LOS CLIENTES ACTIVOS-->
                                                                         <tr idcliente="987568611049">
                                                                             <th scope="row">
                                                                                 1
@@ -562,21 +561,21 @@
                                                             </div>
                                                         </div>
                                                         <div class="card-body">
-                                                                <input type="hidden" name="idCliente" id="idCliente" value="896610125442">
                                                                 <h6 class="heading-small text-muted mb-4">Generales</h6>
                                                                 <div class="pl-lg-4">
                                                                     <div class="row">
                                                                         <div class="col-lg-6">
-                                                                            <label class="form-control-label" for="marca">Forma de Pago</label>
-                                                                            <select id="marca" name="marca" class="form-control">
+                                                                            <label class="form-control-label" for="forma_pago_contrato">Forma de Pago</label>
+                                                                            <select id="forma_pago_contrato" name="forma_pago_contrato" class="form-control">
                                                                                 <option value="1">Credito</option>
                                                                                 <option value="2">Contado</option>
+                                                                                <option value="2">Apartado</option>
                                                                             </select>
                                                                         </div>
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group row">
-                                                                                <label class="form-control-label" for="año">Precio de compra</label>
-                                                                                <input type="numeric" name="compra" id="compra" class="form-control">
+                                                                                <label class="form-control-label" for="precio_compra_coche">Precio de compra</label>
+                                                                                <input type="numeric" name="precio_compra_coche" id="precio_compra_coche" class="form-control">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -585,8 +584,8 @@
                                                                         </div>
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group row">
-                                                                                <label class="form-control-label" for="placa">Subtotal</label>
-                                                                                <input type="numeric" name="compra" id="compra" class="form-control">
+                                                                                <label class="form-control-label" for="subtotal_coche">Subtotal</label>
+                                                                                <input type="numeric" name="subtotal_coche" id="subtotal_coche" class="form-control" readonly="">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -595,8 +594,8 @@
                                                                         </div>
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group row">
-                                                                                <label class="form-control-label" for="placa">IVA</label>
-                                                                                <input type="numeric" name="compra" id="compra" class="form-control">
+                                                                                <label class="form-control-label" for="iva_coche">IVA</label>
+                                                                                <input type="numeric" name="iva_coche" id="iva_coche" class="form-control">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -608,23 +607,23 @@
                                                                     <div class="row">
                                                                         <div class="col-md-2">
                                                                             <div class="form-group">
-                                                                                <label class="form-control-label" for="empresa">Ofrecer Credito</label><br>
+                                                                                <label class="form-control-label" for="opc_credito_coche">Ofrecer Credito</label><br>
                                                                                 <label class="custom-toggle text-center">
-                                                                                    <input type="checkbox" checked="">
+                                                                                    <input type="checkbox" checked="" name="opc_credito_coche" id="opc_credito_coche">
                                                                                     <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
                                                                                 </label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-5">
                                                                             <div class="form-group">
-                                                                                <label class="form-control-label" for="empresa">Precio de Lista</label>
-                                                                                <input class="form-control" type="number" id="km" name="km" min="0" max="1000000">
+                                                                                <label class="form-control-label" for="precio_coche_contado">Precio de Lista</label>
+                                                                                <input class="form-control" type="number" id="precio_coche_contado" name="precio_coche_contado" min="0" max="1000000">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-5">
                                                                             <div class="form-group">
-                                                                                <label class="form-control-label" for="rfc">Precio a Credito</label>
-                                                                                <input class="form-control" type="number" id="km" name="km" min="0" max="1000000">
+                                                                                <label class="form-control-label" for="precio_coche_credito">Precio a Credito</label>
+                                                                                <input class="form-control" type="number" id="precio_coche_credito" name="precio_coche_credito" min="0" max="1000000">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -632,7 +631,7 @@
                                                         </div>
                                                     </div>
                                                     <input type="button" name="previous" class="btn btn-primary previous action-button-previous " value="Anterior" />
-                                                    <input type="button" name="make_payment" class="btn btn-primary next action-button" value="Confirmar" />
+                                                    <input type="submit" name="make_payment" class="btn btn-primary next action-button" value="Confirmar" />
                                                 </fieldset>
                                                 <fieldset>
                                                     <div class="card">
@@ -684,85 +683,4 @@
 </body>
 <?php include './include/js.php'; ?>
 </html>
-
-<script>
-    $(document).ready(function(){
-
-        var current_fs, next_fs, previous_fs; //fieldsets
-        var opacity;
-
-        $(".next").click(function(){
-
-            current_fs = $(this).parent();
-            next_fs = $(this).parent().next();
-
-//Add Class Active
-            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-//show the next fieldset
-            next_fs.show();
-//hide the current fieldset with style
-            current_fs.animate({opacity: 0}, {
-                step: function(now) {
-// for making fielset appear animation
-                    opacity = 1 - now;
-
-                    current_fs.css({
-                        'display': 'none',
-                        'position': 'relative'
-                    });
-                    next_fs.css({'opacity': opacity});
-                },
-                duration: 600
-            });
-        });
-
-        $(".previous").click(function(){
-
-            current_fs = $(this).parent();
-            previous_fs = $(this).parent().prev();
-
-//Remove class active
-            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-
-//show the previous fieldset
-            previous_fs.show();
-
-//hide the current fieldset with style
-            current_fs.animate({opacity: 0}, {
-                step: function(now) {
-// for making fielset appear animation
-                    opacity = 1 - now;
-
-                    current_fs.css({
-                        'display': 'none',
-                        'position': 'relative'
-                    });
-                    previous_fs.css({'opacity': opacity});
-                },
-                duration: 600
-            });
-        });
-
-        $('.radio-group .radio').click(function(){
-            $(this).parent().find('.radio').removeClass('selected');
-            $(this).addClass('selected');
-        });
-
-        $(".submit").click(function(){
-            return false;
-        })
-
-    });
-</script>
-
-<script>
-    $(document).ready(function(){
-        $("#myInput").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#tbl-clientes tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-</script>
+<script src="../ajax/control-ingreso.js"></script>
