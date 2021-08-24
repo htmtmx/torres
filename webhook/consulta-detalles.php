@@ -1,4 +1,6 @@
 <?php
-include_once "../control/controlDetalles.php";
-$id_detalle=2;
-echo consultaDetalle($id_detalle);
+if(isset($_POST['idDetalle'])){
+    $id_detalle=$_POST['idDetalle'];
+    include_once "../control/controlDetalles.php";
+    echo consultaDetalle($id_detalle);
+}

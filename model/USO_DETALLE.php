@@ -95,4 +95,13 @@ class USO_DETALLE extends  CONEXION
         $this->close();
         return $result;
     }
+    public function queryAddUsoDetalle()
+    {
+        $query="INSERT INTO `uso_detalle` (`no_vehiculo_fk`, `id_detalle_fk`, `valor`, `estatus`)
+                VALUES ('".$this->getNoVehiculoFk()."', '".$this->getIdDetalleFk()."', '".$this->getValor()."', '".$this->getEstatus()."')";
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

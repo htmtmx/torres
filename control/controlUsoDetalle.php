@@ -12,3 +12,12 @@ function deleteUsoDetalle($id_detalle_fk,$n_coche_fk){
     $result = $obj_ud->queryDeleteUsoDetalle($id_detalle_fk,$n_coche_fk);
     return $result;
 }
+function addUsoDetalle($no_vehiculo,$idDetalle,$valor){
+    include_once "../model/USO_DETALLE.php";
+    $obj_ud = new USO_DETALLE();
+    $obj_ud->setNoVehiculoFk($no_vehiculo);
+    $obj_ud->setIdDetalleFk($idDetalle);
+    $obj_ud->setValor($valor);
+    $obj_ud->setEstatus(1);
+    return $obj_ud->queryAddUsoDetalle();
+}
