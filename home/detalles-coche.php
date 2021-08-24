@@ -312,7 +312,7 @@ $noCoche = $_GET['idCoche'];
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label class="form-control-label" for="empresa">Ofrecer Credito</label>
-                                            <label class="custom-toggle text-center" id="checkOpcCredit" name="checkOpcCredit">
+                                            <label class="custom-toggle text-center" id="checkOpcCredit" name="checkOpcCredit" >
 
                                             </label>
                                         </div>

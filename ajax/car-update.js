@@ -1,7 +1,3 @@
-$(document).ready(function(){
-    updateCar();
-});
-
 $("#frm-update-datos-coche").on("submit", function(e){
     //let tipocontrato = $('input[name="contrato"]:checked').val();
     var f = $(this);
@@ -24,24 +20,3 @@ $("#frm-update-datos-coche").on("submit", function(e){
     })
     e.preventDefault();
 });
-
-function updateCar() {
-    $.ajax({
-            type:   "POST",
-            url:    "../control/car-add.php",
-            data: {
-                modelo: $("#modelos").val(),
-                anio: $("#anio").val(),
-                placa: $("#placa").val(),
-                entidad_placa: $("#entidad_placa").val(),
-                color: $("#colorCarBuy").val(),
-                kilometros: $("#kmCarBuy").val(),
-                transmision: $("#transimision").val(),
-                combustible: $("#combustible").val(),
-                nopuertas: $("#noPuertas").val(),
-            }, success: function () {
-                console.log(response);
-            }
-        }
-    )
-}

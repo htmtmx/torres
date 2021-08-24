@@ -51,7 +51,7 @@ function cargaDatosCarro(obj_carro){
     $("#estado").val(obj_carro.entidad_placa);
     let creditoChecked = obj_carro.opc_credito === "1" ? "checked":"";
     let templateOpcCredit = `
-        <input type="checkbox" ${creditoChecked}>
+        <input type="checkbox" ${creditoChecked} value="1" id="ckeckCredito" name="ckeckCredito" >
         <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
     `;
     $("#checkOpcCredit").html(templateOpcCredit);
