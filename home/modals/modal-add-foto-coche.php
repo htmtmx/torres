@@ -28,7 +28,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Subir Foto</button>
+                    <button type="button" class="btn btn-primary"><i class="fas fa-upload"></i> Subir Foto</button>
                 </div>
             </form>
         </div>
@@ -52,9 +52,6 @@
         // read the image file as a data URL.
         reader.readAsDataURL(this.files[0]);
     });
-
-    // Add the following code if you want the name of the file appear on select
-    // Add the following code if you want the name of the file appear on select
     $(".custom-file-input").on("change", function() {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
