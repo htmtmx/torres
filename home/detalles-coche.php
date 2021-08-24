@@ -334,7 +334,7 @@ $noCoche = $_GET['idCoche'];
                             <hr class="my-4">
                             <!-- Description -->
                             <div class="col-lg-12 col-auto text-right">
-                                <span class="d-flex position-absolute w-100" id="mensajeUpdateCliente"></span>
+                                <span class="d-flex position-absolute w-100" id="mensajeUpdateCoche"></span>
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                         </form>

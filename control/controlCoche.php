@@ -121,7 +121,7 @@ function updateCoche($noVehiculo,$niv,$idModeloFk,$anio,$placa,$entidadPlaca,$co
     $objCoche->setPrecioCredito($precioCredito);
     $objCoche->setOpcCredito($opcCredito);
     $objCoche->setObservaciones($observaciones);
-    echo $result = $objCoche->queryupdateCoche() ? "Se actualizo correctamente el coche ".$objCoche->getNoVehiculo():"Error al intentar actualizar";
+    return $objCoche->queryupdateCoche();
 }
 
 function updateEstatusCoche($noVehiculo,$estatus)

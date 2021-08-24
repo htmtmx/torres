@@ -1,5 +1,4 @@
 <?php
-echo "Mensaje de servidor para actualizar vehiculo";
 if (isset($_POST['idCoche']) && isset($_POST['niv'])
     && isset($_POST['año']) && isset($_POST['placa'])
     && isset($_POST['color']) && isset($_POST['kilometraje'])
@@ -29,7 +28,7 @@ if (isset($_POST['idCoche']) && isset($_POST['niv'])
     include_once "../control/controlCoche.php";
     if(updateCoche($no_vehiculo,$niv,$modelo,$anio,$placa,$estado,$color,$kilometraje,$transmision,
                     $combustible,$nopuertas,$precioLista,$precioCredito,$opcCredit,$observaciones)){
-        echo "Se ha actualizado con exito";
+        echo "¡Se han actualizado los datos del vehiculo con exito!";
     } else echo "No se ha podido actualizar el vehiculo";
 
 } else echo "Los datos estan incompletos";
