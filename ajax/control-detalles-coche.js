@@ -1,6 +1,10 @@
+var arrayMarcas =  new Array();
 $(document).ready(function(){
+    consultaMarcas();
+    //consultaModelos(2);
     consultaDetallesCoche();
     consultaDetallesContrato();
+
 });
 
 function consultaDetallesCoche(){
@@ -15,6 +19,8 @@ function consultaDetallesCoche(){
             //console.log(response);
             let obj_result = JSON.parse(response);
             let obj_carro= obj_result[0];
+            console.log("Carro");
+            console.log(obj_carro);
             cargaDatosCarro(obj_carro);
             $("#carouselCocheFotos").html(construyeCarouselFotosCoche(obj_carro[1]));
             $("#tblfotosCoche").html(construyeCocheTablaFotos(obj_carro[1]));
@@ -25,9 +31,32 @@ function consultaDetallesCoche(){
 }
 
 function cargaDatosCarro(obj_carro){
-    $("#precioContado").html("$"+obj_carro.precio_contado);
+    $("#precioLista").html("$"+obj_carro.precio_contado);
     let credito = obj_carro.opc_credito>0 ? "$"+obj_carro.precio_credito : "NA";
     $("#precioCredito").html(credito);
+    $("#nameVehiculo").html(obj_carro.marca_coche+" "+obj_carro.modelo_coche+", "+obj_carro.anio);
+    $("#niv").val(obj_carro.NIV);
+    $("#marca").val(obj_carro.id_marca);
+    consultaModelos(obj_carro.id_marca, obj_carro.id_modelo );
+    $("#año").val(obj_carro.anio);
+    $("#placa").val(obj_carro.placa);
+    $("#color").val(obj_carro.color);
+    $("#kilometraje").val(obj_carro.kilometros);
+    $("#transmision").val(obj_carro.transimision);
+    $("#combustible").val(obj_carro.combustible);
+    $("#nopuertas").val(obj_carro.no_puertas);
+    $("#fecha_registro").val(obj_carro.fecha_registro);
+    $("#observaciones").val(obj_carro.observaciones);
+    $("#estado").val(obj_carro.entidad_placa);
+    let creditoChecked = obj_carro.opc_credito === "1" ? "checked":"";
+    let templateOpcCredit = `
+        <input type="checkbox" ${creditoChecked}>
+        <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
+    `;
+    $("#checkOpcCredit").html(templateOpcCredit);
+    //$("#opcCredito").html(obj_carro.opc_credito.val == 1 ? "checked":"unchecked");
+    $("#precioListaCoche").val(obj_carro.precio_contado);
+    $("#precioCreditoCoche").val(obj_carro.precio_credito);
 }
 
 function construyeCarouselFotosCoche(docs){
@@ -195,13 +224,13 @@ function consultaDetallesContrato(){
         },
         success: function (response)
         {
-            console.log(response);
+            //console.log(response);
             let obj_result = JSON.parse(response);
             console.log("CONTRATOS");
             console.log(obj_result);
             //esta siempre va a existir
-            let contratoAdquisicion = getContrato(obj_result,"0"); // 0 -> Adquisicion
-            let contratoVenta = getContrato(obj_result,"1"); // 1 -> venta
+            let contratoAdquisicion = getContrato(obj_result,"1"); // 1 -> Adquisicion
+            let contratoVenta = getContrato(obj_result,"0"); // 0 -> venta
             console.log(contratoAdquisicion);
             console.log(contratoVenta);
             //construir el TAB
@@ -227,6 +256,7 @@ function getTemplateContratoVenta(contrato) {
     let template = "";
     let templateTablaArchivos = buildTblFileContratoVenta(contrato[1]);
     let templatePagos = buildTblPagos(contrato[0]);
+    let formaPago = contrato.forma_pago === "0" ? "Contado" : "Credito";
     template += `
                 <!-- CONTRATO DE VENTA-->
                                 <div class="tab-pane fade show active" id="venta" role="tabpanel" aria-labelledby="home-tab">
@@ -244,25 +274,25 @@ function getTemplateContratoVenta(contrato) {
                                                     </div>
                                                 </div>
                                                 <div class="card-body">
-                                                    <input type="hidden" name="idCliente" id="idCliente" value="896610125442">
+                                                    <input type="hidden" name="idCliente" id="idCliente" value="${contrato.no_contrato}">
                                                     <div class="pl-lg-4">
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <label class="form-control-label" for="medio_identificacion_cliente">No de Contrato</label>
-                                                                <input type="text" name="noContratoVta" id="noContratoVta" class="form-control" value="${contrato.no_contrato}" readonly>
+                                                                <input type="text"  class="form-control" value="${contrato.no_contrato}" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <label class="form-control-label" for="medio_identificacion_cliente">Cliente</label>
-                                                                <input type="text" name="telefono" id="telefono" class="form-control">
+                                                                <input type="text" class="form-control" value="${contrato.cliente}"readonly>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="form-group">
                                                                     <label class="form-control-label" for="correo">Vendido Por:</label>
-                                                                    <input type="text" name="telefono" id="telefono" class="form-control">
+                                                                    <input type="text" class="form-control" value="${contrato.vendido_comprado_por}"readonly>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -270,7 +300,7 @@ function getTemplateContratoVenta(contrato) {
                                                             <div class="col-lg-12">
                                                                 <div class="form-group">
                                                                     <label class="form-control-label" for="correo">Forma de Pago:</label>
-                                                                    <input type="text" name="telefono" id="telefono" class="form-control">
+                                                                    <input type="text" class="form-control" value="${formaPago}"readonly>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -284,7 +314,7 @@ function getTemplateContratoVenta(contrato) {
                                                                 <div class="form-group row">
                                                                     <label for="staticEmail" class="col-sm-4 col-form-label">Subtotal: </label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" readonly name="telefono" id="telefono" class="form-control">
+                                                                        <input type="text" class="form-control" value="${contrato.subtotal}" readonly>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -292,7 +322,7 @@ function getTemplateContratoVenta(contrato) {
                                                                 <div class="form-group row">
                                                                     <label for="staticEmail" class="col-sm-4 col-form-label">IVA: </label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" readonly name="telefono" id="telefono" class="form-control">
+                                                                        <input type="text" class="form-control" value="${contrato.iva}" readonly>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -300,7 +330,7 @@ function getTemplateContratoVenta(contrato) {
                                                                 <div class="form-group row">
                                                                     <label for="staticEmail" class="col-sm-4 col-form-label">TOTAL: </label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" readonly name="telefono" id="telefono" class="form-control">
+                                                                        <input type="text" class="form-control" value="${contrato.total}" readonly>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -371,7 +401,7 @@ function getTemplateContratoVenta(contrato) {
                                                                     <div class="form-group row">
                                                                         <label for="staticEmail" class="col-sm-4 col-form-label">TOTAL: </label>
                                                                         <div class="col-sm-8">
-                                                                            <input type="text" readonly="" name="telefono" id="telefono" class="form-control">
+                                                                            <input type="text" readonly="" name="telefono" id="telefono" class="form-control" value="${contrato.total}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -379,7 +409,7 @@ function getTemplateContratoVenta(contrato) {
                                                                     <div class="form-group row">
                                                                         <label for="staticEmail" class="col-sm-4 col-form-label">Enganche: </label>
                                                                         <div class="col-sm-8">
-                                                                            <input type="text" readonly="" name="telefono" id="telefono" class="form-control">
+                                                                            <input type="text" readonly="" name="telefono" id="telefono" class="form-control" value="${contrato.enganche}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -395,7 +425,7 @@ function getTemplateContratoVenta(contrato) {
                                                                     <div class="form-group row">
                                                                         <label for="staticEmail" class="col-sm-4 col-form-label">Saldo: </label>
                                                                         <div class="col-sm-8">
-                                                                            <input type="text" readonly="" name="telefono" id="telefono" class="form-control">
+                                                                            <input type="text" readonly="" name="telefono" id="telefono" class="form-control" value="${contrato.saldo}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -458,6 +488,7 @@ function getTemplateContratoVenta(contrato) {
 
 function getTemplateContratoAdq(contrato) {
     let template = "";
+    let formaPagoAdq = contrato.forma_pago === "0" ? "Contado" : "Credito";
     let documentos = buildTblFileContratoVenta(contrato[1]);
     template+= `
                 <!-- CONTRATO DE ADQUISICION-->
@@ -488,14 +519,14 @@ function getTemplateContratoAdq(contrato) {
                                                             <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <label class="form-control-label" for="medio_identificacion_cliente">Vendedor</label>
-                                                                    <input type="text" readonly class="form-control" value="${contrato.vendido_comprado_por}">
+                                                                    <input type="text" readonly id="cliente" class="form-control" value="${contrato.cliente}">
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="correo">Comprado por:</label>
-                                                                        <input type="text" readonly class="form-control" value="${contrato.cliente}">
+                                                                        <input type="text" readonly id="comprado_por" class="form-control" value="${contrato.vendido_comprado_por}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -503,7 +534,7 @@ function getTemplateContratoAdq(contrato) {
                                                                 <div class="col-lg-12">
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="correo">Forma de Pago:</label>
-                                                                        <input type="text" class="form-control">
+                                                                        <input type="text" readonly class="form-control" value="${formaPagoAdq}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -517,7 +548,7 @@ function getTemplateContratoAdq(contrato) {
                                                                     <div class="form-group row">
                                                                         <label for="staticEmail" class="col-sm-4 col-form-label">Subtotal: </label>
                                                                         <div class="col-sm-8">
-                                                                            <input type="text" readonly name="telefono" id="telefono" class="form-control">
+                                                                            <input type="text" readonly name="subtotalAdqui" id="subtotalAdqui" class="form-control" value="${contrato.subtotal}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -525,7 +556,7 @@ function getTemplateContratoAdq(contrato) {
                                                                     <div class="form-group row">
                                                                         <label for="staticEmail" class="col-sm-4 col-form-label">IVA: </label>
                                                                         <div class="col-sm-8">
-                                                                            <input type="text" readonly name="telefono" id="telefono" class="form-control">
+                                                                            <input type="text" readonly name="ivaAdqui" id="ivaAdqui" class="form-control" value="${contrato.iva}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -533,7 +564,7 @@ function getTemplateContratoAdq(contrato) {
                                                                     <div class="form-group row">
                                                                         <label for="staticEmail" class="col-sm-4 col-form-label">TOTAL: </label>
                                                                         <div class="col-sm-8">
-                                                                            <input type="text" readonly name="telefono" id="telefono" class="form-control">
+                                                                            <input type="text" readonly name="totalAdqui" id="totalAdqui" class="form-control" value="${contrato.total}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -729,4 +760,82 @@ function getContrato(listaContratos,tipo) {
     });
     return tmpContratoFound;
 }
+ function consultaMarcas() {
+     $.ajax(
+         {
+             url: "../webhook/marcas-list.php",
+             success: function (response)
+             {
+                 let obj_result = JSON.parse(response);
+                 let template = "";
+                 obj_result.forEach(
+                     (obj_result)=>
+                     {
+                         template += `<option value="${obj_result.id_marca}">${obj_result.nombre}</option>`;
+                         arrayMarcas.push(obj_result);
+                     }
 
+                 );
+                 $("#marca").html(template);
+             }
+         }
+     );
+ }
+
+$("#marca").change(function ()
+{
+    //obj que tienes cambios
+    var marca_sel = $(this);
+    var id = marca_sel.val();
+    if (id != '')
+    {
+        consultaModelos(id);
+    }
+    else
+    {
+        var modelo = $("#modelo");
+        alert("No selecciono ningun elemento");
+        modelo.find('option').remove();
+    }
+});
+
+try {
+    function consultaModelos(id_marca, idModeloSelct) {
+        //Obj que voy a modificar
+        var modelo = $("#modelo");
+        $.ajax(
+            {
+                url: "../webhook/modelos-list.php",
+                data: { id : id_marca },
+                type: "POST",
+                beforeSend: function ()
+                {
+                    modelo.prop('disabled',false);
+                },
+                success: function (response)
+                {
+                    let obj_result = JSON.parse(response);
+                    let template = "";
+
+                    obj_result.forEach(
+                        (modelo)=>
+                        {
+                            let seleccionado = modelo.id_modelo == idModeloSelct ? "selected":"";
+                            template += `<option value ="${modelo.id_modelo }" ${seleccionado}>${modelo.nombre}</option>`;
+                        }
+                    );
+
+                    $("#modelo").html(template);
+                    modelo.prop('disabled',false);
+                },
+                error: function ()
+                {
+                    alert('Ocurrio un error en el servidor...');
+                    modelo.prop('disabled',true);
+                }
+            }
+        );
+    }
+}catch (e) {
+
+}

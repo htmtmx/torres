@@ -6,8 +6,7 @@ function consultaModelos($idMarca)
 {
     include_once "../model/MODELO.php";
     $obj_modelo = new MODELO();
-    $obj_modelo->setIdMarcaFk($idMarca);
-    $result= $obj_modelo->queryconsultaModelos($obj_modelo->getIdMarcaFk());
+    $result= $obj_modelo->queryconsultaModelos( $idMarca);
     return json_encode($result);
 }
 
