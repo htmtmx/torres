@@ -9,7 +9,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form>
+            <form id="frm-add-foto-vehiculo">
                 <div class="modal-body">
                     <img src="https://sierranorte.cnt.es/wp-content/uploads/no_preview.jpg" class="card-img-top img-thumbnail img-preview" alt="img del curso"  id="preview" >
                     <div class="card-body">
@@ -18,9 +18,9 @@
                             <div class="col-md-9">
                                 <form>
                                     <div class="form-group">
-                                        <input type="text" class="form-control-file"id="noCoche" >
+                                        <input type="hidden" class="form-control-file"id="noVehiculo" name="noVehiculo" value="<?php echo $noCoche ?>" >
                                         <label for="exampleFormControlFile1">Seleccionar foto de vehiculo</label>
-                                        <input type="file" class="form-control-file"id="preview"  accept="image/*">
+                                        <input type="file" class="form-control-file"id="archivo1" name="archivo1" accept="image/*">
                                     </div>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary"><i class="fas fa-upload"></i> Subir Foto</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-upload"></i> Subir Foto</button>
                 </div>
             </form>
         </div>

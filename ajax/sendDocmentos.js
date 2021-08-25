@@ -87,10 +87,10 @@ $("#frm-add-archivo-coche").on("submit", function(e){
 });
 
 //FUNCION SUBMIT PARA EL FORM DE DOC COCHE
-$("#frm_Foto_Coch").on("submit", function(e){
+$("#frm-add-foto-vehiculo").on("submit", function(e){
    e.preventDefault();
    var f = $(this);
-   var formData = new FormData(document.getElementById("frm_Foto_Coch"));
+   var formData = new FormData(document.getElementById("frm-add-foto-vehiculo"));
    formData.append("dato", "valor");
    //formData.append(f.attr("name"), $(this)[0].files[0]);
    $.ajax({
@@ -103,6 +103,10 @@ $("#frm_Foto_Coch").on("submit", function(e){
       processData: false
    })
        .done(function(res){
-          $("#mensaje4").html("Respuesta: " + res);
+          alert(res);
+          consultaDetallesCoche();
+          document.getElementById("preview").src = "https://sierranorte.cnt.es/wp-content/uploads/no_preview.jpg";
        });
+   $('#frm-add-foto-vehiculo').trigger('reset');
+   e.preventDefault();
 });

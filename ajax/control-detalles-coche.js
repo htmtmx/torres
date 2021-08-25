@@ -4,7 +4,6 @@ $(document).ready(function(){
     //consultaModelos(2);
     consultaDetallesCoche();
     consultaDetallesContrato();
-
 });
 
 function consultaDetallesCoche(){
@@ -19,8 +18,6 @@ function consultaDetallesCoche(){
             //console.log(response);
             let obj_result = JSON.parse(response);
             let obj_carro= obj_result[0];
-            console.log("Carro");
-            console.log(obj_carro);
             cargaDatosCarro(obj_carro);
             $("#carouselCocheFotos").html(construyeCarouselFotosCoche(obj_carro[1]));
             $("#tblfotosCoche").html(construyeCocheTablaFotos(obj_carro[1]));
@@ -120,7 +117,6 @@ function construyeCocheTablaFotos(docs){
         }
     );
     let template="";
-    console.log(fotos);
     fotos.forEach((foto)=>{
         template+= `
                              <tr idFile="${foto.id_file_v}">
@@ -183,26 +179,37 @@ function construyeCocheTablaDocumentos(docs){
             }
         }
     );
+    console.log(docs);
     let template="";
     archivos.forEach((archivo)=>{
+        let privado= archivo.nivel_acceso==0 ? `<i class="fas fa-lock text-red"></i>`:"";
+        let estatus= archivo.nivel_acceso==0 ? "Archivo Protegido": "Visible";
         template+=`
                     <tr idDocCoch="${archivo.id_file_v}">
                         <th scope="row">
-                            ${archivo.nombreTipo} <i class="fas fa-lock text-red"></i>
+                            ${archivo.nombreTipo}
+                            ${privado}
                         </th>
                         <td>
                             ${archivo.ext}
                         </td>
                         <td>
-                            Archivo protegido
+                            ${estatus}
                         </td>
                         <td>
-                            <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
+                          <!--  <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
+                                <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
+                            </button>-->
+                        <a href="${archivo.path}" target="_blank">
+                            <button class="btn btn-icon btn-secondary" type="button">
                                 <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
                             </button>
+                        </a> 
+                        <a href="${archivo.path}" target="_blank" download="${archivo.nombreArchivo}">
                             <button class="btn btn-icon btn-secondary" type="button">
                                 <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
                             </button>
+                        </a>
                             <button class="btn btn-icon btn-secondary btnEliminarDocumentoCoche" type="button">
                                 <span class="btn-inner--icon "><i class="fas fa-trash-alt text-red"></i></span>
                             </button>
@@ -227,13 +234,9 @@ function consultaDetallesContrato(){
         {
             //console.log(response);
             let obj_result = JSON.parse(response);
-            console.log("CONTRATOS");
-            console.log(obj_result);
             //esta siempre va a existir
             let contratoAdquisicion = getContrato(obj_result,"1"); // 1 -> Adquisicion
             let contratoVenta = getContrato(obj_result,"0"); // 0 -> venta
-            console.log(contratoAdquisicion);
-            console.log(contratoVenta);
             //construir el TAB
             $("#myTab").html(constuyeNavContratos(contratoAdquisicion,contratoVenta));
             $("#myTabContent").html(constuyeContainersContratos(contratoAdquisicion,contratoVenta));
