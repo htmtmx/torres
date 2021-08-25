@@ -38,7 +38,17 @@ function consultaAbonosDePago($id_pago)
 {
     include_once "../model/ABONOS.php";
     $obj_Abono = new ABONOS();
-
     return $obj_Abono->queryconsultaAbonos($id_pago);
 }
 
+/********************************************************************
+ * U P D A T E     S A L D O    D E     U N      P A G O
+ *******************************************************************/
+
+function updateSaldoDePago($id_pago,$saldo)
+{
+    include_once "../model/PAGO.php";
+    $objPago = new PAGO();
+    $result = $objPago->queryUpdateSaldo($id_pago,$saldo);
+    return $result;
+}

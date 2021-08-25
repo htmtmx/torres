@@ -16,14 +16,18 @@ function verificaAbono($no_contrato,$monto)
                 if ($montoAbono>$faltantePorAbonar) {
                     addAbono($pago['id_pago'],$faltantePorAbonar,"Abono al ".$pago['detalles']);
                     updateEstatusPago($pago['id_pago'],1);
+                    updateSaldoDePago($pago['id_pago'],0);
                     $montoRestanteParaAbonar = $montoAbono-$faltantePorAbonar;
                     $montoAbono= $montoRestanteParaAbonar;
                 }else if ($montoAbono<=$faltantePorAbonar && $montoAbono>0) {
                     addAbono($pago['id_pago'],$montoAbono,"Abono al ".$pago['detalles']);
+                    $saldo = $faltantePorAbonar - $montoAbono;
+                    updateSaldoDePago($pago['id_pago'],$saldo);
                     $finalAbono = $montoAbono;
                     $montoAbono =0;
                     if ($faltantePorAbonar==$finalAbono) {
                         updateEstatusPago($pago['id_pago'],1);
+                        updateSaldoDePago($pago['id_pago'],0);
                         $montoAbono =0;
                     }
                 }

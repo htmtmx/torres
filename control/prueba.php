@@ -24,7 +24,7 @@ consultaCocheDetallesDocumentosFotos(1);*/
  * */
 include_once "../control/controlAbonos.php";
 $no_contrato = 8452254501589255;
-$monto= 5000;
+$monto= 17000;
 verificaAbono($no_contrato,$monto);
 /*include_once "../control/controlAbonos.php";
 echo sumatoriaDeAbonos(20210817576779);*/

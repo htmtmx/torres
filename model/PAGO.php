@@ -241,4 +241,14 @@ class PAGO extends CONEXION implements I_PAGO
         $objAbono = new ABONOS();
         return $objAbono->queryconsultaAbonos($id_pago);
     }
+
+    function queryUpdateSaldo($id_pago,$saldo)
+    {
+        $query = "UPDATE `pago` 
+                SET `saldo` = '".$saldo."' WHERE `pago`.`id_pago` = ".$id_pago;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }
