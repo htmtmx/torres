@@ -3,15 +3,15 @@
 // recibir el documento archivo
 // TRATAMIENTO DE IMAGENES
 //Imagen 1
+echo $_POST['recipient-name'];
+if(isset($_POST['recipient-name']) && isset($_POST['noCocheContratoModal']) && isset($_POST['tipoArchivoContrato']) && $_FILES['archivo1']['name'] ){
 
-if(isset($_POST['idContrato']) && isset($_POST['noVehiculo']) && isset($_POST['tipoArchivo']) && $_FILES['archivo1']['name'] ){
-
-    $noVehiculo = $_POST['noVehiculo'];
+    $noVehiculo = $_POST['noCocheContratoModal'];
     $nombreIMG1 = $_FILES['archivo1']['name']; //Obteniendo el nombre1
     $archivo1 = $_FILES['archivo1']['tmp_name']; //OBteniendo el file1
-    $idContrado = $_POST['idContrato'];
-    $tipoArchivo = $_POST['tipoArchivo'];
-    $privado = $_POST["visibilidad"] == "1" ? 1:0;
+    $idContrado = $_POST['recipient-name'];
+    $tipoArchivo = $_POST['tipoArchivoContrato'];
+    $privado = $_POST["visibilidadDocumentoContrato"] == "1" ? 1:0;
     echo ($privado);
     echo $idContrado;
 

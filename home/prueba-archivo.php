@@ -9,7 +9,6 @@
     <form enctype="multipart/form-data" id="frm_Subir_Doc_Contrato" method="post">
         <input type="text" id="noVehiculo" name="noVehiculo" value="6872360036531502" >
         <input type="text" id="idContrato" name="idContrato" value="2303443741032755">
-        <select name="tipoArchivo" id="tipoArchivo">
         </select>
 <!--
 https://developer.mozilla.org/es/docs/Web/HTML/Attributes/accept

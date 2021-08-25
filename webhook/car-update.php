@@ -8,7 +8,6 @@ if (isset($_POST['idCoche']) && isset($_POST['niv'])
     $modelo                 =  $_POST['modelo'];
     $anio                   =  $_POST['año'];
     $placa                  =  $_POST['placa'];
-    $estado                 =  $_POST['estado'];
     $color                  =  $_POST['color'];
     $kilometraje            =  $_POST['kilometraje'];
     $transmision            =  $_POST['transmision'];
@@ -26,7 +25,7 @@ if (isset($_POST['idCoche']) && isset($_POST['niv'])
         $opcCredit = 0;
     }
     include_once "../control/controlCoche.php";
-    if(updateCoche($no_vehiculo,$niv,$modelo,$anio,$placa,$estado,$color,$kilometraje,$transmision,
+    if(updateCoche($no_vehiculo,$niv,$modelo,$anio,$placa,$color,$kilometraje,$transmision,
                     $combustible,$nopuertas,$precioLista,$precioCredito,$opcCredit,$observaciones)){
         echo "¡Se han actualizado los datos del vehiculo con exito!";
     } else echo "No se ha podido actualizar el vehiculo";

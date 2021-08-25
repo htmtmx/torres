@@ -15,8 +15,8 @@
                             <div class="col-lg-12">
                                 <input type="hidden" id="noVehiculo" name="noVehiculo" value="<?php echo $noCoche; ?>">
                                 <div class="form-group">
-                                    <label class="form-control-label" for="tipoArchivo">Tipo de Archivo</label>
-                                    <select name="tipoArchivo" id="tipoArchivo" class="form-control">
+                                    <label class="form-control-label" for="tipoArchivoCarro">Tipo de Archivo</label>
+                                    <select name="tipoArchivoCarro" id="tipoArchivoCarro" class="form-control">
                                         <!-- AJAX RESPONSE -->
                                     </select>
                                 </div>

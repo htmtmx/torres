@@ -385,7 +385,6 @@ $noCoche = $_GET['idCoche'];
                                 <h3 class="mb-0">Fotos del vehiculo</h3>
                             </div>
                             <div class="col text-right">
-                                <input type="hidden" id="noVehiculo" name="noVehiculo" value="<?php echo $noCoche; ?>">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddFotoCoche">
                                     <i class="fas fa-upload text-white"></i> Agregar Foto
                                 </button>
@@ -436,13 +435,13 @@ $noCoche = $_GET['idCoche'];
         <?php include './modals/modal-view-pdf.php'; ?>
         <?php include './modals/modal-add-abono.php'; ?>
         <?php include './modals/modal-add-foto-coche.php'; ?>
-
+        <?php include './modals/modal-add-caracteristica.php'; ?>
+        <?php include './modals/modal-add-archivo-contratoAdq.php'; ?>
+        <?php include './modals/modal-add-archivo-vehiculo.php'; ?>
     </div>
 </div>
 </body>
 <?php include './include/js.php'; ?>
-<?php include './modals/modal-add-caracteristica.php'; ?>
-<?php include './modals/modal-add-archivo-vehiculo.php'; ?>
 </html>
 <script src="../ajax/control-detalles-coche.js"></script>
 <script src="../ajax/control-botones-detalles-coche.js"></script>

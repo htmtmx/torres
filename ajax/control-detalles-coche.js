@@ -2,9 +2,14 @@ var arrayMarcas =  new Array();
 $(document).ready(function(){
     consultaMarcas();
     //consultaModelos(2);
+
+
+});
+
+window.onload = function() {
     consultaDetallesCoche();
     consultaDetallesContrato();
-});
+};
 
 function consultaDetallesCoche(){
     $.ajax({
@@ -18,11 +23,14 @@ function consultaDetallesCoche(){
             //console.log(response);
             let obj_result = JSON.parse(response);
             let obj_carro= obj_result[0];
+            console.log("OBJETO CARRO");
+            console.log(obj_carro);
             cargaDatosCarro(obj_carro);
             $("#carouselCocheFotos").html(construyeCarouselFotosCoche(obj_carro[1]));
             $("#tblfotosCoche").html(construyeCocheTablaFotos(obj_carro[1]));
             $("#tblDocsCoche").html(construyeCocheTablaDocumentos(obj_carro[1]));
             $("#tbl-detalles").html(contruyeTablaDetalles(obj_carro[0]));
+            $("#noCocheContratoModal").val(obj_carro.no_vehiculo);
         },
     });
 }
@@ -359,7 +367,7 @@ function getTemplateContratoVenta(contrato) {
                                                             <h3 class="mb-0">Documentos disponibles del contrato de Venta</h3>
                                                         </div>
                                                         <div class="col text-right">
-                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#cuentaUser">
+                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addArchivoContratoAdq">
                                                                 <i class="fas fa-file-upload text-white"></i>  Agregar Archivo
                                                             </button>
                                                         </div>
@@ -491,6 +499,7 @@ function getTemplateContratoVenta(contrato) {
 }
 
 function getTemplateContratoAdq(contrato) {
+    console.log(contrato);
     let template = "";
     let formaPagoAdq = contrato.forma_pago === "0" ? "Contado" : "Credito";
     let documentos = buildTblFileContratoVenta(contrato[1]);
@@ -592,9 +601,10 @@ function getTemplateContratoAdq(contrato) {
                                                             <h3 class="mb-0">Documentos de Adquisicion</h3>
                                                         </div>
                                                         <div class="col text-right">
-                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#cuentaUser">
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalejemplo" data-whatever="${contrato.no_contrato}">
                                                                 <i class="fas fa-file-upload text-white"></i>  Agregar Archivo
                                                             </button>
+                                                          
                                                         </div>
                                                     </div>
                                                 </div>

@@ -2,26 +2,31 @@ $(document).ready(function(){
    getTiposArchivo();
 });
 
+
 function getTiposArchivo() {
    $.ajax({
       url: "../webhook/list-tipo_archivo.php",
       success: function (response) {
+         console.log("Hola");
          let obj_result = JSON.parse(response);
+         console.log(obj_result);
          let template = "";
-         obj_result.forEach((obj_result) => {
-            template += `<option value="${obj_result.id_tipo_archivo}">${obj_result.nombre}</option> `;
+         obj_result.forEach((obj) => {
+            template += `<option value="${obj.id_tipo_archivo}">${obj.nombre}</option> `;
+            console.log(template);
          });
-         $("#tipoArchivo").html(template);
+         $("#tipoArchivoCarro").html(template);
+         $("#tipoArchivoContrato").html(template);
       }
    });
 }
 
 //FUNCION SUBMIT PARA EL FORM DE DOC CONTRATO ADQUISICION
-$("#frm_Subir_Doc_Contrato").on("submit", function(e){
+$("#frm-add-archivo-contrato").on("submit", function(e){
    e.preventDefault();
    //let tipocontrato = $('input[name="contrato"]:checked').val();
    var f = $(this);
-   var formData = new FormData(document.getElementById("frm_Subir_Doc_Contrato"));
+   var formData = new FormData(document.getElementById("frm-add-archivo-contrato"));
    formData.append("dato", "valor");
    //formData.append(f.attr("name"), $(this)[0].files[0]);
    $.ajax({
@@ -34,9 +39,11 @@ $("#frm_Subir_Doc_Contrato").on("submit", function(e){
       processData: false
    })
        .done(function(res){
-          $("#mensaje").html("Respuesta: " + res);
+          $("#mensajeAddDocumentoContrato").html("Respuesta: " + res);
+          consultaDetallesContrato();
        });
-   $('#frm_Subir_Doc_Contrato').trigger('reset');
+   $('#frm-add-archivo-contrato').trigger('reset');
+   e.preventDefault();
 
 });
 
