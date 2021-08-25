@@ -61,11 +61,10 @@ function montoPagos()
     return json_encode($result);
 }
 
-function noPagos()
+function noPagosPendientes()
 {
     include_once "../model/PAGO.php";
     $objPago = new PAGO();
     $result = $objPago->queryNoPagosPendientes();
-    var_dump($result);
     return json_encode($result);
 }

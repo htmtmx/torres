@@ -264,7 +264,7 @@ class PAGO extends CONEXION implements I_PAGO
 
     function queryNoPagosPendientes()
     {
-        $query = "select count (p.total) as no_pagos 
+        $query = "select count(p.id_pago) as count_pagos 
                 from pago p where p.estatus_pago = 0";
         $this->connect();
         $result = $this->getData($query);

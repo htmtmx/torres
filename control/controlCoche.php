@@ -153,3 +153,11 @@ function noCochesVendidos()
     $result = $objCoche->queryNoVehiculosVendidos();
     return json_encode($result);
 }
+
+function noCochesEnVenta()
+{
+    include_once "../model/COCHE.php";
+    $objCoche = new COCHE();
+    $result = $objCoche->queryNoCochesEnVenta();
+    return json_encode($result);
+}
