@@ -14,7 +14,6 @@ function consultaCochesOneFoto(){
         success: function (response)
         {
             let obj_result = JSON.parse(response);
-            console.log(obj_result);
             let gridData = construyeGridCochesCatalogo(obj_result);
             $("#gridCoches").html(gridData);
         },
