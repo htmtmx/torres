@@ -646,6 +646,12 @@ function buildTblPagos(pagos) {
     let template = "";
     let contador = 0;
     pagos.forEach((pago)=>{
+        let statusPago = pago.estatus_pago == 1 ? "PAGADO" : "PENDIENTE";
+        let tipoStatusPago = pago.estatus_pago == 1 ? "bg-success" : "bg-warning";
+        let templateEstatusPago =   `
+                                <i class="${tipoStatusPago}"></i>
+                    <span class="status">${statusPago}</span>
+                                `;
         contador++;
         let abonos = buildTblAbonosabonos(pago[0]);
         template += `
@@ -663,9 +669,8 @@ function buildTblPagos(pagos) {
                    $ ${pago.saldo}
                 </td>
                 <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-success"></i>
-                    <span class="status">PAGADO</span>
+                  <span class="badge badge-dot mr-4" id="status_pago" name="status_pago">
+                    ${templateEstatusPago}
                   </span>
                 </td>
             </tr>
