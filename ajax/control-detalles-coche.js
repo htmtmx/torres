@@ -367,7 +367,7 @@ function getTemplateContratoVenta(contrato) {
                                                             <h3 class="mb-0">Documentos disponibles del contrato de Venta</h3>
                                                         </div>
                                                         <div class="col text-right">
-                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addArchivoContratoAdq">
+                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalejemplo" data-whatever="${contrato.no_contrato}">
                                                                 <i class="fas fa-file-upload text-white"></i>  Agregar Archivo
                                                             </button>
                                                         </div>
@@ -718,7 +718,7 @@ function buildTblFileContratoVenta(archivos) {
     let template = "";
     archivos.forEach((file)=>{
         let visible =  file.nivel_acceso != 1 ? `<i class="fas fa-lock text-red"></i>`:"";
-        let visibleText =  file.nivel_acceso != 1 ? "Protegido":"Visile";
+        let visibleText =  file.nivel_acceso != 1 ? "Protegido":"Visible";
         template += `
             <tr id="${file.id_file_c}">
                 <th scope="row">
