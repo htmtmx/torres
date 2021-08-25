@@ -7,8 +7,6 @@ $(document).ready(function(){
 window.onload = function() {
 
     getModelos(2);
-    console.log("PERSONAS DE UN AJAX INDEPENDITE");
-    console.log(PERSONAS);
 };
 
 

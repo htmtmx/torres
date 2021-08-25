@@ -194,7 +194,7 @@ function creaContratoCompra($params)
         $resultContrato = $CONTRATO->queryaddContrato();
 
         if($resultContrato){
-            include_once "./controlPago.php";
+            include_once "controlPago.php";
             $noDePago = 1;
             $concepto="Pago de Adquisición de Vehiculo";
             $tipo="CARGO";
@@ -266,7 +266,7 @@ function creaContratoVenta($params)
         $resultContrato = $CONTRATO->queryaddContrato();
         if ($resultContrato) {
 
-            include_once "./controlPago.php";
+            include_once "controlPago.php";
             //$noContrato,$concepto,$tipo,$total,$noPago,$detalles,$StatusPago
             //¿Cuantos pagos voy a hacer?
             //Contado 1 pago  CREDITO n pagos
@@ -345,7 +345,7 @@ function creaContratoVenta($params)
 
 function construcObjtCliente($params){
     include_once "../model/CLIENTES.php";
-    include_once  "./tool_ids_generate.php";
+    include_once  "tool_ids_generate.php";
     $obj_user = new CLIENTES();
     $claveGen = gen_user_id();
     $idCliente=$params['no_cliente']>0 ? $params['no_cliente'] : $claveGen;
@@ -373,7 +373,7 @@ function constructObjContrato($formaPago,$noCliente,$noVehiculo, $tipoContrato,
                               $plazo,$fechaPrimerPago, $totalCoche, $enganche, $estatusContrato){
     session_start();
     include_once "../model/CONTRATO.php";
-    include_once  "./tool_ids_generate.php";
+    include_once  "tool_ids_generate.php";
     $obj_cont = new CONTRATO();
     $claveContrato=gen_no_contrato();
     $obj_cont->setNoContrato($claveContrato);

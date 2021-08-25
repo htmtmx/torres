@@ -22,29 +22,10 @@ class COCHE extends CONEXION implements I_COCHE
     private $opc_credito;
     private $observaciones;
     private $estatus;
-    private $niv;
     /********* AGREGACION  **********/
 
     private  $lsDetalles;
     private  $lsArchivos;
-
-
-
-    /**
-     * @return mixed
-     */
-    public function getNiv()
-    {
-        return $this->niv;
-    }
-
-    /**
-     * @param mixed $niv
-     */
-    public function setNiv($niv): void
-    {
-        $this->niv = $niv;
-    }
 
 
 
@@ -377,11 +358,11 @@ class COCHE extends CONEXION implements I_COCHE
                     `entidad_placa`, `color`, `kilometros`, `transimision`, `combustible`, 
                     `no_puertas`, `precio_contado`, `precio_credito`, `opc_credito`, 
                     `observaciones`, `estatus`) 
-                    VALUES'".$this->getNoVehiculo()."', '".$this->getIdModeloFk()."', '".$this->getNiv()."','".$this->getFechaRegistro()."', '".$this->getAnio()."', '".$this->getPlaca()."', '"
+                    VALUES('".$this->getNoVehiculo()."', '".$this->getIdModeloFk()."', '".$this->getNiv()."','".$this->getFechaRegistro()."', '".$this->getAnio()."', '".$this->getPlaca()."', '"
                 .$this->getEntidadPlaca()."', '".$this->getColor()."', '".$this->getKilometros()."', '"
                 .$this->getTransimision()."', '".$this->getCombustible()."', '".$this->getNoPuertas()."', '"
                 .$this->getPrecioContado()."', '".$this->getPrecioCredito()."', '1', '"
-                .$this->getObservaciones()."', '1')";
+                .$this->getObservaciones()."', '".$this->getEstatus()."')";
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

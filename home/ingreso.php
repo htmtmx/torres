@@ -425,8 +425,8 @@
                                                                         <div class="row">
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="medio_identificacion_cliente">Se identifica con:</label>
-                                                                                    <select id="medio_identificacion_cliente" name="medio_identificación_cliente" class="form-control">
+                                                                                    <label class="form-control-label" for="medio_identificacion">Se identifica con:</label>
+                                                                                    <select id="medio_identificacion" name="medio_identificación" class="form-control">
                                                                                         <option value="INE">INE</option>
                                                                                         <option value="PASAPORTE">Pasaporte</option>
                                                                                         <option value="CEDULA">Cédula Profesional</option>
@@ -531,9 +531,8 @@
                                                                         <div class="col-lg-6">
                                                                             <label class="form-control-label" for="forma_pago">Forma de Pago</label>
                                                                             <select id="forma_pago" name="forma_pago" class="form-control">
-                                                                                <option value="1">Credito</option>
-                                                                                <option value="2">Contado</option>
-                                                                                <option value="2">Apartado</option>
+                                                                                <option value="0">Credito</option>
+                                                                                <option value="1">Contado</option>
                                                                             </select>
                                                                         </div>
                                                                         <div class="col-lg-6">
