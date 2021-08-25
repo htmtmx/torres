@@ -44,8 +44,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Vechiulos Vendidos</h5>
-                                        <span class="h1 font-weight-bold mb-0"id="" name="">$45,000</span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Monto de Vechiulos Vendidos</h5>
+                                        <span class="h1 font-weight-bold mb-0"id="montoVendido" name="montoVendido"></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -54,7 +54,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-sm">
-                                    <span class="text-nowrap"id="" name="">5 Vehiculos</span>
+                                    <span class="text-nowrap"id="no_vehiculos" name="no_vehiculos"></span>
                                 </p>
                             </div>
                         </div>
@@ -65,8 +65,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Pagos Pendientes</h5>
-                                        <span class="h1 font-weight-bold mb-0"id="" name="">$22,356</span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Monto de Pagos Pendientes</h5>
+                                        <span class="h1 font-weight-bold mb-0"id="montoPagosPend" name="montoPagosPend"></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -75,7 +75,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-sm">
-                                    <span class="text-nowrap" id="" name="">3 pendientes</span>
+                                    <span class="text-nowrap" id="noPagosPend" name="noPagosPend"></span>
                                 </p>
                             </div>
                         </div>
@@ -330,7 +330,7 @@
                                         </a>
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
+                                            <!--<a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>-->
                                             <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i> Abonar</a>
                                             <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
                                             <a class="dropdown-item" href="#"><i class="fas fa-times text-red"></i> Cancelar</a>
@@ -368,7 +368,7 @@
                                         </a>
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
+                                            <!---<a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>--->
                                             <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i> Abonar</a>
                                             <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
                                             <a class="dropdown-item" href="#"><i class="fas fa-times text-red"></i> Cancelar</a>

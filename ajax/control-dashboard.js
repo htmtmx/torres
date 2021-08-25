@@ -1,12 +1,68 @@
 $(document).ready(function(){
-
+    montoVehiculosDashboard();
+    countVehiculosVendidosDashboard();
+    montoPagosDashboard();
+    countPagosPendientesDashboard();
 });
 
 
 window.onload = function() {
     consultaCochesDashBoard();
     consultaAbonosContrato();
+
 };
+
+function montoVehiculosDashboard() {
+    $.ajax({
+        url: "../webhook/montoCochesVendidos.php",
+        success: function (response)
+        {
+            let obj_result = JSON.parse(response);
+            console.log(obj_result);
+            var total =new Intl.NumberFormat().format(obj_result[0]['total_vendido']);
+            console.log(obj_result[0]['total_vendido']);
+            $("#montoVendido").html("$"+total);
+        },
+    });
+}
+
+function countVehiculosVendidosDashboard() {
+    $.ajax({
+        url: "../webhook/countCochesVendidos.php",
+        success: function (response)
+        {
+            let obj_result = JSON.parse(response);
+            console.log(obj_result);
+            console.log(obj_result[0]['total_vendido']);
+            $("#no_vehiculos").html(obj_result[0]['no_vehiculos']+" Vehiculos vendidos");
+        },
+    });
+}
+
+function montoPagosDashboard() {
+    $.ajax({
+        url: "../webhook/montoPagosPendientes.php",
+        success: function (response)
+        {
+            let obj_result = JSON.parse(response);
+            console.log(obj_result);
+            var total =new Intl.NumberFormat().format(obj_result[0]['total_pagos']);
+            console.log(obj_result[0]['total_pagos']);
+            $("#montoPagosPend").html("$"+total);
+        },
+    });
+}
+
+function countPagosPendientesDashboard() {
+    $.ajax({
+        url: "../webhook/countPagosPendientes.php",
+        success: function (response)
+        {
+            let obj_result = JSON.parse(response);
+            $("#noPagosPend").html(obj_result[0]['no_pagos']+" Pagos pendientes");
+        },
+    });
+}
 
 function consultaCochesDashBoard(){
     $.ajax({
@@ -25,7 +81,6 @@ function consultaCochesDashBoard(){
     });
 }
 
-
 function consultaAbonosContrato(){
     $.ajax({
         url: "../webhook/pagos-abonos-contrato.php",
@@ -33,11 +88,10 @@ function consultaAbonosContrato(){
         data: { id: 0, estatus:0 },
         success: function (response)
         {
-            console.log(response);
+            //console.log(response);
             let obj_result = JSON.parse(response);
-            console.log(obj_result);
+            //console.log(obj_result);
            let abonos   =   construyeAbonosContrato(obj_result);
-
         },
     });
 }

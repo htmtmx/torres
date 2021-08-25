@@ -427,4 +427,25 @@ class COCHE extends CONEXION implements I_COCHE
         return $objDocsCoche->queryConsultaDocumentosCoche($no_vehiculo);
     }
 
+    function queryMontoVehiculosVendidos()
+    {
+        $query = "select sum(co.total) as total_vendido from coche c, contrato co 
+                where c.no_vehiculo = co.no_vehiculo_fk and c.estatus = 1 
+                and co.tipo_contrato = 0 and co.estatus = 1";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryNoVehiculosVendidos()
+    {
+        $query = "select count(c.no_vehiculo) as no_vehiculos from coche c, contrato co 
+                where c.no_vehiculo = co.no_vehiculo_fk and c.estatus = 1 
+                and co.tipo_contrato = 0 and co.estatus = 1";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 }

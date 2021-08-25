@@ -52,3 +52,20 @@ function updateSaldoDePago($id_pago,$saldo)
     $result = $objPago->queryUpdateSaldo($id_pago,$saldo);
     return $result;
 }
+
+function montoPagos()
+{
+    include_once "../model/PAGO.php";
+    $objPago = new PAGO();
+    $result = $objPago->queryMontoPagosPendientes();
+    return json_encode($result);
+}
+
+function noPagos()
+{
+    include_once "../model/PAGO.php";
+    $objPago = new PAGO();
+    $result = $objPago->queryNoPagosPendientes();
+    var_dump($result);
+    return json_encode($result);
+}

@@ -251,4 +251,24 @@ class PAGO extends CONEXION implements I_PAGO
         $this->close();
         return $result;
     }
+
+    function queryMontoPagosPendientes()
+    {
+        $query = "select sum(p.total) as total_pagos 
+                from pago p where p.estatus_pago = 0";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
+    function queryNoPagosPendientes()
+    {
+        $query = "select count (p.total) as no_pagos 
+                from pago p where p.estatus_pago = 0";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 }
