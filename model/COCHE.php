@@ -22,29 +22,10 @@ class COCHE extends CONEXION implements I_COCHE
     private $opc_credito;
     private $observaciones;
     private $estatus;
-    private $niv;
     /********* AGREGACION  **********/
 
     private  $lsDetalles;
     private  $lsArchivos;
-
-
-
-    /**
-     * @return mixed
-     */
-    public function getNiv()
-    {
-        return $this->niv;
-    }
-
-    /**
-     * @param mixed $niv
-     */
-    public function setNiv($niv): void
-    {
-        $this->niv = $niv;
-    }
 
 
 
