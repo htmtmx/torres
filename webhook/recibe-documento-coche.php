@@ -13,8 +13,5 @@ if (isset($_POST['noVehiculo']) && isset($_POST['tipoArchivoCarro']) && $_FILES[
     $tipoArchivo = $_POST['tipoArchivoCarro'];
     $privado = $_POST["visibilidad"];
     include_once "../control/controlArchivos.php";
-    if( agregaDocumentoCoche($noVehiculo, $nombreIMG1, $archivo1, $tipoArchivo, $privado) ? "Se ha agregado un archivo" : "Paso algo feo"){
-        echo "Se ha agregado el documento";
-    }
-
+    echo agregaDocumentoCoche($noVehiculo, $nombreIMG1, $archivo1, $tipoArchivo, $privado) ? "Se ha agregado un archivo" : "Debe subir archivos menores a 2MB";
 } else echo "Seleccione un archivo valido";

@@ -44,13 +44,16 @@ function agregaDocumentoCoche($noVehiculo, $nombreIMG1, $archivo1, $tipoArchivo,
     $nombre =str_replace(' ', '', $nombre);
     $ruta1 = $carpeta.'/'.$nombreIMG1; // RUTA1 EXAMPLE: "/24072019.24/e-r.jpg"
     $extension = pathinfo($ruta1, PATHINFO_EXTENSION);
-    move_uploaded_file($archivo1, $ruta1);
-    rename ($ruta1, $carpeta.'/'.$nombre.'.'.$extension); // RUTA1 EXAMPLE: "/24072019.24/tarjetaCirc.jpg"
-    //Guardar en el modelo de arhcivo
 
-    $path = $carpeta.'/'.$nombre.'.'.$extension;
-    $result = insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado,0);
-    return $result;
+    if (move_uploaded_file($archivo1, $ruta1)){
+        rename ($ruta1, $carpeta.'/'.$nombre.'.'.$extension); // RUTA1 EXAMPLE: "/24072019.24/tarjetaCirc.jpg"
+        //Guardar en el modelo de arhcivo
+
+        $path = $carpeta.'/'.$nombre.'.'.$extension;
+        $result = insertObjDocCoch($tipoArchivo,$noVehiculo,$nombre,$path,$extension,$privado,0);
+        return $result;
+    }
+    return false;
 }
 
 function agregaImagenCoche($noVehiculo, $nombreIMG1, $archivo1){
