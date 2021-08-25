@@ -1,4 +1,6 @@
 <?php
+include_once "../webhook/addContratoVenta.php";
+
 //include_once "../webhook/addContratoVenta.php";
 /*include_once "./controlContrato.php";
 echo "<br>***************************************************************";
@@ -18,14 +20,14 @@ echo "<br>***************************************************************";
 consultaCocheDetallesDocumentosFotos(1);*/
 //include_once "../webhook/consulta-direccion.php";
 //include_once "../webhook/remove-file-vehiculo.php";
-
+/*
 /**
  * Reigstro de Abonos
- * */
+ *
 include_once "../control/controlAbonos.php";
 $no_contrato = 8452254501589255;
 $monto= 17000;
-verificaAbono($no_contrato,$monto);
+verificaAbono($no_contrato,$monto);*/
 /*include_once "../control/controlAbonos.php";
 echo sumatoriaDeAbonos(20210817576779);*/
 //include_once "../webhook/consulta-contratos-nocoche.php";

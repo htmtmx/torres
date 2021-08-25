@@ -14,6 +14,23 @@ class PAGO extends CONEXION implements I_PAGO
     private $no_pago;
     private $detalles;
     private $estatus_pago;
+    private  $saldo;
+
+    /**
+     * @return mixed
+     */
+    public function getSaldo()
+    {
+        return $this->saldo;
+    }
+
+    /**
+     * @param mixed $saldo
+     */
+    public function setSaldo($saldo): void
+    {
+        $this->saldo = $saldo;
+    }
 
     /**
      * @return mixed
@@ -202,9 +219,9 @@ class PAGO extends CONEXION implements I_PAGO
     public function queryaddPago()
     {
         $query = "INSERT INTO `pago` (`id_pago`, `no_contrato_fk`, `no_transaccion`, `concepto`, 
-                `tipo`, `total`, `fecha_limite_pago`, `no_pago`, `detalles`, `estatus_pago`) 
+                `tipo`, `total`, `saldo` ,`fecha_limite_pago`, `no_pago`, `detalles`, `estatus_pago`) 
                 VALUES (".$this->getIdPago().", '".$this->getNoContratoFk()."', '".$this->getNoTransaccion()."', '"
-                .$this->getConcepto()."', '".$this->getTipo()."', '".$this->getTotal()."', '"
+                .$this->getConcepto()."', '".$this->getTipo()."', '".$this->getTotal()."', '".$this->getSaldo()."' , '"
                 .$this->getFechaHoraCreacion()."', '".$this->getNoPago()."', '".$this->getDetalles().
                 "', '".$this->getEstatusPago()."')";
         $this->connect();

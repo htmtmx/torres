@@ -283,6 +283,7 @@ function creaContratoVenta($params)
                 $detalles = "PAGO 1/1";
                 $fechaLimiTePago = date('Y-m-d H:i:s');
                 $StatusPago = 1; //Liquidado de forma automatica
+                $saldo1=0;  //Saldo
             }else if($plazo==0 && $enganche<$totalCoche){
                 $concepto="PAGO POR APARTADO";
                 $noDePago = 1;
@@ -291,7 +292,7 @@ function creaContratoVenta($params)
                 $fecha = date('Y-m-d');
                 $nuevafecha = strtotime ( '+15 day' , strtotime ( $fecha ) ) ;
                 $fechaLimiTePago = date ( 'Y-m-d' , $nuevafecha );
-
+                $saldo1=$totalCoche-$enganche;
                 $StatusPago = 0; //Pendiente por liquidar
             }else{
                 $concepto="PAGO DE ENGANCHE";
@@ -299,6 +300,7 @@ function creaContratoVenta($params)
                 $detalles = "PAGO 0/".$plazo;
                 $fechaLimiTePago = date('Y-m-d');
                 $StatusPago = 1; //Liquidado de forma automatica
+                $saldo1=0;
             }
 
             include_once  "./controlCoche.php";
@@ -309,7 +311,7 @@ function creaContratoVenta($params)
             include_once "tool_ids_generate.php";
             $idPago = gen_noPago();
             $resultPago = insertaObjPago($idPago,$CONTRATO->getNoContrato(),$concepto,$tipo,
-                $CONTRATO->getEnganche(),$noDePago,$detalles,$StatusPago,$fechaLimiTePago);
+                $CONTRATO->getEnganche(),$noDePago,$detalles,$StatusPago,$saldo1,$fechaLimiTePago);
             //SI YA SE CREO EL PAGO CREO EL ABONO
 
             if ($resultPago){
@@ -325,9 +327,10 @@ function creaContratoVenta($params)
                         $detalles = "PAGO ".($i+1)."/".$plazo;
                         $StatusPago = 0;
                         $MontoACubrir = ($CONTRATO->getTotal()-$enganche)/$plazo;
+                        $saldo=$MontoACubrir;
                         $idPago = gen_noPago();
                         insertaObjPago($idPago,$CONTRATO->getNoContrato(),$concepto,$tipo,
-                            $MontoACubrir,($i+1),$detalles,$StatusPago,$fechaLimiTePago);
+                            $MontoACubrir,($i+1),$detalles,$StatusPago,$saldo,$fechaLimiTePago);
 
                         $nuevafecha = strtotime ( '+1 month' , strtotime ( $fechaLimiTePago ) ) ;
                         $fechaLimiTePago = date ( 'Y-m-d' , $nuevafecha );
@@ -438,7 +441,7 @@ function constructObjCoche($params){
     return $obj_coche;
 }
 
-function insertaObjPago($idPago,$noContrato,$concepto,$tipo,$total,$noPago,$detalles,$StatusPago, $fechaParaHacerPago)
+function insertaObjPago($idPago,$noContrato,$concepto,$tipo,$total,$noPago,$detalles,$StatusPago,$saldo, $fechaParaHacerPago)
 {
     include_once "../model/PAGO.php";
     $objPago = new PAGO();
@@ -449,6 +452,7 @@ function insertaObjPago($idPago,$noContrato,$concepto,$tipo,$total,$noPago,$deta
     $objPago->setTotal($total);
     $objPago->setFechaHoraCreacion($fechaParaHacerPago);
     $objPago->setNoPago($noPago);
+    $objPago->setSaldo($saldo);
     $objPago->setDetalles($detalles);
     $objPago->setEstatusPago($StatusPago);
     return $objPago->queryaddPago();
