@@ -100,13 +100,14 @@ function addCoche(  $idModeloFk,$anio,$placa,$entidadPlaca,$color,
     echo $result = $objCoche->queryaddCoche()?"Se registro correctamente el coche ".$objCoche->getNoVehiculo():"Error al intentar registrar";
 }
 
-function updateCoche($noVehiculo,$idModeloFk,$anio,$placa,$entidadPlaca,$color,
+function updateCoche($noVehiculo,$niv,$idModeloFk,$anio,$placa,$entidadPlaca,$color,
                      $kilometros,$transmision,$combustible,$noPuertas,$precioContado,
                      $precioCredito,$opcCredito,$observaciones)
 {
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
     $objCoche->setNoVehiculo($noVehiculo);
+    $objCoche->setNiv($niv);
     $objCoche->setIdModeloFk($idModeloFk);
     $objCoche->setAnio($anio);
     $objCoche->setPlaca($placa);
@@ -120,7 +121,7 @@ function updateCoche($noVehiculo,$idModeloFk,$anio,$placa,$entidadPlaca,$color,
     $objCoche->setPrecioCredito($precioCredito);
     $objCoche->setOpcCredito($opcCredito);
     $objCoche->setObservaciones($observaciones);
-    echo $result = $objCoche->queryupdateCoche() ? "Se actualizo correctamente el coche ".$objCoche->getNoVehiculo():"Error al intentar actualizar";
+    return $objCoche->queryupdateCoche();
 }
 
 function updateEstatusCoche($noVehiculo,$estatus)

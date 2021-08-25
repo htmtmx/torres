@@ -22,11 +22,10 @@ consultaCocheDetallesDocumentosFotos(1);*/
 /**
  * Reigstro de Abonos
  * */
-include_once "../control/controlContrato.php";
-$no_contrato = 3724786545073591;
-$monto = 35000;
-echo consultaPagosAbonosDeContratoCompleto($no_contrato);
-
+include_once "../control/controlAbonos.php";
+$no_contrato = 8452254501589255;
+$monto= 5000;
+verificaAbono($no_contrato,$monto);
 /*include_once "../control/controlAbonos.php";
 echo sumatoriaDeAbonos(20210817576779);*/
 //include_once "../webhook/consulta-contratos-nocoche.php";

@@ -51,7 +51,7 @@ function cargaDatosCarro(obj_carro){
     $("#estado").val(obj_carro.entidad_placa);
     let creditoChecked = obj_carro.opc_credito === "1" ? "checked":"";
     let templateOpcCredit = `
-        <input type="checkbox" ${creditoChecked}>
+        <input type="checkbox" ${creditoChecked} value="1" id="ckeckCredito" name="ckeckCredito" >
         <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
     `;
     $("#checkOpcCredit").html(templateOpcCredit);
@@ -646,6 +646,12 @@ function buildTblPagos(pagos) {
     let template = "";
     let contador = 0;
     pagos.forEach((pago)=>{
+        let statusPago = pago.estatus_pago == 1 ? "PAGADO" : "PENDIENTE";
+        let tipoStatusPago = pago.estatus_pago == 1 ? "bg-success" : "bg-warning";
+        let templateEstatusPago =   `
+                                <i class="${tipoStatusPago}"></i>
+                    <span class="status">${statusPago}</span>
+                                `;
         contador++;
         let abonos = buildTblAbonosabonos(pago[0]);
         template += `
@@ -663,9 +669,8 @@ function buildTblPagos(pagos) {
                    $ ${pago.saldo}
                 </td>
                 <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-success"></i>
-                    <span class="status">PAGADO</span>
+                  <span class="badge badge-dot mr-4" id="status_pago" name="status_pago">
+                    ${templateEstatusPago}
                   </span>
                 </td>
             </tr>

@@ -6,6 +6,7 @@ include_once "I_COCHE.php";
 class COCHE extends CONEXION implements I_COCHE
 {
     private $no_vehiculo;
+    private $niv;
     private $id_modelo_fk;
     private $fecha_registro;
     private $anio;
@@ -46,6 +47,22 @@ class COCHE extends CONEXION implements I_COCHE
     }
 
 
+
+    /**
+     * @return mixed
+     */
+    public function getNiv()
+    {
+        return $this->niv;
+    }
+
+    /**
+     * @param mixed $niv
+     */
+    public function setNiv($niv): void
+    {
+        $this->niv = $niv;
+    }
 
     /**
      * @return mixed
@@ -373,13 +390,13 @@ class COCHE extends CONEXION implements I_COCHE
     public function queryupdateCoche()
     {
         $query="UPDATE `coche` 
-                SET `id_modelo_fk` = '".$this->getIdModeloFk()."', 
+                SET `id_modelo_fk` = '".$this->getIdModeloFk()."', niv = '".$this->getNiv()."',
                 `anio` = '".$this->getAnio()."', `placa` = '".$this->getPlaca()."', `entidad_placa` = '".$this->getEntidadPlaca()."', 
                 `color` = '".$this->getColor()."', `kilometros` = '".$this->getKilometros()."', 
                 `transimision` = '".$this->getTransimision()."', `combustible` = '".$this->getCombustible()."', 
                 `no_puertas` = '".$this->getNoPuertas()."', `precio_contado` = '".$this->getPrecioContado()."', 
                 `precio_credito` = '".$this->getPrecioCredito()."', `opc_credito` = '".$this->getOpcCredito()."', 
-                `observaciones` = '".$this->getObservaciones()."', `estatus` = '".$this->getEstatus()."' 
+                `observaciones` = '".$this->getObservaciones()."' 
                 WHERE `coche`.`no_vehiculo` = ".$this->getNoVehiculo();
         $this->connect();
         $result = $this->executeInstruction($query);

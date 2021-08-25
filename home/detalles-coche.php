@@ -293,13 +293,13 @@ $noCoche = $_GET['idCoche'];
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="fecha_registro">Fecha Registro</label>
-                                            <input type="text" id="fecha_registro" class="form-control" placeholder="Falló" disabled="">
+                                            <input type="text" name ="fecha_registro" id="fecha_registro" class="form-control" placeholder="Falló" disabled="">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="fecha_registro">Observaciones</label>
-                                            <textarea class="form-control" id="observaciones" rows="3"></textarea>
+                                            <textarea class="form-control" name="observaciones" id="observaciones" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -312,7 +312,7 @@ $noCoche = $_GET['idCoche'];
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label class="form-control-label" for="empresa">Ofrecer Credito</label>
-                                            <label class="custom-toggle text-center" id="checkOpcCredit">
+                                            <label class="custom-toggle text-center" id="checkOpcCredit" name="checkOpcCredit" >
 
                                             </label>
                                         </div>
@@ -334,7 +334,7 @@ $noCoche = $_GET['idCoche'];
                             <hr class="my-4">
                             <!-- Description -->
                             <div class="col-lg-12 col-auto text-right">
-                                <span class="d-flex position-absolute w-100" id="mensajeUpdateCliente"></span>
+                                <span class="d-flex position-absolute w-100" id="mensajeUpdateCoche"></span>
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                         </form>
@@ -386,7 +386,7 @@ $noCoche = $_GET['idCoche'];
                             </div>
                             <div class="col text-right">
                                 <input type="hidden" id="noVehiculo" name="noVehiculo" value="<?php echo $noCoche; ?>">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cuentaUser">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddFotoCoche">
                                     <i class="fas fa-upload text-white"></i> Agregar Foto
                                 </button>
                             </div>
@@ -435,6 +435,7 @@ $noCoche = $_GET['idCoche'];
         <?php include './include/footer.php'; ?>
         <?php include './modals/modal-view-pdf.php'; ?>
         <?php include './modals/modal-add-abono.php'; ?>
+        <?php include './modals/modal-add-foto-coche.php'; ?>
 
     </div>
 </div>
