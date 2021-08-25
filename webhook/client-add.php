@@ -1,5 +1,4 @@
 <?php
-session_start();
 header('Content-Type: text/html; charset=UTF-8');
 date_default_timezone_set("America/Mexico_City");
 if (isset($_POST['nombre_cliente']) && isset($_POST['apaterno_cliente'])

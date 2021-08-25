@@ -21,11 +21,31 @@ class COCHE extends CONEXION implements I_COCHE
     private $opc_credito;
     private $observaciones;
     private $estatus;
-
+    private $niv;
     /********* AGREGACION  **********/
 
     private  $lsDetalles;
     private  $lsArchivos;
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getNiv()
+    {
+        return $this->niv;
+    }
+
+    /**
+     * @param mixed $niv
+     */
+    public function setNiv($niv): void
+    {
+        $this->niv = $niv;
+    }
+
+
 
     /**
      * @return mixed
@@ -336,13 +356,11 @@ class COCHE extends CONEXION implements I_COCHE
     }
     public function queryaddCoche()
     {
-        $query = "INSERT INTO `coche` 
-                (`no_vehiculo`, `id_modelo_fk`, `fecha_registro`, `anio`, `placa`, 
-                `entidad_placa`, `color`, `kilometros`, `transimision`, `combustible`, 
-                `no_puertas`, `precio_contado`, `precio_credito`, `opc_credito`, 
-                `observaciones`, `estatus`) 
-                VALUES ('".$this->getNoVehiculo()."', '".$this->getIdModeloFk()."', '"
-                .$this->getFechaRegistro()."', '".$this->getAnio()."', '".$this->getPlaca()."', '"
+        $query = "INSERT INTO `coche`(`no_vehiculo`, `id_modelo_fk`, `NIV`, `fecha_registro`, `anio`, `placa`,
+                    `entidad_placa`, `color`, `kilometros`, `transimision`, `combustible`, 
+                    `no_puertas`, `precio_contado`, `precio_credito`, `opc_credito`, 
+                    `observaciones`, `estatus`) 
+                    VALUES'".$this->getNoVehiculo()."', '".$this->getIdModeloFk()."', '".$this->getNiv()."','".$this->getFechaRegistro()."', '".$this->getAnio()."', '".$this->getPlaca()."', '"
                 .$this->getEntidadPlaca()."', '".$this->getColor()."', '".$this->getKilometros()."', '"
                 .$this->getTransimision()."', '".$this->getCombustible()."', '".$this->getNoPuertas()."', '"
                 .$this->getPrecioContado()."', '".$this->getPrecioCredito()."', '1', '"

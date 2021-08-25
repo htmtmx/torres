@@ -358,6 +358,7 @@ function construcObjtCliente($params){
     $obj_user->setCorreo($params['correo']);
     $obj_user->setSubscripcion($params['subscripcion']);
     $obj_user->setEmpresa($params['empresa']);
+    $obj_user->setRfc($params['rfc']);
     $obj_user->setFechaRegistro(date('Y-m-d H:i:s'));
     $obj_user->setMedioIdentificación($params['medio_identificacion']);
     $obj_user->setFolio($params['folio']);
@@ -414,11 +415,12 @@ function constructObjContrato($formaPago,$noCliente,$noVehiculo, $tipoContrato,
 function constructObjCoche($params){
     //CREA EL COCHE PARA EL CONTRATO
     include_once "../model/COCHE.php";
-    include_once  "./tool_ids_generate.php";
+    include_once  "tool_ids_generate.php";
     $obj_coche = new COCHE();
     $no_vehiculo = gen_no_vehiculo();
     $obj_coche -> setNoVehiculo($no_vehiculo);
     $obj_coche->setIdModeloFk($params['id_modelo_fk']);
+    $obj_coche->setNiv($params['nivCoche']);
     $obj_coche->setFechaRegistro(date('Y-m-d H:i:s'));
     $obj_coche -> setAnio($params['anio']);
     $obj_coche->setPlaca($params['placa']);

@@ -223,8 +223,8 @@
                                                                                 </select>
                                                                             </div>
                                                                             <div class="col-lg-6">
-                                                                                <label class="form-control-label" for="modeloCoche">Modelo</label>
-                                                                                <select id="modeloCoche" name="modeloCoche" class="form-control">
+                                                                                <label class="form-control-label" for="id_modelo_fk">Modelo</label>
+                                                                                <select id="id_modelo_fk" name="id_modelo_fk" class="form-control">
                                                                                     <!-- AJAX RESPONSE GENERAR MODELOS ON CHANGE MARCAS-->
                                                                                 </select>
                                                                             </div>
@@ -232,20 +232,20 @@
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="añoCoche">Año</label>
-                                                                                    <input type="numeric" name="añoCoche" id="añoCoche" class="form-control">
+                                                                                    <label class="form-control-label" for="anio">Año</label>
+                                                                                    <input type="numeric" name="anio" id="anio" class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="placaCoche">Placa</label>
-                                                                                    <input type="text" name="placaCoche" id="placaCoche" class="form-control">
+                                                                                    <label class="form-control-label" for="placa">Placa</label>
+                                                                                    <input type="text" name="placa" id="placa" class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="entidadFedCoche">Entidad Federativa</label>
-                                                                                    <select name="entidadFedCoche" id="entidadFedCoche" class="form-control">
+                                                                                    <label class="form-control-label" for="entidad_placa">Entidad Federativa</label>
+                                                                                    <select name="entidad_placa" id="entidad_placa" class="form-control">
                                                                                         <option value="Aguascalientes">Aguascalientes</option>
                                                                                         <option value="Baja California">Baja California</option>
                                                                                         <option value="Baja California Sur">Baja California Sur</option>
@@ -290,21 +290,21 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="colorCoche">Color</label>
-                                                                                    <input id="colorCoche" name="colorCoche" class="form-control">
+                                                                                    <label class="form-control-label" for="color">Color</label>
+                                                                                    <input id="color" name="color" class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="kilometrajeCoche">Kilometraje</label>
-                                                                                    <input class="form-control" type="number" id="kilometrajeCoche" name="kilometrajeCoche" min="0" max="1000000">
+                                                                                    <label class="form-control-label" for="kilometros">Kilometraje</label>
+                                                                                    <input class="form-control" type="number" id="kilometros" name="kilometros" min="0" max="1000000">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
-                                                                                <label class="form-control-label" for="transmisionCoche">Trasmision</label>
-                                                                                <select id="transmisionCoche" name="transmisionCoche" class="form-control">
+                                                                                <label class="form-control-label" for="transmision">Trasmision</label>
+                                                                                <select id="transmision" name="transmision" class="form-control">
                                                                                     <option value="AU">AUTOMATICA</option>
                                                                                     <option value="MA">MANUAL</option>
                                                                                     <option value="DU">DUAL</option>
@@ -320,8 +320,8 @@
                                                                                 </select>
                                                                             </div>
                                                                             <div class="col-lg-4">
-                                                                                <label class="form-control-label" for="nopuertasCoche">No de Puertas</label>
-                                                                                <input class="form-control" type="number" id="nopuertasCoche" name="nopuertasCoche" min="0" max="6">
+                                                                                <label class="form-control-label" for="no_puertas">No de Puertas</label>
+                                                                                <input class="form-control" type="number" id="no_puertas" name="no_puertas" min="0" max="6">
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
@@ -333,8 +333,8 @@
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="observacionesCoche">Observaciones</label>
-                                                                                    <textarea class="form-control" id="observacionesCoche" name="observacionesCoche" rows="3"></textarea>
+                                                                                    <label class="form-control-label" for="observaciones">Observaciones</label>
+                                                                                    <textarea class="form-control" id="observaciones" name="observaciones" rows="3"></textarea>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -355,51 +355,51 @@
                                                                             <h3 class="mb-0">DATOS DEL VENDEDOR</h3>
                                                                         </div>
                                                                         <div class="col text-right">
-                                                                            <a href="#!" class="btn btn-sm btn-primary">Nuevo</a>
+                                                                            <button type="button" class="btn btn-primary" onclick="limpiarCliente();">Nuevo</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <input type="hidden" name="idCliente" id="idCliente" value="0">
+                                                                    <input type="hidden" name="no_cliente" id="no_cliente" value="0">
                                                                     <h6 class="heading-small text-muted mb-4">Información del Cliente</h6>
                                                                     <div class="pl-lg-4">
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="nombreCliente">Nombre</label>
-                                                                                    <input type="text" name="nombreCliente" id="nombreCliente" class="form-control" placeholder="Nombre">
+                                                                                    <label class="form-control-label" for="nombre">Nombre</label>
+                                                                                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="apaternoCliente">Primer Apellido</label>
-                                                                                    <input type="text" name="apaternoCliente" id="apaternoCliente" class="form-control" placeholder="Primer Apellido">
+                                                                                    <label class="form-control-label" for="apaterno">Primer Apellido</label>
+                                                                                    <input type="text" name="apaterno" id="apaterno" class="form-control" placeholder="Primer Apellido">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="amaternoCliente">Segundo Apellido</label>
-                                                                                    <input type="text" name="amaternoCliente" id="amaternoCliente" class="form-control" placeholder="Segundo Apellido">
+                                                                                    <label class="form-control-label" for="amaterno">Segundo Apellido</label>
+                                                                                    <input type="text" name="amaterno" id="amaterno" class="form-control" placeholder="Segundo Apellido">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="correoCliente">Correo Electronico</label>
-                                                                                    <input type="email" name="correoCliente" id="correoCliente" class="form-control" placeholder="example@gmail.com">
+                                                                                    <label class="form-control-label" for="correo">Correo Electronico</label>
+                                                                                    <input type="email" name="correo" id="correo" class="form-control" placeholder="example@gmail.com">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="telefonoCliente">Telefono</label>
-                                                                                    <input type="text" name="telefonoCliente" id="telefonoCliente" class="form-control" placeholder="No. Telefono">
+                                                                                    <label class="form-control-label" for="telefono">Telefono</label>
+                                                                                    <input type="text" name="telefono" id="telefono" class="form-control" placeholder="No. Telefono">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="celularCliente">Celular</label>
-                                                                                    <input type="text" id="celularCliente" name="celularCliente" class="form-control" placeholder="No. Celular">
+                                                                                    <label class="form-control-label" for="celular">Celular</label>
+                                                                                    <input type="text" id="celular" name="celular" class="form-control" placeholder="No. Celular">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -411,8 +411,8 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="empresaCliente">Empresa / Organizacion</label>
-                                                                                    <input id="empresa" name="empresaCliente" class="form-control" placeholder="Nombre Empresa">
+                                                                                    <label class="form-control-label" for="empresa">Empresa / Organizacion</label>
+                                                                                    <input id="empresa" name="empresa" class="form-control" placeholder="Nombre Empresa">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
@@ -445,8 +445,8 @@
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="folioCliente">Folio</label>
-                                                                                    <input type="text" name="folioCliente" id="folioCliente" class="form-control" placeholder="Folio">
+                                                                                    <label class="form-control-label" for="folio">Folio</label>
+                                                                                    <input type="text" name="folio" id="folio" class="form-control" placeholder="Folio">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -462,7 +462,7 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-6">
-                                                                                <div class="form-group">
+                                                                                <div class="form-group d-none" id="fechaRegistroCliente">
                                                                                     <label class="form-control-label" for="fecha_registro_Cliente">Fecha Registro</label>
                                                                                     <input type="text" id="fecha_registro_Cliente" name="fecha_registro_Cliente" class="form-control" placeholder="Falló" disabled="">
                                                                                 </div>
@@ -506,42 +506,6 @@
                                                                         </thead>
                                                                         <tbody id="tbl-clientes">
                                                                         <!-- AJAX RESPONSE TBL CLIENTES TODOS LOS CLIENTES ACTIVOS-->
-                                                                        <tr idcliente="987568611049">
-                                                                            <th scope="row">
-                                                                                1
-                                                                            </th>
-                                                                            <td>
-                                                                                <a class="nav-link" href="./detalles-cliente.php?idCliente=987568611049">
-                                                                                    987568611049
-                                                                                </a>
-                                                                            </td>
-                                                                            <td>
-                                                                                Ernesto Dominguez Alfaro
-                                                                                <span class="badge badge-success">Activo</span>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <button type="submit" class="btn btn-primary">Seleccionar</button>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr idcliente="987568611049">
-                                                                            <th scope="row">
-                                                                                1
-                                                                            </th>
-                                                                            <td>
-                                                                                <a class="nav-link" href="./detalles-cliente.php?idCliente=987568611049">
-                                                                                    987568611049
-                                                                                </a>
-                                                                            </td>
-                                                                            <td>
-                                                                                Ernesto Dominguez Alfaro
-                                                                                <span class="badge badge-success">Activo</span>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <button type="submit" class="btn btn-primary">Seleccionar</button>
-                                                                            </td>
-                                                                        </tr>
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -565,8 +529,8 @@
                                                                 <div class="pl-lg-4">
                                                                     <div class="row">
                                                                         <div class="col-lg-6">
-                                                                            <label class="form-control-label" for="forma_pago_contrato">Forma de Pago</label>
-                                                                            <select id="forma_pago_contrato" name="forma_pago_contrato" class="form-control">
+                                                                            <label class="form-control-label" for="forma_pago">Forma de Pago</label>
+                                                                            <select id="forma_pago" name="forma_pago" class="form-control">
                                                                                 <option value="1">Credito</option>
                                                                                 <option value="2">Contado</option>
                                                                                 <option value="2">Apartado</option>
@@ -574,8 +538,8 @@
                                                                         </div>
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group row">
-                                                                                <label class="form-control-label" for="precio_compra_coche">Precio de compra</label>
-                                                                                <input type="numeric" name="precio_compra_coche" id="precio_compra_coche" class="form-control">
+                                                                                <label class="form-control-label" for="total">Precio de compra</label>
+                                                                                <input type="numeric" name="total" id="total" class="form-control">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -595,7 +559,7 @@
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group row">
                                                                                 <label class="form-control-label" for="iva_coche">IVA</label>
-                                                                                <input type="numeric" name="iva_coche" id="iva_coche" class="form-control">
+                                                                                <input type="numeric" name="iva_coche" id="iva_coche" class="form-control" readonly>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -616,14 +580,14 @@
                                                                         </div>
                                                                         <div class="col-md-5">
                                                                             <div class="form-group">
-                                                                                <label class="form-control-label" for="precio_coche_contado">Precio de Lista</label>
-                                                                                <input class="form-control" type="number" id="precio_coche_contado" name="precio_coche_contado" min="0" max="1000000">
+                                                                                <label class="form-control-label" for="precio_contado">Precio de Lista</label>
+                                                                                <input class="form-control" type="number" id="precio_contado" name="precio_contado" min="0" max="1000000">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-5">
                                                                             <div class="form-group">
-                                                                                <label class="form-control-label" for="precio_coche_credito">Precio a Credito</label>
-                                                                                <input class="form-control" type="number" id="precio_coche_credito" name="precio_coche_credito" min="0" max="1000000">
+                                                                                <label class="form-control-label" for="precio_credito">Precio a Credito</label>
+                                                                                <input class="form-control" type="number" id="precio_credito" name="precio_credito" min="0" max="1000000">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -631,7 +595,7 @@
                                                         </div>
                                                     </div>
                                                     <input type="button" name="previous" class="btn btn-primary previous action-button-previous " value="Anterior" />
-                                                    <input type="submit" name="make_payment" class="btn btn-primary next action-button" value="Confirmar" />
+                                                    <button type="submit" name="make_payment" class="btn btn-primary next action-button">Confirmar</button>
                                                 </fieldset>
                                                 <fieldset>
                                                     <div class="card">
