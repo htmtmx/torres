@@ -203,69 +203,13 @@
                                 <th scope="col">No Contrado</th>
                                 <th scope="col">Detalles</th>
                                 <th scope="col">Vence</th>
+                                <th scope="col">Detalles</th>
                                 <th scope="col">Monto</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">
-                                    156156
-                                </th>
-                                <td>
-                                    Nissan Versa 2015
-                                </td>
-                                <td>
-                                    15 de Enero de 2021
-                                </td>
-                                <td>
-                                    <i class="fas fa-dollar-sign text-green"></i> 150,000
-                                </td>
-                                <td>
-                                    <div class="dropdown show">
-                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Acciones
-                                        </a>
+                            <tbody id="tblPagos">
 
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i>Registrar Abono</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    156156
-                                </th>
-                                <td>
-                                    Nissan Versa 2015
-                                </td>
-                                <td>
-                                    15 de Enero de 2021
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <i class="fas fa-dollar-sign text-green"></i> 150,000
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown show">
-                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Acciones
-                                        </a>
-
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i>Registrar Abono</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>

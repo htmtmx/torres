@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 window.onload = function() {
     consultaCochesDashBoard();
-    consultaAbonosContrato();
+    consultaPagosContrato();
 };
 
 function consultaCochesDashBoard(){
@@ -24,95 +24,127 @@ function consultaCochesDashBoard(){
     });
 }
 
-function consultaAbonosContrato(){
+function consultaPagosContrato(){
     $.ajax({
-        url: "../webhook/pagos-abonos-contrato.php",
-        type: "POST",
-        data: { id: 0, estatus:0 },
+        url: "../webhook/pagosPendientesPorContrato.php",
         success: function (response)
         {
-            //console.log(response);
             let obj_result = JSON.parse(response);
-            //console.log(obj_result);
-           let abonos   =   construyeAbonosContrato(obj_result);
+            console.log(obj_result);
+           let abonos   =   construyeTablaAbonosContrato(obj_result);
+            $("#tblPagos").html(abonos);
         },
     });
 }
 
 
-function construyeAbonosContrato(listaAbonos) {
+function construyeTablaAbonosContrato(listaAbonos) {
     let template="";
     let contador=0;
+    var total =new Intl.NumberFormat().format(listaAbonos[0]['total']);
+    var saldo =new Intl.NumberFormat().format(listaAbonos[0]['saldo']);
+    listaAbonos.forEach((abono) => {
+            var total =new Intl.NumberFormat().format(abono.total);
+            var saldo =new Intl.NumberFormat().format(abono.saldo);
+        let obj = listaAbonos[contador];
+        contador++;
+        template += `
+            <tr>
+                                <th scope="row">
+                                    ${abono.no_contrato}
+                                </th>
+                                <td>
+                                    ${abono.vehiculo}
+                                </td>
+                                <td>
+                                    ${abono.fecha_limite_pago}
+                                </td>
+                                <td>
+                                    ${abono.detalles}
+                                </td>
+                                <td>
+                                    <i class="fas fa-dollar-sign text-green"></i> ${saldo}
+                                </td>
+                                <td>
+                                    <div class="dropdown show">
+                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Acciones
+                                        </a>
 
-    /*listaAbonos.forEach((abono) => {
-
-
-        }
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i>Registrar Abono</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+        `;
+    }
     );
-    return template;*/
+    return template;
 }
 
 
 function construyetablaCoches(listaCoches) {
-let template="";
-let contador=0;
-
-listaCoches.forEach((coche) =>
-    {
-        let obj = listaCoches[contador];
-        contador++;
-        let contado=`<strong class="heading"><i class="fas fa-dollar-sign text-green"></i> ${obj.precio_contado}</strong>` ;
-        let credito=`<strong class="heading"><i class="fas fa-credit-card"></i> ${obj.precio_credito}</strong>`;
-        let precio= obj.opc_credito>0 ? `<div class="h6 font-weight-300"> ${contado}</div>  <div class="h6 font-weight-300">${credito} </div>`:`<div class="h6 font-weight-300">  ${contado}  </div>`;
-        template += `
-    <tr>
-        <th scope="row">
-            ${contador}
-        </th>
-        <td>
-            <a href="./detalles-coche.php?idCoche=${obj.no_vehiculo}">
-                ${obj.placa}
-            </a>
-        </td>
-        <td>
-            ${obj.marca_coche+" "+obj.modelo_coche+" "+obj.anio}
-        </td>
-        <td>
-                Color ${obj.color},
-                ${obj.no_puertas} puertas,
-                 ${obj.kilometros} Km.
-        </td>
-        <td>
-            ${precio}
-        </td>
-        <td>
-            <a href="./catalogo.php">
-                <button class="btn btn-icon btn-secondary" type="button">
-                        <span class="btn-inner--icon">
-                            <i class="fas fa-tag text-green"></i> EN VENTA
-                        </span>
-                </button>
-            </a>
-            
-        </td>
-        <td>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Acciones
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#"><i class="fas fa-dollar-sign text-green"></i> Vender</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir
-                        Archivo</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver mas</a>
+    let template="";
+    let contador=0;
+    listaCoches.forEach((coche) =>
+        {
+            let obj = listaCoches[contador];
+            contador++;
+            let contado=`<strong class="heading"><i class="fas fa-dollar-sign text-green"></i> ${obj.precio_contado}</strong>` ;
+            let credito=`<strong class="heading"><i class="fas fa-credit-card"></i> ${obj.precio_credito}</strong>`;
+            let precio= obj.opc_credito>0 ? `<div class="h6 font-weight-300"> ${contado}</div>  <div class="h6 font-weight-300">${credito} </div>`:`<div class="h6 font-weight-300">  ${contado}  </div>`;
+            template += `
+        <tr>
+            <th scope="row">
+                ${contador}
+            </th>
+            <td>
+                <a href="./detalles-coche.php?idCoche=${obj.no_vehiculo}">
+                    ${obj.placa}
+                </a>
+            </td>
+            <td>
+                ${obj.marca_coche+" "+obj.modelo_coche+" "+obj.anio}
+            </td>
+            <td>
+                    Color ${obj.color},
+                    ${obj.no_puertas} puertas,
+                     ${obj.kilometros} Km.
+            </td>
+            <td>
+                ${precio}
+            </td>
+            <td>
+                <a href="./catalogo.php">
+                    <button class="btn btn-icon btn-secondary" type="button">
+                            <span class="btn-inner--icon">
+                                <i class="fas fa-tag text-green"></i> EN VENTA
+                            </span>
+                    </button>
+                </a>
+                
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Acciones
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#"><i class="fas fa-dollar-sign text-green"></i> Vender</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir
+                            Archivo</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver mas</a>
+                    </div>
                 </div>
-            </div>
-        </td>
-    </tr>
-        `;
-    }
-);
+            </td>
+        </tr>
+            `;
+        }
+    );
 return template;
 
 }

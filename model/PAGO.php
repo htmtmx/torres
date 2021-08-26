@@ -288,4 +288,21 @@ class PAGO extends CONEXION implements I_PAGO
         $this->close();
         return $result;
     }
+
+    function queryAllPagosPendintes()
+    {
+        $query="select c.no_contrato, concat_ws(' ',ma.nombre, mo.nombre, co.anio) as vehiculo, 
+		    p.fecha_limite_pago , p.detalles, p.total, p.saldo 
+            from contrato c, pago p ,coche co , marca ma , modelo mo 
+            where  c.no_contrato = p.no_contrato_fk 
+            and c.no_vehiculo_fk = co.no_vehiculo 
+            and co.id_modelo_fk = mo.id_modelo 
+            and mo.id_marca_fk = ma.id_marca 
+            and p.saldo != 0
+            and p.estatus_pago = 0 order by c.no_contrato, p.fecha_limite_pago";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 }

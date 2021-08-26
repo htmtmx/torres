@@ -467,4 +467,3 @@ function insertaAbono($idPago,$monto,$notas){
     $obj_Abono->setNotas($notas);
     return $obj_Abono->queryaddAbono();
 }
-

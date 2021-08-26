@@ -68,3 +68,12 @@ function noPagosPendientes()
     $result = $objPago->queryNoPagosPendientes();
     return json_encode($result);
 }
+
+function consultaPagosPendientesDeTodosContratos()
+{
+    include_once "../model/PAGO.php";
+    $objPago = new PAGO();
+    $result = $objPago->queryAllPagosPendintes();
+    return json_encode($result);
+}
+
