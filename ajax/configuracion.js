@@ -15,22 +15,23 @@ function consultaInfoEmpresa() {
             console.log(emp);
 
             $("#calleEmpresa").val(emp.calle);
+            $("#empresaE").html(emp.nombre);
+            $("#idEmpresa").val(emp.id_empresa);
+            $("#nombreEmpresa").val(emp.nombre);
+            $("#rfcEmpresa").val(emp.rfc);
+            $("#noExtEmp").val(emp.no_ext);
+            $("#noIntEmp").val(emp.no_int);
+            $("#coloniaEmpr").val(emp.colonia);
+            $("#cpEmpr").val(emp.cp);
+            $("#estadoEmp").val(emp.estado);
+            $("#telEmpr").val(emp.telefono);
+            $("#correoEmp").val(emp.correo);
+            $("#webEmpr").val(emp.sitio_web);
+            $("#municipio").val(emp.de_mun);
+            $("#dateEmpr").val(emp.date_incorp);
+            $("#version").val(emp.version);
+            $("#clavLic").val(emp.licencia);
 
-
-            $("#empresaE").html(obj_result[0]['nombre']);
-            $("#idEmpresa").val(obj_result[0]['id_empresa']);
-            $("#nombreEmpresa").val(obj_result[0]['nombre']);
-            $("#rfcEmpresa").val(obj_result[0]['rfc']);
-            $("#noExtEmp").val(obj_result[0]['no_ext']);
-            $("#noIntEmp").val(obj_result[0]['no_int']);
-            $("#coloniaEmpr").val(obj_result[0]['colonia']);
-            $("#cpEmpr").val(obj_result[0]['cp']);
-            $("#estadoEmp").val(obj_result[0]['estado']);
-            $("#telEmpr").val(obj_result[0]['telefono']);
-            $("#correoEmp").val(obj_result[0]['correo']);
-            $("#webEmpr").val(obj_result[0]['sitio_web']);
-            $("#municipio").val(obj_result[0]['de_mun']);
-            //$("#dateEmpr").val(date('Y-m-d'));
         },
     });
 }

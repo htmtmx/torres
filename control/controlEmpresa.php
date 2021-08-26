@@ -1,6 +1,8 @@
 <?php
-function consultaEmpresa($id_empresa)
+function consultaEmpresa()
 {
+    session_start();
+    $id_empresa = $_SESSION['rfc_empresa'];
     include_once "../model/EMPRESA.php";
     $objEmpresa = new EMPRESA();
     $result = $objEmpresa->queryconsultaEmpresa($id_empresa);
