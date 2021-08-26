@@ -44,7 +44,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Monto de Vechiulos Vendidos</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Total Venta</h5>
                                         <span class="h1 font-weight-bold mb-0"id="montoVendido" name="montoVendido"></span>
                                     </div>
                                     <div class="col-auto">
@@ -65,7 +65,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Monto de Pagos Pendientes</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Pagos Pendientes</h5>
                                         <span class="h1 font-weight-bold mb-0"id="montoPagosPend" name="montoPagosPend"></span>
                                     </div>
                                     <div class="col-auto">
@@ -86,7 +86,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Total Catalogo</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Catalogo</h5>
                                         <span class="h1 font-weight-bold mb-0" id="noVehiculosVenta" name="noVehiculosVenta"></span>
                                     </div>
                                     <div class="col-auto">
@@ -108,7 +108,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-title text-uppercase text-muted mb-0">Abonos</h5>
-                                        <span class="h1 font-weight-bold mb-0">$250,000</span>
+                                        <span class="h1 font-weight-bold mb-0" id="montoAbonosHoy" name="montoAbonosHoy"></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -191,7 +191,7 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Abonos Pendintes</h3>
+                                <h3 class="mb-0">Pagos Pendientes</h3>
                             </div>
                         </div>
                     </div>
@@ -228,10 +228,9 @@
                                         </a>
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="#">Ver Contrato</a>
-                                            <a class="dropdown-item" href="#">Registrar Abono</a>
-                                            <a class="dropdown-item" href="#">Subir Archivo</a>
-                                            <a class="dropdown-item" href="#">Cancelar</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i>Registrar Abono</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
                                         </div>
                                     </div>
                                 </td>
@@ -260,9 +259,9 @@
                                         </a>
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="#">Ver Contrato</a>
-                                            <a class="dropdown-item" href="#">Abonar</a>
-                                            <a class="dropdown-item" href="#">Cancelar</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i>Registrar Abono</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
                                         </div>
                                     </div>
                                 </td>
@@ -330,10 +329,9 @@
                                         </a>
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <!--<a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>-->
-                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i> Abonar</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i>Registrar Abono</a>
                                             <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-times text-red"></i> Cancelar</a>
                                         </div>
                                     </div>
                                 </td>
@@ -368,10 +366,9 @@
                                         </a>
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <!---<a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>--->
-                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i> Abonar</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i>Registrar Abono</a>
                                             <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-times text-red"></i> Cancelar</a>
                                         </div>
                                     </div>
                                 </td>

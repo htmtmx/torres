@@ -4,6 +4,7 @@ $(document).ready(function(){
     montoPagosDashboard();
     countPagosPendientesDashboard();
     countCochesEnVentaDashboard();
+    sumaAbonosHoy();
 });
 
 function montoVehiculosDashboard() {
@@ -60,8 +61,20 @@ function countCochesEnVentaDashboard() {
         success: function (response)
         {
             let obj_result = JSON.parse(response);
-            console.log(obj_result);
+            //console.log(obj_result);
             $("#noVehiculosVenta").html(obj_result[0]['no_vehiculos_venta']);
+        },
+    });
+}
+
+function sumaAbonosHoy() {
+    $.ajax({
+        url: "../webhook/sumaAbonosHoy.php",
+        success: function (response)
+        {
+            let obj_result = JSON.parse(response);
+            var total =new Intl.NumberFormat().format(obj_result[0]['total_abonos_hoy']);
+            $("#montoAbonosHoy").html("$"+total);
         },
     });
 }

@@ -120,4 +120,16 @@ class ABONOS extends CONEXION
         $this->close();
         return $result;
     }
+
+    function querySumaAbonosHoy()
+    {
+        $query = "select sum(a.monto) as total_abonos_hoy
+                from abonos a 
+                where a.fecha_registro > DATE_ADD(UTC_DATE(), INTERVAL -2 DAY) 
+                and a.fecha_registro <UTC_DATE()";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 }

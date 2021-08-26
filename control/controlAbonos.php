@@ -57,3 +57,11 @@ function addAbono($id_pago,$monto,$notas)
     $objAbono->setNotas($notas);
     echo $objAbono->queryaddAbono() ? "Se registro correctamente el abono": "Error";
 }
+
+function sumaAbonosHoy()
+{
+    include_once "../model/ABONOS.php";
+    $objAbono = new ABONOS();
+    $result = $objAbono->querySumaAbonosHoy();
+    return json_encode($result);
+}
