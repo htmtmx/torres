@@ -209,7 +209,7 @@
                                                     <input type="button" name="previous" class="btn btn-primary previous action-button-previous" value="Anterior" />
                                                     <input type="button" name="next" class=" btn btn-primary next action-button" value="Siguiente" />
                                                     <div class="row">
-                                                        <div class="col-xl-6">
+                                                        <div class="col-xl-12">
                                                             <div class="card">
                                                                 <div class="card-header">
                                                                     <div class="row align-items-center">
@@ -217,6 +217,10 @@
                                                                             <h3 class="mb-0">DATOS DEL VENDEDOR</h3>
                                                                         </div>
                                                                         <div class="col text-right">
+                                                                            <!-- Button trigger modal -->
+                                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buscaClienteModal">
+                                                                                Buscar Cliente
+                                                                            </button>
                                                                             <button type="button" class="btn btn-primary" onclick="limpiarCliente();">Nuevo</button>
                                                                         </div>
                                                                     </div>
@@ -331,45 +335,6 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-6">
-                                                            <div class="card">
-                                                                <div class="card-header border-0">
-                                                                    <div class="row align-items-center">
-                                                                        <div class="col-auto">
-                                                                            <h3 class="mb-0">Personas registradas</h3>
-                                                                        </div>
-                                                                        <div class="col text-right">
-                                                                            <div class="form-group mb-0">
-                                                                                <div class="input-group input-group-alternative input-group-merge">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <span class="input-group-text">
-                                                                                            <i class="fas fa-search"></i>
-                                                                                        </span>
-                                                                                    </div>
-                                                                                    <input class="form-control" id="myInput" type="text" placeholder="Nombrer del cliente..">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="table-responsive">
-                                                                    <!-- Projects table -->
-                                                                    <table class="table align-items-center table-flush">
-                                                                        <thead class="thead-light">
-                                                                        <tr>
-                                                                            <th scope="col">#</th>
-                                                                            <th scope="col">No</th>
-                                                                            <th scope="col">Nombre</th>
-                                                                            <th scope="col"></th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody id="tbl-clientes">
-                                                                        <!-- AJAX RESPONSE TBL CLIENTES TODOS LOS CLIENTES ACTIVOS-->
-                                                                        </tbody>
-                                                                    </table>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -500,6 +465,8 @@
             </div>
         </div>
         <?php include './include/footer.php'; ?>
+        <?php include './modals/modal-busca-cliente.php'; ?>
+
     </div>
 </div>
 

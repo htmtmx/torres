@@ -115,6 +115,7 @@ function cargarDatosPersona(persona) {
     $("#folio").val(persona.folio);
     $("#tipo_cliente").val(persona.tipo_cliente);
     $("#fecha_registro_Cliente").val(persona.fecha_registro);
+    $('#buscaClienteModal').modal('hide')
 }
 
 function cargaPersonas() {

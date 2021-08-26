@@ -417,7 +417,6 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                 </fieldset>
                                                 <fieldset>
                                                     <input type="button" name="previous" class="btn btn-primary previous action-button-previous " value="Anterior" />
-                                                    <button type="submit" name="make_payment" class="btn btn-primary next action-button">Confirmar</button>
                                                     <div class="card">
                                                         <div class="card-header">
                                                             <div class="row align-items-center">
@@ -427,97 +426,87 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                             </div>
                                                         </div>
                                                         <div class="card-body">
-                                                            <h6 class="heading-small text-muted mb-4">Forma de Pago</h6>
+                                                            <!-- Address -->
+                                                            <h6 class="heading-small text-muted mb-4">Pago Inicial</h6>
                                                             <div class="pl-lg-4">
                                                                 <div class="row">
-                                                                    <div class="col-lg-6">
+                                                                    <div class="col-md-6">
                                                                         <label class="form-control-label" for="forma_pago">Elija modo de pago</label>
                                                                         <select id="forma_pago" name="forma_pago" class="form-control">
                                                                             <option value="0">Credito</option>
                                                                             <option value="1">Contado</option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-lg-6">
-                                                                        <div clas="credito">
-                                                                            <label class="form-control-label" for="forma_pago">Elija plazos</label>
-                                                                            <select id="forma_pago" name="forma_pago" class="form-control">
-                                                                                <option value="1">1 mes</option>
-                                                                                <option value="3">3 meses</option>
-                                                                                <option value="6">6 meses</option>
-                                                                                <option value="12">12 meses</option>
-                                                                            </select>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-control-label" for="precio_credito">Precio de Lista:</label>
+                                                                            <input class="form-control" type="number" id="precio_credito" name="precio_credito" min="0" max="1000000" readonly>
                                                                         </div>
-                                                                        <div class="contado">
-                                                                            <label class="form-control-label" for="total">apartar con</label>
-                                                                            <input type="numeric" name="total" id="total" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" id="selectedCredito">
+                                                                    <div class="col-md-6"></div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-control-label" for="precio_credito">Precio a Credito:</label>
+                                                                            <input class="form-control" type="number" id="precio_credito" name="precio_credito" min="0" max="1000000" readonly>
                                                                         </div>
-                                                                        <div class="form-group row">
-                                                                            <label class="form-control-label" for="total">Precio de compra</label>
-                                                                            <input type="numeric" name="total" id="total" class="form-control" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" id="containerEnganche">
+                                                                    <div class="col-md-6"></div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-control-label" for="precio_credito">Enganche:</label>
+                                                                            <input class="form-control" type="number" id="precio_credito" name="precio_credito" min="0" max="1000000">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-lg-6">
-                                                                    </div>
-                                                                    <div class="col-lg-6">
-                                                                        <div class="form-group row">
-                                                                            <label class="form-control-label" for="subtotal_coche">Precio de lista</label>
-                                                                            <input type="numeric" name="subtotal_coche" id="subtotal_coche" class="form-control" readonly="">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-lg-6">
-                                                                    </div>
-                                                                    <div class="col-lg-6">
-                                                                        <div class="form-group row">
-                                                                            <label class="form-control-label" for="subtotal_coche">Subtotal</label>
-                                                                            <input type="numeric" name="subtotal_coche" id="subtotal_coche" class="form-control" readonly="">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-lg-6">
-                                                                    </div>
-                                                                    <div class="col-lg-6">
-                                                                        <div class="form-group row">
-                                                                            <label class="form-control-label" for="iva_coche">IVA</label>
-                                                                            <input type="numeric" name="iva_coche" id="iva_coche" class="form-control" readonly>
+                                                                    <div class="col-md-6"></div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-control-label" for="precio_credito">Saldo por liquidar:</label>
+                                                                            <input class="form-control" type="number" id="precio_credito" name="precio_credito" min="0" max="1000000" readonly>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <hr class="my-4">
-                                                            <!-- Address -->
-                                                            <h6 class="heading-small text-muted mb-4">Costos para el coche en Venta</h6>
-                                                            <div class="pl-lg-4">
+                                                            <!-- Uso exclusivo de credito -->
+                                                            <h6 class="heading-small text-muted mb-4">Pago Inicial</h6>
+                                                            <div class="pl-lg-4" id="containerFechasCredito">
                                                                 <div class="row">
-                                                                    <div class="col-md-2">
+                                                                    <div class="col-md-6">
+                                                                        <label class="form-control-label" for="forma_pago">Elija un plazo</label>
+                                                                        <select id="forma_pago" name="forma_pago" class="form-control">
+                                                                            <option value="0">Seleccione un plazo</option>
+                                                                            <option value="1">1 Mes</option>
+                                                                            <option value="3">3 Meses</option>
+                                                                            <option value="6">6 Meses</option>
+                                                                            <option value="12">12 Meses</option>
+                                                                            <option value="24">24 Meses</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-control-label" for="opc_credito_coche">Ofrecer Credito</label><br>
-                                                                            <label class="custom-toggle text-center">
-                                                                                <input type="checkbox" checked="" name="opc_credito_coche" id="opc_credito_coche">
-                                                                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
-                                                                            </label>
+                                                                            <label class="form-control-label" for="precio_credito">Pago por mes:</label>
+                                                                            <input class="form-control" type="number" id="precio_credito" name="precio_credito" min="0" max="1000000" readonly>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-5">
+                                                                </div>
+                                                                <div class="row" id="selectedCredito">
+                                                                    <div class="col-md-6"></div>
+                                                                    <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-control-label" for="precio_contado">Precio de Lista</label>
-                                                                            <input class="form-control" type="number" id="precio_contado" name="precio_contado" min="0" max="1000000">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-5">
-                                                                        <div class="form-group">
-                                                                            <label class="form-control-label" for="precio_credito">Precio a Credito</label>
-                                                                            <input class="form-control" type="number" id="precio_credito" name="precio_credito" min="0" max="1000000">
-                                                                        </div>
+                                                                            <label class="form-control-label" for="precio_credito">Elija dia de primer pago:</label>
+                                                                            <input type="date" id="start" name="trip-start" value="<?php echo date("Y-m-d");?>" min="<?php echo date("Y-m-d");?>" max="2050-12-31"></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <button type="submit" name="make_payment" class="btn btn-primary next action-button">Confirmar</button>
                                                 </fieldset>
                                                 <fieldset>
                                                     <div class="card">

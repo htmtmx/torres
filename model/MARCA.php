@@ -7,7 +7,7 @@ class MARCA extends CONEXION implements I_MARCA
     function querylistMarcas ()
     {
         $query = "SELECT `id_marca`, `nombre`, `estatus` 
-                FROM `marca`";
+                FROM `marca` WHERE `marca`.`estatus` >0  ORDER BY `marca`.`nombre` ASC";
         $this->connect();
         $result = $this->getData($query);
         $this->close();

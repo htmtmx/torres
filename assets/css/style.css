@@ -53,9 +53,6 @@ a:hover{
 .nonePunto{
     text-decoration: none !important;
 }
-.avatar{
-    max-width: 35px;
-}
 
 #content{
     overflow-y: auto;
