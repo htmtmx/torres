@@ -64,7 +64,7 @@
                             <span class="nav-link-text">Ventas</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Nueva Venta</a>
+                            <a class="dropdown-item" href="./nuevaVenta.php">Nueva Venta</a>
                             <a class="dropdown-item" href="#">Buscar</a>
                             <a class="dropdown-item" href="#">Ver Todos</a>
                         </div>

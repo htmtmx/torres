@@ -6,148 +6,8 @@
     <?php include_once "./include/header.php"?>
 </head>
 
-<style>
-
-    #msform fieldset .form-card {
-        background: white;
-        border: 0 none;
-        border-radius: 0px;
-        box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
-        padding: 20px 40px 30px 40px;
-        box-sizing: border-box;
-        width: 94%;
-        margin: 0 3% 20px 3%;
-        position: relative
-    }
-
-    #msform fieldset {
-        background: white;
-        border: 0 none;
-        border-radius: 0.5rem;
-        box-sizing: border-box;
-        width: 100%;
-        margin: 0;
-        padding-bottom: 20px;
-        position: relative
-    }
-
-    #msform fieldset:not(:first-of-type) {
-        display: none
-    }
-
-    #msform fieldset .form-card {
-        text-align: left;
-        color: #9E9E9E
-    }
-
-    #msform .action-button {
-        width: 120px;
-        font-weight: bold;
-        color: white;
-        cursor: pointer;
-    }
-
-
-
-    #msform .action-button-previous {
-        width: 120px;
-        font-weight: bold;
-        color: white;
-        cursor: pointer;
-    }
-
-    select.list-dt {
-        border: none;
-        outline: 0;
-        border-bottom: 1px solid #ccc;
-        padding: 2px 5px 3px 5px;
-        margin: 2px
-    }
-
-    select.list-dt:focus {
-        border-bottom: 2px solid blueviolet;
-    }
-
-    .card {
-        z-index: 0;
-        border: none;
-        border-radius: 0.5rem;
-        position: relative
-    }
-
-    #progressbar {
-        margin-bottom: 30px;
-        overflow: hidden;
-        color: lightgrey
-    }
-
-    #progressbar .active {
-        color: #000000
-    }
-
-    #progressbar li {
-        list-style-type: none;
-        font-size: 12px;
-        width: 25%;
-        float: left;
-        position: relative
-    }
-
-    #progressbar #account:before {
-        font-family: FontAwesome;
-        content: "\f14a"
-    }
-
-    #progressbar #personal:before {
-        font-family: FontAwesome;
-        content: "\f007"
-    }
-
-    #progressbar #payment:before {
-        font-family: FontAwesome;
-        content: "\f09d"
-    }
-
-    #progressbar #confirm:before {
-        font-family: FontAwesome;
-        content: "\f00c"
-    }
-
-    #progressbar li:before {
-        width: 50px;
-        height: 50px;
-        line-height: 45px;
-        display: block;
-        font-size: 18px;
-        color: #ffffff;
-        background: lightgray;
-        border-radius: 50%;
-        margin: 0 auto 10px auto;
-        padding: 2px
-    }
-
-    #progressbar li:after {
-        content: '';
-        width: 100%;
-        height: 2px;
-        background: lightgray;
-        position: absolute;
-        left: 0;
-        top: 25px;
-        z-index: -1
-    }
-
-    #progressbar li.active:before,
-    #progressbar li.active:after {
-        background: blueviolet;
-    }
-
-    .fit-image {
-        width: 100%;
-        object-fit: cover
-    }
-</style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" href="../assets/css/compra-venta.css">
 <body>
 <?php include_once "./include/sidebar.php"?>
 
@@ -202,6 +62,7 @@
                                                     <li id="confirm"><strong>Terminar</strong></li>
                                                 </ul> <!-- fieldsets -->
                                                 <fieldset>
+                                                    <input type="button" name="next" class="btn btn-primary next action-button" value="Siguiente" />
                                                     <div class="row">
                                                         <div class="col-xl-12">
                                                             <div class="card">
@@ -343,9 +204,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <input type="button" name="next" class="btn btn-primary next action-button" value="Siguiente" />
                                                 </fieldset>
                                                 <fieldset>
+                                                    <input type="button" name="previous" class="btn btn-primary previous action-button-previous" value="Anterior" />
+                                                    <input type="button" name="next" class=" btn btn-primary next action-button" value="Siguiente" />
                                                     <div class="row">
                                                         <div class="col-xl-6">
                                                             <div class="card">
@@ -512,10 +374,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <input type="button" name="previous" class="btn btn-primary previous action-button-previous" value="Anterior" />
-                                                    <input type="button" name="next" class=" btn btn-primary next action-button" value="Siguiente" />
                                                 </fieldset>
                                                 <fieldset>
+                                                    <input type="button" name="previous" class="btn btn-primary previous action-button-previous " value="Anterior" />
+                                                    <button type="submit" name="make_payment" class="btn btn-primary next action-button">Confirmar</button>
                                                     <div class="card">
                                                         <div class="card-header">
                                                             <div class="row align-items-center">
@@ -593,8 +455,6 @@
                                                                 </div>
                                                         </div>
                                                     </div>
-                                                    <input type="button" name="previous" class="btn btn-primary previous action-button-previous " value="Anterior" />
-                                                    <button type="submit" name="make_payment" class="btn btn-primary next action-button">Confirmar</button>
                                                 </fieldset>
                                                 <fieldset>
                                                     <div class="card">
@@ -646,4 +506,5 @@
 </body>
 <?php include './include/js.php'; ?>
 </html>
+<script src="../ajax/payment.js"></script>
 <script src="../ajax/control-ingreso.js"></script>
