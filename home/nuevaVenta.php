@@ -70,19 +70,24 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                     <li id="confirm"><strong>Terminar</strong></li>
                                                 </ul> <!-- fieldsets -->
                                                 <fieldset>
-                                                    <input type="button" name="next" class="btn btn-primary next action-button" value="Siguiente" />
                                                     <div class="row">
-                                                        <div class="col-xl-6">
+                                                        <div class="col-xl-12">
                                                             <div class="card">
                                                                 <div class="card-header">
                                                                     <div class="row align-items-center">
-                                                                        <div class="col-12">
-                                                                            <h3 class="mb-0">Datos del vehiculo</h3>
+                                                                        <div class="col-auto">
+                                                                            <h3 class="mb-0">DATOS DEL VEHICULO</h3>
+                                                                        </div>
+                                                                        <div class="col text-right">
+                                                                            <!-- Button buscar coche modal -->
+                                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buscaVechiculoModal">
+                                                                                <i class="fas fa-search"></i> Seleccionar vehiculo
+                                                                            </button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <input type="hidden" name="noCoche" id="noCoche" value="0">
+                                                                    <input type="text" name="noCoche" id="noCoche" readonly value="<?php echo $idCoche;?>">
                                                                     <div class="pl-lg-4">
                                                                         <div class="row">
                                                                             <div class="col-lg-6">
@@ -165,81 +170,23 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-xl-6">
-                                                            <div class="card">
-                                                                <div class="card-header border-0">
-                                                                    <div class="row align-items-center">
-                                                                        <div class="col-auto">
-                                                                            <h3 class="mb-0">Vehiculos disponibles en Venta</h3>
-                                                                        </div>
-                                                                        <div class="col text-right">
-                                                                            <div class="form-group mb-0">
-                                                                                <div class="input-group input-group-alternative input-group-merge">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <span class="input-group-text">
-                                                                                            <i class="fas fa-search"></i>
-                                                                                        </span>
-                                                                                    </div>
-                                                                                    <input class="form-control" id="myInput" type="text" placeholder="Placa del vehiculo">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="table-responsive">
-                                                                    <!-- Projects table -->
-                                                                    <table class="table align-items-center table-flush">
-                                                                        <thead class="thead-light">
-                                                                        <tr>
-                                                                            <th scope="col">#</th>
-                                                                            <th scope="col">Placa</th>
-                                                                            <th scope="col">Detalles</th>
-                                                                            <th scope="col">Costo</th>
-                                                                            <th scope="col"></th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody id="tbl-coches-venta">
-                                                                        <tr idcliente="370237125480822">
-                                                                            <th scope="row">
-                                                                                1
-                                                                            </th>
-                                                                            <td>
-                                                                                <a class="nav-link" href="./detalles-cliente.php?idCliente=370237125480822">
-                                                                                    MKDFP456
-                                                                                </a>
-                                                                            </td>
-                                                                            <td>
-                                                                                Nissan Versa 2018 Rojo
-                                                                            </td>
-                                                                            <td>
-                                                                                <div class="h6 font-weight-300"> <strong class="heading"><i class="fas fa-dollar-sign text-green"></i> 120000.00</strong></div>  <div class="h6 font-weight-300"><strong class="heading"><i class="fas fa-credit-card"></i> 150000.00</strong> </div>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <button type="button" class="btn btn-primary" onclick="seleccionaCliente(370237125480822);">Seleccionar</button>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <!-- AJAX RESPONSE TBL CLIENTES TODOS LOS CLIENTES ACTIVOS-->
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
-
+                                                    <input type="button" name="next" class="btn btn-primary next action-button" value="Siguiente" />
                                                 </fieldset>
                                                 <fieldset>
-                                                    <input type="button" name="previous" class="btn btn-primary previous action-button-previous" value="Anterior" />
-                                                    <input type="button" name="next" class=" btn btn-primary next action-button" value="Siguiente" />
                                                     <div class="row">
-                                                        <div class="col-xl-6">
+                                                        <div class="col-xl-12">
                                                             <div class="card">
                                                                 <div class="card-header">
                                                                     <div class="row align-items-center">
                                                                         <div class="col-auto">
-                                                                            <h3 class="mb-0">DATOS DEL COMPRADOR</h3>
+                                                                            <h3 class="mb-0">DATOS DEL VENDEDOR</h3>
                                                                         </div>
                                                                         <div class="col text-right">
+                                                                            <!-- Button trigger modal -->
+                                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buscaClienteModal">
+                                                                                <i class="fas fa-search"></i> Buscar Cliente
+                                                                            </button>
                                                                             <button type="button" class="btn btn-primary" onclick="limpiarCliente();">Nuevo</button>
                                                                         </div>
                                                                     </div>
@@ -357,66 +304,11 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-xl-6">
-                                                            <div class="card">
-                                                                <div class="card-header border-0">
-                                                                    <div class="row align-items-center">
-                                                                        <div class="col-auto">
-                                                                            <h3 class="mb-0">Personas registradas</h3>
-                                                                        </div>
-                                                                        <div class="col text-right">
-                                                                            <div class="form-group mb-0">
-                                                                                <div class="input-group input-group-alternative input-group-merge">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <span class="input-group-text">
-                                                                                            <i class="fas fa-search"></i>
-                                                                                        </span>
-                                                                                    </div>
-                                                                                    <input class="form-control" id="myInput" type="text" placeholder="Nombrer del cliente..">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="table-responsive">
-                                                                    <!-- Projects table -->
-                                                                    <table class="table align-items-center table-flush">
-                                                                        <thead class="thead-light">
-                                                                        <tr>
-                                                                            <th scope="col">#</th>
-                                                                            <th scope="col">No</th>
-                                                                            <th scope="col">Nombre</th>
-                                                                            <th scope="col"></th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody id="tbl-clientes">
-                                                                            <tr idcliente="987568611049">
-                                                                                <th scope="row">
-                                                                                    2
-                                                                                </th>
-                                                                                <td>
-                                                                                    <a class="nav-link" href="./detalles-cliente.php?idCliente=987568611049">
-                                                                                        987568611049
-                                                                                    </a>
-                                                                                </td>
-                                                                                <td>
-                                                                                    Ernesto Dominguez Alfaro
-                                                                                    <span class="badge badge-success">Activo</span>
-                                                                                </td>
-
-                                                                                <td>
-                                                                                    <button type="button" class="btn btn-primary" onclick="seleccionaCliente(987568611049);">Seleccionar</button>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
+                                                    <input type="button" name="previous" class="btn btn-primary previous action-button-previous" value="Anterior" />
+                                                    <input type="button" name="next" class=" btn btn-primary next action-button" value="Siguiente" />
                                                 </fieldset>
                                                 <fieldset>
-                                                    <input type="button" name="previous" class="btn btn-primary previous action-button-previous " value="Anterior" />
                                                     <div class="card">
                                                         <div class="card-header">
                                                             <div class="row align-items-center">
@@ -506,6 +398,7 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <input type="button" name="previous" class="btn btn-primary previous action-button-previous " value="Anterior" />
                                                     <button type="submit" name="make_payment" class="btn btn-primary next action-button">Confirmar</button>
                                                 </fieldset>
                                                 <fieldset>
@@ -551,6 +444,8 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
             </div>
         </div>
         <?php include './include/footer.php'; ?>
+        <?php include './modals/modal-busca-coche.php'; ?>
+        <?php include './modals/modal-busca-cliente.php'; ?>
     </div>
 </div>
 
@@ -558,4 +453,5 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
 <?php include './include/js.php'; ?>
 </html>
 <script src="../ajax/payment.js"></script>
+<script src="../ajax/control-compra-venta.js"></script>
 <script src="../ajax/control-venta.js"></script>
