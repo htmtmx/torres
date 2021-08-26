@@ -39,7 +39,7 @@ $("#frm-add-archivo-contrato").on("submit", function(e){
       processData: false
    })
        .done(function(res){
-          $("#mensajeAddDocumentoContrato").html("Respuesta: " + res);
+          $('#modalejemplo').modal('hide');
           consultaDetallesContrato();
        });
    $('#frm-add-archivo-contrato').trigger('reset');
@@ -84,9 +84,8 @@ $("#frm-add-archivo-coche").on("submit", function(e){
       processData: false
    })
        .done(function(res){
-          $("#mensajeAddArchivo").html(res);
+          $('#addArchivoCoche').modal('hide');
           consultaDetallesCoche();
-
        });
    $('#frm-add-archivo-coche').trigger('reset');
    e.preventDefault();
@@ -110,9 +109,9 @@ $("#frm-add-foto-vehiculo").on("submit", function(e){
       processData: false
    })
        .done(function(res){
-          alert(res);
           consultaDetallesCoche();
-          document.getElementById("preview").src = "https://sierranorte.cnt.es/wp-content/uploads/no_preview.jpg";
+          $('#modalAddFotoCoche').modal('hide');
+          document.getElementById("preview").src = "https://sierranorte.cnt.es/wp-content/uploads/no_preview.jpg";s
        });
    $('#frm-add-foto-vehiculo').trigger('reset');
    e.preventDefault();

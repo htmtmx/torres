@@ -153,8 +153,6 @@ function  eliminarDireccion(idDireccion){
         },
         success: function (mje) {
             consultaDirecciones();
-            console.log(mje);
-            alert(mje);
         }
     });
 }

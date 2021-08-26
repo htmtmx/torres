@@ -14,9 +14,6 @@ function consultaClientes(){
             //Utilizamos los objetos a y los tratamos en una plantilla en tbody
             let template = "";
             let cont = 0;
-            /*console.log(response);
-            console.log("******************");
-            console.log(obj_result);*/
             obj_result.forEach((obj_result) => {
                 cont++;
                 let contacto="";
@@ -66,9 +63,7 @@ function consultaClientes(){
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">
-                                                <i class="fas fa-trash-alt text-red"></i>
-                                            </a>
+                                            <a class="dropdown-item btnEliminarCliente"href="#"> <i class="fas fa-trash-alt text-red"></i></a>
                                         </li>
                                     </ul>
                                 </td>
@@ -93,11 +88,37 @@ $("#frm-add-cliente").on("submit", function(e){
         processData: false
     })
         .done(function(res){
-            //let alerta = cosntructMensaje("success",res);
-            alert(res);
+            consultaClientes();
+            $('#addCliente').modal('hide');
         });
     $('#frm-add-cliente').trigger('reset');
-    consultaClientes();
     e.preventDefault();
 
 });
+
+
+//LISTENER PARA ELIMINAR CLIENTE
+$(document).on("click", ".btnEliminarCliente", function () {
+    if (confirm("¿Esta seguro de que desea eliminar este cliente?")){
+        let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement.parentElement;
+        let idCliente = $(elementClienteSelect).attr("idcliente");
+        console.log(idCliente);
+        eliminarCLiente(idCliente);
+    }
+
+});
+
+//FUNCION PARA ELIMINAR CLIENTE
+function  eliminarCLiente(idCliente){
+    $.ajax({
+        url: "../webhook/client-delete.php",
+        type: 'POST',
+        data: {
+            idCliente: idCliente
+        },
+        success: function (mje) {
+            consultaClientes();
+            console.log(mje);
+        }
+    });
+}
