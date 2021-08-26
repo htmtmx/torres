@@ -136,12 +136,18 @@ function construyeCocheTablaFotos(docs){
                                     </div>
                                 </th>
                                 <td>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary" type="button">
+                                    <a href="${foto.path}" target="_blank">
+                                         <button class="btn btn-icon btn-secondary" type="button">
+                                            <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
+                                        </button>
+                                    </a> 
+                                    <a href="${foto.path}" target="_blank" download="${foto.nombreArchivo}">
+                                           <button class="btn btn-icon btn-secondary" type="button">
                                         <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                    </button>
+                                        </button>
+                                    </a>
+                               
+                               
                                     <button class="btn btn-icon btn-secondary btnEliminarFotoCoche" type="button">
                                         <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
                                     </button>
@@ -731,12 +737,16 @@ function buildTblFileContratoVenta(archivos) {
                     ${visibleText}
                 </td>
                 <td>
-                    <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
-                        <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                    </button>
-                    <button class="btn btn-icon btn-secondary" type="button">
-                        <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                    </button>
+                    <a href="${file.path}" target="_blank">
+                        <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
+                            <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
+                        </button>
+                    </a>
+                    <a href="${file.path}" download="${file.nombre}">
+                        <button class="btn btn-icon btn-secondary" type="button">
+                            <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
+                        </button>
+                    </a>
                     <button class="btn btn-icon btn-secondary btnEliminaArchivoContrato" type="button">
                         <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
                     </button>
