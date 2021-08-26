@@ -163,7 +163,7 @@ class FILE_CONTRATO extends CONEXION
     }
     public function queryremoveFileContrato()
     {
-        $query = "DELETE FROM `file_contrato` WHERE ".$this->getIdFileC();
+        $query = "DELETE FROM `file_contrato` WHERE `id_file_c`=".$this->getIdFileC();
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

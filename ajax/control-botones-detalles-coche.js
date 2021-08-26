@@ -32,11 +32,35 @@ $(document).on("click", ".btnEliminarCaracteristicas", function () {
     }
 
 });
+/******BTN LISTEN PARA ELIMINAR DOCUMENTOS CONTRATO *****/
+
+$(document).on("click", ".btnEliminaArchivoContrato", function () {
+    if (confirm("¿Esta seguro de que desea eliminar este documento? Esta accion no podrá ser revertida")){
+        let elemntDocumentoContrato = $(this)[0].parentElement.parentElement;
+        let idDocumento = $(elemntDocumentoContrato).attr("id")
+        eliminarDocumentoContrato(idDocumento);
+    }
+
+});
 
 /**************************************
  **** FUNCIONES PARA BTN LISTENERS ****
  **************************************/
 
+/****** FUNCIONES PARA ELIMINAR CARACTERISTICAS *****/
+function eliminarDocumentoContrato(idDocumento){
+    $.ajax({
+        url: "../webhook/remove-file-contrato.php",
+        type: 'POST',
+        data: {
+            idDocumento: idDocumento
+        },
+        success: function (mje) {
+            console.log(mje);
+            consultaDetallesContrato();
+        }
+    });
+}
 /****** FUNCIONES PARA ELIMINAR CARACTERISTICAS *****/
 function eliminarDetalle(idCaracteristica){
     $.ajax({
