@@ -54,7 +54,7 @@ function construyeTablaAbonosContrato(listaAbonos) {
                                     ${abono.no_contrato}
                                 </th>
                                 <td>
-                                    ${abono.vehiculo}
+                                    ${abono.vehiculo} <span class="badge badge-info">${abono.placa}</span>
                                 </td>
                                 <td>
                                     ${abono.fecha_limite_pago}

@@ -306,6 +306,20 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         $this->close();
         return $result;
     }
+
+    function consultaAllContratos()
+    {
+        $query = "select c.no_contrato , concat_ws(' ', ma.nombre, m.nombre, co.anio) as vehiculo, c.hora_fecha_creacion 
+                from contrato c , coche co , modelo m , marca ma 
+                where co.no_vehiculo = c.no_vehiculo_fk 
+                and co.id_modelo_fk = m.id_modelo 
+                and m.id_marca_fk = ma.id_marca 
+                and c.tipo_contrato = 0";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 /*********************
  * Preguntar si se utiliza
 **********************/

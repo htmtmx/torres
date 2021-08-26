@@ -20,7 +20,16 @@ function consultaContrato($no_contrato)
     $objContrato->setNoContrato($no_contrato);
     $arrayContrato = $objContrato->consultaContrato($objContrato->getNoContrato());
     return $arrayContrato;
-}/********************************************************************
+}
+
+function consultaAllContratos()
+{
+    include_once "../model/CONTRATO.php";
+    $objContrato = new CONTRATO();
+    $arrayContrato = $objContrato->consultaAllContratos();
+    return $arrayContrato;
+}
+/********************************************************************
  *        C O N S U L T A   C O N T R A T O    P O R    N O   D E  V E H I C U L O
  *******************************************************************/
 function consultaContratosCoche($no_vehiculo)
@@ -64,6 +73,29 @@ function consultaAvancePagoGeneralDeContrato($no_contrato)
     var_dump($arrayContrato);
 }
 
+function consultaAvancePagoGeneralDeAllContratos()
+{
+    include_once "../control/controlPago.php";
+    include_once "../control/controlAbonos.php";
+    $arrayContratos = consultaAllContratos();
+    echo"<br>***** A R R A Y     C O N T R A T O S *****<br>";
+    var_dump($arrayContratos);
+    foreach ($arrayContratos as $contrato) {
+        $arrayPagos = consultaPagos($contrato['no_contrato']);
+        $totalAbonos = 0;
+        foreach ($arrayPagos as $pago) {
+            $arraySumaAbonos = sumatoriaDeAbonos($pago['id_pago']);
+            $sumaDeAbonos = $arraySumaAbonos[0]['suma_abonos'];
+            $totalAbonos = $totalAbonos+$sumaDeAbonos;
+        }
+    }
+    echo"<br>***** A R R A Y     P A G O S *****<br>";
+    var_dump($arrayPagos);
+    $totalContrato = $arrayContratos[0]['total'];
+    $avance = ($totalAbonos*100)/$totalContrato;
+    array_push($arrayContrato[0],$avance);
+    var_dump($arrayContrato);
+}
 
 function consultaAvanceDeCadaPagoDeContrato($no_contrato)
 {
