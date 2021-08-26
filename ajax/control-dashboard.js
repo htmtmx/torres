@@ -118,10 +118,10 @@ function construyetablaCoches(listaCoches) {
                 ${precio}
             </td>
             <td>
-                <a href="./catalogo.php">
+                <a href="./nuevaVenta.php?idCoche=${obj.no_vehiculo}">
                     <button class="btn btn-icon btn-secondary" type="button">
                             <span class="btn-inner--icon">
-                                <i class="fas fa-tag text-green"></i> EN VENTA
+                                <i class="fas fa-tag text-green"></i> VENDER 
                             </span>
                     </button>
                 </a>

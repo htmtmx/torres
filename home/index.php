@@ -137,7 +137,7 @@
                                 <h3 class="mb-0">Vehiculos en Venta</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">Ver todos</a>
+                                <a href="./catalogo.php" class="btn btn-sm btn-primary">Ver todos</a>
                             </div>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                             </tr>
                             </thead>
                             <tbody id="tblCoches">
-
+                        <!-- AJAX RESPONSE TABLE COCHES EN VENTA -->
                             </tbody>
                         </table>
                     </div>
@@ -172,7 +172,7 @@
                                 <h3 class="mb-0">Catalogo</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">Ver Catalogo</a>
+                                <a href="./catalogo.php" class="btn btn-sm btn-primary">Ver Catalogo</a>
                             </div>
                         </div>
                     </div>
