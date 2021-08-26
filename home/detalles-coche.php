@@ -409,7 +409,7 @@ $noCoche = $_GET['idCoche'];
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="conteinerContratos">
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header border-0">

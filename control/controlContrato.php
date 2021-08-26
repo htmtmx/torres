@@ -7,7 +7,7 @@ function consultaDetallesContrato($no_contrato)
     include_once "../model/CONTRATO.php";
     $objContrato = new CONTRATO();
     $objContrato->setNoContrato($no_contrato);
-    $arrayContrato = $objContrato->consultaDetallesContrato($objContrato->getNoContrato());
+    $arrayContrato = $objContrato->consultaDetallesContrato();
     return json_encode($arrayContrato);
 }
 /********************************************************************
@@ -213,7 +213,7 @@ function creaContratoCompra($params)
 
     if($resultVendedor && $resultCoche){
         // 1 - C_COMPRA 0-Contrato_Vta
-        $tipoContrato = 1; // Compra de vehiculo
+        $tipoContrato = 0; // Compra de vehiculo
         $plazos = 1; // Porque defino que ya lo pago TORRES
         $fechaPrimerPago = date('Y-m-d');
         $totalCoche = $params['total'];
@@ -263,7 +263,7 @@ function creaContratoVenta($params)
                               $plazo,$fechaPrimerPago, $totalCoche, $enganche, $estatusContrato*/
         $formaPago = $params['forma_pago'];
         $noVehiculo= $params['no_vehiculo'];
-        $tipoContrato = 0; // Es una venta
+        $tipoContrato = 1; // Es una venta
         $plazo = $params['plazo'];
         $enganche = $params['enganche'];
         $totalCoche=$params['total'];

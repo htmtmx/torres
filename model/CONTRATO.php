@@ -260,11 +260,11 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         $this->estatus = $estatus;
     }
 
-    public function consultaDetallesContrato($no_contrato)
+    public function consultaDetallesContrato()
     {
         $concat = "";
-        if ($no_contrato!= 0) {
-            $concat = " AND `no_contrato` = ".$no_contrato;
+        if ($this->getNoContrato()!= 0) {
+            $concat = " AND `no_contrato` = ".$this->getNoContrato();
         }
         $query = "SELECT con.no_contrato, concat_ws(' ',e.apaterno, e.amaterno, e.nombre) as empleado, e.telefono as emp_tel, e.celular as emp_cel,
 		e.sexo as emp_sex, e.fecha_registro as emp_fe_re, e.correo_user as emp_email, e.puesto as emp_puesto, 

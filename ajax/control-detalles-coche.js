@@ -249,8 +249,8 @@ function consultaDetallesContrato(){
             //console.log(response);
             let obj_result = JSON.parse(response);
             //esta siempre va a existir
-            let contratoAdquisicion = getContrato(obj_result,"1"); // 1 -> Adquisicion
-            let contratoVenta = getContrato(obj_result,"0"); // 0 -> venta
+            let contratoAdquisicion = getContrato(obj_result,"0"); // 0 -> Adquisicion
+            let contratoVenta = getContrato(obj_result,"1"); // 1 -> venta
             //construir el TAB
             $("#myTab").html(constuyeNavContratos(contratoAdquisicion,contratoVenta));
             $("#myTabContent").html(constuyeContainersContratos(contratoAdquisicion,contratoVenta));

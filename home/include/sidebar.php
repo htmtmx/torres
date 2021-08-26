@@ -55,7 +55,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="./ingreso.php">Nueva Adquisición</a>
-                            <a class="dropdown-item" href="#">Ver Todos</a>
+                            <a class="dropdown-item" href="./contratos-adquisicion.php">Ver Todos</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -66,7 +66,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="./nuevaVenta.php">Nueva Venta</a>
                             <a class="dropdown-item" href="#">Buscar</a>
-                            <a class="dropdown-item" href="#">Ver Todos</a>
+                            <a class="dropdown-item" href="./contratos-venta.php">Ver Todos</a>
                         </div>
                     </li>
                 </ul>
