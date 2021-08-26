@@ -45,7 +45,8 @@ $noCoche = $_GET['idCoche'];
                 </div>
                 <div class="col-lg-6 col-auto text-right">
                     <input type="hidden" id="noCoche" value="<?php echo $noCoche;?>">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cuentaUser">
+                    <!-- Mandar a JS para predefinir dependiendo del estado del coche-->
+                    <button type="button" class="btn btn-success">
                         <i class="fas fa-dollar-sign text-white"></i> Vender
                     </button>
                 </div>
