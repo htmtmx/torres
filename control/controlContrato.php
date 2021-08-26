@@ -233,10 +233,11 @@ function creaContratoCompra($params)
             $fechaLimiTePago = date('Y-m-d H:i:s');
             $StatusPago = 1; //Liquidado de forma automatica
             $detalles = "Se compró un vehiculo con placa ".$COCHE->getPlaca()." año ".$COCHE->getAnio();
+            $saldo = 0;
             //Funcion para Insertar y crear un objeto PAGO
             include_once "tool_ids_generate.php";
             $idPago = gen_noPago();
-            $resultPago = insertaObjPago($idPago,$CONTRATO->getNoContrato(),$concepto,$tipo,$CONTRATO->getTotal(),$noDePago,$detalles,$StatusPago,$fechaLimiTePago);
+            $resultPago = insertaObjPago($idPago,$CONTRATO->getNoContrato(),$concepto,$tipo,$CONTRATO->getTotal(),$noDePago,$detalles,$StatusPago,$saldo,$fechaLimiTePago);
             //SI YA SE CREO EL PAGO CREO EL ABONO
             if ($resultPago){
                 //Crerar el OBJ de abono

@@ -390,7 +390,24 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody id="tbl-clientes">
-                                                                        <!-- AJAX RESPONSE TBL CLIENTES TODOS LOS CLIENTES ACTIVOS-->
+                                                                            <tr idcliente="987568611049">
+                                                                                <th scope="row">
+                                                                                    2
+                                                                                </th>
+                                                                                <td>
+                                                                                    <a class="nav-link" href="./detalles-cliente.php?idCliente=987568611049">
+                                                                                        987568611049
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    Ernesto Dominguez Alfaro
+                                                                                    <span class="badge badge-success">Activo</span>
+                                                                                </td>
+
+                                                                                <td>
+                                                                                    <button type="button" class="btn btn-primary" onclick="seleccionaCliente(987568611049);">Seleccionar</button>
+                                                                                </td>
+                                                                            </tr>
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -529,7 +546,6 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                             <i class="fas fa-car-side"></i> Ir al catalogo
                                                                         </button>
                                                                     </a>
-
                                                                 </div>
                                                             </div>
                                                         </div>
