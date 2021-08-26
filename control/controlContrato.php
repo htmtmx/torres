@@ -70,7 +70,8 @@ function consultaAvancePagoGeneralDeContrato($no_contrato)
     $totalContrato = $arrayContrato[0]['total'];
     $avance = ($totalAbonos*100)/$totalContrato;
     array_push($arrayContrato[0],$avance);
-    var_dump($arrayContrato);
+    //var_dump($arrayContrato);
+    return $avance;
 }
 
 function consultaAvancePagoGeneralDeAllContratos()
@@ -78,23 +79,35 @@ function consultaAvancePagoGeneralDeAllContratos()
     include_once "../control/controlPago.php";
     include_once "../control/controlAbonos.php";
     $arrayContratos = consultaAllContratos();
-    echo"<br>***** A R R A Y     C O N T R A T O S *****<br>";
-    var_dump($arrayContratos);
+    $arrayFinalContrato = array();
+    //echo"<br>***** A R R A Y     C O N T R A T O S *****<br>";
+    //var_dump($arrayContratos);
     foreach ($arrayContratos as $contrato) {
+        $cont = 0;
         $arrayPagos = consultaPagos($contrato['no_contrato']);
-        $totalAbonos = 0;
         foreach ($arrayPagos as $pago) {
-            $arraySumaAbonos = sumatoriaDeAbonos($pago['id_pago']);
-            $sumaDeAbonos = $arraySumaAbonos[0]['suma_abonos'];
-            $totalAbonos = $totalAbonos+$sumaDeAbonos;
+            $fecha_pago = $pago['fecha_pago'];
+            $status_pago = $pago['estatus_pago'];
+            if ($fecha_pago<date('Y-m-d') && $status_pago==0) {
+                $cont++;
+            }
         }
+        if ($cont>0) {
+            $estado = 0;
+            array_push($contrato,$estado);
+        }else {
+            $estado = 1;
+            array_push($contrato, $estado);
+        }
+        $avance = consultaAvancePagoGeneralDeContrato($contrato['no_contrato']);
+        array_push($contrato, $avance);
+        array_push($arrayFinalContrato,$contrato);
     }
-    echo"<br>***** A R R A Y     P A G O S *****<br>";
-    var_dump($arrayPagos);
-    $totalContrato = $arrayContratos[0]['total'];
-    $avance = ($totalAbonos*100)/$totalContrato;
-    array_push($arrayContrato[0],$avance);
-    var_dump($arrayContrato);
+    /*echo"<br>***** A R R A Y     F I N A L     C O N T R A T O S *****<br>";
+    var_dump($arrayPagos);*/
+    //echo"<br>***** A R R A Y     F I N A L     C O N T R A T O S *****<br>";
+    //var_dump($arrayFinalContrato);
+    return json_encode($arrayFinalContrato);
 }
 
 function consultaAvanceDeCadaPagoDeContrato($no_contrato)

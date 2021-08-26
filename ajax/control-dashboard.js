@@ -5,6 +5,7 @@ $(document).ready(function(){
 window.onload = function() {
     consultaCochesDashBoard();
     consultaPagosContrato();
+    consultaCreditosPendientes();
 };
 
 function consultaCochesDashBoard(){
@@ -37,6 +38,77 @@ function consultaPagosContrato(){
     });
 }
 
+function consultaCreditosPendientes(){
+    $.ajax({
+        url: "../webhook/avanceCredits.php",
+        success: function (response)
+        {
+            let obj_result = JSON.parse(response);
+            console.log(obj_result);
+            let contratosCedito   =   construyeTablaContratosCredito(obj_result);
+            $("#tblCredits").html(contratosCedito);
+        },
+    });
+}
+
+function construyeTablaContratosCredito(listaContratos) {
+    let template="";
+    let contador=0;
+    listaContratos.forEach((contrato) => {
+        let nombreStatus = "";
+        var porcentaje = contrato['1'];
+        var estadoCredito = contrato['0'];
+        var porcentajeCredito = porcentaje.toFixed();
+        if (estadoCredito == 1) {
+            nombreStatus = `<i class="fas fa-calendar-check text-green"></i> Al corriente`;
+        } else {
+            nombreStatus = `<i class="fas fa-calendar-check text-red"></i> Atrasado`;
+        }
+            let obj = listaContratos[contador];
+            contador++;
+            template += `
+            <tr>
+                                <th scope="row">
+                                    ${contrato.no_contrato}
+                                </th>
+                                <td>
+                                    ${contrato.vehiculo}                                  
+                                </td>
+                                <td>
+                                    ${contrato.fecha_venta}
+                                </td>
+                                <td>
+                                    ${nombreStatus}
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span class="mr-2">${porcentajeCredito}%</span>
+                                        <div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${porcentaje}%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="dropdown show">
+                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Acciones
+                                        </a>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i>Registrar Abono</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+        `;
+        }
+    );
+    return template;
+}
 
 function construyeTablaAbonosContrato(listaAbonos) {
     let template="";
