@@ -209,7 +209,9 @@
                             </tr>
                             </thead>
                             <tbody id="tblPagos">
-
+                            <!--
+                                AJAX TABLA PAGOS
+                            -->
                             </tbody>
                         </table>
                     </div>

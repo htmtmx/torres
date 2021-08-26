@@ -272,7 +272,9 @@ class PAGO extends CONEXION implements I_PAGO
     function queryMontoPagosPendientes()
     {
         $query = "select sum(p.total) as total_pagos 
-                from pago p where p.estatus_pago = 0";
+                from pago p, contrato c 
+                where p.no_contrato_fk = c.no_contrato 
+                and c.tipo_contrato =0 and p.estatus_pago = 0 and p.saldo != 0";
         $this->connect();
         $result = $this->getData($query);
         $this->close();
@@ -282,7 +284,11 @@ class PAGO extends CONEXION implements I_PAGO
     function queryNoPagosPendientes()
     {
         $query = "select count(p.id_pago) as count_pagos 
-                from pago p where p.estatus_pago = 0";
+                from pago p, contrato c 
+                where p.no_contrato_fk = c.no_contrato 
+                and c.tipo_contrato = 0 
+                and p.estatus_pago = 0 
+                and p.saldo != 0";
         $this->connect();
         $result = $this->getData($query);
         $this->close();
