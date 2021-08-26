@@ -62,7 +62,6 @@
                                                     <li id="confirm"><strong>Terminar</strong></li>
                                                 </ul> <!-- fieldsets -->
                                                 <fieldset>
-                                                    <input type="button" name="next" class="btn btn-primary next action-button" value="Siguiente" />
                                                     <div class="row">
                                                         <div class="col-xl-12">
                                                             <div class="card">
@@ -204,10 +203,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <input type="button" name="next" class="btn btn-primary next action-button" value="Siguiente" />
                                                 </fieldset>
+
                                                 <fieldset>
-                                                    <input type="button" name="previous" class="btn btn-primary previous action-button-previous" value="Anterior" />
-                                                    <input type="button" name="next" class=" btn btn-primary next action-button" value="Siguiente" />
                                                     <div class="row">
                                                         <div class="col-xl-12">
                                                             <div class="card">
@@ -219,7 +218,7 @@
                                                                         <div class="col text-right">
                                                                             <!-- Button trigger modal -->
                                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buscaClienteModal">
-                                                                                Buscar Cliente
+                                                                                <i class="fas fa-search"></i> Buscar Cliente
                                                                             </button>
                                                                             <button type="button" class="btn btn-primary" onclick="limpiarCliente();">Nuevo</button>
                                                                         </div>
@@ -339,10 +338,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <input type="button" name="previous" class="btn btn-primary previous action-button-previous" value="Anterior" />
+                                                    <input type="button" name="next" class=" btn btn-primary next action-button" value="Siguiente" />
                                                 </fieldset>
                                                 <fieldset>
-                                                    <input type="button" name="previous" class="btn btn-primary previous action-button-previous " value="Anterior" />
-                                                    <button type="submit" name="make_payment" class="btn btn-primary next action-button">Confirmar</button>
                                                     <div class="card">
                                                         <div class="card-header">
                                                             <div class="row align-items-center">
@@ -420,6 +419,8 @@
                                                                 </div>
                                                         </div>
                                                     </div>
+                                                    <input type="button" name="previous" class="btn btn-primary previous action-button-previous " value="Anterior" />
+                                                    <button type="submit" name="make_payment" class="btn btn-primary next action-button">Confirmar</button>
                                                 </fieldset>
                                                 <fieldset>
                                                     <div class="card">
@@ -466,7 +467,6 @@
         </div>
         <?php include './include/footer.php'; ?>
         <?php include './modals/modal-busca-cliente.php'; ?>
-
     </div>
 </div>
 
@@ -474,4 +474,5 @@
 <?php include './include/js.php'; ?>
 </html>
 <script src="../ajax/payment.js"></script>
+<script src="../ajax/control-compra-venta.js"></script>
 <script src="../ajax/control-ingreso.js"></script>

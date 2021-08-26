@@ -6,6 +6,229 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        /*
+	 "Schedule of Fees" responsive table for RushCard.com
+	 Date: November 2013
+	 Created by: Ricardo Zea
+*/
+        .BN-Gradient {
+            background: #999;
+            background-image: -moz-linear-gradient(top, #A7A7A7 0%, #666 100%);
+            background-image: -webkit-linear-gradient(top, #A7A7A7 0%, #666 100%);
+            background-image: linear-gradient(to bottom, #A7A7A7 0%, #666 100%);
+            color: white;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+        }
+        .Border-Cells {
+            border: #b2b2b2 1px solid;
+        }
+        .Highlight {
+            background-color: #eee;
+            background-image: -webkit-repeating-linear-gradient(135deg, transparent, transparent 5px, rgba(255, 255, 255, 0.5) 5px, rgba(255, 255, 255, 0.5) 10px);
+            background-image: -moz-repeating-linear-gradient(135deg, transparent, transparent 5px, rgba(255, 255, 255, 0.5) 5px, rgba(255, 255, 255, 0.5) 10px);
+            background-image: repeating-linear-gradient(135deg, transparent, transparent 5px, rgba(255, 255, 255, 0.5) 5px, rgba(255, 255, 255, 0.5) 10px);
+        }
+        .RushCard-Pattern {
+            background: #382c8b;
+            background-image: -webkit-radial-gradient(rgba(255, 255, 255, 0.02) 20%, transparent 0), -webkit-radial-gradient(rgba(255, 255, 255, 0.02) 35%, transparent 0);
+            background-image: -moz-radial-gradient(rgba(255, 255, 255, 0.02) 20%, transparent 0), -moz-radial-gradient(rgba(255, 255, 255, 0.02) 35%, transparent 0);
+            background-image: radial-gradient(rgba(255, 255, 255, 0.02) 20%, transparent 0), radial-gradient(rgba(255, 255, 255, 0.02) 35%, transparent 0);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 30px;
+        }
+        sup {
+            font-size: 10px;
+            padding: 1px 3px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 999px;
+        }
+        table {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            font: 16px Arimo, Arial, "Helvetica Neue", Helvetica, sans-serif;
+            border-collapse: collapse;
+        }
+        td {
+            text-align: left;
+            padding: 8px 10px 10px;
+            border: #b2b2b2 1px solid;
+        }
+        th {
+            background: #999;
+            background-image: -moz-linear-gradient(top, #A7A7A7 0%, #666 100%);
+            background-image: -webkit-linear-gradient(top, #A7A7A7 0%, #666 100%);
+            background-image: linear-gradient(to bottom, #A7A7A7 0%, #666 100%);
+            color: white;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            text-align: center;
+        }
+        th:first-child,
+        th:last-child {
+            color: black;
+        }
+        .col-1 {
+            width: 25%;
+            font: bold 18px ProximaNova-Light, Arial, Helvetica, sans-serif;
+            font-size: 25px;
+            text-align: left;
+            vertical-align: bottom;
+            background: none;
+        }
+        .col-2,
+        .col-3,
+        .col-4 {
+            width: 18%;
+            color: white;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+            box-shadow: inset 2px 0 0 white;
+        }
+        .col-5 {
+            width: 21%;
+            background: none;
+            font-weight: normal;
+            font-size: 14px;
+            vertical-align: bottom;
+            text-transform: uppercase;
+        }
+        .ie8 .col-2,
+        .ie8 .col-3,
+        .ie8 .col-4 {
+            border-right: #fff 2px solid;
+        }
+        .ie8 .col-1,
+        .ie8 .col-5 {
+            color: black;
+        }
+        tbody tr {
+            font-size: 14px;
+        }
+        .section td {
+            background: #382c8b;
+            background-image: -webkit-radial-gradient(rgba(255, 255, 255, 0.02) 20%, transparent 0), -webkit-radial-gradient(rgba(255, 255, 255, 0.02) 35%, transparent 0);
+            background-image: -moz-radial-gradient(rgba(255, 255, 255, 0.02) 20%, transparent 0), -moz-radial-gradient(rgba(255, 255, 255, 0.02) 35%, transparent 0);
+            background-image: radial-gradient(rgba(255, 255, 255, 0.02) 20%, transparent 0), radial-gradient(rgba(255, 255, 255, 0.02) 35%, transparent 0);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 30px;
+            /*background:#25A4B8;*/
+            padding: 8px;
+            color: white;
+            font: bold 20px ProximaNova-Light, Arial, Helvetica, sans-serif;
+            border: none;
+            box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 -1px 0 #000000;
+            letter-spacing: -0.5px;
+        }
+        @media only screen and (max-width: 47.9375em) {
+            .responsive-tables table,
+            .responsive-tables thead,
+            .responsive-tables tbody,
+            .responsive-tables th,
+            .responsive-tables td,
+            .responsive-tables tr {
+                display: block;
+            }
+            .responsive-tables thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            .responsive-tables tr:not(.section) {
+                border: 1px solid #bbb;
+                border-radius: 3px;
+            }
+            .responsive-tables td {
+                border: none;
+                position: relative;
+                padding-left: 50%;
+                padding-bottom: 10px;
+                white-space: normal;
+                text-align: left;
+            }
+            .responsive-tables td:before {
+                position: absolute;
+                top: 8px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+            .responsive-tables .section td {
+                text-align: center;
+                color: white;
+            }
+            .responsive-tables td:before {
+                content: attr(data-title);
+                white-space: normal;
+                letter-spacing: -0.5px;
+                color: #382c8b;
+            }
+            .responsive-tables tr.section td {
+                padding: 10px;
+            }
+            .responsive-tables .main-group {
+                margin-bottom: 10px;
+            }
+            .responsive-tables .main-group td:nth-child(odd):not(.subheading),
+            .responsive-tables .main-group td:last-child {
+                border-top: #ddd 1px solid;
+                border-bottom: #ddd 1px solid;
+            }
+            .responsive-tables tbody .section + .main-group {
+                border-radius: 0 0 3px 3px;
+            }
+            .responsive-tables .subheading {
+                padding: 10px;
+                text-align: center;
+                font-size: 16px;
+                font-weight: bold;
+                letter-spacing: -0.5px;
+                background: rgba(0, 0, 0, 0.1);
+                color: black;
+                box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.05);
+                border-top: none;
+            }
+            .responsive-tables .basic-description {
+                padding: 10px;
+                text-align: center;
+            }
+            .responsive-tables .highlight {
+                background: none;
+            }
+            .responsive-tables .downplay,
+            .responsive-tables .downplay:before {
+                color: #999;
+                font-weight: normal;
+                font-size: 12px;
+            }
+        }
+        /*OOCSS*/
+        .highlight {
+            text-align: center;
+            background-color: #eee;
+            background-image: -webkit-repeating-linear-gradient(135deg, transparent, transparent 5px, rgba(255, 255, 255, 0.5) 5px, rgba(255, 255, 255, 0.5) 10px);
+            background-image: -moz-repeating-linear-gradient(135deg, transparent, transparent 5px, rgba(255, 255, 255, 0.5) 5px, rgba(255, 255, 255, 0.5) 10px);
+            background-image: repeating-linear-gradient(135deg, transparent, transparent 5px, rgba(255, 255, 255, 0.5) 5px, rgba(255, 255, 255, 0.5) 10px);
+        }
+        .nobg {
+            background: none;
+        }
+        .txt-center {
+            text-align: center;
+        }
+        /*Globals*/
+        body {
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
 <h1>Responsive Table CSS</h1>
