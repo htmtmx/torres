@@ -9,11 +9,18 @@ function consultaInfoEmpresa() {
         {
             let obj_result = JSON.parse(response);
             console.log(obj_result);
+
+            let emp = obj_result[0];
+
+            console.log(emp);
+
+            $("#calleEmpresa").val(emp.calle);
+
+
             $("#empresaE").html(obj_result[0]['nombre']);
             $("#idEmpresa").val(obj_result[0]['id_empresa']);
             $("#nombreEmpresa").val(obj_result[0]['nombre']);
             $("#rfcEmpresa").val(obj_result[0]['rfc']);
-            $("#calleEmpresa").val(obj_result[0]['calle']);
             $("#noExtEmp").val(obj_result[0]['no_ext']);
             $("#noIntEmp").val(obj_result[0]['no_int']);
             $("#coloniaEmpr").val(obj_result[0]['colonia']);
@@ -22,6 +29,7 @@ function consultaInfoEmpresa() {
             $("#telEmpr").val(obj_result[0]['telefono']);
             $("#correoEmp").val(obj_result[0]['correo']);
             $("#webEmpr").val(obj_result[0]['sitio_web']);
+            $("#municipio").val(obj_result[0]['de_mun']);
             //$("#dateEmpr").val(date('Y-m-d'));
         },
     });

@@ -10,10 +10,10 @@ function consultaContratosTodos(){
             id: 0
         },
         success: function (response) {
-            let objContrato = JSON.parse(response);
-            console.log(objContrato);
-            $("#tblContratosAdquisicion").html(discriminaContratos(objContrato,0));
-            $("#tblContratosVenta").html(discriminaContratos(objContrato,1))
+            let objContratos = JSON.parse(response);
+            console.log(objContratos);
+            $("#tblContratosAdquisicion").html(discriminaContratos(objContratos,0));
+            $("#tblContratosVenta").html(discriminaContratos(objContratos,1))
         }
     });
 }

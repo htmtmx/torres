@@ -82,13 +82,19 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="correo">Colonia</label>
+                                            <label class="form-control-label" for="coloniaEmpr">Colonia</label>
                                             <input type="text" id="coloniaEmpr" name="coloniaEmpr" class="form-control" required >
                                         </div>
                                     </div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="municipio">Municipio</label>
+                                            <input type="text" id="municipio" name="municipio" class="form-control" required >
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
                                         <div class="form-group">
                                             <label class="form-control-label" for="correo">CP</label>
                                             <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control" required >
