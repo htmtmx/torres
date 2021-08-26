@@ -318,8 +318,7 @@ class EMPRESA extends CONEXION implements I_EMPRESA
         `colonia` = '".$this->getColonia()."', `cp` = '".$this->getCp()."', 
         `de_mun` = '".$this->getDeMun()."', `estado` = '".$this->getEstado()."', 
         `telefono` = '".$this->getTelefono()."', `correo` = '".$this->getCorreo()."', 
-        `sitio_web` = '".$this->getSitioWeb()."', `path_logo` = '".$this->getPathLogo()."', 
-        `version` = '".$this->getVersion()."', `licencia` = '".$this->getLicencia()."' 
+        `sitio_web` = '".$this->getSitioWeb()."' 
         WHERE `empresa`.`id_empresa` = ".$this->getIdEmpresa();
         $this->connect();
         $result =  $this->executeInstruction($query);

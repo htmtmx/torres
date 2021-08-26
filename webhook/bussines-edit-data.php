@@ -1,24 +1,27 @@
 <?php
-$id_empresa = 3;
-$rfc = 'MAOV970707HMCNS';
-$nombre = 'Valeria';
-$calle = 'Hidalgo';
-$no_ext = 5;
-$no_int = 6;
-$colonia = 'Acocalco';
-$cp = 54666;
-$municipio = 'Coyotepec';
-$estado = 'Mexico';
-$telefono = '5588441122';
-$correo = 'correoVal@gmail.com';
-$sitio_web = 'www.sitio.com';
-$path_logo = 'pathlogoUpdate';
-$version = '0.958.5';
-$licencia = 'Update de licencia';
+if (isset($_POST['idEmpresa']) && isset($_POST['nombreEmpresa'])
+    && isset($_POST['rfcEmpresa']) && isset($_POST['calleEmpresa'])
+    && isset($_POST['coloniaEmpr']) && isset($_POST['cpEmpr'])
+    && isset($_POST['telEmpr']) && isset($_POST['correoEmp'])
+    && isset($_POST['webEmpr'])) {
+    $idEmpresa          =  $_POST['idEmpresa'];
+    $nombreEmpresa          =  $_POST['nombreEmpresa'];
+    $rfcEmpresa             =  $_POST['rfcEmpresa'];
+    $calleEmpresa           = $_POST['calleEmpresa'];
+    $noExt                  =  $_POST['noExtEmp'];
+    $noInt                  =  $_POST['noIntEmp'];
+    $colonia                =  $_POST['coloniaEmpr'];
+    $cp                     =  $_POST['cpEmpr'];
+    $municipio              =  $_POST['cpEmpr'];
+    $estado                 =  $_POST['estadoEmp'];
+    $tel                    =  $_POST['telEmpr'];
+    $correo                 =  $_POST['correoEmp'];
+    $sitio_web              =  $_POST['webEmpr'];
 
-include_once "../control/controlEmpresa.php";
-if(updateEmpresa($id_empresa,$rfc,$nombre,$calle,$no_ext,$no_int,$colonia,$cp,$municipio,$estado,$telefono,$correo,$sitio_web,$path_logo,
-    $version,$licencia)){
-    echo "Se ha actualizado con exito";
-} else echo "Ha falaldo";
-?>
+    include_once "../control/controlEmpresa.php";
+    if(updateEmpresa($idEmpresa,$rfcEmpresa,$nombreEmpresa,$calleEmpresa,$noExt,
+                $noInt,$colonia,$cp,$municipio,$estado,$tel,$correo,$sitio_web)){
+        echo "¡Se han actualizado los datos de la empresa con exito!";
+    } else echo "No se ha podido actualizar la empresa";
+
+} else echo "Los datos estan incompletos";

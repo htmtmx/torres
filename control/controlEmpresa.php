@@ -7,8 +7,9 @@ function consultaEmpresa($id_empresa)
     return json_encode($result);
 }
 
-function updateEmpresa($id_empresa,$rfc,$nombre,$calle,$no_ext,$no_int,$colonia,$cp,$municipio,$estado,$telefono,$correo,$sitio_web,$path_logo,
-                       $version,$licencia)
+function updateEmpresa($id_empresa,$rfc,$nombre,$calle,$no_ext,$no_int,
+                       $colonia,$cp,$municipio,$estado,$telefono,
+                       $correo,$sitio_web)
 {
     include_once "../model/EMPRESA.php";
     $objEmpresa = new EMPRESA();
@@ -25,9 +26,6 @@ function updateEmpresa($id_empresa,$rfc,$nombre,$calle,$no_ext,$no_int,$colonia,
     $objEmpresa->setTelefono($telefono);
     $objEmpresa->setCorreo($correo);
     $objEmpresa->setSitioWeb($sitio_web);
-    $objEmpresa->setPathLogo($path_logo);
-    $objEmpresa->setVersion($version);
-    $objEmpresa->setLicencia($licencia);
     $result = $objEmpresa->queryupdateEmpresa();
     return $result;
 }
