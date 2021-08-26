@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-lg-6 col-auto text-right">
                         <a href="./ingreso.php" class="btn btn-sm btn-neutral">Registrar Adquisicion</a>
-                        <a href="#" class="btn btn-sm btn-neutral">Nueva Venta</a>
+                        <a href="./nuevaVenta.php" class="btn btn-sm btn-neutral">Nueva Venta</a>
                     </div>
                 </div>
                 <!-- Card stats -->
