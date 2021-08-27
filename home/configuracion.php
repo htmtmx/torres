@@ -205,8 +205,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label">Contrato de Uso de Software ReCkreaStudios</label>
                                     <textarea rows="8" class="form-control" disabled>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean magna neque, cursus id ligula sit amet, porttitor
-                                        icies congue. Ut a mau
+                                        <?php include './include/licence.php'?>
                                     </textarea>
                                 </div>
                             </div>

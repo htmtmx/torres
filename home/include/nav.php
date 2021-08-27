@@ -84,24 +84,20 @@
                         <div class="dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Bienvenido!</h6>
                         </div>
-                        <a href="#!" class="dropdown-item">
+                        <a href="./perfil.php" class="dropdown-item">
                             <i class="fas fa-user"></i>
                             <span>Mi Perfil</span>
                         </a>
-                        <a href="#!" class="dropdown-item">
+                        <a href="./configuracion.php" class="dropdown-item">
                             <i class="fas fa-sliders-h"></i>
                             <span>Configuración</span>
                         </a>
-                        <a href="#!" class="dropdown-item">
-                            <i class="fas fa-clipboard-list"></i>
-                            <span>Actividad General</span>
-                        </a>
-                        <a href="#!" class="dropdown-item">
+                        <a href="https://api.whatsapp.com/send?phone=5565241529&text=Hola%20necesito%20ayuda%20en%20el%20sistema%20de%20Autos%20Torres" class="dropdown-item" target="_blank">
                             <i class="fas fa-life-ring"></i>
                             <span>Ayuda</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="#!" class="dropdown-item">
+                        <a href="../control/c_logout.php" class="dropdown-item">
                             <i class="fas fa-sign-out-alt"></i>
                             <span>Salir</span>
                         </a>

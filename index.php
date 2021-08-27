@@ -18,15 +18,27 @@ if(isset($_SESSION['usuario']))
     header('Location: ./home/index.php');
 }
 ?>
-
+<!-- ----- VERSION DEL DOCUMENTO ---------
+    VERSION 1.08.1 BUILD 27-08-21
+    @autor: ReCkrea StuDios
+    @website: reckreastudios.com
+    @webdevs: ChrisRCGS, Fernando HL, Cesar HPP.
+    -->
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
+  <meta name="description" content="Sistema de Gestión de Vehiculos y documentos de Autos Torres">
+  <meta name="author" content="ReCkreaStuDios">
+    <meta name="keywords" content="autos torres, compra venta, vehiculos, venta de coches, venta autos, compra coches, coches, compra venta"/>
+    <meta name="revised" content="27/08/2021" />
+    <meta name="og:image" content="logo.jpg" />
+    <meta name="robots" content="index"/>
+    <meta name="robots" content="follow"/>
+
+    <meta name="copyright" content="ReCkreaStuDios" />
   <title>Inicio de Sesion | Autos Torres</title>
   <!-- Favicon -->
   <link rel="icon" href="./logo.jpg" type="image/png">
@@ -100,12 +112,6 @@ if(isset($_SESSION['usuario']))
                     <input class="form-control" placeholder="Password" type="password" id="txtPw" name="txtPw">
                   </div>
                 </div>
-                <div class="custom-control custom-control-alternative custom-checkbox">
-                  <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                  <label class="custom-control-label" for=" customCheckLogin">
-                    <span class="text-muted">Remember me</span>
-                  </label>
-                </div>
                 <div class="text-center">
                     <button id="btnAccion" type="submit" class="btn btn-primary btn-lg btn-block my-3">
                         Entrar
@@ -115,15 +121,18 @@ if(isset($_SESSION['usuario']))
       </form>
     </div>
   </div>
-  <div class="row mt-3">
+            <!--
+      <div class="row mt-3">
     <div class="col-6">
       <a href="#" class="text-light"><small>Olvide mi contraseña</small></a>
     </div>
     <div class="col-6 text-right">
       <a href="#" class="text-light"><small>Crear una cuenta</small></a>
     </div>
-
   </div>
+            -->
+
+
 </div>
 </div>
 </div>
