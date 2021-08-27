@@ -113,10 +113,7 @@ function construyeTablaContratosCredito(listaContratos) {
 function construyeTablaAbonosContrato(listaAbonos) {
     let template="";
     let contador=0;
-    var total =new Intl.NumberFormat().format(listaAbonos[0]['total']);
-    var saldo =new Intl.NumberFormat().format(listaAbonos[0]['saldo']);
     listaAbonos.forEach((abono) => {
-            var total =new Intl.NumberFormat().format(abono.total);
             var saldo =new Intl.NumberFormat().format(abono.saldo);
         let obj = listaAbonos[contador];
         contador++;

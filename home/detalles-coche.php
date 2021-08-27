@@ -446,8 +446,10 @@ $noCoche = $_GET['idCoche'];
 </html>
 <script src="../ajax/control-detalles-coche.js"></script>
 <script src="../ajax/control-botones-detalles-coche.js"></script>
+<script src="../ajax/control-abonos.js"></script>
 <script src="../ajax/sendDocmentos.js"></script>
 <script src="../ajax/car-update.js"></script>
+<script src="../ajax/tools.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script>
@@ -460,5 +462,16 @@ $noCoche = $_GET['idCoche'];
         modal.find('.modal-title').text('Subir archivo al Contrato No. ' + recipient)
         //  modal.find('.modal-body input .contrato').val(recipient)
         modal.find('.no_contrato').val(recipient)
+    })
+</script>
+<script>
+    $('#exampleModal1').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.abono').val(recipient)
     })
 </script>
