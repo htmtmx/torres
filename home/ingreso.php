@@ -106,38 +106,38 @@
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="entidad_placa">Entidad Federativa</label>
                                                                                     <select name="entidad_placa" id="entidad_placa" class="form-control">
-                                                                                        <option value="Aguascalientes">Aguascalientes</option>
-                                                                                        <option value="Baja California">Baja California</option>
-                                                                                        <option value="Baja California Sur">Baja California Sur</option>
-                                                                                        <option value="Campeche">Campeche</option>
-                                                                                        <option value="Chiapas">Chiapas</option>
-                                                                                        <option value="Chihuahua">Chihuahua</option>
+                                                                                        <option value="AGU">Aguascalientes</option>
+                                                                                        <option value="BCN">Baja California</option>
+                                                                                        <option value="BCS">Baja California Sur</option>
+                                                                                        <option value="CAM">Campeche</option>
+                                                                                        <option value="CHP">Chiapas</option>
+                                                                                        <option value="CHH">Chihuahua</option>
                                                                                         <option value="CDMX">Ciudad de México</option>
-                                                                                        <option value="Coahuila">Coahuila</option>
-                                                                                        <option value="Colima">Colima</option>
-                                                                                        <option value="Durango">Durango</option>
-                                                                                        <option value="Estado de México" selected="">Estado de México</option>
-                                                                                        <option value="Guanajuato">Guanajuato</option>
-                                                                                        <option value="Guerrero">Guerrero</option>
-                                                                                        <option value="Hidalgo">Hidalgo</option>
-                                                                                        <option value="Jalisco">Jalisco</option>
-                                                                                        <option value="Michoacán">Michoacán</option>
-                                                                                        <option value="Morelos">Morelos</option>
-                                                                                        <option value="Nayarit">Nayarit</option>
-                                                                                        <option value="Nuevo León">Nuevo León</option>
-                                                                                        <option value="Oaxaca">Oaxaca</option>
-                                                                                        <option value="Puebla">Puebla</option>
-                                                                                        <option value="Querétaro">Querétaro</option>
-                                                                                        <option value="Quintana Roo">Quintana Roo</option>
-                                                                                        <option value="San Luis Potosí">San Luis Potosí</option>
-                                                                                        <option value="Sinaloa">Sinaloa</option>
-                                                                                        <option value="Sonora">Sonora</option>
-                                                                                        <option value="Tabasco">Tabasco</option>
-                                                                                        <option value="Tamaulipas">Tamaulipas</option>
-                                                                                        <option value="Tlaxcala">Tlaxcala</option>
-                                                                                        <option value="Veracruz">Veracruz</option>
-                                                                                        <option value="Yucatán">Yucatán</option>
-                                                                                        <option value="Zacatecas">Zacatecas</option>
+                                                                                        <option value="COA">Coahuila</option>
+                                                                                        <option value="COL">Colima</option>
+                                                                                        <option value="DUR">Durango</option>
+                                                                                        <option value="MEX">Estado de México</option>
+                                                                                        <option value="GUA">Guanajuato</option>
+                                                                                        <option value="GRO">Guerrero</option>
+                                                                                        <option value="HID">Hidalgo</option>
+                                                                                        <option value="JAL">Jalisco</option>
+                                                                                        <option value="MIC">Michoacán</option>
+                                                                                        <option value="MOR">Morelos</option>
+                                                                                        <option value="NAY">Nayarit</option>
+                                                                                        <option value="NLE">Nuevo León</option>
+                                                                                        <option value="OAX">Oaxaca</option>
+                                                                                        <option value="PUE">Puebla</option>
+                                                                                        <option value="QUE">Querétaro</option>
+                                                                                        <option value="ROO">Quintana Roo</option>
+                                                                                        <option value="SLP">San Luis Potosí</option>
+                                                                                        <option value="SIN">Sinaloa</option>
+                                                                                        <option value="SON">Sonora</option>
+                                                                                        <option value="TAB">Tabasco</option>
+                                                                                        <option value="TAM">Tamaulipas</option>
+                                                                                        <option value="TLA">Tlaxcala</option>
+                                                                                        <option value="VER">Veracruz</option>
+                                                                                        <option value="YUC">Yucatán</option>
+                                                                                        <option value="ZAC">Zacatecas</option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>

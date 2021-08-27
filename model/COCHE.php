@@ -454,7 +454,7 @@ class COCHE extends CONEXION implements I_COCHE
         $query = "select count(c.no_vehiculo) as no_vehiculos_venta
                 from coche c 
                 where c.estatus = 0 
-                and c.no_vehiculo not in (select co.no_vehiculo_fk from contrato co, coche c )";
+                and c.no_vehiculo not in (select co.no_vehiculo_fk from contrato co, coche c where co.tipo_contrato=0)";
         $this->connect();
         $result = $this->getData($query);
         $this->close();

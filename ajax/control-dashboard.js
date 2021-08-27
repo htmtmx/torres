@@ -98,7 +98,7 @@ function construyeTablaContratosCredito(listaContratos) {
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i>Registrar Abono</a>
+                                            <!---<a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i>Registrar Abono</a>--->
                                             <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
                                         </div>
                                     </div>
@@ -142,7 +142,7 @@ function construyeTablaAbonosContrato(listaAbonos) {
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i>Registrar Abono</a>
+                                            <!---<a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i>Registrar Abono</a>--->
                                             <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
                                         </div>
                                     </div>

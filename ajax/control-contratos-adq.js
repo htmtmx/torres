@@ -12,8 +12,8 @@ function consultaContratosTodos(){
         success: function (response) {
             let objContratos = JSON.parse(response);
             console.log(objContratos);
-            $("#tblContratosAdquisicion").html(discriminaContratos(objContratos,0));
-            $("#tblContratosVenta").html(discriminaContratos(objContratos,1))
+            $("#tblContratosAdquisicion").html(discriminaContratos(objContratos,1));
+            $("#tblContratosVenta").html(discriminaContratos(objContratos,0))
         }
     });
 }
@@ -26,7 +26,7 @@ function discriminaContratos(contratos,tipo){
        }
     });
     let templateGenerado="";
-    templateGenerado= tipo==0 ? construyeTablaContratosAdq(contratosDisc) : construyeTablaContratosVta(contratosDisc);
+    templateGenerado= tipo==1 ? construyeTablaContratosAdq(contratosDisc) : construyeTablaContratosVta(contratosDisc);
     return templateGenerado;
 }
 

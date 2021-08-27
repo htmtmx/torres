@@ -125,8 +125,8 @@ class ABONOS extends CONEXION
     {
         $query = "select sum(a.monto) as total_abonos_hoy
                 from abonos a 
-                where a.fecha_registro > DATE_ADD(UTC_DATE(), INTERVAL -2 DAY) 
-                and a.fecha_registro <UTC_DATE()";
+                where a.fecha_registro > date_format(sysdate(),'%Y-%m-%d') 
+                and a.fecha_registro < date_add(date_format(sysdate(),'%Y-%m-%d'),interval 1 day)";
         $this->connect();
         $result = $this->getData($query);
         $this->close();

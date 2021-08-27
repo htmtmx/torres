@@ -12,7 +12,7 @@
             <form id="frm-add-abono-contrato">
                 <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control abono" id="noContrato">
+                            <input type="text" class="form-control abono" id="noContrato" name="noContrato">
                         </div>
                         <div class="form-group">
                             <label for="montoPago" class="col-form-label">Monto del Abono:</label>
@@ -20,6 +20,7 @@
                         </div>
                 </div>
                 <div class="modal-footer">
+                    <span class="d-flex position-absolute w-100" id="mensajeAddAbono"></span>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">Abonar</button>
                 </div>

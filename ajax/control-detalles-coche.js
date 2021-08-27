@@ -3,7 +3,6 @@ $(document).ready(function(){
     consultaMarcas();
     //consultaModelos(2);
 
-
 });
 
 window.onload = function() {
@@ -249,8 +248,8 @@ function consultaDetallesContrato(){
             //console.log(response);
             let obj_result = JSON.parse(response);
             //esta siempre va a existir
-            let contratoAdquisicion = getContrato(obj_result,"0"); // 0 -> Adquisicion
-            let contratoVenta = getContrato(obj_result,"1"); // 1 -> venta
+            let contratoVenta = getContrato(obj_result,"0"); // 0 -> venta
+            let contratoAdquisicion = getContrato(obj_result,"1"); // 1 -> Adquisicion
             //construir el TAB
             $("#myTab").html(constuyeNavContratos(contratoAdquisicion,contratoVenta));
             $("#myTabContent").html(constuyeContainersContratos(contratoAdquisicion,contratoVenta));
@@ -268,7 +267,6 @@ function constuyeContainersContratos(contratoAdquisicion,contratoVenta) {
     template+= getTemplateContratoAdq(contratoAdquisicion);
     return template;
 }
-
 
 function getTemplateContratoVenta(contrato) {
     let template = "";
@@ -783,7 +781,6 @@ function constuyeNavContratos(contratoAdquisicion,contratoVenta) {
     return template;
 }
 
-
 function getContrato(listaContratos,tipo) {
     let tmpContratoFound;
     listaContratos.forEach((contrato)=>{
@@ -792,6 +789,7 @@ function getContrato(listaContratos,tipo) {
     });
     return tmpContratoFound;
 }
+
  function consultaMarcas() {
      $.ajax(
          {

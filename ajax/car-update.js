@@ -1,5 +1,4 @@
 $("#frm-update-datos-coche").on("submit", function(e){
-    //let tipocontrato = $('input[name="contrato"]:checked').val();
     var f = $(this);
     var formData = new FormData(document.getElementById("frm-update-datos-coche"));
     formData.append("dato", "valor");
