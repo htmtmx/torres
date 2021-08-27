@@ -3,6 +3,7 @@ $(document).ready(function(){
 });
 
 
+
 function getAllUsers()
 {
     //-------------- AJAX pedira la info de los datos se ejecuta cuando entra inicio
@@ -13,7 +14,6 @@ function getAllUsers()
         success: function (response) {
             //COnvertimos el string a JSON
             let usuarios = JSON.parse(response);
-            console.log(usuarios);
 
             //Utilizamos los objetos a y los tratamos en una plantilla en tbody
             let template ='';
@@ -40,7 +40,7 @@ function getAllUsers()
                 let estado= usuario.estatus>0 ? ``: `data-label-off="Inactivo"`;
                 let estatus= usuario.estatus>0 ? `<span class="badge badge-success">Activo</span>`: `<span class="badge badge-danger">Inactivo</span>`;
                 template += `
-                             <tr idUsuario="${usuario.no_empleado}">
+                             <tr idUsuario="${usuario.no_empleado}" statusActual="${usuario.estatus}">
                                 <th scope="row">
                                     ${usuario.no_empleado}
                                 </th>
@@ -78,7 +78,7 @@ function getAllUsers()
                                     </label>
                                 </td>
                                 <td>
-                                    <button class="btn btn-icon btn-secondary" type="button">
+                                    <button class="btn btn-icon btn-secondary btnEliminarEmpleado" type="button">
                                         <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
                                     </button>
                                 </td>
@@ -90,4 +90,46 @@ function getAllUsers()
         }
     });
     //-------------- AJAX pedira la info de los datos
+}
+$(document).on('change','input[type="checkbox"]' ,function(e) {
+    let elementEmpleadoSelected= $(this)[0].parentElement.parentElement.parentElement;
+    let idEmpleado = $(elementEmpleadoSelected).attr("idusuario");
+    let estatusActual = $(elementEmpleadoSelected).attr("statusactual");
+    cambiaEstadoUsuario(idEmpleado,estatusActual);
+});
+
+function cambiaEstadoUsuario(idEmpleado,estatusActual){
+    $.ajax({
+        url: "../webhook/user-update-estatus.php",
+        type: 'POST',
+        data: {
+            idEmpleado: idEmpleado,
+            estatusActual:estatusActual
+        },
+        success: function (mje) {
+            getAllUsers();
+        }
+    });
+}
+
+$(document).on("click", ".btnEliminarEmpleado", function () {
+    if (confirm("¿Esta seguro de que desea eliminar este empleado? Esta accion no podrá ser revertida")){
+        let elementEmpleado = $(this)[0].parentElement.parentElement;
+        let idEmpleado = $(elementEmpleado).attr("idUsuario")
+        eliminaEmpleado(idEmpleado)
+    }
+
+});
+
+function eliminaEmpleado(idEmpleado){
+    $.ajax({
+        url: "../webhook/user-delete.php",
+        type: 'POST',
+        data: {
+            idEmpleado: idEmpleado,
+        },
+        success: function (mje) {
+            getAllUsers();
+        }
+    });
 }

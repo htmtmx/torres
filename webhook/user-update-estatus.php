@@ -1,10 +1,8 @@
 <?php
-    $idUser=84198;
-    $status=1;
-    if($status===1){
-        $status=0;
-    }else $status=1;
+if(isset($_POST['idEmpleado'])){
+    $idUser=$_POST['idEmpleado'];
+    $statusActual= $_POST['estatusActual'];
     include_once "../control/controlEmpleado.php";
-    if(updateStatusE($idUser,$status)){
-        echo "Se ha actualizado el status correctamente";
-    } else echo "Algo ha fallado";
+   // echo "estatus Actual: ". ($statusActual == "0" ? "APAGADO": "ENCENDIDO");
+   echo updateStatusE($idUser,$statusActual)? "OK":"Error";
+} else echo "Faltan datos";

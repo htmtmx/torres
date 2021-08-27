@@ -77,11 +77,12 @@ function updatePwdEmpleado($no_empleado,$pwd)
 /********************************************************************
  *           U P D A T E    E S T A T U S    E M P L E A D O
  *******************************************************************/
-function updateStatusE($idUser,$status){
+function updateStatusE($idUser,$estatus){
     include_once "../model/EMPLEADO.php";
+    $estatusNuevo= $estatus == "0" ? "1": "0";
     $objEmpleado = new EMPLEADO();
     $objEmpleado->setNoEmpleado($idUser);
-    $objEmpleado->setEstatus($status);
+    $objEmpleado->setEstatus($estatusNuevo);
     return $objEmpleado->queryUpdateStatusE();
 }
 /********************************************************************
