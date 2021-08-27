@@ -1,11 +1,12 @@
 <?php
 
+include_once "../config/SERVER.php";
 class CONEXION
 {
-    private $host = "localhost";
-    private $usuario = "root";
-    private $pass = "";
-    private $db = "autos_torres";
+    private $host = SERVER;
+    private $db = DB;
+    private $usuario = USER;
+    private $pass = PASS;
 
     private $connection;
 
@@ -16,9 +17,7 @@ class CONEXION
             $this->pass,
             $this->db
         );
-        date_default_timezone_set("America/Mexico_City");
         $this->connection->set_charset("utf8");
-
         if (mysqli_connect_errno()) {
             print("error al conectarse");
         }
