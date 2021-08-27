@@ -279,6 +279,7 @@ function getTemplateContratoVenta(contrato) {
                 <!-- CONTRATO DE VENTA-->
                                 <div class="tab-pane fade show active" id="venta" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row pt-0 py-3">
+                                      <!-- INFO DEL CONTRATO-->
                                         <div class="col-xl-6">
                                             <div class="card">
                                                 <div class="card-header">
@@ -365,41 +366,7 @@ function getTemplateContratoVenta(contrato) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-6">
-                                            <div class="card">
-                                                <div class="card-header border-0">
-                                                    <div class="row align-items-center">
-                                                        <div class="col">
-                                                            <h3 class="mb-0">Documentos disponibles del contrato de Venta</h3>
-                                                        </div>
-                                                        <div class="col text-right">
-                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalejemplo" data-whatever="${contrato.no_contrato}">
-                                                                <i class="fas fa-file-upload text-white"></i>  Agregar Archivo
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="table-responsive">
-                                                    <!-- Projects table -->
-                                                    <table class="table align-items-center table-flush">
-                                                        <thead class="thead-light">
-                                                        <tr>
-                                                            <th scope="col">Archivo</th>
-                                                            <th scope="col">Tipo</th>
-                                                            <th scope="col">Detalles</th>
-                                                            <th scope="col"></th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        ${templateTablaArchivos}
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- DETALLES DEL CREDITO-->
-                                    <div class="row pt-0 py-3">
+                                            <!-- INFO DEL CREDITO-->
                                         <div class="col-xl-6">
                                             <div class="card">
                                                 <div class="card-header">
@@ -455,12 +422,47 @@ function getTemplateContratoVenta(contrato) {
                                                             <span class="d-flex position-absolute w-100" id="mensajeUpdateCliente"></span>
                                                             <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Mas Detalles</button>
                                                             <span class="d-flex position-absolute w-100" id="mensajeUpdateCliente"></span>
-                                                            <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Imprimir</button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <!-- DETALLES DEL CREDITO-->
+                                    <div class="row pt-0 py-3">
+                                        <!-- DOCS-->
+                                        <div class="col-xl-6">
+                                            <div class="card">
+                                                <div class="card-header border-0">
+                                                    <div class="row align-items-center">
+                                                        <div class="col">
+                                                            <h3 class="mb-0">Documentos disponibles del contrato de Venta</h3>
+                                                        </div>
+                                                        <div class="col text-right">
+                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalejemplo" data-whatever="${contrato.no_contrato}">
+                                                                <i class="fas fa-file-upload text-white"></i>  Agregar Archivo
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="table-responsive">
+                                                    <!-- Projects table -->
+                                                    <table class="table align-items-center table-flush">
+                                                        <thead class="thead-light">
+                                                        <tr>
+                                                            <th scope="col">Archivo</th>
+                                                            <th scope="col">Tipo</th>
+                                                            <th scope="col">Detalles</th>
+                                                            <th scope="col"></th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        ${templateTablaArchivos}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div> <!-- PAGOS -->
                                         <div class="col-xl-6">
                                             <div class="card">
                                                 <div class="card-header border-0">
@@ -469,9 +471,9 @@ function getTemplateContratoVenta(contrato) {
                                                             <h3 class="mb-0">Pagos del Credito</h3>
                                                         </div>
                                                         <div class="col text-right">
-                                                            <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#addAbono">
+                                                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal1" data-whatever="${contrato.no_contrato}">
                                                                 <span class="btn-inner--icon"><i class="fas fa-coins text-green"></i> Abonar</span>
-                                                            </button>
+                                                             </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -673,6 +675,7 @@ function buildTblPagos(pagos) {
                                 `;
         contador++;
         let abonos = buildTblAbonosabonos(pago[0]);
+        alert
         template += `
               <tr data-toggle="collapse" data-target="#collapse${contador}" aria-expanded="true" aria-controls="collapse${contador}" class="mano">
                 <th scope="row" >
@@ -685,7 +688,7 @@ function buildTblPagos(pagos) {
                   $  ${pago.total}
                 </td>
                 <td>                    
-                   $ ${pago.saldo}
+                   ${pago.saldo}
                 </td>
                 <td>
                   <span class="badge badge-dot mr-4" id="status_pago" name="status_pago">
