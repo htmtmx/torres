@@ -1,15 +1,15 @@
 <?php
 $params = [
 // COCHE SELECCIONADO PARA VENDER
-    "no_vehiculo" => "6255313736033669",
+    "no_vehiculo" => "2864787217398059",
     //CLIENTE - COMPRADOR DATOS
-    "no_cliente" => "2212623316091576",
-    "nombre" => "Fernando",
-    "apaterno" => "Hernandez",
-    "amaterno" => "Hernandez",
+    "no_cliente" => "896610125442",
+    "nombre" => "MariaDB",
+    "apaterno" => "Romero",
+    "amaterno" => "Avila",
     "telefono" => "5597091960",
     "celular" => "55987541365",
-    "correo" => "fernando@gmail.com",
+    "correo" => "maria@gmail.com",
     "rfc"=> "JHSDIJFIJOS",
     "subscripcion" => "1",
     "empresa" => "ReckreaStudios",
@@ -20,12 +20,12 @@ $params = [
     //Añadir o actualizar Direccion de un cliente
     //CONTRATO DATOS
     "plazo" => "12",
-    "fecha_primer_pago" => "2021-08-31",
+    "fecha_primer_pago" => "2021-08-15",
     "enganche" => "20000",
     //CONTRATO DATOS
     //tuipo de pago CONTADO -> 0 APARTADO -> 0  CREDITO -> 1
     "forma_pago" => "1",
-    "total" => "120000",
+    "total" => "150000",
 ];
 
 include_once "../control/controlContrato.php";

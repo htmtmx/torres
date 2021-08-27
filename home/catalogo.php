@@ -37,10 +37,10 @@ $no_vehiculo = 0;
                     </div>
                     <div class="col-lg-6 col-auto text-right">
                         <select id="filtro" name="filtro" class="form-control">
-                            <option value="0">En venta</option>
+                            <option value="0" selected>En venta</option>
                             <option value="1">Vendidos</option>
                             <option value="-1">Apartados</option>
-                            <option value="999" selected>Todos</option>
+                            <option value="999">Todos</option>
                         </select>
                     </div>
                 </div>

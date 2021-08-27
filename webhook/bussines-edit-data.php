@@ -12,7 +12,7 @@ if (isset($_POST['idEmpresa']) && isset($_POST['nombreEmpresa'])
     $noInt                  =  $_POST['noIntEmp'];
     $colonia                =  $_POST['coloniaEmpr'];
     $cp                     =  $_POST['cpEmpr'];
-    $municipio              =  $_POST['cpEmpr'];
+    $municipio              =  $_POST['municipio'];
     $estado                 =  $_POST['estadoEmp'];
     $tel                    =  $_POST['telEmpr'];
     $correo                 =  $_POST['correoEmp'];

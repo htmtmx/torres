@@ -302,7 +302,7 @@ class EMPRESA extends CONEXION implements I_EMPRESA
         }
         $query = "SELECT `id_empresa`, `rfc`, `nombre`, `calle`, `no_ext`, 
        `no_int`, `colonia`, `cp`, `de_mun`, `estado`, `telefono`, `correo`, 
-       `sitio_web`, `path_logo`, `version`, `licencia` 
+       `sitio_web`, `path_logo`, `version`, `licencia` , date_incorp
         FROM `empresa` ".$concat;
         $this->connect();
         $result = $this->getData($query);

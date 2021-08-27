@@ -94,13 +94,13 @@
                                             <input type="text" id="municipio" name="municipio" class="form-control" required >
                                         </div>
                                     </div>
-                                    <div class="col-lg-1">
+                                    <div class="col-lg-2">
                                         <div class="form-group">
                                             <label class="form-control-label" for="correo">CP</label>
                                             <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control" required >
                                         </div>
                                     </div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-2">
                                         <div class="form-group">
                                             <label class="form-control-label" for="correo">Estado</label>
                                             <select name="estadoEmp" id="estadoEmp" class="form-control">
@@ -182,19 +182,19 @@
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label class="form-control-label" for="puesto">Version</label>
-                                            <input type="email" id="puesto" class="form-control" value="1.2 BUILD 211809" disabled >
+                                            <input type="email" id="version" class="form-control" disabled >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label class="form-control-label" for="puesto">Revisión</label>
-                                            <input type="email" id="puesto" class="form-control" value="19 AGO 2021" disabled>
+                                            <input type="email" id="rev" class="form-control" value="19 AGO 2021" disabled>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="nvl_acceso">Clave de Licencia</label>
-                                            <input type="email" id="nvl_acceso" class="form-control" value="BHBCHJ415615156B" disabled>
+                                            <input type="email" id="clavLic" class="form-control" value="" disabled>
                                         </div>
                                     </div>
                                 </div>

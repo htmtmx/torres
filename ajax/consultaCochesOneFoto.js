@@ -1,6 +1,10 @@
 $(document).ready(function(){
-    consultaCochesOneFoto();
+
 });
+
+window.onload = function() {
+    consultaCochesOneFoto();
+};
 
 let LISTA_COCHES;
 
