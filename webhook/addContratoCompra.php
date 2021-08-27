@@ -10,8 +10,8 @@ $params = [
     "transmision" => $_POST['transmision'],
     "combustible" => $_POST['combustible'],
     "no_puertas" => $_POST['no_puertas'],
-    "precio_contado" => $_POST['precio_contado'],
-    "precio_credito" => $_POST['precio_credito'],
+    "precio_contado" => $_POST['precio_contado_compra'],
+    "precio_credito" => $_POST['precio_credito_compra'],
     "nivCoche" => $_POST['nivCoche'],
     "opc_credito" => $_POST['opc_credito_coche'],
     "observaciones" => $_POST['observaciones'],
@@ -31,7 +31,7 @@ $params = [
     "tipo_cliente" => $_POST['tipo_cliente'],
     //CONTRATO DATOS
     //tuipo de pago CONTADO -> 0 APARTADO -> 0 CREDITO -> 1
-    "forma_pago" => $_POST['forma_pago'],
+    "forma_pago" => $_POST['forma_pago_compra'],
     "total" => $_POST['total']
 ];
 include_once "../control/controlContrato.php";

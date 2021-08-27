@@ -162,7 +162,7 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="observaciones">Observaciones</label>
-                                                                                    <input type="text" name="placa" id="placa" class="form-control" readonly>
+                                                                                    <input type="text" id="observaciones" class="form-control" readonly>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -324,23 +324,23 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <label class="form-control-label" for="forma_pago">Elija modo de pago</label>
-                                                                        <select id="forma_pago" name="forma_pago" class="form-control">
-                                                                            <option value="0">Credito</option>
-                                                                            <option value="1">Contado</option>
+                                                                        <select  id="forma_pago" name="forma_pago" class="form-control">
+                                                                            <option selected="" value="0">Contado</option>
+                                                                            <option value="1">Credito</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label class="form-control-label" for="precio_credito">Precio de Lista:</label>
-                                                                            <input class="form-control" type="number" id="precio_credito" name="precio_credito" min="0" max="1000000" readonly>
+                                                                            <input class="form-control" type="number" id="precio_contado" name="precio_credito" min="0" max="1000000" readonly>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row" id="selectedCredito">
+                                                                <div class="row d-none" id="selectedCredito">
                                                                     <div class="col-md-6"></div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-6 ">
                                                                         <div class="form-group">
-                                                                            <label class="form-control-label" for="precio_credito">Precio a Credito:</label>
+                                                                            <label class="form-control-label " for="precio_credito">Precio a Credito:</label>
                                                                             <input class="form-control" type="number" id="precio_credito" name="precio_credito" min="0" max="1000000" readonly>
                                                                         </div>
                                                                     </div>
@@ -349,8 +349,8 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                     <div class="col-md-6"></div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-control-label" for="precio_credito">Enganche:</label>
-                                                                            <input class="form-control" type="number" id="precio_credito" name="precio_credito" min="0" max="1000000">
+                                                                            <span class="form-control-label" id="engancheSpan" for="enganche">Enganche:</span>
+                                                                            <input class="form-control" type="number" id="enganche" name="enganche" min="0" max="1000000">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -358,8 +358,8 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                     <div class="col-md-6"></div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-control-label" for="precio_credito">Saldo por liquidar:</label>
-                                                                            <input class="form-control" type="number" id="precio_credito" name="precio_credito" min="0" max="1000000" readonly>
+                                                                            <label class="form-control-label" for="total">Saldo por liquidar:</label>
+                                                                            <input class="form-control" type="number" id="total" name="total" min="0" max="1000000" readonly>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -370,8 +370,8 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                             <div class="pl-lg-4" id="containerFechasCredito">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                        <label class="form-control-label" for="forma_pago">Elija un plazo</label>
-                                                                        <select id="forma_pago" name="forma_pago" class="form-control">
+                                                                        <label class="form-control-label" for="plazo">Elija un plazo</label>
+                                                                        <select id="plazo" name="plazo" class="form-control">
                                                                             <option value="0">Seleccione un plazo</option>
                                                                             <option value="1">1 Mes</option>
                                                                             <option value="3">3 Meses</option>
@@ -382,8 +382,8 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-control-label" for="precio_credito">Pago por mes:</label>
-                                                                            <input class="form-control" type="number" id="precio_credito" name="precio_credito" min="0" max="1000000" readonly>
+                                                                            <label class="form-control-label" for="mensualidad">Pago por mes:</label>
+                                                                            <input class="form-control" type="number" id="mensualidad" name="mensualidad" min="0" max="1000000" readonly>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -391,8 +391,8 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                     <div class="col-md-6"></div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-control-label" for="precio_credito">Elija dia de primer pago:</label>
-                                                                            <input type="date" id="start" name="trip-start" value="<?php echo date("Y-m-d");?>" min="<?php echo date("Y-m-d");?>" max="2050-12-31"></div>
+                                                                            <label class="form-control-label" for="fecha_primer_pago">Elija dia de primer pago:</label>
+                                                                            <input type="date" id="fecha_primer_pago" name="fecha_primer_pago" value="<?php echo date("Y-m-d");?>" min="<?php echo date("Y-m-d");?>" max="2050-12-31"></div>
                                                                     </div>
                                                                 </div>
                                                             </div>

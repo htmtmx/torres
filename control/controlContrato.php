@@ -288,13 +288,13 @@ function creaContratoVenta($params)
             //Presiono el boiton apartar y se despliega un modal de ¿Con cuanto
             //deseas apartarlo?
             // esto es un apartado Apartado con $10,000 y el total es de $100,000
-            $forma_pago = "CONTADO";
+            $forma_pago = 0;
             $estatusContrato = 1;
             $fechaPrimerPago = date('Y-m-d');
         }else if($plazo==0 && $enganche<$totalCoche){
             //Este es un  pago de contado
             //Enganche de 100,000 y el carro cuesta $100,000
-            $forma_pago = "CONTADO";
+            $forma_pago = -1;
             $estatusContrato = 0;
             $fechaPrimerPago = date('Y-m-d');
             //Si estatus de contrato es 0 y la forma de pago es cfontado significa que es APARTADO
@@ -302,7 +302,7 @@ function creaContratoVenta($params)
             //Es un pago a credito
             //Meses: 3,6,9,12
             $fechaPrimerPago = $params['fecha_primer_pago'];
-            $forma_pago = "CREDITO";
+            $forma_pago = 1;
             $estatusContrato = 0;
         }
 
@@ -349,7 +349,7 @@ function creaContratoVenta($params)
                 $saldo1=0;
             }
 
-            include_once  "./controlCoche.php";
+            include_once  "controlCoche.php";
             updateEstatusCoche($params['no_vehiculo'],($plazo == 0 && $enganche==$totalCoche)||($plazo > 0) ? 1:0);
 
             //Funcion para Insertar y crear un objeto PAGO
@@ -512,4 +512,32 @@ function insertaAbono($idPago,$monto,$notas){
     $obj_Abono->setFechaRegistro(date('Y-m-d H:i:s'));
     $obj_Abono->setNotas($notas);
     return $obj_Abono->queryaddAbono();
+}
+
+
+function revisaContratoVenta($params){
+    include_once "controlCoche.php";
+    $coches = consultaCocheVenta($params['no_vehiculo'],0);
+    if($coches!=null){
+        try {
+            $coche= $coches[0];
+            if(isset($coche)|| isset($coches)){
+                if($params['forma_pago']==1){
+                    $total= $coche['precio_credito'];
+                    $plazo=$params['plazo'];
+                } else {
+                    $total = $coche['precio_contado'];
+                    $plazo=1;
+                }
+                $params['plazo']= $plazo;
+                $params['total']=$total;
+                return creaContratoVenta($params);
+            }else return false;
+        }
+        catch (Exception $e){
+            return false;
+        }
+    } else return false;
+
+
 }

@@ -29,7 +29,7 @@ function construyeTablaCochesVenta(coches){
             COCHES.push(coche);
             contador ++;
             template +=`
-                        <tr idcoche="">
+                        <tr idcoche="${coche.no_vehiculo}">
                             <th scope="row">
                                 ${contador}
                             </th>
@@ -73,7 +73,20 @@ function seleccionaCoche(noCoche){
 //Funcion para cargar en el HTML los valores del carro encontrado
 function cargaDatosCoche(coche) {
     $("#noCoche").val(coche.no_vehiculo);
+    $("#marca").val(coche.marca_coche);
+    $("#id_modelo_fk").val(coche.modelo_coche);
     $("#anio").val(coche.anio);
+    $("#placa").val(coche.placa);
+    $("#entidad_placa").val(coche.entidad_placa);
+    $("#color").val(coche.color);
+    $("#kilometros").val(coche.kilometros);
+    $("#transmision").val(coche.transimision);
+    $("#combustible").val(coche.combustible);
+    $("#no_puertas").val(coche.no_puertas);
+    $("#nivCoche").val(coche.NIV);
+    $("#observaciones").val(coche.observaciones);
+    $("#precio_contado").val(coche.precio_contado);
+    $("#precio_credito").val(coche.precio_credito);
     $('#buscaVechiculoModal').modal('hide');
 }
 /******** FUNCION PARA TRAER DATOS DE COCHE SELECCIONADO EN TABLA ******/
@@ -94,7 +107,7 @@ function seleccionaCliente(noPersona) {
 
 function limpiarCliente() {
     $("#fechaRegistroCliente").addClass("d-none");
-    $("#no_cliente").val("");
+    $("#no_cliente").val(0);
     $("#nombre").val("");
     $("#apaterno").val("");
     $("#amaterno").val("");
@@ -170,3 +183,14 @@ function cargaPersonas() {
         },
     });
 }
+
+
+$("#forma_pago").change(function(){
+    var tipo_pago = document.getElementById("forma_pago").value;
+    if(tipo_pago=="1"){
+        $("#selectedCredito").removeClass("d-none");
+        $("#selectedCredito").removeClass("d-none");
+    }else{
+        $("#selectedCredito").addClass("d-none");
+    }
+});

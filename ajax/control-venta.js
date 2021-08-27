@@ -25,5 +25,23 @@ function buscaCochePaVenta(noCoche) {
 }
 
 $("#msform").on("submit", function(e){
+    var f = $(this);
+    var formData = new FormData(document.getElementById("msform"));
+    formData.append("dato", "valor");
+    //formData.append(f.attr("name"), $(this)[0].files[0]);
+    $.ajax({
+        url: "../webhook/addContratoVenta.php",
+        type: "post",
+        dataType: "html",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (response)
+        {
+         console.log(response);
+        },
+    })
+    $('#msform').trigger('reset');
     e.preventDefault();
 });

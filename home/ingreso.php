@@ -355,10 +355,10 @@
                                                                 <div class="pl-lg-4">
                                                                     <div class="row">
                                                                         <div class="col-lg-6">
-                                                                            <label class="form-control-label" for="forma_pago">Forma de Pago</label>
-                                                                            <select id="forma_pago" name="forma_pago" class="form-control">
-                                                                                <option value="0">Credito</option>
-                                                                                <option value="1">Contado</option>
+                                                                            <label class="form-control-label" for="forma_pago_compra">Forma de Pago</label>
+                                                                            <select id="forma_pago_compra" name="forma_pago_compra" class="form-control">
+                                                                                <option selected="" value="0">Contado</option>
+                                                                                <option value="1">Credito</option>
                                                                             </select>
                                                                         </div>
                                                                         <div class="col-lg-6">
@@ -405,14 +405,14 @@
                                                                         </div>
                                                                         <div class="col-md-5">
                                                                             <div class="form-group">
-                                                                                <label class="form-control-label" for="precio_contado">Precio de Lista</label>
-                                                                                <input class="form-control" type="number" id="precio_contado" name="precio_contado" min="0" max="1000000">
+                                                                                <label class="form-control-label" for="precio_contado_compra">Precio de Lista</label>
+                                                                                <input class="form-control" type="number" id="precio_contado_compra" name="precio_contado_compra" min="0" max="1000000">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-5">
                                                                             <div class="form-group">
-                                                                                <label class="form-control-label" for="precio_credito">Precio a Credito</label>
-                                                                                <input class="form-control" type="number" id="precio_credito" name="precio_credito" min="0" max="1000000">
+                                                                                <label class="form-control-label" for="precio_credito_compra">Precio a Credito</label>
+                                                                                <input class="form-control" type="number" id="precio_credito_compra" name="precio_credito_compra" min="0" max="1000000">
                                                                             </div>
                                                                         </div>
                                                                     </div>
