@@ -65,7 +65,7 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                             </thead>
-                            <tbody id="tbl-clientes">
+                            <tbody id="tbl-usuarios">
                             <tr idcliente="987568611049">
                                 <th scope="row">
                                     1561561561

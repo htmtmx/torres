@@ -36,8 +36,10 @@ function verificaCuentaUser($correo,$pw)
 
 function addEmpleado($nombre,$app,$apm,$tel,$cel,$correo,$puesto,$sexo,$acceso)
 {
+    session_start();
     include_once "../model/EMPLEADO.php";
-    include_once "./tool_ids_generate.php";
+    include_once "tool_ids_generate.php";
+    $pw= gen_PW_user();
     $objEmpleado = new EMPLEADO();
     $objEmpleado->setNoEmpleado(gen_user_id());
     $objEmpleado->setIdEmpresaFk($_SESSION['rfc_empresa']);
@@ -51,8 +53,12 @@ function addEmpleado($nombre,$app,$apm,$tel,$cel,$correo,$puesto,$sexo,$acceso)
     $objEmpleado->setPuesto($puesto);
     $objEmpleado->setNivelAcceso($acceso);
     $objEmpleado->setEstatus(1);
-    $objEmpleado->setPw(md5("0000"));
-    return $objEmpleado->queryaddEmpleado();
+    $objEmpleado->setPw(md5($pw));
+    if($objEmpleado->queryaddEmpleado()){
+        include_once "controlCorreos.php";
+        return enviaCorreo($pw);
+    }
+    return false;
 }
 
 /********************************************************************

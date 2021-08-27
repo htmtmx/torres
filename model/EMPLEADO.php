@@ -18,7 +18,6 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
     private $puesto;
     private $nivel_acceso;
     private $estatus;
-    private $system_state;
 
     /**
      * @return mixed
@@ -228,21 +227,6 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
         $this->estatus = $estatus;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSystemState()
-    {
-        return $this->system_state;
-    }
-
-    /**
-     * @param mixed $system_state
-     */
-    public function setSystemState($system_state)
-    {
-        $this->system_state = $system_state;
-    }
 
     public function queryconsultaEmpleado($no_empleado)
     {
@@ -269,14 +253,14 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
         $query = "INSERT INTO `empleado` (
                 `no_empleado`, `id_empresa_fk`, `nombre`, `apaterno`, `amaterno`, `telefono`, 
                 `celular`, `sexo`, `fecha_registro`, `correo_user`, `pw`, `puesto`, 
-                `nivel_acceso`, `estatus`, `system_state`) 
+                `nivel_acceso`, `estatus`) 
                 VALUES ('".$this->getNoEmpleado()."', '".$this->getIdEmpresaFk()."', '"
                 .$this->getNombre()."', '".$this->getApaterno()."', '"
                 .$this->getAmaterno()."', '".$this->getTelefono()."', '"
                 .$this->getCelular()."', '".$this->getSexo()."', '"
                 .date('Y-m-d H:i:s')."', '".$this->getCorreoUser()."', '"
                 .$this->getPw()."', '".$this->getPuesto()."', '"
-                .$this->getNivelAcceso()."', '1', '1')";
+                .$this->getNivelAcceso()."', '1')";
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();

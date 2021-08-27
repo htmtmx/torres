@@ -89,7 +89,6 @@ $("#frm-add-cliente").on("submit", function(e){
     })
         .done(function(res){
             consultaClientes();
-            $('#addCliente').modal('hide');
         });
     $('#frm-add-cliente').trigger('reset');
     e.preventDefault();
