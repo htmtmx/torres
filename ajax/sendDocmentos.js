@@ -7,13 +7,13 @@ function getTiposArchivo() {
    $.ajax({
       url: "../webhook/list-tipo_archivo.php",
       success: function (response) {
-         console.log("Hola");
+
          let obj_result = JSON.parse(response);
-         console.log(obj_result);
+
          let template = "";
          obj_result.forEach((obj) => {
             template += `<option value="${obj.id_tipo_archivo}">${obj.nombre}</option> `;
-            console.log(template);
+
          });
          $("#tipoArchivoCarro").html(template);
          $("#tipoArchivoContrato").html(template);

@@ -16,7 +16,7 @@ function consultaDetallesCoche(){
         url: "../webhook/cars-list.php",
         type: "POST",
         data: { idCoche: $("#noCoche").val(),
-            details:1
+            details:1, estatus:99
         },
         success: function (response)
         {

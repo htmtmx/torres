@@ -28,7 +28,7 @@ function consultaCocheDetallesDocumentosFotos($no_vehiculo)
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
     include_once "../control/controlFileVehiculo.php";
-    $arrayCoche = $objCoche->queryconsultaCoches($no_vehiculo);
+    $arrayCoche = $objCoche->queryconsultaCoches($no_vehiculo,99);
     $dataCoche = array();
     foreach ($arrayCoche as $coche) {
         $arrayDetails = consultaDetallesCoche($coche["no_vehiculo"]);
@@ -43,10 +43,10 @@ function consultaCocheDetallesDocumentosFotos($no_vehiculo)
     return json_encode($dataCoche);
 }
 
-function consultaCocheDetallesCompletos($show_detalles,$noVehiculo){
+function consultaCocheDetallesCompletos($show_detalles,$noVehiculo,$estatus){
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    $arrayCoches = $objCoche->queryconsultaCoches($noVehiculo,99);
+    $arrayCoches = $objCoche->queryconsultaCoches($noVehiculo,$estatus);
     $cochesData = array();
     //obtengo la lista de coches en
     if ($show_detalles) {

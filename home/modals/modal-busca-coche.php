@@ -44,26 +44,6 @@
                                     </tr>
                                     </thead>
                                     <tbody id="tbl-coches-venta">
-                                    <tr idcoche="370237125480822">
-                                        <th scope="row">
-                                            1
-                                        </th>
-                                        <td>
-                                            <a class="nav-link" href="./detalles-cliente.php?idCliente=370237125480822">
-                                                MKDFP456
-                                            </a>
-                                        </td>
-                                        <td>
-                                            Nissan Versa 2018 Rojo
-                                        </td>
-                                        <td>
-                                            <div class="h6 font-weight-300"> <strong class="heading"><i class="fas fa-dollar-sign text-green"></i> 120000.00</strong></div>  <div class="h6 font-weight-300"><strong class="heading"><i class="fas fa-credit-card"></i> 150000.00</strong> </div>
-                                        </td>
-
-                                        <td>
-                                            <button type="button" class="btn btn-primary" onclick="seleccionaCoche(370237125480822);">Seleccionar</button>
-                                        </td>
-                                    </tr>
                                     <!-- AJAX RESPONSE TBL CLIENTES TODOS LOS CLIENTES ACTIVOS-->
                                     </tbody>
                                 </table>

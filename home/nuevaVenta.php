@@ -91,31 +91,31 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                     <div class="pl-lg-4">
                                                                         <div class="row">
                                                                             <div class="col-lg-6">
-                                                                                <label class="form-control-label" for="marcaCoche">Marca</label>
-                                                                                <input type="text" name="placa" id="placa" class="form-control" readonly>
+                                                                                <label class="form-control-label" for="marca">Marca</label>
+                                                                                <input type="text"  id="marca" class="form-control" readonly>
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <label class="form-control-label" for="id_modelo_fk">Modelo</label>
-                                                                                <input type="text" name="placa" id="placa" class="form-control" readonly>
+                                                                                <input type="text" id="id_modelo_fk" class="form-control" readonly>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="anio">Año</label>
-                                                                                    <input type="numeric" name="anio" id="anio" class="form-control" readonly>
+                                                                                    <input type="numeric" id="anio" class="form-control" readonly>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="placa">Placa</label>
-                                                                                    <input type="text" name="placa" id="placa" class="form-control" readonly>
+                                                                                    <input type="text"  id="placa" class="form-control" readonly>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="entidad_placa">Entidad Federativa</label>
-                                                                                    <input type="text" name="placa" id="placa" class="form-control" readonly>
+                                                                                    <input type="text" id="entidad_placa" class="form-control" readonly>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -128,35 +128,35 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="color">Color</label>
-                                                                                    <input id="color" name="color" class="form-control" readonly>
+                                                                                    <input id="color" class="form-control" readonly>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="kilometros">Kilometraje</label>
-                                                                                    <input type="text" name="placa" id="placa" class="form-control" readonly>
+                                                                                    <input type="text"  id="kilometros" class="form-control" readonly>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <label class="form-control-label" for="transmision">Trasmision</label>
-                                                                                <input type="text" name="placa" id="placa" class="form-control" readonly>
+                                                                                <input type="text" id="transmision" class="form-control" readonly>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <label class="form-control-label" for="combustible">Combustible</label>
-                                                                                <input type="text" name="placa" id="placa" class="form-control" readonly>
+                                                                                <input type="text" id="combustible" class="form-control" readonly>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <label class="form-control-label" for="no_puertas">No de Puertas</label>
-                                                                                <input type="text" name="placa" id="placa" class="form-control" readonly>
+                                                                                <input type="text" id="no_puertas" class="form-control" readonly>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="nivCoche">NIV</label>
-                                                                                    <input type="text" id="nivCoche" name="nivCoche" class="form-control" readonly >
+                                                                                    <input type="text" id="nivCoche" class="form-control" readonly >
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-6">

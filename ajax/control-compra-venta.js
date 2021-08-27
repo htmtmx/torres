@@ -1,4 +1,84 @@
 const PERSONAS = [];
+const COCHES    = [];
+
+/******** FUNCION PARA TRAER PINTAR TABLA DE COCHES DISPONIBLES PARA VENDER ******/
+
+function consultaCochesVenta(){
+    $.ajax({
+        url: "../webhook/cars-list.php",
+        type: "POST",
+        data: { idCoche: 0 ,
+            details: 1,
+            estatus:0
+        },
+        success: function (response)
+        {
+            //COnvertimos el string a JSON
+            let coches = JSON.parse(response);
+            console.log(coches);
+            $("#tbl-coches-venta").html(construyeTablaCochesVenta(coches));
+
+        },
+    });
+}
+
+function construyeTablaCochesVenta(coches){
+    let template="";
+    let contador=0;
+        coches.forEach((coche)=> {
+            COCHES.push(coche);
+            contador ++;
+            template +=`
+                        <tr idcoche="">
+                            <th scope="row">
+                                ${contador}
+                            </th>
+                            <td>
+                                <a class="nav-link" href="./detalles-coche.php?idCoche=${coche.no_vehiculo}">
+                                    ${coche.placa}
+                                </a>
+                            </td>
+                            <td>
+                                ${coche.marca_coche+" "+ coche.modelo_coche+" "+coche.anio}
+                            </td>
+                            <td>
+                                <div class="h6 font-weight-300"> <strong class="heading">
+                                      <i class="fas fa-dollar-sign text-green"></i> ${coche.precio_contado}</strong>
+                                </div> 
+                                <div class="h6 font-weight-300"><strong class="heading">
+                                      <i class="fas fa-credit-card"></i> ${coche.precio_credito}</strong> 
+                                </div>
+                            </td>
+
+                            <td>
+                                <button type="button" class="btn btn-primary" onclick="seleccionaCoche(${coche.no_vehiculo});">Seleccionar</button>
+                            </td>
+                        </tr>
+        `;
+        });
+
+    return template;
+}
+//Funcion para encontrar a un coche seleccionado
+function seleccionaCoche(noCoche){
+    let cocheFound;
+    COCHES.forEach((tmpCoche)=>{
+        if ( tmpCoche.no_vehiculo==noCoche){
+            cocheFound = tmpCoche;
+        }
+    });
+    cargaDatosCoche(cocheFound);
+}
+
+//Funcion para cargar en el HTML los valores del carro encontrado
+function cargaDatosCoche(coche) {
+    $("#noCoche").val(coche.no_vehiculo);
+    $("#anio").val(coche.anio);
+    $('#buscaVechiculoModal').modal('hide');
+}
+/******** FUNCION PARA TRAER DATOS DE COCHE SELECCIONADO EN TABLA ******/
+
+
 
 /******** FUNCION PARA TRAER Y GENERAR TABLAS DE CLIENTES ACTIVOS ******/
 
