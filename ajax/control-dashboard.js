@@ -135,17 +135,11 @@ function construyeTablaAbonosContrato(listaAbonos) {
                                     <i class="fas fa-dollar-sign text-green"></i> ${saldo}
                                 </td>
                                 <td>
-                                    <div class="dropdown show">
-                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Acciones
-                                        </a>
-
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
-                                            <!---<a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i>Registrar Abono</a>--->
-                                            <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
-                                        </div>
-                                    </div>
+                                     <a href="./detalles-coche.php?idCoche=${abono.no_vehiculo}#conteinerContratos">
+                                     <button class="btn btn-icon btn-secondary" type="button">
+                                            <span class="btn-inner--icon"><i class="fas fa-eye"></i> Ver contrato </span>
+                                        </button>
+                                    </a>
                                 </td>
                             </tr>
         `;

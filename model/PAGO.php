@@ -298,7 +298,7 @@ class PAGO extends CONEXION implements I_PAGO
     function queryAllPagosPendintes()
     {
         $query="select c.no_contrato, concat_ws(' ',ma.nombre, mo.nombre, co.anio, co.color) as vehiculo, co.placa, 
-		    p.fecha_limite_pago , p.detalles, p.total, p.saldo 
+		    p.fecha_limite_pago , p.detalles, p.total, p.saldo, co.no_vehiculo
             from contrato c, pago p ,coche co , marca ma , modelo mo 
             where  c.no_contrato = p.no_contrato_fk 
             and c.no_vehiculo_fk = co.no_vehiculo 
