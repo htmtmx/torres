@@ -433,7 +433,7 @@ function constructObjDireccion($params,$noCliente){
  $direccion->setColonia($params['colonia']);
  $direccion->setMunicipio($params['municipio']);
  $direccion->setCP($params['cp']);
- $direccion->setEstado($params['estado']);
+ $direccion->setEstadoRepublica($params['estado']);
  $direccion->setReferencias($params['referencias']);
  return $direccion;
 }

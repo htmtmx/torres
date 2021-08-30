@@ -35,51 +35,9 @@ function consultaDirecciones(){
         success: function (response)
         {
             let obj_result = JSON.parse(response);
-            let cont=0;
-            let template="";
-            //Creamos direcciones para tabla DETALLES CLIENTE
-            obj_result.forEach((obj) => {
-                cont++;
-                let noint= obj.no_int>0 ? `, No.Int `+obj.no_int:"";
-                let estatus="";
-                estatus = obj.estado>0? `<span class="badge badge-success">Activo</span>`: `<span class="badge badge-warning">Baja</span>`;
-                template += `
-                <tr idDireccion="${obj.id_direccion}">
-                                <th scope="row">
-                                    ${cont}
-                                </th>
-                                <td>
-                                    ${obj.calle+" No. Ext "+obj.no_ext+noint}
-                                </td>
-                                <td>
-                                    ${obj.colonia}
-                                </td>
-                                <td>
-                                    <ul>
-                                        ${obj.municipio}
-                                    </ul>
-                                </td>
-                                <td>
-                                     ${obj.estado_republica}
-                                </td>
-                                <td>
-                                    ${estatus}
-                                </td>
-                                <td>
-                                    <div class="dropdown show">
-                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Acciones
-                                        </a>
-
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="#"><i class="fas fa-edit text-blue"></i> Editar</a>
-                                            <a class="dropdown-item btnEliminaDireccion" "href="#"> <i class="fas fa-trash-alt text-red"></i> Eliminar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>`;
-            });
-            $("#tbl-direcciones").html(template);
+            console.log(obj_result);
+            let direcciones= obj_result[0][0];
+            cargaDirecciones(direcciones);
         },
     });
 }
@@ -106,53 +64,19 @@ $("#frm-datos-cliente").on("submit", function(e){
         });
     $('#frm-datos-cliente').trigger('reset');
     consultaDetallesCliente();
-});
-
-$("#frm-add-direccion").on("submit", function(e){
-
-    var formData = new FormData(document.getElementById("frm-add-direccion"));
-    formData.append("dato", "valor");
-    //formData.append(f.attr("name"), $(this)[0].files[0]);
-    $.ajax({
-        url: "../webhook/direccion-add.php",
-        type: "post",
-        dataType: "html",
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false
-    })
-        .done(function(res){
-            let alerta = cosntructMensaje("success",res);
-            $("#mensajeAddDireccion").html(alerta);
-        });
-    $('#frm-add-direccion').trigger('reset');
     consultaDirecciones();
-    e.preventDefault();
 });
 
 
-//LISTENER PARA ELIMINAR DIRECCIONES
-$(document).on("click", ".btnEliminaDireccion", function () {
-    if (confirm("¿Esta seguro de que desea eliminar esta direccion?")){
-        let elementDireccionSelect = $(this)[0].parentElement.parentElement.parentElement.parentElement;
-        let idDireccion = $(elementDireccionSelect).attr("iddireccion");
-        eliminarDireccion(idDireccion)
-    }
-
-});
-
-
-//FUNCION PARA ELIMINAR DIRECCION
-function  eliminarDireccion(idDireccion){
-    $.ajax({
-        url: "../webhook/direccion-delete.php",
-        type: 'POST',
-        data: {
-            idDir: idDireccion
-        },
-        success: function (mje) {
-            consultaDirecciones();
-        }
-    });
+function cargaDirecciones(direcciones){
+    let direccion = direcciones[0];
+    $("#id_dir").val(direccion.id_direccion)
+    $("#calle").val(direccion.calle);
+    $("#noExtEmp").val(direccion.no_ext);
+    $("#noIntEmp").val(direccion.no_int);
+    $("#coloniaEmpr").val(direccion.colonia);
+    $("#municipio").val(direccion.municipio);
+    $("#cpEmpr").val(direccion.CP);
+    $("#estadoEmp").val(direccion.estado_republica);
+    $("#referencias").val(direccion.referencias);
 }

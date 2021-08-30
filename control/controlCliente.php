@@ -56,28 +56,32 @@ function updateStatus($idCliente){
 /********************************************************************
  *                 U P D A T E    C L I E N T E
  *******************************************************************/
-function updateCliente($noCliente,$nombreCliente,$apaternoCliente,$amaternoCliente,
-                       $telefonoCliente,$celularCliente,$correoCliente,
-                       $empresaCliente,$medioIdentificacion,$folioCliente,$tipoCliente,
-                       $rfcCliente)
+function updateCliente($params)
 {
     include_once "../model/CLIENTES.php";
     $objCliente = new CLIENTES();
-    $objCliente->setNoCliente($noCliente);
-    $objCliente->setNombre($nombreCliente);
-    $objCliente->setApaterno($apaternoCliente);
-    $objCliente->setAmaterno($amaternoCliente);
-    $objCliente->setTelefono($telefonoCliente);
-    $objCliente->setCelular($celularCliente);
-    $objCliente->setCorreo($correoCliente);
+    $objCliente->setNoCliente($params['noCliente']);
+    $objCliente->setNombre($params['nombreCliente']);
+    $objCliente->setApaterno($params['apaternoCliente']);
+    $objCliente->setAmaterno($params['amaternoCliente']);
+    $objCliente->setTelefono($params['telefonoCliente']);
+    $objCliente->setCelular($params['celularCliente']);
+    $objCliente->setCorreo($params['correoCliente']);
     $objCliente->setSubscripcion(1);
-    $objCliente->setEmpresa($empresaCliente);
-    $objCliente->setRfc($rfcCliente);
-    $objCliente->setMedioIdentificación($medioIdentificacion);
-    $objCliente->setFolio($folioCliente);
-    $objCliente->setTipoCliente($tipoCliente);
+    $objCliente->setEmpresa($params['empresaCliente']);
+    $objCliente->setRfc($params['rfcCliente']);
+    $objCliente->setMedioIdentificación($params['medioIdentificacion']);
+    $objCliente->setFolio($params['folioCliente']);
+    $objCliente->setTipoCliente($params['tipoCliente']);
     $objCliente->setEstatus(1);
-    return $objCliente->queryupdateCliente();
+    if($objCliente->queryupdateCliente()){
+        include_once "controlContrato.php";
+        include_once "../model/DIRECCIONES.php";
+        $DIRECCION = constructObjDireccion($params,$objCliente->getNoCliente());
+        $resultDireccion = $params['id_dir']>0? $DIRECCION->queryupdateDireccion():$DIRECCION->queryaddDireccion();
+        return $resultDireccion;
+    }
+    return false;
 }
 
 /********************************************************************

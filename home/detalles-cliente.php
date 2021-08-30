@@ -170,6 +170,7 @@ $idCliente=$_GET['idCliente'];
                                 <div class="row">
                                     <div class="col-lg-8">
                                         <div class="form-group">
+                                            <input type="hidden" id="id_dir" name="id_dir" value="0">
                                             <label class="form-control-label" for="calle">Calle</label>
                                             <input type="text" id="calle" name="calle" class="form-control" required="">
                                         </div>
@@ -204,13 +205,13 @@ $idCliente=$_GET['idCliente'];
                                 <div class="row">
                                     <div class="col-lg-2">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="correo">CP</label>
+                                            <label class="form-control-label" for="cpEmpr">CP</label>
                                             <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control" required="">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="correo">Estado</label>
+                                            <label class="form-control-label" for="estadoEmp">Estado</label>
                                             <select name="estadoEmp" id="estadoEmp" class="form-control">
                                                 <option value="AGU">Aguascalientes</option>
                                                 <option value="BCN">Baja California</option>
@@ -266,46 +267,6 @@ $idCliente=$_GET['idCliente'];
                 </div>
             </div>
         </div>
-        <!---
-
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="card">
-                    <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h3 class="mb-0">Direcciones</h3>
-                            </div>
-                            <div class="col text-right">
-                                <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addDireccion">
-                                    <i class="fas fa-plus"></i> Nueva Dirección</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table class="table align-items-center table-flush">
-                            <thead class="thead-light">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Calle</th>
-                                <th scope="col">Colonia</th>
-                                <th scope="col">Municipio</th>
-                                <th scope="col">Estado</th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                            </tr>
-                            </thead>
-                            <tbody id="tbl-direcciones">
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        -->
         <?php include './include/footer.php'; ?>
     </div>
 </div>
