@@ -181,6 +181,33 @@ function contruyeTablaDetalles(detalles){
     });
     return template;
 }
+/***
+ * Funcion para agregar datos del form de detalles o caracteristicas
+ ***/
+$("#frm-add-detalle").on("submit", function(e){
+    //let tipocontrato = $('input[name="contrato"]:checked').val();
+    var f = $(this);
+    var formData = new FormData(document.getElementById("frm-add-detalle"));
+    formData.append("dato", "valor");
+    //formData.append(f.attr("name"), $(this)[0].files[0]);
+    $.ajax({
+        url: "../webhook/add-detalle.php",
+        type: "post",
+        dataType: "html",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false
+    })
+        .done(function(res){
+            consultaDetallesCocheGenerales();
+            $("#frm-add-detalle").trigger('reset');
+            $("#addDetalles").modal('hide');
+
+        });
+    e.preventDefault();
+});
+
 
 function construyeCocheTablaDocumentos(docs){
     var archivos = [];

@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="addCaracteristicas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Agrega Caracteristica</h5>
@@ -20,7 +20,9 @@
                                         <select id="detalle" name="detalle" class="w-75 form-control">
                                             <!-- AJAX RESPONSE GET DETALLES-->
                                         </select>
-                                        <button type="button" class="btn btn-primary W-25 mx-2"><i class="fas fa-plus"></i></button>
+                                        <button type="button" class="btn btn-primary W-25 mx-2" data-toggle="modal" data-target="#addDetalles">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

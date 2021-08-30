@@ -438,6 +438,7 @@ $noCoche = $_GET['idCoche'];
         <?php include './modals/modal-add-caracteristica.php'; ?>
         <?php include './modals/modal-add-archivo-contratoAdq.php'; ?>
         <?php include './modals/modal-add-archivo-vehiculo.php'; ?>
+        <?php include './modals/modal-add-tipo-archivo.php'; ?>
     </div>
 </div>
 </body>
