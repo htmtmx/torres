@@ -460,4 +460,12 @@ class COCHE extends CONEXION implements I_COCHE
         $this->close();
         return $result;
     }
+
+    function queryConsultaIdCochexPalaca(){
+        $query = "SELECT `no_vehiculo` FROM `coche` WHERE `placa`= '".$this->getPlaca()."'";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
 }

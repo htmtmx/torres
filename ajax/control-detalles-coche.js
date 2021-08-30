@@ -739,7 +739,7 @@ function buildTblFileContratoVenta(archivos) {
                 </td>
                 <td>
                     <a href="${file.path}" target="_blank">
-                        <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#vistaPDF">
+                        <button class="btn btn-icon btn-secondary" type="button">
                             <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
                         </button>
                     </a>

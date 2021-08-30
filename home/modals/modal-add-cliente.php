@@ -2,7 +2,7 @@
 <div class="modal fade bd-example-modal-lg" id="addCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
-            <form id="frm-add-cliente" role="form" autocomplete="off">
+            <form id="frm-add-cliente" role="form" autocomplete="off" class="was-validated">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Agrega nuevo cliente</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -14,24 +14,32 @@
                         <label for="nombre_cliente" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> Nombre</label>
                         <div class="col-lg-9">
                             <input class="form-control" type="text" id="nombre_cliente" name="nombre_cliente" required="" >
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Ingrese el nombre del cliente</div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="apaterno_cliente" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> Primer Apellido</label>
                         <div class="col-lg-9">
                             <input class="form-control" type="text" id="apaterno_cliente" name="apaterno_cliente" required>
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Ingrese el primer apellido</div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="amaterno_cliente" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> Segundo Apellido</label>
                         <div class="col-lg-9">
                             <input class="form-control" type="text" id="amaterno_cliente" name="amaterno_cliente" required>
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Ingrese el segundo apellido </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="telefono_cliente" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> Telefono</label>
                         <div class="col-lg-9">
                             <input class="form-control" type="tel" id="telefono_cliente" name="telefono_cliente" required>
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Ingrese el telefono del cliente</div>
                         </div>
                     </div>
                     <div class="form-group row">

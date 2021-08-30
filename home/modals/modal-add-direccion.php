@@ -2,7 +2,7 @@
 <div class="modal fade bd-example-modal-lg" id="addDireccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
-            <form id="frm-add-direccion" role="form" autocomplete="off">
+            <form id="frm-add-direccion" role="form" autocomplete="off" class="was-validated">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Agrega Direccion</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -14,31 +14,39 @@
                     <div class="form-group row">
                         <label for="calle" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> Calle</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" id="calle" name="calle" required="">
+                            <input class="form-control" type="text" id="calle" name="calle" required placeholder="Calle">
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Ingrese una calle</div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="noext" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> No exterior</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" id="noext" name="noext" required="">
+                            <input class="form-control" type="text" id="noext" name="noext" required="" placeholder="No. Exterior">
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Ingrese un No.Exterior</div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="noint" class="col-sm-2 col-form-label"> No interior</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" id="noint" name="noint">
+                            <input class="form-control" type="text" id="noint" name="noint" placeholder="No. Interior">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="colonia" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> Colonia</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" id="colonia" name="colonia" required="">
+                            <input class="form-control" type="text" id="colonia" name="colonia" required="" placeholder="(ej. Independencia, Jimenez Cantu)">
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Ingrese una colonia</div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="municipio" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i>Municipio</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" id="municipio" name="municipio">
+                            <input class="form-control" type="text" id="municipio" name="municipio" required placeholder="ej.Nicolas Romero, Atizapan">
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Ingrese el municipio</div>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -78,19 +86,22 @@
                                 <option value="Yucatán">Yucatán</option>
                                 <option value="Zacatecas">Zacatecas</option>
                             </select>
+                            <div class="valid-feedback">¡Ok!</div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="cp" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i>Codigo Postal</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" id="cp" name="cp">
+                            <input class="form-control" type="text" id="cp" name="cp" required placeholder="ej.XXXXX">
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Ingrese el codigo postal</div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="folio_cliente" class="col-sm-2 col-form-label">Referencias</label>
                         <div class="col-lg-9">
                             <div class="form-group">
-                                <textarea class="form-control" id="referencias" name="referencias" rows="3"></textarea>
+                                <textarea class="form-control" id="referencias" name="referencias" rows="3" placeholder="Referencia para ubicar mas facil el domicilio"></textarea>
                             </div>
                         </div>
                     </div>

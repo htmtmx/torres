@@ -169,3 +169,10 @@ function noCochesEnVenta()
     $result = $objCoche->queryNoCochesEnVenta();
     return json_encode($result);
 }
+
+function consultaIdCochexPlaca($placa){
+    include_once  "../model/COCHE.php";
+    $coche= new COCHE();
+    $coche->setPlaca($placa);
+    return json_encode($coche->queryConsultaIdCochexPalaca());
+}

@@ -13,3 +13,5 @@
 <script src="../assets/js/argon.js?v=1.2.0"></script>
 <script src="../ajax/cliente-list.js"></script>
 <script src="../ajax/control-empleados.js"></script>
+<script src="../ajax/buscar-coche-placa.js"></script>
+<script src="../ajax/valida-form.js"></script>

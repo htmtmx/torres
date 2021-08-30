@@ -5,7 +5,9 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header  align-items-center">
-            <img src="../assets/img/logo.png" width="auto" height="100%" alt="...">
+            <a href="./">
+                <img src="../assets/img/logo.png" width="auto" height="100%" alt="...">
+            </a>
         </div>
         <div class="navbar-inner">
             <!-- Collapse -->
@@ -25,8 +27,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="./catalogo.php">Ver Catálogo</a>
-                            <a class="dropdown-item" href="#">Registrar Adquisicion</a>
-                            <a class="dropdown-item" href="#">Vender</a>
+                            <a class="dropdown-item" href="./ingreso.php">Registrar Adquisicion</a>
+                            <a class="dropdown-item" href="./nuevaVenta.php">Vender</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

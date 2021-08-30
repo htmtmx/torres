@@ -11,7 +11,7 @@
                                 <i class="fas fa-search"></i>
                             </span>
                         </div>
-                        <input class="form-control" placeholder="Buscar Coche (ingrese placa)" type="text">
+                        <input class="form-control" name="busquedaplaca" id="busquedaplaca" placeholder="Buscar Coche (ingrese placa)" type="text">
                     </div>
                 </div>
                 <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">

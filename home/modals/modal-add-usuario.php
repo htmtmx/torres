@@ -2,7 +2,7 @@
 <div class="modal fade bd-example-modal-lg" id="addUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
-            <form id="frm-add-usuario" role="form" autocomplete="off">
+            <form id="frm-add-usuario" role="form" autocomplete="off" class="was-validated">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Agrega nuevo usuario</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -14,24 +14,32 @@
                         <label for="nombre_user" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> Nombre</label>
                         <div class="col-lg-9">
                             <input class="form-control" type="text" id="nombre_user" name="nombre_user" required="" >
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Escriba un nombre</div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="apaterno_user" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> Primer Apellido</label>
                         <div class="col-lg-9">
                             <input class="form-control" type="text" id="apaterno_user" name="apaterno_user" required>
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Escriba apellido paterno</div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="amaterno_user" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> Segundo Apellido</label>
                         <div class="col-lg-9">
                             <input class="form-control" type="text" id="amaterno_user" name="amaterno_user" required>
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Escriba apellido materno</div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="telefono_user" class="col-sm-2 col-form-label"><i class="fas fa-asterisk text-red"></i> Telefono</label>
                         <div class="col-lg-9">
                             <input class="form-control" type="tel" id="telefono_user" name="telefono_user" required>
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Escriba un telefono</div>
                         </div>
                     </div>
                     <div class="form-group row">
