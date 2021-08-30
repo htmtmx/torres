@@ -231,36 +231,39 @@
     </style>
 </head>
 <body>
-<h1>Responsive Table CSS</h1>
+<h1>Resumen de Contrato de Compra-Venta</h1>
 <hr>
 <div class="responsive-tables ie7 ie8 ie9">
     <table>
         <thead>
         <tr>
-            <th class="col-1 numeric">Fee Plan Detail</th>
-            <th class="col-2 numeric">Rush Unlimited Plan</th>
-            <th class="col-3 numeric">Monthly Plan</th>
-            <th class="col-4 numeric">Pay As You Go Plan</th>
-            <th class="col-5 numeric">When are you Charged?</th>
+            <th class="col-1 numeric" colspan="5">Infromación de la Compra</th>
         </tr>
         </thead>
         <tbody>
         <tr class="section">
-            <td colspan="5">GET STARTED FEES</td>
+            <td colspan="5">Datos del Vehiculo</td>
         </tr>
         <tr class="main-group">
-            <td class="subheading">One-Time Card Fee</td>
-            <td data-title="Rush Unlimited Plan">$3.95 - $9.95</td>
-            <td data-title="Monthly Plan">$3.95 - $9.95</td>
-            <td data-title="Pay As You Go Plan">$3.95 - $9.95</td>
-            <td data-title="When are you Charged?" class="downplay">When you first load money onto your card.</td>
+            <td class="subheading">Descripción</td>
+            <td data-title="Marca">Nissan</td>
+            <td data-title="Modelo">Versa</td>
+            <td data-title="Año">2015</td>
+            <td data-title="Color">Rojo</td>
         </tr>
         <tr class="main-group">
-            <td class="subheading">One-Time Card Activation Fee</td>
-            <td colspan="4" class="highlight basic-description">No Fee for all Plan Options</td>
+            <td class="subheading">NIV</td>
+            <td colspan="4" class="highlight basic-description">15156156156</td>
+        </tr>
+        <tr class="main-group">
+            <td class="subheading">Kilimetraje</td>
+            <td data-title="Marca">Nissan</td>
+            <td data-title="Modelo">Versa</td>
+            <td data-title="Año">2015</td>
+            <td data-title="Color">Rojo</td>
         </tr>
         <tr class="section">
-            <td colspan="5">MONTHLY USAGE FEES</td>
+            <td colspan="5">Extras</td>
         </tr>
         <tr class="main-group">
             <td class="subheading">Monthly Fee (With direct deposit)</td>

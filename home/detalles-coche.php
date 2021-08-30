@@ -433,7 +433,6 @@ $noCoche = $_GET['idCoche'];
             </div>
         </div>
         <?php include './include/footer.php'; ?>
-        <?php include './modals/modal-view-pdf.php'; ?>
         <?php include './modals/modal-add-abono.php'; ?>
         <?php include './modals/modal-add-foto-coche.php'; ?>
         <?php include './modals/modal-add-caracteristica.php'; ?>
@@ -471,7 +470,7 @@ $noCoche = $_GET['idCoche'];
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this)
-        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-title').text('Abonar al Credito: ' + recipient)
         modal.find('.abono').val(recipient)
     })
 </script>

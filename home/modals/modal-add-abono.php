@@ -11,9 +11,7 @@
             </div>
             <form id="frm-add-abono-contrato">
                 <div class="modal-body">
-                        <div class="form-group">
-                            <input type="text" class="form-control abono" id="noContrato" name="noContrato">
-                        </div>
+                            <input type="hidden" class="form-control abono" id="noContrato" name="noContrato">
                         <div class="form-group">
                             <label for="montoPago" class="col-form-label">Monto del Abono:</label>
                             <input class="form-control" type="number" id="montoPago" name="montoPago" min="0" max="1000000">

@@ -11,10 +11,20 @@ function getTiposArchivo() {
          let obj_result = JSON.parse(response);
 
          let template = "";
+         let tmpDV = `<optgroup label="Documentos de Vehiculo">`;
+         let tmpDC = `<optgroup label="Documentos para Contratos">`;
          obj_result.forEach((obj) => {
-            template += `<option value="${obj.id_tipo_archivo}">${obj.nombre}</option> `;
-
+            // Vehiculos-0 Contratos -1
+            if (obj.prioridad>0){
+               tmpDC += `<option value="${obj.id_tipo_archivo}">${obj.nombre}</option> `;
+            }
+            else{
+               tmpDV += `<option value="${obj.id_tipo_archivo}">${obj.nombre}</option> `;
+            }
          });
+         tmpDV += `</optgroup>`;
+         tmpDC += `</optgroup>`;
+         template += tmpDV + tmpDC;
          $("#tipoArchivoCarro").html(template);
          $("#tipoArchivoContrato").html(template);
       }

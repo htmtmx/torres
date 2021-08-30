@@ -353,14 +353,6 @@ function getTemplateContratoVenta(contrato) {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <hr class="my-4">
-                                                    <!-- Description -->
-                                                    <div class="col-lg-12 col-auto text-right">
-                                                        <span class="d-flex position-absolute w-100" id="mensajeUpdateCliente"></span>
-                                                        <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Mas Detalles</button>
-                                                        <span class="d-flex position-absolute w-100" id="mensajeUpdateCliente"></span>
-                                                        <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Imprimir</button>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -398,14 +390,6 @@ function getTemplateContratoVenta(contrato) {
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <div class="form-group row">
-                                                                        <label for="staticEmail" class="col-sm-4 col-form-label">Pagos Realizados: </label>
-                                                                        <div class="col-sm-8">
-                                                                            <input type="text" readonly="" name="telefono" id="telefono" class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group row">
                                                                         <label for="staticEmail" class="col-sm-4 col-form-label">Saldo: </label>
                                                                         <div class="col-sm-8">
                                                                             <input type="text" readonly="" name="telefono" id="telefono" class="form-control" value="${contrato.saldo}">
@@ -413,13 +397,6 @@ function getTemplateContratoVenta(contrato) {
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <hr class="my-4">
-                                                        <!-- Description -->
-                                                        <div class="col-lg-12 col-auto text-right">
-                                                            <span class="d-flex position-absolute w-100" id="mensajeUpdateCliente"></span>
-                                                            <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Mas Detalles</button>
-                                                            <span class="d-flex position-absolute w-100" id="mensajeUpdateCliente"></span>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -589,12 +566,6 @@ function getTemplateContratoAdq(contrato) {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <hr class="my-4">
-                                                        <!-- Description -->
-                                                        <div class="col-lg-12 col-auto text-right">
-                                                            <span class="d-flex position-absolute w-100" id="mensajeUpdateCliente"></span>
-                                                            <button type="submit" class="btn btn-primary"><i class="fas fa-print"></i> Imprimir</button>
-                                                        </div>
                                                     </form>
                                                 </div>
                                             </div>
@@ -645,7 +616,7 @@ function buildTblAbonosabonos(abonos) {
     abonos.forEach((abono)=>{
         contador++;
         templateAbonos += `
-              <tr>
+              <tr idAbono="${abono.folio}" >
                 <th scope="row">${contador}</th>
                 <td>${abono.fecha_registro}</td>
                 <td>$ ${abono.monto}</td>
@@ -667,16 +638,12 @@ function buildTblPagos(pagos) {
     pagos.forEach((pago)=>{
         let statusPago = pago.estatus_pago == 1 ? "PAGADO" : "PENDIENTE";
         let tipoStatusPago = pago.estatus_pago == 1 ? "bg-success" : "bg-warning";
-        let templateEstatusPago =   `
-                                <i class="${tipoStatusPago}"></i>
-                    <span class="status">${statusPago}</span>
-                                `;
+        let templateEstatusPago =   `<i class="${tipoStatusPago}"></i><span class="status">${statusPago}</span>`;
         contador++;
         let abonos = buildTblAbonosabonos(pago[0]);
-        alert
         template += `
               <tr data-toggle="collapse" data-target="#collapse${contador}" aria-expanded="true" aria-controls="collapse${contador}" class="mano">
-                <th scope="row" >
+                <th scope="row">
                     ${pago.concepto}
                 </th>
                 <td>
@@ -686,7 +653,7 @@ function buildTblPagos(pagos) {
                   $  ${pago.total}
                 </td>
                 <td>                    
-                   ${pago.saldo}
+                  $ ${pago.saldo}
                 </td>
                 <td>
                   <span class="badge badge-dot mr-4" id="status_pago" name="status_pago">

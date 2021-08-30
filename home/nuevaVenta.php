@@ -83,7 +83,7 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <input type="text" name="noCoche" id="noCoche" readonly value="<?php echo $idCoche;?>">
+                                                                    <input type="hidden" name="noCoche" id="noCoche" readonly value="<?php echo $idCoche;?>">
                                                                     <div class="pl-lg-4">
                                                                         <div class="row">
                                                                             <div class="col-lg-6">
@@ -402,7 +402,7 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                         <div class="card-header">
                                                             <div class="row align-items-center">
                                                                 <div class="col-12">
-                                                                    <h3 class="mb-0">SE HA REGISTRADO UN NUEVO VEHICULO</h3>
+                                                                    <h3 class="mb-0">SE HA REGISTRADO UNA VENTA DE VEHICULO</h3>
                                                                 </div>
                                                             </div>
                                                         </div>
