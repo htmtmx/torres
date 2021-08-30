@@ -4,9 +4,6 @@ $(document).ready(function(){
     cargaPersonas();
 });
 
-window.onload = function() {
-    getModelos(PRIMER_MARCA);
-};
 
 /***************FUNCIONES PARA OBTENER MARCAS Y MODELOS ******************/
 function getMarcas() {
@@ -29,6 +26,7 @@ function getMarcas() {
                 }
             );
             $("#marcaCoche").html(template);
+            getModelos(PRIMER_MARCA);
         },
     });
 }
@@ -45,7 +43,6 @@ try {
             },
             success: function (response) {
                 let obj_result = JSON.parse(response);
-                console.log(obj_result);
                 let template = "";
                 obj_result.forEach((obj_result) =>
                 {

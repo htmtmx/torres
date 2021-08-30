@@ -271,6 +271,96 @@
                                                                     </div>
                                                                     <hr class="my-4">
                                                                     <!-- Address -->
+                                                                    <h6 class="heading-small text-muted mb-4">Dirección</h6>
+                                                                    <div class="pl-lg-4">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-8">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-control-label" for="calle">Calle</label>
+                                                                                    <input type="text" id="calle" name="calle" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-2">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-control-label" for="noExtEmp">No Ext.</label>
+                                                                                    <input type="text" id="noExtEmp" name="noExtEmp" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-2">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-control-label" for="noIntEmp">No Int.</label>
+                                                                                    <input type="text" id="noIntEmp" name="noIntEmp" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-control-label" for="coloniaEmpr">Colonia</label>
+                                                                                    <input type="text" id="coloniaEmpr" name="coloniaEmpr" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-control-label" for="municipio">Municipio</label>
+                                                                                    <input type="text" id="municipio" name="municipio" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-2">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-control-label" for="correo">CP</label>
+                                                                                    <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-control-label" for="correo">Estado</label>
+                                                                                    <select name="estadoEmp" id="estadoEmp" class="form-control">
+                                                                                        <option value="AGU">Aguascalientes</option>
+                                                                                        <option value="BCN">Baja California</option>
+                                                                                        <option value="BCS">Baja California Sur</option>
+                                                                                        <option value="CAM">Campeche</option>
+                                                                                        <option value="CHP">Chiapas</option>
+                                                                                        <option value="CHH">Chihuahua</option>
+                                                                                        <option value="CDMX">Ciudad de México</option>
+                                                                                        <option value="COA">Coahuila</option>
+                                                                                        <option value="COL">Colima</option>
+                                                                                        <option value="DUR">Durango</option>
+                                                                                        <option value="MEX">Estado de México</option>
+                                                                                        <option value="GUA">Guanajuato</option>
+                                                                                        <option value="GRO">Guerrero</option>
+                                                                                        <option value="HID">Hidalgo</option>
+                                                                                        <option value="JAL">Jalisco</option>
+                                                                                        <option value="MIC">Michoacán</option>
+                                                                                        <option value="MOR">Morelos</option>
+                                                                                        <option value="NAY">Nayarit</option>
+                                                                                        <option value="NLE">Nuevo León</option>
+                                                                                        <option value="OAX">Oaxaca</option>
+                                                                                        <option value="PUE">Puebla</option>
+                                                                                        <option value="QUE">Querétaro</option>
+                                                                                        <option value="ROO">Quintana Roo</option>
+                                                                                        <option value="SLP">San Luis Potosí</option>
+                                                                                        <option value="SIN">Sinaloa</option>
+                                                                                        <option value="SON">Sonora</option>
+                                                                                        <option value="TAB">Tabasco</option>
+                                                                                        <option value="TAM">Tamaulipas</option>
+                                                                                        <option value="TLA">Tlaxcala</option>
+                                                                                        <option value="VER">Veracruz</option>
+                                                                                        <option value="YUC">Yucatán</option>
+                                                                                        <option value="ZAC">Zacatecas</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-control-label" for="referencias">Referencias</label>
+                                                                                    <input type="text" id="referencias" name="referencias" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                     <h6 class="heading-small text-muted mb-4">Otros datos</h6>
                                                                     <div class="pl-lg-4">
                                                                         <div class="row">
@@ -330,96 +420,6 @@
                                                                                 <div class="form-group d-none" id="fechaRegistroCliente">
                                                                                     <label class="form-control-label" for="fecha_registro_Cliente">Fecha Registro</label>
                                                                                     <input type="text" id="fecha_registro_Cliente" name="fecha_registro_Cliente" class="form-control" placeholder="Falló" disabled="">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <h6 class="heading-small text-muted mb-4">Dirección</h6>
-                                                                    <div class="pl-lg-4">
-                                                                        <div class="row">
-                                                                            <div class="col-lg-8">
-                                                                                <div class="form-group">
-                                                                                    <label class="form-control-label" for="calle">Calle</label>
-                                                                                    <input type="text" id="calle" name="calle" class="form-control" required="">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-2">
-                                                                                <div class="form-group">
-                                                                                    <label class="form-control-label" for="noExtEmp">No Ext.</label>
-                                                                                    <input type="text" id="noExtEmp" name="noExtEmp" class="form-control">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-2">
-                                                                                <div class="form-group">
-                                                                                    <label class="form-control-label" for="noIntEmp">No Int.</label>
-                                                                                    <input type="text" id="noIntEmp" name="noIntEmp" class="form-control">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="form-control-label" for="coloniaEmpr">Colonia</label>
-                                                                                    <input type="text" id="coloniaEmpr" name="coloniaEmpr" class="form-control" required="">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="form-control-label" for="municipio">Municipio</label>
-                                                                                    <input type="text" id="municipio" name="municipio" class="form-control" required="">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-lg-2">
-                                                                                <div class="form-group">
-                                                                                    <label class="form-control-label" for="correo">CP</label>
-                                                                                    <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control" required="">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-4">
-                                                                                <div class="form-group">
-                                                                                    <label class="form-control-label" for="correo">Estado</label>
-                                                                                    <select name="estadoEmp" id="estadoEmp" class="form-control">
-                                                                                        <option value="AGU">Aguascalientes</option>
-                                                                                        <option value="BCN">Baja California</option>
-                                                                                        <option value="BCS">Baja California Sur</option>
-                                                                                        <option value="CAM">Campeche</option>
-                                                                                        <option value="CHP">Chiapas</option>
-                                                                                        <option value="CHH">Chihuahua</option>
-                                                                                        <option value="CDMX">Ciudad de México</option>
-                                                                                        <option value="COA">Coahuila</option>
-                                                                                        <option value="COL">Colima</option>
-                                                                                        <option value="DUR">Durango</option>
-                                                                                        <option value="MEX">Estado de México</option>
-                                                                                        <option value="GUA">Guanajuato</option>
-                                                                                        <option value="GRO">Guerrero</option>
-                                                                                        <option value="HID">Hidalgo</option>
-                                                                                        <option value="JAL">Jalisco</option>
-                                                                                        <option value="MIC">Michoacán</option>
-                                                                                        <option value="MOR">Morelos</option>
-                                                                                        <option value="NAY">Nayarit</option>
-                                                                                        <option value="NLE">Nuevo León</option>
-                                                                                        <option value="OAX">Oaxaca</option>
-                                                                                        <option value="PUE">Puebla</option>
-                                                                                        <option value="QUE">Querétaro</option>
-                                                                                        <option value="ROO">Quintana Roo</option>
-                                                                                        <option value="SLP">San Luis Potosí</option>
-                                                                                        <option value="SIN">Sinaloa</option>
-                                                                                        <option value="SON">Sonora</option>
-                                                                                        <option value="TAB">Tabasco</option>
-                                                                                        <option value="TAM">Tamaulipas</option>
-                                                                                        <option value="TLA">Tlaxcala</option>
-                                                                                        <option value="VER">Veracruz</option>
-                                                                                        <option value="YUC">Yucatán</option>
-                                                                                        <option value="ZAC">Zacatecas</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="form-control-label" for="referencias">Referencias</label>
-                                                                                    <input type="text" id="referencias" name="referencias" class="form-control" required="">
                                                                                 </div>
                                                                             </div>
                                                                         </div>

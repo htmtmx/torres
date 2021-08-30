@@ -63,7 +63,7 @@ function construyeGridCochesCatalogo(listaCoches) {
                                 ${coche.marca_coche + " " + coche.modelo_coche + " " + coche.anio}
                             </h5>
                             <div class="h5 font-weight-300">
-                                <i class="ni location_pin mr-2"></i>Placa: <strong class="heading">NMJVN1561</strong>(${coche.entidad_placa})
+                                <i class="ni location_pin mr-2"></i>Placa: <strong class="heading">${coche.placa}</strong>(${coche.entidad_placa})
                             </div>
                         </div>
                         <div class="row">

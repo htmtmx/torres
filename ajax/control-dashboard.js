@@ -191,18 +191,13 @@ function construyetablaCoches(listaCoches) {
                 
             </td>
             <td>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Acciones
+                <a href="./detalles-coche.php?idCoche=${obj.no_vehiculo}">
+                    <button class="btn btn-icon btn-secondary" type="button">
+                            <span class="btn-inner--icon">
+                                <i class="fas fa-eye text-blue"></i> Ver más</a>
+                            </span>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#"><i class="fas fa-dollar-sign text-green"></i> Vender</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir
-                            Archivo</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver mas</a>
-                    </div>
-                </div>
+                </a>
             </td>
         </tr>
             `;
