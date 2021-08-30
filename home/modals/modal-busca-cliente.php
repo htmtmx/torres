@@ -43,7 +43,7 @@
                                         <th scope="col"></th>
                                     </tr>
                                     </thead>
-                                    <tbody id="tbl-clientes">
+                                    <tbody id="tbl-clientes-contratos">
                                     <!-- AJAX RESPONSE TBL CLIENTES TODOS LOS CLIENTES ACTIVOS-->
                                     </tbody>
                                 </table>

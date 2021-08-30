@@ -33,8 +33,14 @@ function consultaCliente($idCliente)
 {
     include_once "../model/CLIENTES.php";
     $objCliente = new CLIENTES();
-    $result = $objCliente->queryconsultaCliente($idCliente);
-    return json_encode($result);
+    $personas = $objCliente->queryconsultaCliente($idCliente);
+    $dataPersonas=array();
+    foreach ($personas as $persona){
+        $arrayDireccion = listDireccionesCliente($persona['no_cliente']);
+        array_push($persona,$arrayDireccion);
+        array_push($dataPersonas,$persona);
+    }
+    return json_encode($dataPersonas);
 }
 
 /********************************************************************
@@ -90,5 +96,5 @@ function listDireccionesCliente($noCliente){
     $objCliente = new CLIENTES();
     $objCliente->setNoCliente($noCliente);
     $result = $objCliente->getListDirecciones();
-    return json_encode($result);
+    return $result;
 }

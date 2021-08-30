@@ -89,9 +89,6 @@ function cargaDatosCoche(coche) {
     $("#precio_credito").val(coche.precio_credito);
     $('#buscaVechiculoModal').modal('hide');
 }
-/******** FUNCION PARA TRAER DATOS DE COCHE SELECCIONADO EN TABLA ******/
-
-
 
 /******** FUNCION PARA TRAER Y GENERAR TABLAS DE CLIENTES ACTIVOS ******/
 
@@ -121,9 +118,12 @@ function limpiarCliente() {
     $("#tipo_cliente").val("");
     $("#fecha_registro_Cliente").val("");
     $("#nombre").focus();
+    limpiarDireccion();
 }
 
 function cargarDatosPersona(persona) {
+    let dir = persona[0][0];
+    console.log(dir);
     $("#fechaRegistroCliente").removeClass("d-none");
     $("#no_cliente").val(persona.no_cliente);
     $("#nombre").val(persona.nombre);
@@ -139,7 +139,34 @@ function cargarDatosPersona(persona) {
     $("#tipo_cliente").val(persona.tipo_cliente);
     $("#fecha_registro_Cliente").val(persona.fecha_registro);
     $('#buscaClienteModal').modal('hide');
+    if(persona[0].length>0){
+        // DIRECCION
+        $("#id_direccion").val(dir.id_direccion);
+        $("#calle").val(dir.calle);
+        $("#noExtEmp").val(dir.no_ext);
+        $("#noIntEmp").val(dir.no_int);
+        $("#coloniaEmpr").val(dir.colonia);
+        $("#municipio").val(dir.municipio);
+        $("#cpEmpr").val(dir.CP);
+        $("#estadoEmp").val(dir.estado_republica);
+        $("#referencias").val(dir.referencias);
+    }else {
+        limpiarDireccion();
+    }
+
 }
+
+function limpiarDireccion(){
+    $("#id_direccion").val(0);
+    $("#calle").val("");
+    $("#noExtEmp").val("");
+    $("#noIntEmp").val("");
+    $("#coloniaEmpr").val("");
+    $("#municipio").val("");
+    $("#cpEmpr").val("");
+    $("#referencias").val("");
+}
+
 
 function cargaPersonas() {
     $.ajax({
@@ -179,7 +206,7 @@ function cargaPersonas() {
                     </tr>
                 `;
             });
-            $("#tbl-clientes").html(template);
+            $("#tbl-clientes-contratos").html(template);
         },
     });
 }
@@ -188,7 +215,6 @@ function cargaPersonas() {
 $("#forma_pago").change(function(){
     var tipo_pago = document.getElementById("forma_pago").value;
     if(tipo_pago=="1"){
-        $("#selectedCredito").removeClass("d-none");
         $("#selectedCredito").removeClass("d-none");
     }else{
         $("#selectedCredito").addClass("d-none");

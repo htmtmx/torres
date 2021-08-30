@@ -134,16 +134,12 @@ $("#frm-add-caracteristica").on("submit", function(e){
         processData: false,
         success: function (response)
         {
-            console.log(response);
-            let obj_result = JSON.parse(response);
-            console.log(obj_result);
-            let mje= builAlertaDinamica(obj_result);
             consultaDetallesCoche();
-            $("#mensajeAddCaracteristica").html(mje);
         },
     })
     e.preventDefault();
     $('#frm-add-caracteristica').trigger('reset');
+    $('#addCaracteristicas').modal('hide');
 
 });
 

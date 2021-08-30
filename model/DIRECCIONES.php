@@ -196,7 +196,7 @@ class DIRECCIONES extends CONEXION implements I_DIRECCIONES
     {
         $query = "SELECT `id_direccion`, `no_cliente_fk`, `calle`, `no_ext`, `no_int`, 
         `colonia`, `municipio`, `estado_republica`, `CP`, `referencias`, `estado` 
-        FROM `direcciones` WHERE `no_cliente_fk`= ".$no_cliente;
+        FROM `direcciones` WHERE `no_cliente_fk`= ".$no_cliente." LIMIT 1 ";
         $this->connect();
         $result = $this->getData($query);
         $this->close();

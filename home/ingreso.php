@@ -276,6 +276,7 @@
                                                                         <div class="row">
                                                                             <div class="col-lg-8">
                                                                                 <div class="form-group">
+                                                                                    <input type="hidden" id="id_direccion" name="id_direccion">
                                                                                     <label class="form-control-label" for="calle">Calle</label>
                                                                                     <input type="text" id="calle" name="calle" class="form-control">
                                                                                 </div>
@@ -310,13 +311,13 @@
                                                                         <div class="row">
                                                                             <div class="col-lg-2">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="correo">CP</label>
+                                                                                    <label class="form-control-label" for="cpEmpr">CP</label>
                                                                                     <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="correo">Estado</label>
+                                                                                    <label class="form-control-label" for="estadoEmp">Estado</label>
                                                                                     <select name="estadoEmp" id="estadoEmp" class="form-control">
                                                                                         <option value="AGU">Aguascalientes</option>
                                                                                         <option value="BCN">Baja California</option>

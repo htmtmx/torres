@@ -223,8 +223,13 @@ function creaContratoCompra($params)
     $resultCoche = $COCHE->queryaddCoche();
     $VENDEDOR = construcObjtCliente($params);
     $resultVendedor = $params['no_cliente']>0 ? $VENDEDOR->queryupdateCliente(): $VENDEDOR->queryaddCliente();
+    if($resultVendedor){
+        $DIRECCION = constructObjDireccion($params, $VENDEDOR->getNoCliente());
+        $resultDireccion = $params['id_dir']>0? $DIRECCION->queryupdateDireccion(): $DIRECCION->queryaddDireccion();
+    }
 
-    if($resultVendedor && $resultCoche){
+
+    if($resultVendedor && $resultCoche && $resultDireccion){
         // 1 - C_COMPRA 0-Contrato_Vta
         $tipoContrato = 1; // Compra de vehiculo
         $plazos = 1; // Porque defino que ya lo pago TORRES
@@ -414,6 +419,23 @@ function construcObjtCliente($params){
     $obj_user->setTipoCliente($params['tipo_cliente']);
     //REGRESAMOS EL OBJETO COMPLETO
     return $obj_user;
+}
+
+function constructObjDireccion($params,$noCliente){
+ include_once "../model/DIRECCIONES.php";
+ $direccion = new DIRECCIONES();
+ $idDir = $params['id_dir']>0 ? $params['id_dir']: null;
+ $direccion->setIdDireccion($idDir);
+ $direccion->setNoClienteFk($noCliente);
+ $direccion->setCalle($params['calle']);
+ $direccion->setNoExt($params['noExt']);
+ $direccion->setNoInt($params['noInt']);
+ $direccion->setColonia($params['colonia']);
+ $direccion->setMunicipio($params['municipio']);
+ $direccion->setCP($params['cp']);
+ $direccion->setEstado($params['estado']);
+ $direccion->setReferencias($params['referencias']);
+ return $direccion;
 }
 
 

@@ -24,12 +24,23 @@ $params = [
     "telefono" => $_POST['telefono'],
     "celular" => $_POST['celular'],
     "subscripcion" => "0",
+    //DIRECCIÓN DATOS
+    "id_dir"=> $_POST['id_direccion'],
+    "calle"=> $_POST['calle'],
+    "noExt"=> $_POST['noExtEmp'],
+    "noInt"=> $_POST['noIntEmp'],
+    "colonia"=> $_POST['coloniaEmpr'],
+    "municipio"=> $_POST['municipio'],
+    "cp"=> $_POST['cpEmpr'],
+    "estado"=> $_POST['estadoEmp'],
+    "referencias"=> $_POST['referencias'],
+    //OTROS DATOS
     "empresa" => $_POST['empresa'],
     "rfc" => $_POST['rfcCliente'],
     "medio_identificacion" => $_POST['medio_identificación'],
     "folio" => $_POST['folio'],
     "tipo_cliente" => $_POST['tipo_cliente'],
-    //CONTRATO DATOS
+
     //tuipo de pago CONTADO -> 0 APARTADO -> 0 CREDITO -> 1
     "forma_pago" => $_POST['forma_pago_compra'],
     "total" => $_POST['total']
