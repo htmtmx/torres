@@ -276,7 +276,7 @@
                                                                         <div class="row">
                                                                             <div class="col-lg-8">
                                                                                 <div class="form-group">
-                                                                                    <input type="hidden" id="id_direccion" name="id_direccion">
+                                                                                    <input type="hidden" id="id_dir" name="id_dir">
                                                                                     <label class="form-control-label" for="calle">Calle</label>
                                                                                     <input type="text" id="calle" name="calle" class="form-control">
                                                                                 </div>

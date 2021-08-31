@@ -141,7 +141,7 @@ function cargarDatosPersona(persona) {
     $('#buscaClienteModal').modal('hide');
     if(persona[0].length>0){
         // DIRECCION
-        $("#id_direccion").val(dir.id_direccion);
+        $("#id_dir").val(dir.id_direccion);
         $("#calle").val(dir.calle);
         $("#noExtEmp").val(dir.no_ext);
         $("#noIntEmp").val(dir.no_int);
@@ -157,7 +157,7 @@ function cargarDatosPersona(persona) {
 }
 
 function limpiarDireccion(){
-    $("#id_direccion").val(0);
+    $("#id_dir").val(0);
     $("#calle").val("");
     $("#noExtEmp").val("");
     $("#noIntEmp").val("");

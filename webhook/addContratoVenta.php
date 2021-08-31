@@ -17,6 +17,15 @@ $params = [
     "tipo_cliente" => $_POST['tipo_cliente'],
     "subscripcion" => "1",
     //DATOS DIRECCION
+    "id_dir"=> $_POST['id_dir'],
+    "calle"=> $_POST['calle'],
+    "noExt"=> $_POST['noExtEmp'],
+    "noInt"=> $_POST['noIntEmp'],
+    "colonia"=> $_POST['coloniaEmpr'],
+    "municipio"=> $_POST['municipio'],
+    "cp"=> $_POST['cpEmpr'],
+    "estado"=> $_POST['estadoEmp'],
+    "referencias"=> $_POST['referencias'],
     //Añadir o actualizar Direccion de un cliente
     //CONTRATO DATOS
     "plazo" => $_POST['plazo'],

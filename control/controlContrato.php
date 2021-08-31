@@ -274,9 +274,10 @@ function creaContratoVenta($params)
 {
     $COMPRADOR = construcObjtCliente($params);
     $resultComprador = $params['no_cliente']>0 ? $COMPRADOR->queryupdateCliente() : $COMPRADOR->queryaddCliente();
-
-    if ($resultComprador) {
-        //Variables ´poara copnstruir obj Contrato
+    $DIRECCION = constructObjDireccion($params,$COMPRADOR->getNoCliente());
+    $resultDireccion = $params['id_dir']>0? $DIRECCION->queryupdateDireccion(): $DIRECCION->queryaddDireccion();
+    if ($resultComprador && $resultDireccion) {
+        //Variables ´poara construir obj Contrato
         /*$formaPago,$noCliente,$noVehiculo, ,
                               $plazo,$fechaPrimerPago, $totalCoche, $enganche, $estatusContrato*/
         $formaPago = $params['forma_pago'];
@@ -424,7 +425,7 @@ function construcObjtCliente($params){
 function constructObjDireccion($params,$noCliente){
  include_once "../model/DIRECCIONES.php";
  $direccion = new DIRECCIONES();
- $idDir = $params['id_dir']>0 ? $params['id_dir']: null;
+ $idDir = $params['id_dir']!=0 ? $params['id_dir']: null;
  $direccion->setIdDireccion($idDir);
  $direccion->setNoClienteFk($noCliente);
  $direccion->setCalle($params['calle']);

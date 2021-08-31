@@ -25,7 +25,7 @@ $params = [
     "celular" => $_POST['celular'],
     "subscripcion" => "0",
     //DIRECCIÓN DATOS
-    "id_dir"=> $_POST['id_direccion'],
+    "id_dir"=> $_POST['id_dir'],
     "calle"=> $_POST['calle'],
     "noExt"=> $_POST['noExtEmp'],
     "noInt"=> $_POST['noIntEmp'],
@@ -45,6 +45,7 @@ $params = [
     "forma_pago" => $_POST['forma_pago_compra'],
     "total" => $_POST['total']
 ];
+echo $params['id_dir'];
 include_once "../control/controlContrato.php";
 echo creaContratoCompra($params) ? "Se ha creado un contrato de Compra": "error al crear contrato";
 /*
