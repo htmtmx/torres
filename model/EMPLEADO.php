@@ -19,6 +19,16 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
     private $nivel_acceso;
     private $estatus;
 
+    private $nombreCompleto;
+
+    /**
+     * @return mixed
+     */
+    public function getNombreCompleto()
+    {
+        return $this->getNombre(). " ". $this->getApaterno()." ". $this->getAmaterno();
+    }
+
     /**
      * @return mixed
      */

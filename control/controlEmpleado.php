@@ -54,9 +54,11 @@ function addEmpleado($nombre,$app,$apm,$tel,$cel,$correo,$puesto,$sexo,$acceso)
     $objEmpleado->setNivelAcceso($acceso);
     $objEmpleado->setEstatus(1);
     $objEmpleado->setPw(md5($pw));
+    $empresa = $_SESSION['nombre_empresa'];
     if($objEmpleado->queryaddEmpleado()){
         include_once "controlCorreos.php";
-        return enviaCorreo($pw);
+        //$correoSend,  $pwtmp, $nombre, $empresaName
+        return enviaCorreoAddUser($objEmpleado->getCorreoUser(),$pw,$objEmpleado->getNombreCompleto(),$empresa);
     }
     return false;
 }
@@ -108,7 +110,14 @@ function updateEmpleado($nombre,$apaterno_user,$amaterno_user,$telefono_user,$ce
     $objEmpleado->setCelular($celular_user);
     $objEmpleado->setSexo($sexo_user);
     $objEmpleado->setCorreoUser($correo_user);
-    return $objEmpleado->queryupdateEmpleado();
+
+    if($objEmpleado->queryupdateEmpleado()){
+        $_SESSION['usuario']        = $objEmpleado->getNombre();
+        $_SESSION['apaterno']       = $objEmpleado->getApaterno();
+        $_SESSION['amaterno']       = $objEmpleado->getAmaterno();
+        $_SESSION['correo_user']    = $objEmpleado->getCorreoUser();
+        return true;
+    }
 }
 
 function verficaUsuarioPw($pwa,$pwn,$pwc){
@@ -119,7 +128,7 @@ function verficaUsuarioPw($pwa,$pwn,$pwc){
     $obj_empleado->setNoEmpleado($_SESSION['no_empleado']);
     $md5PwActual = md5($pwa);
     $obj_empleado->setPw($md5PwActual);
-    if($obj_empleado->queryconsultaEmpleado($obj_empleado->getNoEmpleado())){
+    if($obj_empleado->queryverificaCountUser()){
         if($pwa!=$pwn){
             $md5PwNew = md5($pwn);
             $obj_empleado->setPw($md5PwNew);

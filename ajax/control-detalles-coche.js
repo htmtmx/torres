@@ -22,7 +22,6 @@ function consultaDetallesCoche(){
             //console.log(response);
             let obj_result = JSON.parse(response);
             let obj_carro= obj_result[0];
-            console.log("OBJETO CARRO");
             console.log(obj_carro);
             cargaDatosCarro(obj_carro);
             $("#carouselCocheFotos").html(construyeCarouselFotosCoche(obj_carro[1]));
@@ -35,6 +34,7 @@ function consultaDetallesCoche(){
 }
 
 function cargaDatosCarro(obj_carro){
+
     $("#idCoche").val(obj_carro.no_vehiculo);
     $("#precioLista").html("$"+obj_carro.precio_contado);
     let credito = obj_carro.opc_credito>0 ? "$"+obj_carro.precio_credito : "NA";
@@ -45,6 +45,7 @@ function cargaDatosCarro(obj_carro){
     consultaModelos(obj_carro.id_marca, obj_carro.id_modelo );
     $("#año").val(obj_carro.anio);
     $("#placa").val(obj_carro.placa);
+    $("#PlacaInfo").html(obj_carro.placa);
     $("#color").val(obj_carro.color);
     $("#kilometraje").val(obj_carro.kilometros);
     $("#transmision").val(obj_carro.transimision);
@@ -62,6 +63,28 @@ function cargaDatosCarro(obj_carro){
     //$("#opcCredito").html(obj_carro.opc_credito.val == 1 ? "checked":"unchecked");
     $("#precioListaCoche").val(obj_carro.precio_contado);
     $("#precioCreditoCoche").val(obj_carro.precio_credito);
+
+    let btnAccionCoche = '';
+    switch (obj_carro.estatus) {
+        case "0":
+            btnAccionCoche = `
+                            <a href="./nuevaVenta.php?idCoche=${obj_carro.no_vehiculo}">
+                            <button type="button" class="btn btn-success">
+                                <i class="fas fa-dollar-sign text-white"></i> Vender
+                            </button></a>`;
+            break;
+        case "1":
+            btnAccionCoche = `<button type="button" class="btn btn-danger" onclick="hideCoche(${obj_carro.no_vehiculo});">
+                                <i class="fas fa-eye-slash"></i> Ocultar
+                            </button>`;
+            break;
+        case "-1":
+            btnAccionCoche = `<button type="button" class="btn btn-alert">
+                                <i class="fas fa-undo"></i> Liberar
+                            </button>`;
+            break;
+    }
+    $("#containerBotonCoche").html(btnAccionCoche);
 }
 
 function construyeCarouselFotosCoche(docs){
@@ -87,7 +110,6 @@ function construyeCarouselFotosCoche(docs){
             let acitvPag = contador < 1 ? active:"";
             let link = foto.length < 1 ? "https://hescorp.com.mx/wp-content/themes/consultix/images/no-image-found-360x250.png" : foto.path;
             templatePaginador += `<li data-target="#carouselCocheFotos" data-slide-to="${contador}"></li>`;
-
             contenedorFotos += `
                                 <div class="carousel-item ${contador==0?activeFoto:""}">
                                     <img class="d-block w-100" src="${link}" alt="First slide">
@@ -96,6 +118,7 @@ function construyeCarouselFotosCoche(docs){
             contador++;
         }
     );
+    $("#countFotos").html(contador);
     templatePaginador+= `</ol>`;
     contenedorFotos+=`</div>`
     template = templatePaginador+ contenedorFotos;
@@ -219,7 +242,6 @@ function construyeCocheTablaDocumentos(docs){
             }
         }
     );
-    console.log(docs);
     let template="";
     archivos.forEach((archivo)=>{
         let privado= archivo.nivel_acceso==0 ? `<i class="fas fa-lock text-red"></i>`:"";
@@ -862,4 +884,8 @@ try {
     }
 }catch (e) {
 
+}
+
+function hideCoche(parametro) {
+    alert('Ocultar '+parametro);
 }

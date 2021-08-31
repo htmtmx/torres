@@ -20,7 +20,7 @@ $noCoche = $_GET['idCoche'];
 <div class="main-content" id="panel">
     <?php include_once "./include/nav.php"?>
     <!-- Header -->
-    <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(https://cdn.motor1.com/images/mgl/zOvpW/s3/volkswagen-id.4-2021-primera-prueba.jpg); background-size: cover; background-position: center center;">
+    <div id="headerCar" class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(https://cdn.motor1.com/images/mgl/zOvpW/s3/volkswagen-id.4-2021-primera-prueba.jpg); background-size: cover; background-position: center center;">
         <!-- Mask -->
         <span class="mask bg-gradient-default opacity-8"></span>
         <!-- Header container -->
@@ -28,8 +28,8 @@ $noCoche = $_GET['idCoche'];
             <div class="row">
                 <div class="col-lg-7 col-md-10">
                     <h1 class="display-2 text-white" id="nameVehiculo"></h1>
-                    <p class="text-white mt-0 mb-5">
-                        Este coche ya fue vendido, por lo que puede agregar los documentos necesarios para respaldar
+                    <p class="text-white mt-0 mb-5" id="infoCoche">
+
                     </p>
                 </div>
             </div>
@@ -39,16 +39,15 @@ $noCoche = $_GET['idCoche'];
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="./catalogo.php">Catalogo de Coches</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Detalles del Coche</li>
                         </ol>
                     </nav>
                 </div>
-                <div class="col-lg-6 col-auto text-right">
-                    <input type="hidden" id="noCoche" value="<?php echo $noCoche;?>">
+                <input type="hidden" id="noCoche" value="<?php echo $noCoche;?>">
+                <div class="col-lg-6 col-auto text-right" id="containerBotonCoche">
                     <!-- Mandar a JS para predefinir dependiendo del estado del coche-->
-                    <button type="button" class="btn btn-success">
-                        <i class="fas fa-dollar-sign text-white"></i> Vender
-                    </button>
+
                 </div>
             </div>
             <div class="row">
@@ -58,8 +57,8 @@ $noCoche = $_GET['idCoche'];
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Documentos</h5>
-                                    <span class="h1 font-weight-bold mb-0">5</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Placa</h5>
+                                    <span class="h1 font-weight-bold mb-0" id="PlacaInfo"></span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -77,7 +76,7 @@ $noCoche = $_GET['idCoche'];
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Fotos</h5>
-                                    <span class="h1 font-weight-bold mb-0">14</span>
+                                    <span class="h1 font-weight-bold mb-0"id="countFotos"></span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">

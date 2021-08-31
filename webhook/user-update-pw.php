@@ -1,9 +1,9 @@
 <?php
-if(isset($_POST['pwo'])&& isset($_POST['pw']) && isset($_POST['cpw'])){
+if(isset($_POST['pwa'])&& isset($_POST['pwn']) && isset($_POST['pwc'])){
 
-    $pwn = $_POST['pw'];
-    $pwc= $_POST['cpw'];
-    $pwa = $_POST['pwo'];
+    $pwn = $_POST['pwn'];
+    $pwc= $_POST['pwc'];
+    $pwa = $_POST['pwa'];
 
     if($pwn== $pwc){
         include_once "../control/controlEmpleado.php";

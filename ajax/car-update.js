@@ -3,6 +3,7 @@ $("#frm-update-datos-coche").on("submit", function(e){
     var formData = new FormData(document.getElementById("frm-update-datos-coche"));
     formData.append("dato", "valor");
     //formData.append(f.attr("name"), $(this)[0].files[0]);
+
     $.ajax({
         url: "../webhook/car-update.php",
         type: "POST",
@@ -22,6 +23,7 @@ $("#frm-update-datos-coche").on("submit", function(e){
                             </div>
                             `;
             $("#mensajeUpdateCoche").html(template);
+            consultaDetallesCoche();
         },
     })
     e.preventDefault();

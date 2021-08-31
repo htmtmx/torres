@@ -27,6 +27,7 @@
                     <h1 class="display-2 text-white" id ="nombreTitulo"> </h1>
                     <p class="text-white mt-0 mb-5">Modifica tus datos, recuerda que estos datos se imprimen en los contratos que realices</p>
                     <a href="#" class="btn btn-neutral" data-toggle="modal" data-target="#updatepassword"><i class="fas fa-key"></i> Cambiar Contraseña</a>
+
                 </div>
             </div>
         </div>

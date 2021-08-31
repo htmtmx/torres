@@ -37,12 +37,15 @@
                         </div>
                     </div>
                     <hr class="my-4" />
-                    <div class="col-lg-12 col-auto text-right">
-                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <div class="row">
+                        <div class="col-lg-8 col">
+                            <span class="d-flex position-relative w-100" id="mensajeUpdateContraseña"></span>
+                        </div>
+                        <div class="col-lg-4 col-auto text-right">
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </div>
                     </div>
-                    <div class="col-lg-12 col-auto text-right">
-                        <span class="d-flex position-absolute w-100" id="mensajeUpdateContraseña"></span>
-                    </div>
+
                 </form>
             </div>
         </div>
