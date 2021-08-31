@@ -89,7 +89,6 @@
 </body>
 <?php include './include/js.php'; ?>
 </html>
-<script src="../ajax/cliente-list.js"></script>
 <script>
     $(document).ready(function(){
         $("#myInput").on("keyup", function() {

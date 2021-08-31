@@ -63,7 +63,9 @@ function consultaClientes(){
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="dropdown-item btnEliminarCliente"href="#"> <i class="fas fa-trash-alt text-red"></i></a>
+                                            <button type="button" class="btn btn-white btnEliminarCliente">
+                                                <i class="fas fa-trash-alt text-red"></i>
+                                            </button>
                                         </li>
                                     </ul>
                                 </td>
@@ -97,14 +99,13 @@ $("#frm-add-cliente").on("submit", function(e){
 
 
 //LISTENER PARA ELIMINAR CLIENTE
-$(document).on("click", ".btnEliminarCliente", function () {
+$(document).on("click", ".btnEliminarCliente", function ()
+{
     if (confirm("¿Esta seguro de que desea eliminar este cliente?")){
         let elementClienteSelect = $(this)[0].parentElement.parentElement.parentElement.parentElement;
         let idCliente = $(elementClienteSelect).attr("idcliente");
-        console.log(idCliente);
         eliminarCLiente(idCliente);
     }
-
 });
 
 //FUNCION PARA ELIMINAR CLIENTE
@@ -117,7 +118,6 @@ function  eliminarCLiente(idCliente){
         },
         success: function (mje) {
             consultaClientes();
-            console.log(mje);
         }
     });
 }
