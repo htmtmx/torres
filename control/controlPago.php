@@ -61,6 +61,14 @@ function montoPagos()
     return json_encode($result);
 }
 
+function montoPagosContrato($no_contrato)
+{
+    include_once "../model/PAGO.php";
+    $objPago = new PAGO();
+    $result = $objPago->queryMontoPagosPorContrato($no_contrato);
+    return $result;
+}
+
 function noPagosPendientes()
 {
     include_once "../model/PAGO.php";

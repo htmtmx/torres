@@ -35,8 +35,25 @@ function verificaAbono($no_contrato,$monto)
                 echo "Total del pago ".$totalPago.", Suma de abonos ".$sumaAbonos.", Resta por pagar ".$faltantePorAbonar. " Al pago ".$pago['id_pago'];
                 echo "<br>S U M A      D E      A B O N O S";*/
             }
+        checaSiUpdateContrato($no_contrato);
+
     }
     return true;
+}
+
+function checaSiUpdateContrato($no_contrato){
+    include_once "../control/controlContrato.php";
+    $arrayContrato = consultaContrato($no_contrato);
+    $totalContrato = $arrayContrato[0]['total'];
+    $sumaPagos =montoPagosContrato($no_contrato);
+    $totalPagos = $sumaPagos[0]['total_pagos'];
+    //$sumaAbonosComparaTotalContrato = $arraySumaAbonos[0]['suma_abonos'];
+    $saldo = $totalContrato - $totalPagos;
+    updateSaldoContrato($no_contrato,$saldo);
+    if ($totalContrato==$totalPagos) {
+        updateEstatusContrato($no_contrato,1);
+        updateSaldoContrato($no_contrato,0);
+    }
 }
 
 function sumatoriaDeAbonos($id_pago)

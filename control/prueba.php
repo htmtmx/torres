@@ -1,5 +1,5 @@
 <?php
-include_once "../webhook/consulta-placa-id-coche.php";
+//include_once "../webhook/consulta-placa-id-coche.php";
 
 //include_once "../webhook/addContratoVenta.php";
 /*include_once "./controlContrato.php";
@@ -42,3 +42,25 @@ consultaAvancePagoGeneralDeAllContratos();
 */
 /*$no_contrato = 3724786545073591;
 consultaAvanceDeCadaPagoDeContrato($no_contrato);*/
+$no_contrato = 6389312005195666;
+
+include_once "../control/controlAbonos.php";
+//checaSiUpdateContrato($no_contrato);
+
+include_once "../control/controlPago.php";
+include_once "../control/controlContrato.php";
+$arrayContrato = consultaContrato($no_contrato);
+var_dump($arrayContrato);
+$totalContrato = $arrayContrato[0]['total'];
+//console.log($totalContrato);
+$sumaPagos =montoPagosContrato($no_contrato);
+$totalPagos = $sumaPagos[0]['total_pagos'];
+var_dump($sumaPagos);
+echo ($totalPagos);
+echo($totalContrato);
+
+if ($totalPagos==$totalContrato) {
+    echo("<br>Actualizo el estado del contrato a terminado ***1***<br>");
+    updateEstatusContrato($no_contrato,1);
+}
+//console.log($totalPagos);

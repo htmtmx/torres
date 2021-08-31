@@ -198,8 +198,19 @@ function updateEstatusContrato ($no_contrato,$estatus)
 {
     include_once "../model/CONTRATO.php";
     $objContrato = new CONTRATO();
-    echo $result = $objContrato->updateEstatusContrato($no_contrato,$estatus)? "Se actualizo correctamente el estatus": "Error al intentar actualizar estatus";
+    $objContrato->queryupdateEstatusContrato($no_contrato,$estatus);
 }
+
+/********************************************************************
+ *         U P D A T E     S A L D O     C O N T R A T O
+ *******************************************************************/
+function updateSaldoContrato($no_contrato,$saldo)
+{
+    include_once "../model/CONTRATO.php";
+    $objContrato = new CONTRATO();
+    $objContrato->queryupdateSaldoContrato($no_contrato,$saldo);
+}
+
 /********************************************************************
  *                   D E L E T E     C O N T R A T O
  *******************************************************************/

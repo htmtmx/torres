@@ -359,6 +359,16 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         return $result;
     }
 
+    public function queryupdateSaldoContrato($no_contrato, $saldo)
+    {
+        $query = "UPDATE contrato 
+                SET saldo = '".$saldo. "'WHERE contrato.no_contrato = ".$no_contrato;
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+
     public function querydeleteContrato($no_contrato)
     {
         $query = "UPDATE `contrato` 
