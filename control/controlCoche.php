@@ -1,11 +1,4 @@
 <?php
-function consultaCoches($show_detalles,$noVehiculo)
-{
-    include_once "../model/COCHE.php";
-    $objCoche = new COCHE();
-    $result = $objCoche->queryconsultaCoches($noVehiculo);
-    var_dump($result);
-}
 
 function consultaAllCochesOneFoto($noVehiculo,$filter)
 {
@@ -136,7 +129,7 @@ function updateEstatusCoche($noVehiculo,$estatus)
 {
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    echo $result = $objCoche->queryupdateEstatusCoche($noVehiculo,$estatus)? "Se actualizo correctamente el estado del coche":"Error al intentar actualizar el estado del coche";
+    echo $objCoche->queryupdateEstatusCoche($noVehiculo,$estatus)? "Se actualizo correctamente el estado del coche":"Error al intentar actualizar el estado del coche";
 }
 
 function deleteCoche($noVehiculo)

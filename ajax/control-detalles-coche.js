@@ -1,8 +1,6 @@
 var arrayMarcas =  new Array();
 $(document).ready(function(){
     consultaMarcas();
-    //consultaModelos(2);
-
 });
 
 window.onload = function() {
@@ -321,7 +319,12 @@ function getTemplateContratoVenta(contrato) {
     let template = "";
     let templateTablaArchivos = buildTblFileContratoVenta(contrato[1]);
     let templatePagos = buildTblPagos(contrato[0]);
-    let formaPago = contrato.forma_pago === "0" ? "Contado" : "Credito";
+    let formaPago;
+    if(contrato.forma_pago==="0"){
+        formaPago="Contado";
+    } else if(contrato.forma_pago==="1"){
+        formaPago="Credito";
+    } else formaPago="Apartado";
     template += `
                 <!-- CONTRATO DE VENTA-->
                                 <div class="tab-pane fade show active" id="venta" role="tabpanel" aria-labelledby="home-tab">

@@ -110,27 +110,6 @@ function consultaAvancePagoGeneralDeAllContratos()
     return json_encode($arrayFinalContrato);
 }
 
-function consultaAvanceDeCadaPagoDeContrato($no_contrato)
-{
-    include_once "../control/controlPago.php";
-    include_once "../control/controlAbonos.php";
-    $arrayPagos = consultaPagos($no_contrato);
-    $arrayAvance = array();
-    foreach ($arrayPagos as $pago) {
-        $totalAbonos = 0;
-        $arraySumaAbonos = sumatoriaDeAbonos($pago['id_pago']);
-        $sumaDeAbonos = $arraySumaAbonos[0]['suma_abonos'];
-        $totalAbonos = $totalAbonos+$sumaDeAbonos;
-
-        $totalPago = $pago['total'];
-        $avance = ($totalAbonos*100)/$totalPago;
-        array_push($pago,$arraySumaAbonos);
-        array_push($pago,$avance);
-        array_push($arrayAvance,$pago);
-    }
-    var_dump($arrayAvance);
-}
-
 function consultaPagosAbonosDocsDeContratoCompleto($no_vehiculo)
 {
     include_once "../control/controlPago.php";
@@ -174,22 +153,7 @@ function consultaPagosAbonosDeContratoCompleto($no_contrato)
     }
     return $arrayPagosContrato;
 }
-/********************************************************************
- * C O N S U L T A   P A G O S    A B O N O S  C O N T R A T O
- *******************************************************************/
-function consultaPagosAbonosDeContrato($no_contrato)
-{
-    include_once "../control/controlPago.php";
-    $listaPagos = consultaPagos($no_contrato);
-    $arrayPagosContrato = array();
-    foreach ($listaPagos as $pago) {
-        $listaAbonos = consultaAbonosDePago($pago['id_pago']);
-        array_push($pago, $listaAbonos);
-        array_push($arrayPagosContrato,$pago);
-    }
-    //var_dump($arrayPagosContrato);
-    return json_encode($arrayPagosContrato);
-}
+
 
 /********************************************************************
  *         U P D A T E     E S T A T U S     C O N T R A T O
@@ -211,19 +175,6 @@ function updateSaldoContrato($no_contrato,$saldo)
     $objContrato->queryupdateSaldoContrato($no_contrato,$saldo);
 }
 
-/********************************************************************
- *                   D E L E T E     C O N T R A T O
- *******************************************************************/
-function deleteContrato($no_contrato)
-{
-    include_once "../model/CONTRATO.php";
-    $objContrato = new CONTRATO();
-    $objContrato->deleteContrato($no_contrato);
-}
-
-/********************************************************************
- *                  FUNCIONES DE CONTRATO ADD DESDE WEB HOOK
- *******************************************************************/
 /********************************************************************
  *                  CREAR CONTRATO DE ADQUISICION
  *******************************************************************/
@@ -289,12 +240,11 @@ function creaContratoVenta($params)
     $resultDireccion = $params['id_dir']>0? $DIRECCION->queryupdateDireccion(): $DIRECCION->queryaddDireccion();
     if ($resultComprador && $resultDireccion) {
         //Variables ´poara construir obj Contrato
-        /*$formaPago,$noCliente,$noVehiculo, ,
-                              $plazo,$fechaPrimerPago, $totalCoche, $enganche, $estatusContrato*/
         $formaPago = $params['forma_pago'];
         $noVehiculo= $params['no_vehiculo'];
         $tipoContrato = 0; // Es una venta
         $plazo = $params['plazo'];
+        echo $plazo;
         $enganche = $params['enganche'];
         $totalCoche=$params['total'];
         //Definir si es contado (contado, apartado), credito
@@ -341,6 +291,7 @@ function creaContratoVenta($params)
             $tipo="ABONO"; //DINERO QUE ENTRA A LA EMPRESA
 
             if ($plazo == 0 && $enganche==$totalCoche){
+                $estatusCoche=1;
                 $concepto="PAGO COMPLETO";
                 $noDePago = 1;
                 $detalles = "PAGO 1/1";
@@ -348,6 +299,7 @@ function creaContratoVenta($params)
                 $StatusPago = 1; //Liquidado de forma automatica
                 $saldo1=0;  //Saldo
             }else if($plazo==0 && $enganche<$totalCoche){
+                $estatusCoche=-1;
                 $concepto="PAGO POR APARTADO";
                 $noDePago = 1;
                 $detalles = "PAGO 1/1";
@@ -357,7 +309,8 @@ function creaContratoVenta($params)
                 $fechaLimiTePago = date ( 'Y-m-d' , $nuevafecha );
                 $saldo1=$totalCoche-$enganche;
                 $StatusPago = 0; //Pendiente por liquidar
-            }else{
+            }else if($plazo>0 && $enganche<$totalCoche){
+                $estatusCoche=1;
                 $concepto="PAGO DE ENGANCHE";
                 $noDePago = 0; //EL el pago 0, despues vienen los plazos
                 $detalles = "PAGO 0/".$plazo;
@@ -367,7 +320,7 @@ function creaContratoVenta($params)
             }
 
             include_once  "controlCoche.php";
-            updateEstatusCoche($params['no_vehiculo'],($plazo == 0 && $enganche==$totalCoche)||($plazo > 0) ? 1:0);
+            updateEstatusCoche($params['no_vehiculo'],$estatusCoche);
 
             //Funcion para Insertar y crear un objeto PAGO
 
@@ -561,7 +514,7 @@ function revisaContratoVenta($params){
                     $plazo=$params['plazo'];
                 } else {
                     $total = $coche['precio_contado'];
-                    $plazo=1;
+                    $plazo=0;
                 }
                 $params['plazo']= $plazo;
                 $params['total']=$total;
