@@ -32,7 +32,7 @@ function objMailSend($toMail, $intencion, $asunto, $body)
 
     //destino
     $mail->From     = $contacto;    // Correo Electronico para SMTP
-    $mail->FromName = 'Info | '.$intencion;
+    $mail->FromName = 'AutosTorres | '.$intencion;
     $mail->AddAddress($para); // Dirección a la que llegaran los mensajes
 
     $mail->Port = PORT_SMTP;
@@ -78,8 +78,8 @@ function getHtmlBody_RegistroAdd($correoSend,$pwtmp, $nombre, $empresaName)
                         <tbody>
                             <tr>
                                 <td style='box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';padding:45px 0 35px 0;text-align:center'>
-                                    <a href='https://reckreastudios.com/tracker' style='box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';color:#3d4852;font-size:19px;font-weight:bold;text-decoration:none;display:inline-block' target='_blank' data-saferedirecturl='https://www.google.com/url?q=https://api.positus.global&amp;source=gmail&amp;ust=1592625966775000&amp;usg=AFQjCNEPExPnyh82o_lbVUFefYsdkgOGuQ'>
-                                    <img src='https://reckreastudios.com/tracker/logo.min.png' alt='Positus Logo' style='box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';max-width:100%;border:none;width:175px;height:46px' class='CToWUd'></a>
+                                    <a href='http://autostorres.com' style='box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';color:#3d4852;font-size:19px;font-weight:bold;text-decoration:none;display:inline-block' target='_blank' data-saferedirecturl='https://www.google.com/url?q=https://api.positus.global&amp;source=gmail&amp;ust=1592625966775000&amp;usg=AFQjCNEPExPnyh82o_lbVUFefYsdkgOGuQ'>
+                                    <img src='http://autostorres.com/assets/img/logo.png' alt='Positus Logo' style='box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';max-width:100%;border:none;width:175px;height:46px' class='CToWUd'></a>
                                 </td>
                             </tr>
                             <tr>
@@ -125,7 +125,7 @@ function getHtmlBody_RegistroAdd($correoSend,$pwtmp, $nombre, $empresaName)
                                                     Tu correo de acceso es:  ".$correoSend."<br>
                                                     TU contraseña temporal es:  ".$pwtmp."<br><br><br>
                                                     Saludos Cordiales <br>
-Equipo ProyecTracker
+Autos Torres
 </p>
                                                     <table width='100%' cellpadding='0' cellspacing='0' role='presentation' style='box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';border-top:1px solid #d1d3db;margin-top:25px;padding-top:25px'>
                                                         <tbody>
