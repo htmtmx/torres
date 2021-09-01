@@ -76,17 +76,23 @@
                                                                     <input type="hidden" name="noCoche" id="noCoche" value="0">
                                                                     <div class="pl-lg-4">
                                                                         <div class="row">
-                                                                            <div class="col-lg-6">
+                                                                            <div class="col-lg-5">
                                                                                 <label class="form-control-label" for="marcaCoche">Marca</label>
-                                                                                <select id="marcaCoche" name="marcaCoche" class="form-control">
+                                                                                <select id="marcaCoche" name="marcaCoche" class="w-75 form-control">
                                                                                     <!-- AJAX RESPONSE GENERAR MARCAS Y MODELOS -->
                                                                                 </select>
                                                                             </div>
-                                                                            <div class="col-lg-6">
+                                                                            <div class="col-lg-5">
                                                                                 <label class="form-control-label" for="id_modelo_fk">Modelo</label>
                                                                                 <select id="id_modelo_fk" name="id_modelo_fk" class="form-control">
                                                                                     <!-- AJAX RESPONSE GENERAR MODELOS ON CHANGE MARCAS-->
                                                                                 </select>
+                                                                            </div>
+                                                                            <!-- Modal para agregar Modelo -->
+                                                                            <div class="col-lg-0">
+                                                                                <button type="button" class="btn btn-primary my-4 " data-toggle="modal" data-target="#modaladdmodelo">
+                                                                                    +
+                                                                                </button>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
@@ -560,7 +566,7 @@
         <?php include './modals/modal-busca-cliente.php'; ?>
     </div>
 </div>
-
+<?php include './modals/modal-add-modelo.php'; ?>
 </body>
 <?php include './include/js.php'; ?>
 </html>

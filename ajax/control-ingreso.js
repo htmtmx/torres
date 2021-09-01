@@ -26,11 +26,34 @@ function getMarcas() {
                 }
             );
             $("#marcaCoche").html(template);
+            $("#marcasCoche").html(template);
             getModelos(PRIMER_MARCA);
         },
     });
 }
-
+$("#frm-add-modelo").on("submit", function(e){
+    //let tipocontrato = $('input[name="contrato"]:checked').val();
+    var f = $(this);
+    var formData = new FormData(document.getElementById("frm-add-modelo"));
+    formData.append("dato", "valor");
+    //formData.append(f.attr("name"), $(this)[0].files[0]);
+    $.ajax({
+        url: "../webhook/add-modelo.php",
+        type: "post",
+        dataType: "html",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false
+    })
+        .done(function(res){
+        console.log(res);
+        $("#frm-add-modelo").trigger('reset');
+        $("#modaladdmodelo").modal('hide');
+        getMarcas();
+        });
+    e.preventDefault();
+});
 try {
     function getModelos(id_marca) {
         var modelo = $("#id_modelo_fk");

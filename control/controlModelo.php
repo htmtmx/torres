@@ -10,3 +10,28 @@ function consultaModelos($idMarca)
     return json_encode($result);
 }
 
+function addModelo($marca,$nombre){
+    include_once "../model/MODELO.php";
+    $modelo = new MODELO();
+    $modelo->setIdMarcaFk($marca);
+    $modelo->setNombre($nombre);
+    $result= $modelo->queryaddModelo();
+    return $result;
+}
+
+function updateModelo($marca,$nombre,$id_modelo){
+    include_once "../model/MODELO.php";
+    $modelo = new MODELO();
+    $modelo->setIdMarcaFk($marca);
+    $modelo->setNombre($nombre);
+    $modelo->setIdModelo($id_modelo);
+    return $modelo->queryupdateModelo();
+}
+
+function updateEstatusModelo($id_modelo,$estatus){
+    include_once "../model/MODELO.php";
+    $modelo = new MODELO();
+    $modelo->setIdModelo($id_modelo);
+    $modelo->setEstatus($estatus);
+    return $modelo->queryupdateEstatusModelo();
+}
