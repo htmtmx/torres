@@ -1,10 +1,12 @@
 $(document).ready(function(){
-    cargaPersonas();
     let noCoche= $("#noCoche").val();
     if(noCoche>0) buscaCochePaVenta(noCoche);
     consultaCochesVenta();
 
 });
+window.onload = function() {
+    cargaPersonas();
+};
 
 function buscaCochePaVenta(noCoche) {
     $.ajax({

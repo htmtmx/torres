@@ -1,10 +1,12 @@
 let PRIMER_MARCA;
 $(document).ready(function(){
-    getMarcas();
-    cargaPersonas();
+
 });
 
-
+window.onload = function() {
+    getMarcas();
+    cargaPersonas();
+};
 /***************FUNCIONES PARA OBTENER MARCAS Y MODELOS ******************/
 function getMarcas() {
     //-------------- AJAX pedira la info de los datos se ejecuta cuando entra inicio
