@@ -100,9 +100,9 @@
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="form-group">
-                                    <input  type="text" id="idDetalle" name="idDetalle" value="0">
-                                    <label class="form-control-label" for="nombreDetalle">Nombre de la caracteristica</label>
-                                    <input  type="text" id="nombreDetalle" name="nombreDetalle" class="form-control">
+                                    <input  type="text" id="idmodelo" name="idmodelo" value="0">
+                                    <label class="form-control-label" for="nombreModelo">Nombre de la caracteristica</label>
+                                    <input  type="text" id="nombreModelo" name="nombreModelo" class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-4">

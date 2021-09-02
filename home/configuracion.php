@@ -154,8 +154,16 @@
                                                     <div class="card">
                                                         <div class="card-header border-0">
                                                             <div class="row align-items-center">
-                                                                <div class="col">
+                                                                <div class="col-auto">
                                                                     <h3 class="mb-0">Agregar Nuevos Modelos de Vehiculos</h3>
+                                                                </div>
+                                                                <div class="col col-auto text-right">
+                                                                    <select id="marcas" name="marcas" class="form-control">
+                                                                        <option value="0" selected="">En venta</option>
+                                                                        <option value="1">Vendidos</option>
+                                                                        <option value="-1">Apartados</option>
+                                                                        <option value="999">Todos</option>
+                                                                    </select>
                                                                 </div>
                                                                 <div class="col text-right">
                                                                     <button type="button" class="btn btn-primary W-25 mx-2" data-toggle="modal" data-target="#modal_ConfigModelo">
@@ -175,54 +183,7 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody id="tblModelosType">
-                                                                    <tr>
-                                                                        <th scope="row">
-                                                                            Nissan
-                                                                        </th>
-                                                                        <td>
-                                                                            Tiida
-                                                                        </td>
-                                                                        <td>
-                                                                            <button type="button" class="btn btn-white ">
-                                                                                <i class="fas fa-edit text-green"></i>
-                                                                            </button>
-                                                                            <button type="button" class="btn btn-danger ">
-                                                                                <i class="fas fa-trash-alt"></i>
-                                                                            </button>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">
-                                                                            Nissan
-                                                                        </th>
-                                                                        <td>
-                                                                            Versa
-                                                                        </td>
-                                                                        <td>
-                                                                            <button type="button" class="btn btn-white ">
-                                                                                <i class="fas fa-edit text-green"></i>
-                                                                            </button>
-                                                                            <button type="button" class="btn btn-danger ">
-                                                                                <i class="fas fa-trash-alt"></i>
-                                                                            </button>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">
-                                                                            Ford
-                                                                        </th>
-                                                                        <td>
-                                                                            Focus
-                                                                        </td>
-                                                                        <td>
-                                                                            <button type="button" class="btn btn-white ">
-                                                                                <i class="fas fa-edit text-green"></i>
-                                                                            </button>
-                                                                            <button type="button" class="btn btn-danger ">
-                                                                                <i class="fas fa-trash-alt"></i>
-                                                                            </button>
-                                                                        </td>
-                                                                    </tr>
+                                                             <!-- AJAX RESPONSE TBL MODELOS DEPENDIENTE DE MARCA -->
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -256,55 +217,8 @@
                                                                     <th scope="col"></th>
                                                                 </tr>
                                                                 </thead>
-                                                                <tbody id="tblModelosType">
-                                                                <tr>
-                                                                    <th scope="row">
-                                                                        1
-                                                                    </th>
-                                                                    <td>
-                                                                        Quemacoco
-                                                                    </td>
-                                                                    <td>
-                                                                        <button type="button" class="btn btn-white ">
-                                                                            <i class="fas fa-edit text-green"></i>
-                                                                        </button>
-                                                                        <button type="button" class="btn btn-danger ">
-                                                                            <i class="fas fa-trash-alt"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">
-                                                                        2
-                                                                    </th>
-                                                                    <td>
-                                                                        Seguros Eléctricos
-                                                                    </td>
-                                                                    <td>
-                                                                        <button type="button" class="btn btn-white ">
-                                                                            <i class="fas fa-edit text-green"></i>
-                                                                        </button>
-                                                                        <button type="button" class="btn btn-danger ">
-                                                                            <i class="fas fa-trash-alt"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">
-                                                                        3
-                                                                    </th>
-                                                                    <td>
-                                                                        Rines
-                                                                    </td>
-                                                                    <td>
-                                                                        <button type="button" class="btn btn-white ">
-                                                                            <i class="fas fa-edit text-green"></i>
-                                                                        </button>
-                                                                        <button type="button" class="btn btn-danger ">
-                                                                            <i class="fas fa-trash-alt"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
+                                                                <tbody id="tblCaracteristicas">
+                                                                <!--AJAX RESPONSE TBL CARACTERISTICAS CONFIGURACION -->
                                                                 </tbody>
                                                             </table>
                                                         </div>

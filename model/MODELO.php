@@ -76,8 +76,8 @@ class MODELO extends CONEXION implements I_MODELO
 
     function queryconsultaModelos ($id_marca)
     {
-        $query = "SELECT `id_modelo`, `id_marca_fk`, `nombre`, 
-       `estatus` FROM `modelo` WHERE `id_marca_fk` = ".$id_marca;
+        $query = "select m.id_modelo, m.id_marca_fk, m.nombre, m.nombre, m2.nombre as nombremarca, m.estatus as estatusmodelo
+        from modelo m, marca m2  where m.id_marca_fk = m2.id_marca AND m.id_modelo>0 AND id_marca_fk =".$id_marca;
         $this->connect();
         $result = $this->getData($query);
         $this->close();
