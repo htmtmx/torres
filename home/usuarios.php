@@ -66,51 +66,7 @@
                             </tr>
                             </thead>
                             <tbody id="tbl-usuarios">
-                            <tr idcliente="987568611049">
-                                <th scope="row">
-                                    1561561561
-                                </th>
-                                <td><i class="fas fa-user-tie"></i>
-                                    Gloria Ramirez Garza
-                                    <span class="badge badge-warning">Inactiva</span>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li><i class="fas fa-phone"></i>6352015248</li>
-                                        <li><i class="fas fa-mobile-alt"></i>5514784916</li>
-                                        <li><i class="far fa-envelope"></i>ernestotelapresto@gmail.com</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    Mujer
-                                </td>
-                                <td>
-                                    2021-05-15 10:34:06
-                                </td>
-                                <td>
-                                    <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#cuentaUser">
-                                        <span class="btn-inner--icon"><i class="fas fa-edit text-green"></i>  Jefe De Ventas</span>
-                                    </button>
-
-                                </td>
-                                <td>
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cuentaUser">
-                                        <i class="fas fa-edit text-green"></i> Vendedor
-                                    </button>
-                                </td>
-                                <td>
-                                    <label class="custom-toggle">
-                                        <input type="checkbox">
-                                        <span class="custom-toggle-slider rounded-circle" data-label-off="Inactivo" data-label-on="Activo"></span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
+                            <!-- AJAX RESPONSE TBL USUARIOS-->
                             </tbody>
                         </table>
                     </div>

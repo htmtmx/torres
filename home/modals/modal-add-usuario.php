@@ -61,12 +61,11 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="puesto_user" class="col-sm-2 col-form-label">Nivel de Acceso</label>
+                        <label for="nivAcceso" class="col-sm-2 col-form-label">Nivel de Acceso</label>
                         <div class="col-lg-9">
-                            <select id="puesto_user" name="puesto_user" class="form-control">
-                                <option value="0">SUPER USUARIO</option>
-                                <option value="1">ADMINISTRADOR</option>
-                                <option selected="" value="2">VENDEDOR</option>
+                            <select id="nivAcceso" name="nivAcceso" class="form-control">
+                                <option value="0">ADMINISTRADOR</option>
+                                <option selected="" value="1">VENDEDOR</option>
                             </select>
                         </div>
                     </div>

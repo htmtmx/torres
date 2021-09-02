@@ -9,23 +9,24 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="frm-cambia-acceso-puesto">
+                    <input type="hidden" id="noEmpleado" name="noEmpleado">
                     <div class="pl-lg-4">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label class="form-control-label" for="puesto">Puesto</label>
-                                    <input type="email" id="puesto" class="form-control">
+                                    <input type="text" id="puesto" name="puesto" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label class="form-control-label" for="puesto">Nivel de Acceso</label>
-                                    <select id="medio_identificación_cliente" name="medio_identificación_cliente" class="form-control">
+                                    <label class="form-control-label" for="nivAcce">Nivel de Acceso</label>
+                                    <select id="nivAcce" name="nivAcce" class="form-control">
                                         <option value="0">Administrador</option>
-                                        <option value="PASAPORTE">Vendedor</option>
+                                        <option value="1">Vendedor</option>
                                     </select>
                                 </div>
                             </div>
@@ -33,8 +34,7 @@
                     </div>
                     <hr class="my-4" />
                     <div class="col-lg-12 col-auto text-right">
-                        <span class="d-flex position-absolute w-100" id="mensajeUpdateCliente"></span>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
                     </div>
                 </form>
             </div>

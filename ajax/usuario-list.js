@@ -21,23 +21,11 @@ function getAllUsers()
             let cont = 0;
             usuarios.forEach((usuario)=>{
                 let nivelAcceso="";
-                switch (usuario.nivel_acceso) {
-                    case "0":
-                        nivelAcceso+="Super usuario";
-                        break;
-                    case "1":
-                        nivelAcceso+="Administrador";
-                        break;
-                    case "2":
-                        nivelAcceso+="Vendedor";
-                        break;
-
-                }
+                nivelAcceso= usuario.nivel_acceso>0? "VENDEDOR": "ADMINISTRADOR";
                 contacto = `<li><i class="fas fa-phone"></i>`+usuario.telefono+`</li>`;
                 contacto += usuario.celular.length> 0 ? ` <li><i class="fas fa-mobile-alt"></i>`+usuario.celular+`</li>`: "";
                 contacto += usuario.correo_user.length>0 ? `<li><i class="far fa-envelope"></i> <a class="" href="mailto:${usuario.correo_user}">${usuario.correo_user}</a></li>`: "";
                 let sexo= usuario.sexo>0 ? "Mujer": "Hombre";
-                let estado= usuario.estatus>0 ? ``: `data-label-off="Inactivo"`;
                 let estatus= usuario.estatus>0 ? `<span class="badge badge-success">Activo</span>`: `<span class="badge badge-danger">Inactivo</span>`;
                 template += `
                              <tr idUsuario="${usuario.no_empleado}" statusActual="${usuario.estatus}">
@@ -60,14 +48,14 @@ function getAllUsers()
                                     ${usuario.fecha_registro}
                                 </td>
                                 <td>
-                                    <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#cuentaUser">
+                                    <button class="btn btn-icon btn-secondary" type="button" data-toggle="modal" data-target="#cuentaUser" onclick="cargaDatosPuestoNv(${usuario.no_empleado},'${usuario.puesto}',${usuario.nivel_acceso})">
                                         <span class="btn-inner--icon"><i class="fas fa-edit text-green"></i>  ${usuario.puesto}</span>
                                     </button>
 
                                 </td>
                                 <td>
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cuentaUser">
+                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cuentaUser" onclick="cargaDatosPuestoNv(${usuario.no_empleado},'${usuario.puesto}',${usuario.nivel_acceso})">
                                         <i class="fas fa-edit text-green"></i> ${nivelAcceso}
                                     </button>
                                 </td>
@@ -133,3 +121,33 @@ function eliminaEmpleado(idEmpleado){
         }
     });
 }
+
+/**** FUNCIONES PARA MODALES DE NIVEL ACCESO Y PUESTO***/
+function cargaDatosPuestoNv(no_empleado,puesto,nivelAcceso){
+    $("#noEmpleado").val(no_empleado);
+    $("#puesto").val(puesto);
+    $("#nivAcce").val(nivelAcceso);
+}
+
+$("#frm-cambia-acceso-puesto").on("submit", function(e){
+    //let tipocontrato = $('input[name="contrato"]:checked').val();
+    var f = $(this);
+    var formData = new FormData(document.getElementById("frm-cambia-acceso-puesto"));
+    formData.append("dato", "valor");
+    //formData.append(f.attr("name"), $(this)[0].files[0]);
+    $.ajax({
+        url: "../webhook/update-nivAcc-puesto.php",
+        type: "post",
+        dataType: "html",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false
+    })
+        .done(function(res){
+            getAllUsers();
+            $("#frm-cambia-acceso-puesto").trigger('reset');
+            $("#cuentaUser").modal('hide');
+        });
+    e.preventDefault();
+});

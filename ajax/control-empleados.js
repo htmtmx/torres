@@ -15,7 +15,6 @@ $(document).ready(function(){
             processData: false
         })
             .done(function(res){
-                console.log(res);
                 $('#frm-add-usuario').trigger('reset');
                 getAllUsers();
             });

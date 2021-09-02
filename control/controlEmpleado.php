@@ -52,7 +52,7 @@ function addEmpleado($nombre,$app,$apm,$tel,$cel,$correo,$puesto,$sexo,$acceso)
     $objEmpleado->setCorreoUser($correo);
     $objEmpleado->setPuesto($puesto);
     $objEmpleado->setNivelAcceso($acceso);
-    $objEmpleado->setEstatus(1);
+    $objEmpleado->setFechaRegistro(date('Y-m-d H:i:s'));
     $objEmpleado->setPw(md5($pw));
     $empresa = $_SESSION['nombre_empresa'];
     if($objEmpleado->queryaddEmpleado()){
@@ -136,4 +136,14 @@ function verficaUsuarioPw($pwa,$pwn,$pwc){
         } else return false;
     }
     return false;
+}
+
+/**** FUNCION ACTUALIZA NIV ACCESO Y PUESTO ***/
+function updateNivelAccesoPuesto($nivelAcceso,$puesto,$no_empleado){
+    include_once "../model/EMPLEADO.php";
+    $empleado = new EMPLEADO();
+    $empleado->setNoEmpleado($no_empleado);
+    $empleado->setPuesto($puesto);
+    $empleado->setNivelAcceso($nivelAcceso);
+    return $empleado->queryupdateNivelAccesoPuesto();
 }

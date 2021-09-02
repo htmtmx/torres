@@ -12,14 +12,30 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
     private $telefono;
     private $celular;
     private $sexo;
-    private $fecha_registro;
     private $correo_user;
     private $pw;
     private $puesto;
     private $nivel_acceso;
     private $estatus;
-
     private $nombreCompleto;
+
+    private $fecha_registro;
+
+    /**
+     * @return mixed
+     */
+    public function getFechaRegistro()
+    {
+        return $this->fecha_registro;
+    }
+
+    /**
+     * @param mixed $fecha_registro
+     */
+    public function setFechaRegistro($fecha_registro): void
+    {
+        $this->fecha_registro = $fecha_registro;
+    }
 
     /**
      * @return mixed
@@ -268,7 +284,7 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
                 .$this->getNombre()."', '".$this->getApaterno()."', '"
                 .$this->getAmaterno()."', '".$this->getTelefono()."', '"
                 .$this->getCelular()."', '".$this->getSexo()."', '"
-                .date('Y-m-d H:i:s')."', '".$this->getCorreoUser()."', '"
+                .$this->getFechaRegistro()."', '".$this->getCorreoUser()."', '"
                 .$this->getPw()."', '".$this->getPuesto()."', '"
                 .$this->getNivelAcceso()."', '1')";
         $this->connect();
@@ -343,6 +359,14 @@ class EMPLEADO extends CONEXION implements I_EMPLEADO
     function modifyPw(){
         $query="UPDATE `empleado` SET `pw` = '".$this->getPw()."' 
         WHERE `empleado`.`no_empleado` = ".$this->getNoEmpleado();
+        $this->connect();
+        $result=$this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
+    function queryupdateNivelAccesoPuesto(){
+        $query="UPDATE `empleado` SET `puesto` = '".$this->getPuesto()."', `nivel_acceso` = '".$this->getNivelAcceso()."' 
+        WHERE `empleado`.`no_empleado` =".$this->getNoEmpleado();
         $this->connect();
         $result=$this->executeInstruction($query);
         $this->close();

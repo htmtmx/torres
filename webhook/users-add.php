@@ -12,8 +12,7 @@
         $correo_user=  $_POST['correo_user'];
         $puesto_user=  $_POST['puesto_user'];
         $sexo_user=  $_POST['sexo_user'];
-        $acceso_user =  $puesto_user>0?"1": "0";
-
+        $acceso_user = $_POST['nivAcceso'];
         include_once "../control/controlEmpleado.php";
         if (addEmpleado($nombre_user,$apaterno_user,$amaterno_user,$telefono_user,$celular_user,
             $correo_user,$puesto_user,$sexo_user,$acceso_user)){
