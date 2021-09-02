@@ -57,7 +57,7 @@ function configCaracteristicas(){
                         ${caracteristica.nombre}
                     </td>
                     <td>
-                        <button type="button" class="btn btn-white ">
+                        <button type="button" class="btn btn-white" onclick="editaCaracteristica(${caracteristica.id_detalle},'${caracteristica.nombre}');">
                             <i class="fas fa-edit text-green"></i>
                         </button>
                         <button type="button" class="btn btn-danger ">
@@ -72,8 +72,16 @@ function configCaracteristicas(){
     });
 }
 
+function editaCaracteristica(id_detalle,nombreDetalle){
+    $("#addDetalles").modal('show');
+    $("#idDetalles").val(id_detalle);
+    $("#nombreCaracteristica").val(nombreDetalle);
+}
 
-
+function limpiaModalCaracteristicas(){
+    $("#idDetalles").val(0);
+    $("#nombreCaracteristica").val("");
+}
 /*** CONFIGURACION PARA MARCAS Y MODELOS ***/
 
 function getMarcas() {
@@ -124,7 +132,7 @@ function getModelos(id_marca) {
                         <button type="button" class="btn btn-white" onclick="editaModelo(${modelo.id_modelo},'${modelo.nombre}');">
                             <i class="fas fa-edit text-green"></i>
                         </button>
-                        <button type="button" class="btn btn-danger" onclick="eliminarModelo(${modelo.id_modelo});">
+                        <button type="button" class="btn btn-danger">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>
@@ -147,11 +155,15 @@ $("#marcas").change(function ()
 });
 function editaModelo(id_modelo,nombre){
     $("#idmodelo").val(id_modelo);
-    $("#nombreModelo").val(""+nombre);
+    $("#nombreModelo").val(nombre);
     $("#modal_ConfigModelo").modal('show');
 }
 
-/******* ****/
+function limpiaModalModelo(){
+    $("#idmodelo").val(0);
+    $("#nombreModelo").val("");
+}
+/******* CONFIGURA TIPOS DE ARCHIVO ****/
 function configTiposArchivo(){
     $.ajax({
         url: "../webhook/list-tipo_archivo.php",
@@ -190,5 +202,12 @@ function configTiposArchivo(){
 }
 
 function editaArchivo(noArchivo,nombreArchivo){
-    alert("Numero de archivo a cambiar "+ noArchivo+ " y su nombre es "+nombreArchivo)
+    $("#idTipoArchivo").val(noArchivo);
+    $("#nombreDetalle").val(nombreArchivo);
+    $("#modal_ConfigTipoArchivo").modal('show');
+}
+
+function limpiaModalTipoArchivo(){
+    $("#idTipoArchivo").val(0);
+    $("#nombreDetalle").val("");
 }

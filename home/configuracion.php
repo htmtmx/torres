@@ -76,7 +76,7 @@
                                                                     <h3 class="mb-0">Documentos Para Subir</h3>
                                                                 </div>
                                                                 <div class="col text-right">
-                                                                    <button type="button" class="btn btn-primary W-25 mx-2" data-toggle="modal" data-target="#modal_ConfigTipoArchivo">
+                                                                    <button type="button" class="btn btn-primary W-25 mx-2" data-toggle="modal" data-target="#modal_ConfigTipoArchivo" onclick="limpiaModalTipoArchivo();">
                                                                         <i class="fas fa-plus"></i> Nuevo
                                                                     </button>
                                                                 </div>
@@ -116,7 +116,7 @@
                                                                     </select>
                                                                 </div>
                                                                 <div class="col text-right">
-                                                                    <button type="button" class="btn btn-primary W-25 mx-2" data-toggle="modal" data-target="#modal_ConfigModelo">
+                                                                    <button type="button" class="btn btn-primary W-25 mx-2" data-toggle="modal" data-target="#modal_ConfigModelo" onclick="limpiaModalModelo();">
                                                                         <i class="fas fa-plus"></i> Nuevo
                                                                     </button>
                                                                 </div>
@@ -151,7 +151,7 @@
                                                                     <h3 class="mb-0">Detalles para el vehiculo</h3>
                                                                 </div>
                                                                 <div class="col text-right">
-                                                                    <button type="button" class="btn btn-primary W-25 mx-2" data-toggle="modal" data-target="#addDetalles">
+                                                                    <button type="button" class="btn btn-primary W-25 mx-2" data-toggle="modal" data-target="#addDetalles" onclick="limpiaModalCaracteristicas();">
                                                                         <i class="fas fa-plus"></i>
                                                                     </button>
                                                                 </div>
