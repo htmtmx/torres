@@ -15,8 +15,8 @@
                             <div class="col-lg-8">
                                 <div class="form-group">
                                     <input  type="text" id="idDetalles" name="idDetalles" value="0">
-                                    <label class="form-control-label" for="nombreDetalle">Nombre de la caracteristica</label>
-                                    <input  type="text" id="nombreDetalle" name="nombreDetalle" class="form-control">
+                                    <label class="form-control-label" for="nombreCaracteristica">Nombre de la caracteristica</label>
+                                    <input  type="text" id="nombreCaracteristica" name="nombreCaracteristica" class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-4">
