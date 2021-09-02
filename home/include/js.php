@@ -1,5 +1,6 @@
 <!-- Argon Scripts -->
 <!-- Core -->
+<script src="../assets/js/sweetalert2.all.min.js"></script>
 <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
 <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
@@ -15,3 +16,4 @@
 <script src="../ajax/control-empleados.js"></script>
 <script src="../ajax/buscar-coche-placa.js"></script>
 <script src="../ajax/valida-form.js"></script>
+<script src="../ajax/swal-messages.js"></script>

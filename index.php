@@ -179,7 +179,9 @@ if(isset($_SESSION['usuario']))
 </body>
 
 <script src="./ajax/console_user.js"></script>
+<script src="./ajax/swal-messages.js"></script>
 <script>
     txtUser.focus();
 </script>
+<script src="./assets/js/sweetalert2.all.min.js"></script>
 </html>

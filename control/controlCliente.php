@@ -22,7 +22,10 @@ function queryCliente($nombreCliente,$apaternoCliente,$amaternoCliente,
     $objCliente->setFolio($folioCliente);
     $objCliente->setTipoCliente($tipoCliente);
     $objCliente->setFechaRegistro(date('Y-m-d H:i:s'));
-    return $objCliente-> queryaddCliente();
+    if($objCliente->queryaddCliente()){
+        return $objCliente;
+    }
+    return false;
 
 
 }

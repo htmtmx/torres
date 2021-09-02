@@ -51,7 +51,9 @@
                     <div class="form-group row">
                         <label for="correo_user" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="email" id="correo_user" name="correo_user">
+                            <input class="form-control" type="email" id="correo_user" name="correo_user" required>
+                            <div class="valid-feedback">¡Ok!</div>
+                            <div class="invalid-feedback">Escriba un e-mail valido</div>
                         </div>
                     </div>
                     <div class="form-group row">

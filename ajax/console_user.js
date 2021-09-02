@@ -6,12 +6,15 @@ $(document).ready(function() {
         // console.log('enviado');
         var user = $("#txtUser").val();
         var pw = $("#txtPw").val();
+        let titulo;
+        let texto;
+        let tipo ;
         if (user == "" || pw == "") {
-            //cr4amos una plantilla
-            var template = `<div class="alert alert-warning" role="alert">Porfavor escriba su cuenta y la contraseña.</div>`;
-            //Domde quiero mostrar los elementos y lo llenamos con la plantilla hecha
-            var mensaje = document.getElementById("mensaje");
-            mensaje.innerHTML = template;
+            //Asignamos valores a las variables del SWAL.
+            titulo= "Campos vacios";
+            texto= "Porfavor llena los datos que se solicitan";
+            tipo = "warning";
+            alerta(titulo,texto,tipo);
         } else {
             //obtenemos los datos de los valores que se enviaran al servidor
             const valoresCajas = {
@@ -25,10 +28,10 @@ $(document).ready(function() {
                 let obj_mje = JSON.parse(response);
 
                 if (obj_mje.mjeType == "0") {
-                    var template = `<div class="alert alert-danger" role="alert">${obj_mje.Mensaje}</div>`;
-                    //Domde quiero mostrar los elementos y lo llenamos con la plantilla hecha
-                    var mensaje = document.getElementById("mensaje");
-                    mensaje.innerHTML = template;
+                    titulo= "Cuenta no encontrada";
+                    texto= "El correo o la contraseña son incorrectos. Intente nuevamente";
+                    tipo = "error";
+                    alerta(titulo,texto,tipo);
                     //limpiar
                     $('#tarea_form').trigger('reset');
                 } else {
@@ -48,6 +51,7 @@ $(document).ready(function() {
                 }
             });
         }
+
         //console.log(postData);
         //Cancela las funciones basicas del boton submit y evita regrescar la pagina
         e.preventDefault();

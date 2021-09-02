@@ -10,19 +10,34 @@ if (isset($_POST['nombre_cliente']) && isset($_POST['apaterno_cliente'])
     $telefono_cliente       =  $_POST['telefono_cliente'];
     $celular_cliente        =  $_POST['celular_cliente'];
     $correo_cliente         =  $_POST['correo_cliente'];
-    $subscripcion_cliente   =  $_POST['subscripcion_cliente'];
+    $subscripcion_cliente   =  1;
     $empresa_cliente        =  $_POST['empresa_cliente'];
     $medio_identificación_cliente   =  $_POST['medio_identificación_cliente'];
     $folio_cliente          =  $_POST['folio_cliente'];
     $tipo_cliente           =  $_POST['tipo_cliente'];
     $rfc_cliente            =  $_POST['rfc_cliente'];
 
+    //datos de direccion
+    $params= [
+        "idCliente"=>"",
+        "calle"=>$_POST['calle'],
+        "noExt"=>$_POST['noExtEmp'],
+        "noInt"=>$_POST['noIntEmp'],
+        "colonia"=>$_POST['coloniaEmpr'],
+        "municipio"=>$_POST['municipio'],
+        "estado"=>$_POST['estadoEmp'],
+        "cp"=>$_POST['cpEmpr'],
+        "referencias"=>$_POST['referencias'],
+    ];
     include_once "../control/controlCliente.php";
-    if(queryCliente($nombre_cliente,$apaterno_cliente,$amaterno_cliente,
+    $result= queryCliente($nombre_cliente,$apaterno_cliente,$amaterno_cliente,
         $telefono_cliente,$celular_cliente,$correo_cliente,$subscripcion_cliente,
         $empresa_cliente,$medio_identificación_cliente,$folio_cliente,
-        $tipo_cliente,$rfc_cliente)){
-        echo "Se ha agregado con exito";
+        $tipo_cliente,$rfc_cliente);
+    if($result){
+        include_once "../control/controlDirecciones.php";
+        $params['idCliente']= $result->getNoCliente();
+        addDireccion($params);
     } else echo "No se ha podido agregar el cliente";
 
 } else echo "Los datos estan incompletos";

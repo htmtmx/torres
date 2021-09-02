@@ -101,12 +101,24 @@ function cambiaEstadoUsuario(idEmpleado,estatusActual){
 }
 
 $(document).on("click", ".btnEliminarEmpleado", function () {
-    if (confirm("¿Esta seguro de que desea eliminar este empleado? Esta accion no podrá ser revertida")){
-        let elementEmpleado = $(this)[0].parentElement.parentElement;
-        let idEmpleado = $(elementEmpleado).attr("idUsuario")
-        eliminaEmpleado(idEmpleado)
-    }
-
+    let titulo= "Eliminar empleado";
+    let texto= "¿Esta seguro de que desea eliminar este empleado?";
+    Swal.fire({
+        title: titulo,
+        text: texto,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let elementEmpleado = $(this)[0].parentElement.parentElement;
+            let idEmpleado = $(elementEmpleado).attr("idUsuario");
+            eliminaEmpleado(idEmpleado);
+        }
+    });
 });
 
 function eliminaEmpleado(idEmpleado){
@@ -117,6 +129,7 @@ function eliminaEmpleado(idEmpleado){
             idEmpleado: idEmpleado,
         },
         success: function (mje) {
+            alertaEmergente(mje);
             getAllUsers();
         }
     });

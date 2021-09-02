@@ -17,6 +17,7 @@ $(document).ready(function(){
             .done(function(res){
                 $('#frm-add-usuario').trigger('reset');
                 getAllUsers();
+                alertaEmergente(res);
             });
         e.preventDefault();
     });

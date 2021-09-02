@@ -74,45 +74,45 @@
                     <div class="card-body">
                         <input type="hidden" name="no_cliente" id="no_cliente" value="0">
                         <h6 class="heading-small text-muted mb-4">Información del Cliente</h6>
-                        <form action="">
+                        <form id="frm-add-cliente-inicio">
                             <div class="pl-lg-4">
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="nombre">Nombre</label>
-                                            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+                                            <label class="form-control-label" for="nombre_cliente">Nombre</label>
+                                            <input type="text" name="nombre_cliente" id="nombre_cliente" class="form-control" placeholder="Nombre">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="apaterno">Primer Apellido</label>
-                                            <input type="text" name="apaterno" id="apaterno" class="form-control" placeholder="Primer Apellido">
+                                            <label class="form-control-label" for="apaterno_cliente">Primer Apellido</label>
+                                            <input type="text" name="apaterno_cliente" id="apaterno_cliente" class="form-control" placeholder="Primer Apellido">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="amaterno">Segundo Apellido</label>
-                                            <input type="text" name="amaterno" id="amaterno" class="form-control" placeholder="Segundo Apellido">
+                                            <label class="form-control-label" for="amaterno_cliente">Segundo Apellido</label>
+                                            <input type="text" name="amaterno_cliente" id="amaterno_cliente" class="form-control" placeholder="Segundo Apellido">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="correo">Correo Electronico</label>
-                                            <input type="email" name="correo" id="correo" class="form-control" placeholder="example@gmail.com">
+                                            <label class="form-control-label" for="correo_cliente">Correo Electronico</label>
+                                            <input type="email" name="correo_cliente" id="correo_cliente" class="form-control" placeholder="example@gmail.com">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="telefono">Telefono</label>
-                                            <input type="text" name="telefono" id="telefono" class="form-control" placeholder="No. Telefono">
+                                            <label class="form-control-label" for="telefono_cliente">Telefono</label>
+                                            <input type="text" name="telefono_cliente" id="telefono_cliente" class="form-control" placeholder="No. Telefono">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="celular">Celular</label>
-                                            <input type="text" id="celular" name="celular" class="form-control" placeholder="No. Celular">
+                                            <label class="form-control-label" for="celular_cliente">Celular</label>
+                                            <input type="text" id="celular_cliente" name="celular_cliente" class="form-control" placeholder="No. Celular">
                                         </div>
                                     </div>
                                 </div>
@@ -215,22 +215,22 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="empresa">Empresa / Organizacion</label>
-                                            <input id="empresa" name="empresa" class="form-control" placeholder="Nombre Empresa">
+                                            <label class="form-control-label" for="empresa_cliente">Empresa / Organizacion</label>
+                                            <input id="empresa_cliente" name="empresa_cliente" class="form-control" placeholder="Nombre Empresa">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="rfcCliente">RFC</label>
-                                            <input id="rfcCliente" name="rfcCliente" class="form-control" placeholder="RFC">
+                                            <label class="form-control-label" for="rfc_cliente">RFC</label>
+                                            <input id="rfc_cliente" name="rfc_cliente" class="form-control" placeholder="RFC">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="medio_identificacion">Se identifica con:</label>
-                                            <select id="medio_identificacion" name="medio_identificación" class="form-control">
+                                            <label class="form-control-label" for="medio_identificación_cliente">Se identifica con:</label>
+                                            <select id="medio_identificación_cliente" name="medio_identificación_cliente" class="form-control">
                                                 <option value="INE">INE</option>
                                                 <option value="PASAPORTE">Pasaporte</option>
                                                 <option value="CEDULA">Cédula Profesional</option>
@@ -249,8 +249,8 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="folio">Folio</label>
-                                            <input type="text" name="folio" id="folio" class="form-control" placeholder="Folio">
+                                            <label class="form-control-label" for="folio_cliente">Folio</label>
+                                            <input type="text" name="folio_cliente" id="folio_cliente" class="form-control" placeholder="Folio">
                                         </div>
                                     </div>
                                 </div>
@@ -263,12 +263,6 @@
                                                 <option value="1">Persona Moral</option>
                                                 <option value="2">NA</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group d-none" id="fechaRegistroCliente">
-                                            <label class="form-control-label" for="fecha_registro_Cliente">Fecha Registro</label>
-                                            <input type="text" id="fecha_registro_Cliente" name="fecha_registro_Cliente" class="form-control" placeholder="Falló" disabled="">
                                         </div>
                                     </div>
                                 </div>
@@ -325,10 +319,12 @@
 <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
 <!-- Argon JS -->
 <script src="./assets/js/argon.js?v=1.2.0"></script>
+<script src="./assets/js/sweetalert2.all.min.js"></script>
 </body>
 
 <script src="./ajax/console_user.js"></script>
 <script>
-    txtUser.focus();
+    $("#nombre_cliente").focus();
 </script>
+<script src="./ajax/registro-usuario-page.js"></script>
 </html>
