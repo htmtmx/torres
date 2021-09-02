@@ -5,19 +5,14 @@ $(document).ready(function(){
     getMarcas();
     configTiposArchivo();
 });
-
+/*** INFORMACION DE LA EMPRESA ***/
 function consultaInfoEmpresa() {
     $.ajax({
         url: "../webhook/bussiness-info.php",
         success: function (response)
         {
             let obj_result = JSON.parse(response);
-            console.log(obj_result);
-
             let emp = obj_result[0];
-
-            console.log(emp);
-
             $("#calleEmpresa").val(emp.calle);
             $("#empresaE").html(emp.nombre);
             $("#idEmpresa").val(emp.id_empresa);
@@ -39,6 +34,8 @@ function consultaInfoEmpresa() {
         },
     });
 }
+
+/*** TABLA CARACTERISTICAS DEL CARRO ***/
 function configCaracteristicas(){
     $.ajax({
         url: "../webhook/consulta-detalles.php",
@@ -47,7 +44,6 @@ function configCaracteristicas(){
         success: function (response)
         {
             let caracteristicas= JSON.parse(response);
-            console.log(caracteristicas);
             let template="";
             let contador=0;
             caracteristicas.forEach((caracteristica)=>{
@@ -75,6 +71,10 @@ function configCaracteristicas(){
         },
     });
 }
+
+
+
+/*** CONFIGURACION PARA MARCAS Y MODELOS ***/
 
 function getMarcas() {
     //-------------- AJAX pedira la info de los datos se ejecuta cuando entra inicio
@@ -107,9 +107,7 @@ function getModelos(id_marca) {
         data: {id : id_marca},
         type: "POST",
         success: function (response) {
-            console.log(response);
             let modelos = JSON.parse(response);
-            console.log(modelos);
             let template="";
             let contador=0;
         modelos.forEach((modelo)=>{
@@ -161,6 +159,36 @@ function configTiposArchivo(){
         {
             let archivos= JSON.parse(response);
             console.log(archivos);
+            let template="";
+            let contador=0;
+            let estado="";
+            archivos.forEach((archivo)=>{
+                estado = archivo.prioridad<1?`<i class="fas fa-car text-purple"></i>`: ` <i class="fas fa-file-contract text-pink"> </i>`;
+                contador++;
+                template+=`
+                     <tr>
+                        <th scope="row" idArchivo="${archivo.id_tipo_archivo}">
+                            ${contador}
+                        </th>
+                        <td>
+                           ${estado} ${archivo.nombre}
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-white" onclick="editaArchivo(${archivo.id_tipo_archivo},'${archivo.nombre}')">
+                                <i class="fas fa-edit text-green"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger ">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+               `;
+            });
+            $("#tblDocumentosType").html(template);
         },
     });
+}
+
+function editaArchivo(noArchivo,nombreArchivo){
+    alert("Numero de archivo a cambiar "+ noArchivo+ " y su nombre es "+nombreArchivo)
 }

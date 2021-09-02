@@ -56,6 +56,8 @@ $("#frm-add-modelo").on("submit", function(e){
         });
     e.preventDefault();
 });
+
+
 try {
     function getModelos(id_marca) {
         var modelo = $("#id_modelo_fk");

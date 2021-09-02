@@ -93,54 +93,7 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody id="tblDocumentosType">
-                                                                <tr>
-                                                                    <th scope="row">
-                                                                        1
-                                                                    </th>
-                                                                    <td>
-                                                                        <i class="fas fa-file-contract text-pink"></i> CURP
-                                                                    </td>
-                                                                    <td>
-                                                                        <button type="button" class="btn btn-white ">
-                                                                            <i class="fas fa-edit text-green"></i>
-                                                                        </button>
-                                                                        <button type="button" class="btn btn-danger ">
-                                                                            <i class="fas fa-trash-alt"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">
-                                                                        2
-                                                                    </th>
-                                                                    <td>
-                                                                        <i class="fas fa-file-contract text-pink"></i> Identificacion Oficial
-                                                                    </td>
-                                                                    <td>
-                                                                        <button type="button" class="btn btn-white ">
-                                                                            <i class="fas fa-edit text-green"></i>
-                                                                        </button>
-                                                                        <button type="button" class="btn btn-danger ">
-                                                                            <i class="fas fa-trash-alt"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">
-                                                                        3
-                                                                    </th>
-                                                                    <td>
-                                                                        <i class="fas fa-car text-purple"></i> Factura
-                                                                    </td>
-                                                                    <td>
-                                                                        <button type="button" class="btn btn-white ">
-                                                                            <i class="fas fa-edit text-green"></i>
-                                                                        </button>
-                                                                        <button type="button" class="btn btn-danger ">
-                                                                            <i class="fas fa-trash-alt"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
+                                                                <!-- AJAX RESPONSE TABLA TIPOS DE ARCHIVO-->
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -159,10 +112,7 @@
                                                                 </div>
                                                                 <div class="col col-auto text-right">
                                                                     <select id="marcas" name="marcas" class="form-control">
-                                                                        <option value="0" selected="">En venta</option>
-                                                                        <option value="1">Vendidos</option>
-                                                                        <option value="-1">Apartados</option>
-                                                                        <option value="999">Todos</option>
+                                                                        <!-- AJAX RESPONSE MARCAS -->
                                                                     </select>
                                                                 </div>
                                                                 <div class="col text-right">

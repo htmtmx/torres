@@ -119,7 +119,7 @@
                     <div class="modal-footer">
                         <span class="d-flex position-absolute w-100" id="mensajeAddArchivo"></span>
                         <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Añadir</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
             </div>
