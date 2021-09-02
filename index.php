@@ -83,10 +83,10 @@ if(isset($_SESSION['usuario']))
                 <img  src="./assets/img/logo.png" width="50%">
               </div>
               <div class="btn-wrapper text-center">
-                <a href="#" class="btn btn-neutral btn-icon">
-                  <span class="btn-inner--text"><i class="fas fa-car"></i> Catalogo</span>
+                <a href="./registro-cliente.php" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--text"><i class="fas fa-car"></i> Registro Cliente</span>
                 </a>
-                <a href="#" class="btn btn-neutral btn-icon">
+                <a href="https://api.whatsapp.com/send?phone=+525565241529&text=Hola%20necesito%20ayuda%20en%20el%20sistema%20de%20Autos%20Torres" class="btn btn-neutral btn-icon" target="_blank">
                   <span class="btn-inner--text"><span class="btn-inner--icon">
                     <i class="fas fa-question-circle"></i>
                   </span>
