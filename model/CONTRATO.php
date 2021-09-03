@@ -19,6 +19,143 @@ class CONTRATO extends CONEXION implements I_CONTRATO
     private $iva;
     private $total;
     private $estatus;
+    private $tel_referente1;
+    private $nombre_referente1;
+    private $dir_referente1;
+    private $tel_referente2;
+    private $nombre_referente2;
+    private $dir_referente2;
+    private $observaciones;
+    private $fecha_firma_contrato;
+
+    /**
+     * @return mixed
+     */
+    public function getTelReferente1()
+    {
+        return $this->tel_referente1;
+    }
+
+    /**
+     * @param mixed $tel_referente1
+     */
+    public function setTelReferente1($tel_referente1): void
+    {
+        $this->tel_referente1 = $tel_referente1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNombreReferente1()
+    {
+        return $this->nombre_referente1;
+    }
+
+    /**
+     * @param mixed $nombre_referente1
+     */
+    public function setNombreReferente1($nombre_referente1): void
+    {
+        $this->nombre_referente1 = $nombre_referente1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDirReferente1()
+    {
+        return $this->dir_referente1;
+    }
+
+    /**
+     * @param mixed $dir_referente1
+     */
+    public function setDirReferente1($dir_referente1): void
+    {
+        $this->dir_referente1 = $dir_referente1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTelReferente2()
+    {
+        return $this->tel_referente2;
+    }
+
+    /**
+     * @param mixed $tel_referente2
+     */
+    public function setTelReferente2($tel_referente2): void
+    {
+        $this->tel_referente2 = $tel_referente2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNombreReferente2()
+    {
+        return $this->nombre_referente2;
+    }
+
+    /**
+     * @param mixed $nombre_referente2
+     */
+    public function setNombreReferente2($nombre_referente2): void
+    {
+        $this->nombre_referente2 = $nombre_referente2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDirReferente2()
+    {
+        return $this->dir_referente2;
+    }
+
+    /**
+     * @param mixed $dir_referente2
+     */
+    public function setDirReferente2($dir_referente2): void
+    {
+        $this->dir_referente2 = $dir_referente2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
+
+    /**
+     * @param mixed $observaciones
+     */
+    public function setObservaciones($observaciones): void
+    {
+        $this->observaciones = $observaciones;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFechaFirmaContrato()
+    {
+        return $this->fecha_firma_contrato;
+    }
+
+    /**
+     * @param mixed $fecha_firma_contrato
+     */
+    public function setFechaFirmaContrato($fecha_firma_contrato): void
+    {
+        $this->fecha_firma_contrato = $fecha_firma_contrato;
+    }
+
 
     /**
      * @return mixed
@@ -278,7 +415,8 @@ class CONTRATO extends CONEXION implements I_CONTRATO
 		v.opc_credito, v.observaciones, v.estatus as veh_status,
 		con.hora_fecha_creacion as cont_date_creacion, con.tipo_contrato, con.plazo, con.fecha_primer_pago, 
 		con.enganche, con.saldo, con.forma_pago, con.subtotal, con.iva, con.total, con.estatus as cont_status,
-		con.no_empleado_fk, con.no_cliente_fk, con.no_vehiculo_fk,v.id_modelo_fk,mo.id_marca_fk 
+		con.no_empleado_fk, con.no_cliente_fk, con.no_vehiculo_fk,v.id_modelo_fk,mo.id_marca_fk,con.tel_referente1,con.telreferente2 ,
+        con.nombre_referente1,con.nombre_referente2 ,con.dir_referente1 ,con.dir_referente2 ,con.observaciones ,con.fecha_firma_contrato
         FROM contrato con, empleado e, cliente cli, coche v, marca ma, modelo mo 
         where con.no_empleado_fk = e.no_empleado AND con.no_cliente_fk = cli.no_cliente 
         AND con.no_vehiculo_fk = v.no_vehiculo AND ma.id_marca = mo.id_marca_fk AND v.id_modelo_fk = mo.id_modelo ".$concat;
@@ -293,7 +431,8 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         $query = "SELECT con.no_contrato,con.plazo,con.fecha_primer_pago, con.enganche, con.saldo,
 		con.subtotal, con.iva, con.total,con.no_vehiculo_fk, con.no_empleado_fk, con.no_cliente_fk, 
 		con.hora_fecha_creacion as cont_date_creacion,  
-		 con.forma_pago,  con.tipo_contrato, 
+		 con.forma_pago,  con.tipo_contrato, con.tel_referente1,con.telreferente2 ,
+        con.nombre_referente1,con.nombre_referente2 ,con.dir_referente1 ,con.dir_referente2 ,con.observaciones ,con.fecha_firma_contrato,
 		case 
 			when con.tipo_contrato = 0 then 'Venta de Vehiculo'
 			when con.tipo_contrato = 1 then 'Adquisición de Vehiculo'
@@ -309,7 +448,8 @@ class CONTRATO extends CONEXION implements I_CONTRATO
 
     function consultaAllContratos()
     {
-        $query = "select c.no_contrato , concat_ws(' ', ma.nombre, m.nombre, co.anio, co.color, concat('Placa: ',co.placa)) as vehiculo, convert(c.hora_fecha_creacion,date) as fecha_venta, co.no_vehiculo
+        $query = "select c.no_contrato , concat_ws(' ', ma.nombre, m.nombre, co.anio, co.color, concat('Placa: ',co.placa)) as vehiculo, convert(c.hora_fecha_creacion,date) as fecha_venta, co.no_vehiculo,c.tel_referente1,c.telreferente2 ,
+        c.nombre_referente1,c.nombre_referente2 ,c.dir_referente1 ,c.dir_referente2 ,c.observaciones ,c.fecha_firma_contrato
                 from contrato c , coche co , modelo m , marca ma 
                 where co.no_vehiculo = c.no_vehiculo_fk 
                 and co.id_modelo_fk = m.id_modelo 
@@ -334,14 +474,14 @@ class CONTRATO extends CONEXION implements I_CONTRATO
 
     public function queryaddContrato()
     {
-        $query = "INSERT INTO `contrato` (`no_contrato`, `no_empleado_fk`, `no_cliente_fk`, 
-        `no_vehiculo_fk`, `hora_fecha_creacion`, `tipo_contrato`, `plazo`, `fecha_primer_pago`, 
-        `enganche`, `saldo`, `forma_pago`, `subtotal`, `iva`, `total`, `estatus`) 
-        VALUES ('".$this->getNoContrato()."', '".$this->getNoEmpleadoFk()."', '"
-            .$this->getNoClienteFk()."', '".$this->getNoVehiculoFk()."', '".$this->getHoraFechaCreacion()."', '"
-            .$this->getTipoContrato()."', '".$this->getPlazo()."', '".$this->getFechaPrimerPago()."', '"
-            .$this->getEnganche()."', '".$this->getSaldo()."', '".$this->getFormaPago()."', '"
-            .$this->getSubtotal()."', '".$this->getIva()."', '".$this->getTotal()."', '".$this->getEstatus()."')";
+        $query = "INSERT INTO `contrato`(`no_contrato`, `folio`, `no_empleado_fk`, `no_cliente_fk`, `no_vehiculo_fk`, `hora_fecha_creacion`,
+                       `tipo_contrato`, `plazo`, `tel_referente1`, `nombre_referente1`, `dir_referente1`, `telreferente2`, `nombre_referente2`,
+                       `dir_referente2`, `fecha_primer_pago`, `enganche`, `saldo`, `forma_pago`, `subtotal`, `iva`, `total`, `observaciones`,
+                       `fecha_firma_contrato`, `estatus`) VALUES ('".$this->getNoContrato()."','0','".$this->getNoEmpleadoFk()."',
+        '".$this->getNoClienteFk()."','".$this->getNoVehiculoFk()."','".$this->getHoraFechaCreacion()."','".$this->getTipoContrato()."','".$this->getPlazo()."',
+        '".$this->getTelReferente1()."','".$this->getNombreReferente1()."','".$this->getDirReferente1()."','".$this->getTelReferente2()."','".$this->getNombreReferente2()."',
+        '".$this->getDirReferente2()."','".$this->getFechaPrimerPago()."','".$this->getEnganche()."','".$this->getSaldo()."','".$this->getFormaPago()."','".$this->getSubtotal()."',
+        '".$this->getIva()."','".$this->getTotal()."','".$this->getObservaciones()."','".$this->getFechaFirmaContrato()."','".$this->getEstatus()."')";
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
@@ -383,10 +523,12 @@ class CONTRATO extends CONEXION implements I_CONTRATO
     {
         $query = "SELECT con.no_contrato, concat_ws(' ',cli.apaterno, cli.amaterno, cli.nombre) as cliente , 
 		concat_ws(' ',e.apaterno, e.amaterno, e.nombre) as vendido_comprado_por , 
-		concat_ws(' ',ma.nombre, mo.nombre, v.anio, v.color) as vehiculo, 
+		ma.nombre as nombre_marca, mo.nombre as nombre_modelo, v.anio, v.color,
 		con.forma_pago , con.subtotal, con.iva, con.total , con.enganche , con.saldo ,  
 		con.tipo_contrato, con.estatus as cont_status,con.hora_fecha_creacion,
-		con.no_empleado_fk, con.no_cliente_fk, con.no_vehiculo_fk,v.id_modelo_fk,mo.id_marca_fk, 
+		con.no_empleado_fk, con.no_cliente_fk, con.no_vehiculo_fk,v.id_modelo_fk,mo.id_marca_fk, con.tel_referente1,
+        con.telreferente2 ,con.nombre_referente1,con.nombre_referente2 ,con.dir_referente1 ,con.dir_referente2 ,
+        con.observaciones ,con.fecha_firma_contrato,
 		case 
 			when con.tipo_contrato = 0 then 'Venta de Vehiculo'
 			when con.tipo_contrato = 1 then 'Adquisición de Vehiculo'
