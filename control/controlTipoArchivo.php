@@ -19,8 +19,7 @@ function updateTipoArchivo($idtipoArchivo,$nombre,$tipo_archivo,$prioridad){
     $obj_arch->setNombre($nombre);
     $obj_arch->setTipoUso($tipo_archivo);
     $obj_arch->setPrioridad($prioridad);
-    $obj_arch->queryUpdateTipoArchivo();
-    return true;
+    return $obj_arch->queryUpdateTipoArchivo();;
 }
 function deleteTipoArchivo($idtipoArchivo){
     include_once "../model/TIPO_ARCHIVO.php";

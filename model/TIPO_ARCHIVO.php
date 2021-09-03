@@ -91,7 +91,7 @@ class TIPO_ARCHIVO extends CONEXION
 
     function consultaTiposArchivo(){
         $query = "SELECT `id_tipo_archivo`, `nombre`, `tipo_Archivo`, `prioridad`, `estatus` 
-                  FROM `tipo_archivo` WHERE `estatus`>0 ORDER BY `tipo_archivo`.`prioridad`,`tipo_archivo`.`nombre` ASC";
+                  FROM `tipo_archivo` WHERE `estatus`>0 ORDER BY `tipo_archivo`.`tipo_archivo` ASC";
         $this->connect();
         $result = $this->getData($query);
         $this->close();

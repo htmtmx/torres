@@ -394,6 +394,3 @@
 </html>
 <script src="../ajax/configuracion.js"></script>
 <script src="../ajax/empresa-update.js"></script>
-<script src="../ajax/configDocs.js"></script>
-<script src="../ajax/configModels.js"></script>
-<script src="../ajax/configDetalles.js"></script>

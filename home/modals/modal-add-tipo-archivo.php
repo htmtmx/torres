@@ -25,19 +25,9 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="catCarac">Categoria</label>
                                     <select name="catCarac" id="catCarac" class="form-control">
-                                        <option value="0">1</option>
-                                        <option value="1">2</option>
-                                        <option value="2">3</option>
-                                        <option value="3">4</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label class="form-control-label" for="visibilidadCarac">Visible</label>
-                                    <select name="visibilidadCarac" id="visibilidadCarac" class="form-control">
-                                        <option value="0">Si</option>
-                                        <option value="1">No</option>
+                                        <option value="0">Exteriores</option>
+                                        <option value="1">Inventario</option>
+                                        <option value="2">Accesorios</option>
                                     </select>
                                 </div>
                             </div>
@@ -107,8 +97,8 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="selectTipoArch">Tipo de Archivo</label>
                                     <select name="selectTipoArch" id="selectTipoArch" class="form-control">
-                                        <option value="0" selected>Foto</option>
-                                        <option value="1" >Documento</option>
+                                        <option value="0" selected>Documento vehiculo</option>
+                                        <option value="1" >Documento contrato</option>
                                     </select>
                                 </div>
                             </div>
