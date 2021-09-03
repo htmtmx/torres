@@ -2,25 +2,25 @@
 
 
 
-function addTipoArchivo($nombre,$tipo_uso,$prioridad){
+function addTipoArchivo($nombre,$tipo_archivo,$prioridad){
     include_once "../model/TIPO_ARCHIVO.php";
     $obj_arch = new TIPO_ARCHIVO();
     $obj_arch->setNombre($nombre);
-    $obj_arch->setTipoUso($tipo_uso);
+    $obj_arch->setTipoUso($tipo_archivo);
     $obj_arch->setPrioridad($prioridad);
     $obj_arch->setEstatus(1);
-    $result = $obj_arch->queryAddTipoArchivo();
+    $result = $obj_arch->queryAddTipoArchivo()? "Se registro correctamente":"Error";
     return $result;
 }
-function updateTipoArchivo($idtipoArchivo,$nombre,$tipo_uso,$prioridad){
+function updateTipoArchivo($idtipoArchivo,$nombre,$tipo_archivo,$prioridad){
     include_once "../model/TIPO_ARCHIVO.php";
     $obj_arch = new TIPO_ARCHIVO();
     $obj_arch->setIdTipoArchivo($idtipoArchivo);
     $obj_arch->setNombre($nombre);
-    $obj_arch->setTipoUso($tipo_uso);
+    $obj_arch->setTipoUso($tipo_archivo);
     $obj_arch->setPrioridad($prioridad);
-    $result = $obj_arch->queryUpdateTipoArchivo();
-    return $result;
+    $obj_arch->queryUpdateTipoArchivo();
+    return true;
 }
 function deleteTipoArchivo($idtipoArchivo){
     include_once "../model/TIPO_ARCHIVO.php";

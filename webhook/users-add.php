@@ -17,6 +17,6 @@
         if (addEmpleado($nombre_user,$apaterno_user,$amaterno_user,$telefono_user,$celular_user,
             $correo_user,$puesto_user,$sexo_user,$acceso_user)){
             echo "Se ha guardado con exito";
-        } else echo "Ha falaldo";
+        } else echo "Ha fallado";
 
     }

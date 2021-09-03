@@ -129,7 +129,7 @@ class DETALLE extends CONEXION
 
     public function queryUpdateDetalle($id_detalle){
         $query="UPDATE `detalle` SET `nombre`='".$this->getNombre()."',`categoria`='".$this->getCategoria()."',
-        `visible`='".$this->getVisible()."',`oblogatorio`='".$this->getOblogatorio()."',`estatus`='".$this->getEstatus()."'
+        `visible`='".$this->getVisible()."',`oblogatorio`='".$this->getOblogatorio()."'
         WHERE id_detalle=".$id_detalle;
         $this->connect();
         $result=$this->executeInstruction($query);
@@ -138,7 +138,7 @@ class DETALLE extends CONEXION
     }
 
     public function queryDeleteDetalle($id_detalle){
-        $query= "UPDATE `detalle` SET id_detalle= id_detalle*(-1) WHERE id_detalle=".$id_detalle;
+        $query= "DELETE FROM `detalle` WHERE id_detalle= ".$id_detalle;
         $this->connect();
         $result=$this->executeInstruction($query);
         $this->close();

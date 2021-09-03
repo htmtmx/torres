@@ -20,13 +20,12 @@ function addDetalle($nombre,$categoria,$visible,$obligatorio,$estatus){
     return $result;
 }
 
-function updateDetalle($id_detalle,$nombre,$categoria,$visible,$obligatorio,$estatus){
+function updateDetalle($id_detalle,$nombre,$categoria,$visible,$obligatorio){
     $obj_detalle = new DETALLE();
     $obj_detalle->setNombre($nombre);
     $obj_detalle->setCategoria($categoria);
     $obj_detalle->setVisible($visible);
     $obj_detalle->setOblogatorio($obligatorio);
-    $obj_detalle->setEstatus($estatus);
     $result=$obj_detalle->queryUpdateDetalle($id_detalle);
     return $result;
 }

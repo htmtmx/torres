@@ -25,7 +25,8 @@ function updateModelo($marca,$nombre,$id_modelo){
     $modelo->setIdMarcaFk($marca);
     $modelo->setNombre($nombre);
     $modelo->setIdModelo($id_modelo);
-    return $modelo->queryupdateModelo();
+    $result = $modelo->queryupdateModelo();
+    return $result;
 }
 
 function updateEstatusModelo($id_modelo,$estatus){
@@ -34,4 +35,12 @@ function updateEstatusModelo($id_modelo,$estatus){
     $modelo->setIdModelo($id_modelo);
     $modelo->setEstatus($estatus);
     return $modelo->queryupdateEstatusModelo();
+}
+
+function deleteModelo($id_modelo)
+{
+    include_once "../model/MODELO.php";
+    $modelo = new MODELO();
+    $modelo->setIdModelo($id_modelo);
+    return $modelo->queryDeleteModelo();
 }

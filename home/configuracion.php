@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-6">
                     <h1 class="display-2 text-white" id="empresaE"></h1>
-                    <p class="text-white mt-0 mb-5">Modifica los Datos del negocio, estos aparereceran en los documentos que se generen </p>
+                    <p class="text-white mt-0 mb-5">Modifica los Datos del negocio, estos apareceran en los documentos que se generen </p>
                 </div>
             </div>
         </div>
@@ -87,8 +87,8 @@
                                                             <table class="table align-items-center table-flush">
                                                                 <thead class="thead-light">
                                                                 <tr>
-                                                                    <th scope="col">Marca</th>
-                                                                    <th scope="col">Modelo</th>
+                                                                    <th scope="col">#</th>
+                                                                    <th scope="col">Nombre Documento</th>
                                                                     <th scope="col"></th>
                                                                 </tr>
                                                                 </thead>
@@ -394,3 +394,6 @@
 </html>
 <script src="../ajax/configuracion.js"></script>
 <script src="../ajax/empresa-update.js"></script>
+<script src="../ajax/configDocs.js"></script>
+<script src="../ajax/configModels.js"></script>
+<script src="../ajax/configDetalles.js"></script>

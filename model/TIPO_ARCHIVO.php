@@ -107,7 +107,7 @@ class TIPO_ARCHIVO extends CONEXION
         return $result;
     }
     function queryUpdateTipoArchivo(){
-        $query="UPDATE `tipo_archivo` SET `nombre`='".$this->getNombre()."',`tipo_Archivo`='".$this->getIdTipoArchivo()."',
+        $query="UPDATE `tipo_archivo` SET `nombre`='".$this->getNombre()."',`tipo_Archivo`='".$this->getTipoUso()."',
                 `prioridad`='".$this->getPrioridad()."'WHERE `id_tipo_archivo`=".$this->getIdTipoArchivo();
         $this->connect();
         $result = $this->executeInstruction($query);

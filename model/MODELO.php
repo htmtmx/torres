@@ -108,4 +108,13 @@ class MODELO extends CONEXION implements I_MODELO
         $this->close();
         return $result;
     }
+
+    function queryDeleteModelo()
+    {
+        $query="delete from modelo where modelo.id_modelo =".$this->getIdModelo();
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

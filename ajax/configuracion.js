@@ -44,12 +44,14 @@ function configCaracteristicas(){
         success: function (response)
         {
             let caracteristicas= JSON.parse(response);
+            //console.log(caracteristicas);
             let template="";
             let contador=0;
             caracteristicas.forEach((caracteristica)=>{
+                //console.log(caracteristica);
                 contador++;
                template+=`
-                 <tr>
+                 <tr idCaracteristica="${caracteristica.id_detalle}">
                     <th scope="row" idCaracteristica="${caracteristica.id_detalle}">
                         ${contador}
                     </th>
@@ -57,12 +59,12 @@ function configCaracteristicas(){
                         ${caracteristica.nombre}
                     </td>
                     <td>
-                        <button type="button" class="btn btn-white" onclick="editaCaracteristica(${caracteristica.id_detalle},'${caracteristica.nombre}');">
+                        <button type="button" class="btn btn-white" onclick="editaCaracteristica(${caracteristica.id_detalle},'${caracteristica.nombre}','${caracteristica.categoria}','${caracteristica.visible}','${caracteristica.oblogatorio}');">
                             <i class="fas fa-edit text-green"></i>
                         </button>
-                        <button type="button" class="btn btn-danger ">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
+                        <button class="btn btn-icon btn-secondary btnEliminarCaracteristica" type="button">
+                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
+                            </button>
                     </td>
                 </tr>
                `;
@@ -72,15 +74,21 @@ function configCaracteristicas(){
     });
 }
 
-function editaCaracteristica(id_detalle,nombreDetalle){
+function editaCaracteristica(id_detalle,nombreDetalle,categoria,visible,obligatorio){
     $("#addDetalles").modal('show');
     $("#idDetalles").val(id_detalle);
     $("#nombreCaracteristica").val(nombreDetalle);
+    $("#catCarac").val(categoria);
+    $("#visibilidadCarac").val(visible);
+    $("#obligCarac").val(obligatorio);
 }
 
 function limpiaModalCaracteristicas(){
     $("#idDetalles").val(0);
     $("#nombreCaracteristica").val("");
+    $("#catCarac").val(0);
+    $("#visibilidadCarac").val(0);
+    $("#obligCarac").val(0);
 }
 /*** CONFIGURACION PARA MARCAS Y MODELOS ***/
 
@@ -116,12 +124,14 @@ function getModelos(id_marca) {
         type: "POST",
         success: function (response) {
             let modelos = JSON.parse(response);
+            //console.log(modelos);
             let template="";
             let contador=0;
         modelos.forEach((modelo)=>{
+            //console.log(modelo.id_marca_fk);
             contador++;
             template+=`
-                 <tr>
+                 <tr idModelo="${modelo.id_modelo}" idMarca="${id_marca}">
                     <th scope="row" idModelo="${modelo.id_modelo}">
                         ${modelo.nombremarca}
                     </th>
@@ -129,11 +139,11 @@ function getModelos(id_marca) {
                         ${modelo.nombre}
                     </td>
                     <td>
-                        <button type="button" class="btn btn-white" onclick="editaModelo(${modelo.id_modelo},'${modelo.nombre}');">
+                        <button type="button" class="btn btn-white" onclick="editaModelo(${modelo.id_modelo},'${modelo.nombre}','${modelo.id_marca_fk}');">
                             <i class="fas fa-edit text-green"></i>
                         </button>
-                        <button type="button" class="btn btn-danger">
-                            <i class="fas fa-trash-alt"></i>
+                        <button class="btn btn-icon btn-secondary btnEliminarModel" type="button">
+                            <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
                         </button>
                     </td>
                 </tr>
@@ -153,8 +163,12 @@ $("#marcas").change(function ()
         getModelos(id);
     } else console.log("Hay un error interno");
 });
-function editaModelo(id_modelo,nombre){
+function editaModelo(id_modelo,nombre,marca){
     $("#idmodelo").val(id_modelo);
+    var id = $("#marcas").val();
+    //console.log(id);
+    $("#marcaModelo").val(id);
+    $("#idmarca").val(marca);
     $("#nombreModelo").val(nombre);
     $("#modal_ConfigModelo").modal('show');
 }
@@ -162,6 +176,7 @@ function editaModelo(id_modelo,nombre){
 function limpiaModalModelo(){
     $("#idmodelo").val(0);
     $("#nombreModelo").val("");
+    $("#marcaModelo").val(2);
 }
 /******* CONFIGURA TIPOS DE ARCHIVO ****/
 function configTiposArchivo(){
@@ -170,15 +185,15 @@ function configTiposArchivo(){
         success: function (response)
         {
             let archivos= JSON.parse(response);
-            console.log(archivos);
+            //console.log(archivos);
             let template="";
             let contador=0;
             let estado="";
             archivos.forEach((archivo)=>{
-                estado = archivo.prioridad<1?`<i class="fas fa-car text-purple"></i>`: ` <i class="fas fa-file-contract text-pink"> </i>`;
+                estado = archivo.tipo_Archivo<1?`<i class="far fa-file-image fa-2x" style="color:"></i>`: ` <i class="far fa-file-pdf fa-2x" style="color:red"></i>`;
                 contador++;
                 template+=`
-                     <tr>
+                     <tr idArchivo="${archivo.id_tipo_archivo}">
                         <th scope="row" idArchivo="${archivo.id_tipo_archivo}">
                             ${contador}
                         </th>
@@ -186,11 +201,11 @@ function configTiposArchivo(){
                            ${estado} ${archivo.nombre}
                         </td>
                         <td>
-                            <button type="button" class="btn btn-white" onclick="editaArchivo(${archivo.id_tipo_archivo},'${archivo.nombre}')">
+                            <button type="button" class="btn btn-white" onclick="editaArchivo(${archivo.id_tipo_archivo},'${archivo.nombre}','${archivo.prioridad}','${archivo.tipo_Archivo}')">
                                 <i class="fas fa-edit text-green"></i>
                             </button>
-                            <button type="button" class="btn btn-danger ">
-                                <i class="fas fa-trash-alt"></i>
+                            <button class="btn btn-icon btn-secondary btnEliminarTipoArchivo" type="button">
+                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
                             </button>
                         </td>
                     </tr>
@@ -201,13 +216,17 @@ function configTiposArchivo(){
     });
 }
 
-function editaArchivo(noArchivo,nombreArchivo){
+function editaArchivo(noArchivo,nombreArchivo,prioridad,tipoArchivo){
     $("#idTipoArchivo").val(noArchivo);
-    $("#nombreDetalle").val(nombreArchivo);
+    $("#nombreTipoArchivo").val(nombreArchivo);
+    $("#prioridadTipoArch").val(prioridad);
+    $("#selectTipoArch").val(tipoArchivo);
     $("#modal_ConfigTipoArchivo").modal('show');
 }
 
 function limpiaModalTipoArchivo(){
     $("#idTipoArchivo").val(0);
-    $("#nombreDetalle").val("");
+    $("#nombreTipoArchivo").val("");
+    $("#prioridadTipoArch").val(0);
+    $("#selectTipoArch").val(0);
 }
