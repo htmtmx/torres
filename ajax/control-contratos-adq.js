@@ -81,7 +81,14 @@ function construyeTablaContratosVta(contratos){
                         <a href="./detalles-coche.php?idCoche=${contrato.no_vehiculo_fk}#conteinerContratos">
                             <button class="btn btn-icon btn-secondary" type="button">
                                 <span class="btn-inner--icon">
-                                    <i class="fas fa-eye text-blue"></i> VER DETALLES
+                                    <i class="fas fa-eye text-blue"></i>
+                                </span>
+                            </button>
+                        </a>                        
+                        <a href="./responsiva.php?noContrato=${contrato.no_contrato}">
+                            <button class="btn btn-icon btn-secondary" type="button">
+                                <span class="btn-inner--icon">
+                                    <i class="fas fa-print text-orange"></i>
                                 </span>
                             </button>
                         </a>
@@ -134,7 +141,14 @@ function construyeTablaContratosAdq(contratos){
                                     <a href="./detalles-coche.php?idCoche=${contrato.no_vehiculo_fk}#conteinerContratos">
                                     <button class="btn btn-icon btn-secondary" type="button">
                                         <span class="btn-inner--icon">
-                                            <i class="fas fa-eye text-blue"></i> VER DETALLES
+                                            <i class="fas fa-eye text-blue"></i>
+                                        </span>
+                                    </button>
+                                    </a>                                    
+                                    <a href="./responsiva.php?noContrato=${contrato.no_contrato}">
+                                    <button class="btn btn-icon btn-secondary" type="button">
+                                        <span class="btn-inner--icon">
+                                            <i class="fas fa-print text-orange"></i>
                                         </span>
                                     </button>
                                     </a>

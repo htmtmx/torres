@@ -1,7 +1,7 @@
 <?php
 require_once('../vendor/autoload.php');
-require_once('./reportes/index.php');
 include_once "../webhook/response_data_contrato.php";
+require_once('./reportes/constructor_contratos.php');
 $contratos = getContratos();
 /*
 var_dump($contratos);

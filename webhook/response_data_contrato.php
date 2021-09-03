@@ -1,6 +1,10 @@
 <?php
 function getContratos(){
-    $noContrato = 0;
     include_once "../control/controlContrato.php";
-    return $arrayContratos = consultaAllContratos();
+    return consultaAllContratos();
+}
+
+function getContrato($noContrato){
+    include_once "../control/controlContrato.php";
+    return consultaContrato($noContrato);
 }

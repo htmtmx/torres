@@ -525,6 +525,4 @@ function revisaContratoVenta($params){
             return false;
         }
     } else return false;
-
-
 }
