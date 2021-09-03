@@ -9,11 +9,12 @@ function getTemplateCartaResponsiva($contrato){
     <body>
         <div class="container">
             <div class="row">
-                <div class="left"><h1>Responsiva de compra venta</h1></div>
+                    <h1>AUTOS TORRES</h1>
+            </div>
+            <div class="row">
+                <div class="left"><h1>RESPONSIVA DE COMPRA VENTA DE PARTICULAR A PARTICULAR</h1></div>
                 <div class="right"><h1>23 de Enero de 2021</h1></div>
             </div>
-        
-        
             <h2>Manifiesto que recibí a mi entera satisfacción y de conformidad el vehículo descrito:</h2>
             <table>
                 <tbody>
