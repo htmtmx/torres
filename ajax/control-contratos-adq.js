@@ -10,6 +10,7 @@ function consultaContratosTodos(){
             id: 0
         },
         success: function (response) {
+            console.log(response);
             let objContratos = JSON.parse(response);
             console.log(objContratos);
             $("#tblContratosAdquisicion").html(discriminaContratos(objContratos,1));
@@ -85,7 +86,7 @@ function construyeTablaContratosVta(contratos){
                                 </span>
                             </button>
                         </a>                        
-                        <a href="./responsiva.php?noContrato=${contrato.no_contrato}">
+                        <a href="./responsiva.php?noVechiculo=${contrato.no_vehiculo_fk}&consult=true" target="_blank">
                             <button class="btn btn-icon btn-secondary" type="button">
                                 <span class="btn-inner--icon">
                                     <i class="fas fa-print text-orange"></i>
@@ -145,7 +146,7 @@ function construyeTablaContratosAdq(contratos){
                                         </span>
                                     </button>
                                     </a>                                    
-                                    <a href="./responsiva.php?noContrato=${contrato.no_contrato}">
+                                    <a href="./responsiva.php?noVechiculo=${contrato.no_vehiculo_fk}&consult=false" target="_blank">
                                     <button class="btn btn-icon btn-secondary" type="button">
                                         <span class="btn-inner--icon">
                                             <i class="fas fa-print text-orange"></i>

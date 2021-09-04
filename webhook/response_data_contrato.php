@@ -4,7 +4,14 @@ function getContratos(){
     return consultaAllContratos();
 }
 
-function getContrato($noContrato){
+function getContratoCoches($noCoche, $tipo){
     include_once "../control/controlContrato.php";
-    return consultaContrato($noContrato);
+    $contratosJSON = consultaContratosCoche($noCoche);
+    $contratos = json_decode($contratosJSON,true);
+//discriminar al contrato, obtenemos el que se use segun tipo
+    foreach($contratos as $contrato){
+        if ($contrato['tipo_contrato'] == $tipo){
+            return $contrato;
+        }
+    }
 }

@@ -1,9 +1,5 @@
 <?php
 
-function getConrtatoHtml($contrato){
-    return "<h1>HOLA</h1>";
-}
-
 function getTemplateCartaResponsiva($contrato){
     $plantilla = '
     <body>
@@ -20,19 +16,19 @@ function getTemplateCartaResponsiva($contrato){
                 <tbody>
                 <tr>
                     <td>MARCA:</td>
-                    <td class="res">NISSAN</td>
+                    <td class="res">'.$contrato['nombre_marca'].'</td>
                     <td>MODELO:</td>
-                    <td class="res">VERSA</td>
+                    <td class="res">'.$contrato['nombre_modelo'].'</td>
                     <td>TIPO:</td>
-                    <td class="res">SEDAN</td>
+                    <td class="res">'.$contrato['tipo_carro'].'</td>
                     <td>COLOR:</td>
-                    <td class="res">ROJO</td>
+                    <td class="res">'.$contrato['color'].'</td>
                 </tr>
                 <tr>
                     <td>MOTOR:</td>
-                    <td colspan="3"class="res">15156156156</td>
+                    <td class="res" colspan="3">'.$contrato['color'].'</td>
                     <td>SERIE:</td>
-                    <td colspan="3"class="res">15615615615</td>
+                    <td class="res" colspan="3">'.$contrato['color'].'</td>
                 </tr>
                 <tr>
                     <td colspan="8"><h3>Con los siguientes documentos:</h3></td>
