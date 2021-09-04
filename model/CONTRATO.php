@@ -521,14 +521,16 @@ class CONTRATO extends CONEXION implements I_CONTRATO
     }
     public function queryconsultaContratosPorCoche($no_vehiculo)
     {
-        $query = "SELECT con.no_contrato, concat_ws(' ',cli.apaterno, cli.amaterno, cli.nombre) as cliente , 
+        $query = "SELECT con.no_contrato, concat_ws(' ',cli.apaterno, cli.amaterno, cli.nombre) as cliente , cli.telefono,
 		concat_ws(' ',e.apaterno, e.amaterno, e.nombre) as vendido_comprado_por , 
 		ma.nombre as nombre_marca, mo.nombre as nombre_modelo, v.anio, v.color,
 		con.forma_pago , con.subtotal, con.iva, con.total , con.enganche , con.saldo ,  
 		con.tipo_contrato, con.estatus as cont_status,con.hora_fecha_creacion,
 		con.no_empleado_fk, con.no_cliente_fk, v.tipo_carro, con.no_vehiculo_fk,v.id_modelo_fk,mo.id_marca_fk, con.tel_referente1,
         con.telreferente2 ,con.nombre_referente1,con.nombre_referente2 ,con.dir_referente1 ,con.dir_referente2 ,
-        con.observaciones ,con.fecha_firma_contrato,
+        con.observaciones ,con.fecha_firma_contrato, v.no_motor, v.numero_serie_vehicular, v.no_factura, v.fecha_factura,
+        v.empresa_factura, v.domicilio_empresa, v.tarjeton, v.folio_tarjeton, v.ultima_tenencia, v.tarjeta_circulacion,
+        v.folio_tarje_circul, v.verificaciones_coche, v.carroceria, v.pintura, v.pintura, v.llantas, v.placa,
 		case 
 			when con.tipo_contrato = 0 then 'Venta de Vehiculo'
 			when con.tipo_contrato = 1 then 'Adquisición de Vehiculo'

@@ -26,38 +26,38 @@ function getTemplateCartaResponsiva($contrato){
                 </tr>
                 <tr>
                     <td>MOTOR:</td>
-                    <td class="res" colspan="3">'.$contrato['color'].'</td>
+                    <td class="res" colspan="3">'.$contrato['no_motor'].'</td>
                     <td>SERIE:</td>
-                    <td class="res" colspan="3">'.$contrato['color'].'</td>
+                    <td class="res" colspan="3">'.$contrato['numero_serie_vehicular'].'</td>
                 </tr>
                 <tr>
                     <td colspan="8"><h3>Con los siguientes documentos:</h3></td>
                 </tr>
                 <tr>
                     <td>FACTURA No.</td>
-                    <td colspan="3"class="res">4151</td>
+                    <td colspan="3"class="res">'.$contrato['no_factura'].'</td>
                     <td>de</td>
-                    <td colspan="3"class="res">Autos Chidos SA. de CV.</td>
+                    <td colspan="3"class="res">'.$contrato['empresa_factura'].'</td>
                 </tr>
                 <tr>
                     <td>TARJETON:</td>
-                    <td class="res">SI</td>
+                    <td class="res">'.$contrato['tarjeton'].'</td>
                     <td>FOLIO:</td>
-                    <td class="res">4561</td>
+                    <td class="res">'.$contrato['folio_tarjeton'].'</td>
                     <td>TENENCIAS:</td>
                     <td colspan="3" class="res">2016, 2017, 2018, 2019, 2020, 2021 </td>
                 </tr>
                 <tr>
                     <td colspan="2">TARJETA DE CIRCULACION:</td>
-                    <td class="res">SI</td>
+                    <td class="res">'.$contrato['tarjeta_circulacion'].'</td>
                     <td>FOLIO:</td>
-                    <td class="res">4561</td>
+                    <td class="res">'.$contrato['folio_tarje_circul'].'</td>
                     <td>PLACAS:</td>
-                    <td colspan="2" class="res">HDM1561</td>
+                    <td colspan="2" class="res">'.$contrato['placa'].'</td>
                 </tr>
                 <tr>
                     <td>VERIFICACIONES:</td>
-                    <td class="res">SI</td>
+                    <td class="res">'.$contrato['verificaciones_coche'].'</td>
                 </tr>
                 </tbody>
             </table>
@@ -87,15 +87,15 @@ function getTemplateCartaResponsiva($contrato){
                 Las partes manifiestan bajo protesta de decir verdad que los datos asentados en esta responsiva son ciertos.
             </h3>
             <p>
-                Se realiza la Compra - Venta de dicha unidad en la cantidad de <span class="res">$ 150,000</span>
+                Se realiza la Compra - Venta de dicha unidad en la cantidad de <span class="res">$ '.$contrato['total'].'</span>
                 <br>
                 Cantidad con letra  <span class="res">( Ciento Cincuenta y Cinco Mil Pesos MXN NM)</span>
             </p>
             <p>
                 Estando de conformidad ambas partes con los derechos y obligaciones correspondientes,
                 firmado la presente para constancia. <br>
-                En caso de cancelar esta operación el Sr.  <span class="res">PEDRO PEREZ LOPEZ</span> acepta pagar el
-                <span class="res">40%</span>  del valor de la operación que corresponde a <span class="res">$ 150,000</span>
+                En caso de cancelar esta operación el Sr.  <span class="res">'.$contrato['cliente'].'</span> acepta pagar el
+                <span class="res">40%</span>  del valor de la operación que corresponde a <span class="res">$ '.$contrato['total'].'</span>
             </p>
             <p>
                 Esta operación se realizará bajo el RÉGIMEN DE RESERVA DE DOMINIO esto es,
@@ -105,15 +105,11 @@ function getTemplateCartaResponsiva($contrato){
             </p>
             <p>
                 Observaciones:
-                <span class="res"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-                aperiam aspernatur, assumenda deleniti et ex explicabo libero omnis optio quasi. Alias eaque
-                labore laboriosam magnam molestiae officia quibusdam voluptate voluptatibus! Lorem ipsum dolor
-                sit amet, consectetur adipisicing elit. Dolore ipsum minima nobis repellat. Cupiditate eos id
-                placeat porro tempora. Adipisci aliquid, aut eius excepturi placeat reprehenderit. Adipisci
-                laudantium non tempore.
+                <span class="res"> '.$contrato['observaciones'].'
                 </span>
             </p>
             <p>
+            <!-- Aqui va la division de las fechas por DIA, MES Y AÑO-->
                 Firmado en
                 <span class="fecha res">Nicolas Romero, Edomex</span> a
                 <span class="fecha res">16</span> de
@@ -134,9 +130,9 @@ function getTemplateCartaResponsiva($contrato){
                 </tr>
                 <tr>
                     <td>NOMBRE:</td>
-                    <td><span class="fecha res">JUAN PEREZ SANCHES</span></td>
+                    <td><span class="fecha res">'.$contrato['cliente'].'</span></td>
                     <td>NOMBRE:</td>
-                    <td><span class="fecha res">JUAN PEREZ SANCHES</span></td>
+                    <td><span class="fecha res">'.$contrato['vendido_comprado_por'].'</span></td>
                 </tr>
                 </tr>
                 <tr>
@@ -153,7 +149,7 @@ function getTemplateCartaResponsiva($contrato){
                 </tr>
                 <tr>
                     <td>TELEFONO:</td>
-                    <td><span class="fecha res">45115156</span></td>
+                    <td><span class="fecha res">'.$contrato['telefono'].'</span></td>
                     <td>TELEFONO:</td>
                     <td><span class="fecha res">1561651</span></td>
                 </tr>
