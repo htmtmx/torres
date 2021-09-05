@@ -121,15 +121,14 @@ function construyeCarouselFotosCoche(docs){
     contenedorFotos+=`</div>`
     template = templatePaginador+ contenedorFotos;
     template+=`
-                        <a class="carousel-control-prev" href="#carouselCocheFotos" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Anterior</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselCocheFotos" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>     
-    `
+                <a class="carousel-control-prev" href="#carouselCocheFotos" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselCocheFotos" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>`
     return template;
 
 }
@@ -147,32 +146,30 @@ function construyeCocheTablaFotos(docs){
     let template="";
     fotos.forEach((foto)=>{
         template+= `
-                             <tr idFile="${foto.id_file_v}">
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <a href="#" class=" mr-3 align-items-center d-flex">
-                                            <img src="${foto.path}" height="90" alt="Image placeholder" class="card-img-top">
-                                        </a>
-                                    </div>
-                                </th>
-                                <td>
-                                    <a href="${foto.path}" target="_blank">
-                                         <button class="btn btn-icon btn-secondary" type="button">
-                                            <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
-                                        </button>
-                                    </a> 
-                                    <a href="${foto.path}" target="_blank" download="${foto.nombreArchivo}">
-                                           <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
-                                        </button>
-                                    </a>
-                               
-                               
-                                    <button class="btn btn-icon btn-secondary btnEliminarFotoCoche" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
+                     <tr idFile="${foto.id_file_v}">
+                        <th scope="row">
+                            <div class="media align-items-center">
+                                <a href="#" class=" mr-3 align-items-center d-flex">
+                                    <img src="${foto.path}" height="90" alt="Image placeholder" class="card-img-top">
+                                </a>
+                            </div>
+                        </th>
+                        <td>
+                            <a href="${foto.path}" target="_blank">
+                                 <button class="btn btn-icon btn-secondary" type="button">
+                                    <span class="btn-inner--icon"><i class="far fa-eye text-primary"></i></span>
+                                </button>
+                            </a> 
+                            <a href="${foto.path}" target="_blank" download="${foto.nombreArchivo}">
+                                   <button class="btn btn-icon btn-secondary" type="button">
+                                <span class="btn-inner--icon"><i class="fas fa-cloud-download-alt text-green"></i></span>
+                                </button>
+                            </a>
+                            <button class="btn btn-icon btn-secondary btnEliminarFotoCoche" type="button">
+                                <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
+                            </button>
+                        </td>
+                    </tr>
         `;
     });
     return template;
@@ -403,6 +400,14 @@ function getTemplateContratoVenta(contrato) {
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="col-lg-12 col-auto text-right">
+                                                                <a href="./contrato.php?noVehiculo=${contrato.no_vehiculo_fk}&consult=true" target="_blank">
+                                                                    <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Contrato</button>
+                                                                </a>
+                                                                <a href="./responsiva.php?noVechiculo=${contrato.no_vehiculo_fk}&consult=true" target="_blank">
+                                                                    <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> C. Responsiva</button>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -615,6 +620,14 @@ function getTemplateContratoAdq(contrato) {
                                                                             <input type="text" readonly name="totalAdqui" id="totalAdqui" class="form-control" value="${contrato.total}">
                                                                         </div>
                                                                     </div>
+                                                                </div>
+                                                                <div class="col-lg-12 col-auto text-right">
+                                                                    <a href="./contrato.php?noVehiculo=${contrato.no_vehiculo_fk}&consult=false" target="_blank">
+                                                                        <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Contrato</button>
+                                                                    </a>
+                                                                    <a href="./responsiva.php?noVechiculo=${contrato.no_vehiculo_fk}&consult=false" target="_blank">
+                                                                        <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> C. Responsiva</button>
+                                                                    </a>
                                                                 </div>
                                                             </div>
                                                         </div>
