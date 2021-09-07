@@ -25,14 +25,14 @@ function getTemplateContrato($contrato){
                 IDENTIFICANDOSE PLENAMENTE  con CREDENCIAL PARA VOTAR, expedida por EL INSTITUTO NACIONAL ELECTORAL.  
             </p>
             <p class="legal">
-                <strong>SEGUNDA.-</strong> “E L  V E N D E D O R”, es actual propietario del vehículo de la MARCA <span class="res">________________ </span>, 
-                TIPO: <span class="res">________________ </span>, MODELO:<span class="res">________________ </span>, PLACAS: <span class="res">________________ </span>, 
+                <strong>SEGUNDA.-</strong> “E L  V E N D E D O R”, es actual propietario del vehículo de la MARCA: <span class="res">NISSAN </span>, 
+                TIPO: <span class="res">VERSA </span>, MODELO: <span class="res">2015 </span>, PLACAS: <span class="res"> HMK1651 </span>, 
                 NUMERO DE SERIE: <span class="res">________________ </span>, COLOR: <span class="res">________________ </span>, 
                 NUMERO DE MOTOR:<span class="res">________________ </span>, acreditándolo con los documentos propios y respectivos.  
             </p>
             <p class="legal">
                 <strong>TERCERA.-</strong>   “E L   C O M P R A D O R”, manifestó ser mayor de edad, con domicilio en la 
-                calle <span class="res">_______DIR COMPLETA_________ </span>, identificándole con <span class="res">________________ </span>, 
+                calle <span class="res"> DIvicion del norte No 52  </span>, identificándole con <span class="res">________________ </span>, 
                 expedida por <span class="res">________________ </span>. 
             </p>
             <p class="legal">
@@ -329,7 +329,7 @@ function getTableInventario(){
 }
 
 
-function getTemplateCartaResponsiva($contrato){
+function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVendedor){
     $plantilla = '
     <body>
         <div class="container">
@@ -459,16 +459,16 @@ function getTemplateCartaResponsiva($contrato){
                 </tr>
                 <tr>
                     <td>NOMBRE:</td>
-                    <td><span class="fecha res">'.$contrato['cliente'].'</span></td>
+                    <td><span class="fecha res">'.$arrayDatos['vendedor'].'</span></td>
                     <td>NOMBRE:</td>
-                    <td><span class="fecha res">'.$contrato['vendido_comprado_por'].'</span></td>
+                    <td><span class="fecha res">'.$arrayDatos['comprador'].'</span></td>
                 </tr>
                 </tr>
                 <tr>
                     <td>DOMICILIO:</td>
-                    <td><span class="fecha res">CONOCIDO 1</span></td>
+                    <td><span class="fecha res">'.$dirVendedor['calle'].'</span></td>
                     <td>DOMICILIO:</td>
-                    <td><span class="fecha res">CONOCIDO 2</span></td>
+                    <td><span class="fecha res">'.$dirCliente['calle'].'</span></td>
                 </tr>
                 <tr>
                     <td>COLONIA:</td>
