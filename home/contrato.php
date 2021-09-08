@@ -8,12 +8,30 @@ $is_venta = $_GET['consult'];
 $tipo = $is_venta =="true"? "0":"1";
 $datosContrato = getContratoCoches($noVechiculo,$tipo);
 
-//var_dump($datosContrato);
-//die();
+$idCliente = $datosContrato['no_cliente_fk'];
+
+
+include("../control/controlCliente.php");
+$direcciones = listDireccionesCliente($idCliente);
+$dir= "";
+include_once ("../control/controlEmpresa.php");
+if (count($direcciones)>0){
+    $dir = $direcciones[0];
+}
+
+$dirNegocioArray = json_decode(consultaEmpresa(),true);
+$dirNegocio = $dirNegocioArray[0];
+
+
+
+
+
 $mpdf = new \Mpdf\Mpdf([
 ]);
+//var_dump($dirNegocio);
+//die();
 // CREACION DE LA PLANTILLA
-$plantilla = getTemplateContrato($datosContrato);
+$plantilla = getTemplateContrato($datosContrato,$dir,$dirNegocio);
 $css = file_get_contents('./reportes/responsiva_style.css');
 
 $mpdf->writeHtml($css,\Mpdf\HTMLParserMode::HEADER_CSS);

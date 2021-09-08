@@ -1,5 +1,9 @@
 <?php
-function getTemplateContrato($contrato){
+function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
+    $direccion="";
+    $direccion .= $dirVendedor['calle'].", No.Ext ".$dirVendedor['no_ext'].", ";
+    $direccion .= count($dirVendedor['no_int'])>0? " No.Int ".$dirVendedor['no_int'].", ": " S/N ";
+    $direccion .= $dirVendedor['colonia'].", ".$dirVendedor['cp'];
     $plantilla = '
     <body class="body-legal">
         <div class="container">
@@ -12,7 +16,7 @@ function getTemplateContrato($contrato){
             <p class="legal">
                 En el municipio de Nicolás Romero, Estado de México; día <span class="fecha res">15 </span>de <span class="fecha res">ENERO </span>
                 del<span class="fecha res">2021 </span>; estando presentes:
-                El (la) C. <span class="res">_______NAME VENDEDOR_______ </span>, a quien en lo sucesivo y para efectos del presente contrato se le
+                El (la) C. <span class="res">'.$contrato['vendido_comprado_por'].' </span>, a quien en lo sucesivo y para efectos del presente contrato se le
                 denominará  “EL VENDEDOR”  y  por  la  otra, el (la) C. <span class="res">'.$contrato['cliente'].' </span>, a quien en
                 adelante se le denominará “EL COMPRADOR”, quienes de conformidad con lo previsto en los artículos
                 7.30, 7.31, 7.32, 7.33, 7.38, 7.43, 7.52, 7.366, 7.532, 7.533, 7.535, 7.539, 7.552, 7,562, 7.563, 7.564, 7.568, 7.571,
@@ -21,11 +25,11 @@ function getTemplateContrato($contrato){
             </p>
             <h2 class="centrar titulo-legal">D E C L A R A C I O N E S </h2>
             <p class="legal">
-                <strong>PRIMERA.-</strong>  “E L   V E N D E D O R”,  manifestó ser mayor de edad, con domicilio en la calle de <span class="res">________________ </span>, 
+                <strong>PRIMERA.-</strong>  “E L   V E N D E D O R”,  manifestó ser mayor de edad, con domicilio en la calle de <span class="res">'.$direccion.' </span>, 
                 IDENTIFICANDOSE PLENAMENTE  con CREDENCIAL PARA VOTAR, expedida por EL INSTITUTO NACIONAL ELECTORAL.  
             </p>
             <p class="legal">
-                <strong>SEGUNDA.-</strong> “E L  V E N D E D O R”, es actual propietario del vehículo de la MARCA: <span class="res">NISSAN </span>, 
+                <strong>SEGUNDA.-</strong> “E L  V E N D E D O R”, es actual propietario del vehículo de la MARCA: <span class="res">'.$contrato['marca'].' </span>, 
                 TIPO: <span class="res">VERSA </span>, MODELO: <span class="res">2015 </span>, PLACAS: <span class="res"> HMK1651 </span>, 
                 NUMERO DE SERIE: <span class="res">________________ </span>, COLOR: <span class="res">________________ </span>, 
                 NUMERO DE MOTOR:<span class="res">________________ </span>, acreditándolo con los documentos propios y respectivos.  
