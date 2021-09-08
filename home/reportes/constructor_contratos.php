@@ -334,6 +334,10 @@ function getTableInventario(){
 
 
 function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVendedor){
+    include_once "../model/numerosALetras.class.php";
+    $n = new numerosALetras($contrato['total']);
+    $letraTotal=  $n->resultado;
+    $letraTotal = strtoupper($letraTotal);
     $fecha= getFechasTenencia($contrato['ultima_tenencia'],$contrato['anio']);
     $tarjeton= getExistenciaTarjeta($contrato['tarjeton']);
     $tarjeta = getExistenciaTarjeta($contrato['tarjeta_circulacion']);
@@ -428,7 +432,7 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
             <p>
                 Se realiza la Compra - Venta de dicha unidad en la cantidad de <span class="res">$ '.$contrato['total'].'</span>
                 <br>
-                Cantidad con letra  <span class="res">( Ciento Cincuenta y Cinco Mil Pesos MXN NM)</span>
+                Cantidad con letra  <span class="res">('.$letraTotal.')</span>
             </p>
             <p>
                 Estando de conformidad ambas partes con los derechos y obligaciones correspondientes,
