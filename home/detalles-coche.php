@@ -134,15 +134,46 @@ $noCoche = $_GET['idCoche'];
                     <div id="carouselCocheFotos" class="carousel slide card-img-top" data-ride="carousel">
                         <!-- AJAX RESPONSE CAROUSEL-->
                     </div>
+                    <!--- Tablas de fotos de vehiculo--->
+                    <div class="col-xl-12 py-3">
+                        <div class="card">
+                            <div class="card-header border-0">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h3 class="mb-0">Fotos del vehiculo</h3>
+                                    </div>
+                                    <div class="col text-right">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddFotoCoche">
+                                            <i class="fas fa-upload text-white"></i> Agregar Foto
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <!-- Projects table -->
+                                <table class="table align-items-center table-flush">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Preview</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="tblfotosCoche">
+                                    <!-- AJAX RESPONSE -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-body pt-0 py-3">
                             <div class="card">
                                 <div class="card-header border-0">
                                     <div class="row align-items-center">
                                         <div class="col">
-                                            <h3 class="mb-0">Mas caracteristicas:</h3>
+                                            <h3 class="mb-0">Más caracteristicas:</h3>
                                         </div>
                                         <div class="col text-right">
-                                            <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addCaracteristicas"><i class="fas fa-plus"></i>  Añadir</a>
+                                            <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addCaracteristicas"><i class="fas fa-plus"></i> Añadir</a>
                                         </div>
                                     </div>
                                 </div>
@@ -171,45 +202,43 @@ $noCoche = $_GET['idCoche'];
                         <form id="frm-update-datos-coche">
                             <input type="hidden" name="idCoche" id="idCoche" >
                             <h6 class="heading-small text-muted mb-4">Detalles del coche</h6>
-                            <div class="pl-lg-4"><div class="row">
-                                    <div class="col-lg-12">
-                                        <label class="form-control-label" for="niv">NIV</label>
-                                        <input type="text" name="niv" id="niv" class="form-control">
-                                    </div>
-                                </div>
+                            <div class="pl-lg-4">
 
                                 <div class="row">
-                                    <div class="col-lg-6">
-                                        <label class="form-control-label" for="marca">Marca</label>
-                                        <select id="marca" name="marca" class="form-control">
-                                            <option value="1">Marca 1</option>
-                                            <option value="2">Marca 2</option>
-                                        </select>
+                                    <div class="col-lg-4">
+                                        <label class="form-control-label" for="marca"><span class="obliga">*</span> Marca</label>
+                                        <select id="marca" name="marca" class="form-control">  </select>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <label class="form-control-label" for="modelo">Modelo</label>
-                                        <select id="modelo" name="modelo" class="form-control">
-                                            <option value="1">Modelo 1</option>
-                                            <option value="2">Modelo 2</option>
+                                    <div class="col-lg-4">
+                                        <label class="form-control-label" for="modelo"><span class="obliga">*</span>Modelo</label>
+                                        <select id="modelo" name="modelo" class="form-control">  </select>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label class="form-control-label" for="tipoVehiculo"><span class="obliga">*</span>Tipo</label>
+                                        <select id="tipoVehiculo" name="tipoVehiculo" class="form-control">
+                                            <option value="SEDAN">SEDAN</option>
+                                            <option value="SPORT">SPORT</option>
+                                            <option value="FAMILIAR">FAMILIAR</option>
+                                            <option value="SUV">SUV</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="año">Año</label>
-                                            <input type="numeric" name="año" id="año" class="form-control">
+                                            <label class="form-control-label" for="anio"><span class="obliga">*</span>Año</label>
+                                            <select id="anio" name="anio" class="form-control"></select>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="placa">Placa</label>
+                                            <label class="form-control-label" for="placa"><span class="obliga">*</span>Placa</label>
                                             <input type="text" name="placa" id="placa" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="celular">Entidad Federativa</label>
+                                            <label class="form-control-label" for="estado"><span class="obliga">*</span>Entidad Federativa</label>
                                             <select name="estado" id="estado" class="form-control">
                                                 <option value="AGU">Aguascalientes</option>
                                                 <option value="BCN">Baja California</option>
@@ -255,20 +284,20 @@ $noCoche = $_GET['idCoche'];
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="color">Color</label>
+                                            <label class="form-control-label" for="color"><span class="obliga">*</span>Color</label>
                                             <input id="color" name="color" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="kilometraje">Kilometraje</label>
+                                            <label class="form-control-label" for="kilometraje"><span class="obliga">*</span>Kilometraje</label>
                                             <input  class="form-control" type="number" id="kilometraje" name="kilometraje" min="0" max="1000000">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">
-                                        <label class="form-control-label" for="transmision">Trasmision</label>
+                                        <label class="form-control-label" for="transmision"><span class="obliga">*</span>Trasmision</label>
                                         <select id="transmision" name="transmision" class="form-control">
                                             <option value="AU">AUTOMATICA</option>
                                             <option value="MA">MANUAL</option>
@@ -276,7 +305,7 @@ $noCoche = $_GET['idCoche'];
                                         </select>
                                     </div>
                                     <div class="col-lg-4">
-                                        <label class="form-control-label" for="combustible">Combustible</label>
+                                        <label class="form-control-label" for="combustible"><span class="obliga">*</span>Combustible</label>
                                         <select id="combustible" name="combustible" class="form-control">
                                             <option value="GAS">Gasolina</option>
                                             <option value="DIE">Diesel</option>
@@ -285,21 +314,140 @@ $noCoche = $_GET['idCoche'];
                                         </select>
                                     </div>
                                     <div class="col-lg-4">
-                                        <label class="form-control-label" for="nopuertas">No de Puertas</label>
-                                        <input  class="form-control" type="number" id="nopuertas" name="nopuertas" min="0" max="6">
+                                        <label class="form-control-label" for="nopuertas"><span class="obliga">*</span>No de Puertas</label>
+                                        <select id="nopuertas" name="nopuertas" class="form-control">
+                                            <option value="0">0</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
+                                        <label class="form-control-label" for="niv"><span class="obliga">*</span>NIV</label>
+                                        <input type="text" name="niv" id="niv" class="form-control">
+                                    </div>
+                                    <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="fecha_registro">Fecha Registro</label>
-                                            <input type="text" name ="fecha_registro" id="fecha_registro" class="form-control" placeholder="Falló" disabled="">
+                                            <label class="form-control-label" for="noMotor"><span class="obliga">*</span>No. Motor</label>
+                                            <input type="text" id="noMotor" name="noMotor" class="form-control" placeholder="Número de Motor" >
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="noSerieV"><span class="obliga">*</span>Serie Vehicular</label>
+                                            <input type="text" id="noSerieV" name="noSerieV" class="form-control" placeholder="Número de Serie Vehicular" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="carroceria"><span class="obliga">*</span>Carroceria</label>
+                                            <input type="text" id="carroceria" name="carroceria" class="form-control" placeholder="Estado de la carroceria" >
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="pintura"><span class="obliga">*</span>Pintura</label>
+                                            <input type="text" id="pintura" name="pintura" class="form-control" placeholder="Estado de la pintura" >
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="llantas"><span class="obliga">*</span>Llantas</label>
+                                            <input type="text" id="llantas" name="llantas" class="form-control" placeholder="Estado de las llantas" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
                                         <div class="form-group">
                                             <label class="form-control-label" for="fecha_registro">Observaciones</label>
                                             <textarea class="form-control" name="observaciones" id="observaciones" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="my-4">
+                            <h6 class="heading-small text-muted mb-4">Situacion Legal</h6>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="noFactura"><span class="obliga">*</span>Factura</label>
+                                            <input id="noFactura" name="noFactura" class="form-control" placeholder="No/Folio Factura">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="kilometros"><span class="obliga">*</span>Fecha de Expedición</label>
+                                            <input type="date" id="fecha_primer_pago" name="fecha_primer_pago" value="<?php echo date("Y-m-d");?>" min="2000-01-01" max="<?php echo date("Y-m-d");?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="empresaExpide"><span class="obliga">*</span>Empresa Emisora</label>
+                                            <input id="empresaExpide" name="empresaExpide" class="form-control" placeholder="Nombre de la empresa que expide la factura">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="dirFactura"><span class="obliga">*</span>Direccion Factura</label>
+                                            <input id="dirFactura" name="dirFactura" class="form-control" placeholder="Escriba dirección completa como en la factura">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <label class="form-control-label" for="tarjeton">Targeton</label>
+                                        <select id="tarjeton" name="tarjeton" class="form-control">
+                                            <option value="1">SI</option>
+                                            <option value="0" selected>NO</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="folioTarjeton">Folio Tarjetón</label>
+                                            <input id="folioTarjeton" name="folioTarjeton" class="form-control" placeholder="Folio del Tarjetón">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label class="form-control-label" for="tarjectaCirc">Tarjeta Circualación</label>
+                                        <select id="tarjectaCirc" name="tarjectaCirc" class="form-control">
+                                            <option value="1" selected>SI</option>
+                                            <option value="0" >NO</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label class="form-control-label" for="folioTarjCirc"><span class="obliga">*</span>Folio Tarjeta Circulación</label>
+                                        <input id="folioTarjCirc" name="folioTarjCirc" class="form-control" placeholder="Folio Tarjeta de Circulación">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="combustible"><span class="obliga">*</span>Última Tenencia</label>
+                                            <select id="ultimaTenencia" name="ultimaTenencia" class="form-control"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="verificaciones"><span class="obliga">*</span>Verificaciones</label>
+                                            <select id="verificaciones" name="verificaciones" class="form-control">
+                                                <option value="1"selected>SI</option>
+                                                <option value="0" >NO</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="fecha_registro">Registro Sistema</label>
+                                            <input type="text" name ="fecha_registro" id="fecha_registro" class="form-control" placeholder="Falló" disabled="">
                                         </div>
                                     </div>
                                 </div>
@@ -319,7 +467,7 @@ $noCoche = $_GET['idCoche'];
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="empresa">Precio de Lista</label>
+                                            <label class="form-control-label" for="empresa"><span class="obliga">*</span>Precio de Lista</label>
                                             <input  class="form-control" type="number" id="precioListaCoche" name="precioLista" min="0" max="1000000">
                                         </div>
                                     </div>
@@ -344,7 +492,7 @@ $noCoche = $_GET['idCoche'];
         </div>
         <div class="row">
             <!--- Tablas de documentos de vehiculo--->
-            <div class="col-xl-6">
+            <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
@@ -371,37 +519,6 @@ $noCoche = $_GET['idCoche'];
                             </thead>
                             <tbody id="tblDocsCoche">
                             <!-- AJAX RESPONSE DOCS CAR-->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!--- Tablas de fotos de vehiculo--->
-            <div class="col-xl-6">
-                <div class="card">
-                    <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h3 class="mb-0">Fotos del vehiculo</h3>
-                            </div>
-                            <div class="col text-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddFotoCoche">
-                                    <i class="fas fa-upload text-white"></i> Agregar Foto
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <!-- Projects table -->
-                        <table class="table align-items-center table-flush">
-                            <thead class="thead-light">
-                            <tr>
-                                <th scope="col">Preview</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
-                            </thead>
-                            <tbody id="tblfotosCoche">
-                            <!-- AJAX RESPONSE -->
                             </tbody>
                         </table>
                     </div>
@@ -443,6 +560,7 @@ $noCoche = $_GET['idCoche'];
 </body>
 <?php include './include/js.php'; ?>
 </html>
+<script src="../ajax/aniosCoches.js"></script>
 <script src="../ajax/control-detalles-coche.js"></script>
 <script src="../ajax/control-botones-detalles-coche.js"></script>
 <script src="../ajax/control-abonos.js"></script>

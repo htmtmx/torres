@@ -9,6 +9,12 @@ $result=$obj_detalle->queryConsultaDetalles($id_detalle);
 return json_encode($result);
 }
 
+function consultaDetallesParaInventarioContrato(){
+    $obj_detalle = new DETALLE();
+    $result=$obj_detalle->queryConsultaDetallesInventario();
+    return json_encode($result);
+}
+
 function addDetalle($nombre,$categoria,$obligatorio,$estatus){
     $obj_detalle = new DETALLE();
     $obj_detalle->setNombre($nombre);

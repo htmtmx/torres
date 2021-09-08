@@ -41,7 +41,7 @@ function cargaDatosCarro(obj_carro){
     $("#niv").val(obj_carro.NIV);
     $("#marca").val(obj_carro.id_marca);
     consultaModelos(obj_carro.id_marca, obj_carro.id_modelo );
-    $("#año").val(obj_carro.anio);
+    $("#anio").val(obj_carro.anio);
     $("#placa").val(obj_carro.placa);
     $("#PlacaInfo").html(obj_carro.placa);
     $("#color").val(obj_carro.color);

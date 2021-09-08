@@ -117,6 +117,16 @@ class DETALLE extends CONEXION
         return $result;
     }
 
+    //QUERY para traer los detalles
+    public function queryConsultaDetallesInventario()
+    {
+        $query="SELECT `id_detalle`, `nombre`, `categoria`, `visible`, `oblogatorio`, `estatus` FROM `detalle` WHERE oblogatorio > 0";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+    }
+
     public function queryAddDetalle(){
         $query="INSERT INTO `detalle` (`id_detalle`, `nombre`, `categoria`, `visible`, `oblogatorio`, `estatus`) 
         VALUES (NULL, '".$this->getNombre()."', '".$this->getCategoria()."', '".$this->getVisible()."', 

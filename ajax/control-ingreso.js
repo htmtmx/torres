@@ -1,12 +1,46 @@
 let PRIMER_MARCA;
 $(document).ready(function(){
-
+    consultaDetalles();
 });
 
 window.onload = function() {
     getMarcas();
     cargaPersonas();
 };
+
+function consultaDetalles() {
+    $.ajax({
+        url: "../webhook/consulta-detalles-inventario-ingreso.php",
+        type: "POST",
+        success: function (response)
+        {
+            //console.log(response);
+            let obj_result = JSON.parse(response);
+            let detalles = construyeSelectDetalles(obj_result);
+            $("#detalleBox").html(detalles);
+        },
+    });
+}
+
+function construyeSelectDetalles(detalles){
+    let template="";
+    detalles.forEach((detalle)=>{
+        template+=`
+               <div class="col-xl-2 col-md-4">
+                    <div class="form-group d-inline-flex">
+                        <label class="form-control-label" for="observaciones">${detalle.nombre}: </label>
+                        <label class="custom-toggle">
+                            <input type="checkbox"  value="${detalle.id_detalle}" name="detalles[]">
+                            <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
+                        </label>
+                    </div>
+                </div>
+        `;
+    });
+    return template;
+}
+
+
 /***************FUNCIONES PARA OBTENER MARCAS Y MODELOS ******************/
 function getMarcas() {
     //-------------- AJAX pedira la info de los datos se ejecuta cuando entra inicio

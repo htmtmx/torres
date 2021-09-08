@@ -60,6 +60,9 @@ a:hover{
     padding-bottom:  5rem;
 }
 
+.obliga{
+    color: red !important;
+}
 .stat{
     border-right: 1px solid var(--grey);
 }
