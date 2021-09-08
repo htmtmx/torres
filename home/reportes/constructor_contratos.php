@@ -330,6 +330,12 @@ function getTableInventario(){
 
 
 function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVendedor){
+    $fecha= getFechasTenencia($contrato['ultima_tenencia'],$contrato['anio']);
+    $tarjeton= getExistenciaTarjeta($contrato['tarjeton']);
+    $tarjeta = getExistenciaTarjeta($contrato['tarjeta_circulacion']);
+    $folioTarjeta= $tarjeta=="SI"? $contrato['folio_tarje_circul']: "NA";
+    $folioTarjeton= $tarjeton=="SI"? $contrato['folio_tarjeton']: "NA";
+    $verificaciones= getExistenciaTarjeta($contrato['verificaciones_coche']);
     $plantilla = '
     <body>
         <div class="container">
@@ -338,7 +344,7 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
             </div>
             <div class="row">
                 <div class="left"><h1>RESPONSIVA DE COMPRA VENTA DE PARTICULAR A PARTICULAR</h1></div>
-                <div class="right"><h1>23 de Enero de 2021</h1></div>
+                <div class="right"><h1>'.$arrayDatos['fecha'].'</h1></div>
             </div>
             <h2>Manifiesto que recibí a mi entera satisfacción y de conformidad el vehículo descrito:</h2>
             <table>
@@ -364,29 +370,29 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
                 </tr>
                 <tr>
                     <td>FACTURA No.</td>
-                    <td colspan="3"class="res">'.$contrato['no_factura'].'</td>
+                    <td class="res">'.$contrato['no_factura'].'</td>
                     <td>de</td>
-                    <td colspan="3"class="res">'.$contrato['empresa_factura'].'</td>
+                    <td class="res" colspan="4">'.$contrato['empresa_factura'].'</td>
                 </tr>
                 <tr>
                     <td>TARJETON:</td>
-                    <td class="res">'.$contrato['tarjeton'].'</td>
+                    <td class="res">'.$tarjeton.'</td>
                     <td>FOLIO:</td>
-                    <td class="res">'.$contrato['folio_tarjeton'].'</td>
+                    <td class="res">'.$folioTarjeton.'</td>
                     <td>TENENCIAS:</td>
-                    <td colspan="3" class="res">2016, 2017, 2018, 2019, 2020, 2021 </td>
+                    <td colspan="3" class="res">'.$fecha.' </td>
                 </tr>
                 <tr>
                     <td colspan="2">TARJETA DE CIRCULACION:</td>
-                    <td class="res">'.$contrato['tarjeta_circulacion'].'</td>
+                    <td class="res">'.$tarjeta.'</td>
                     <td>FOLIO:</td>
-                    <td class="res">'.$contrato['folio_tarje_circul'].'</td>
+                    <td class="res">'.$folioTarjeta.'</td>
                     <td>PLACAS:</td>
                     <td colspan="2" class="res">'.$contrato['placa'].'</td>
                 </tr>
                 <tr>
                     <td>VERIFICACIONES:</td>
-                    <td class="res">'.$contrato['verificaciones_coche'].'</td>
+                    <td class="res">'.$verificaciones.'</td>
                 </tr>
                 </tbody>
             </table>
@@ -441,10 +447,8 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
             <!-- Aqui va la division de las fechas por DIA, MES Y AÑO-->
                 Firmado en
                 <span class="fecha res">Nicolas Romero, Edomex</span> a
-                <span class="fecha res">16</span> de
-                <span class="fecha res "> Agosto</span> del año
-                <span class="fecha res">2020</span>
-                a las <span class="fecha res">2020</span> horas.
+                <span class="fecha res">'.$arrayDatos['fecha'].'</span> 
+                a las <span class="fecha res">'.$arrayDatos['hora'].'</span> horas.
             </p>
             <h2 class="centrar">Lugar Fecha Hora de la Operación</h2>
             <table>
@@ -472,21 +476,21 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
                 </tr>
                 <tr>
                     <td>COLONIA:</td>
-                    <td><span class="fecha res">JUAREZ</span></td>
+                    <td><span class="fecha res">'.$dirVendedor['colonia'].'</span></td>
                     <td>COLONIA:</td>
-                    <td><span class="fecha res">MANANTIALES</span></td>
+                    <td><span class="fecha res">'.$dirCliente['colonia'].'</span></td>
                 </tr>
                 <tr>
                     <td>TELEFONO:</td>
-                    <td><span class="fecha res">'.$contrato['telefono'].'</span></td>
+                    <td><span class="fecha res">'.$arrayDatos['telefono_vendedor'].'</span></td>
                     <td>TELEFONO:</td>
-                    <td><span class="fecha res">1561651</span></td>
+                    <td><span class="fecha res">'.$arrayDatos['telefono_comprador'].'</span></td>
                 </tr>
                 <tr>
                     <td>SE IDENTIFICA CON:</td>
-                    <td><span class="fecha res">INE (5115156)</span></td>
+                    <td><span class="fecha res">'.$arrayDatos['identificacion_vendedor'].'</span></td>
                     <td>SE IDENTIFICA CON:</td>
-                    <td><span class="fecha res">INE (2454542)</span></td>
+                    <td><span class="fecha res">'.$arrayDatos['identificacion_comprador'].'</span></td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -599,5 +603,19 @@ function getRow($elements){
     return $rows;
 }
 
-?>
-
+function getExistenciaTarjeta($tipoTarjeta){
+    if($tipoTarjeta=="1"){
+        return "SI";
+    }
+    return "NO";
+}
+function getFechasTenencia($ultimaTenencia,$anio){
+    $fechas="";
+    for($i=$anio;$i<=$ultimaTenencia;$i++){
+        $fechas.=$i;
+        if($ultimaTenencia!=$i){
+            $fechas.=",";
+        }
+    }
+    return $fechas;
+}

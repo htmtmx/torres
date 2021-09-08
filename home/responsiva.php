@@ -19,37 +19,63 @@ $arrayDatos = array();
 
 $idCliente = $datosContrato['no_cliente_fk'];
 
+
+
+
+
+
 //llamar al control de direcciones
 include("../control/controlCliente.php");
 $direcciones = listDireccionesCliente($idCliente);
 $dir= "";
 include_once ("../control/controlEmpresa.php");
-$dirNegocio = json_decode(consultaEmpresa(),true);
+$dirNegocioArray = json_decode(consultaEmpresa(),true);
 if (count($direcciones)>0){
     $dir = $direcciones[0];
 }
+
+$dirNegocio = $dirNegocioArray[0];
+
 //Venta es 0 SUPON
 if ($datosContrato['tipo_contrato'] == "0"){
-    $dirCliente = "Atizapan Edomex";
-    $dirVendedor = "Autos Torres Dir";
-    $cliente= $datosContrato['tipo_contrato'];
+    $dirVendedor = $dirNegocio;
+    $dirCliente =  $dir;
+    //Apartado para separacion de fecha y hora
+    $fechas= $datosContrato['fecha_firma_contrato'];
+    $fechaObj= date_create($fechas);
+    $fecha= date_format($fechaObj,'d/m/Y');
+    $hora= date_format($fechaObj,'H:i');
+    $arrayDatos['fecha']=$fecha;
+    $arrayDatos['hora']=$hora;
+    //Termina asigacion de horas
     $arrayDatos['comprador'] =  $datosContrato['cliente'];
     $arrayDatos['vendedor'] = $datosContrato['vendido_comprado_por'];
-    $dirCliente =  $dir;
-    $dirVendedor = $dirNegocio[0];
+    $arrayDatos['telefono_comprador']= $datosContrato['telefono'];
+    $arrayDatos['telefono_vendedor']= $dirVendedor['telefono'];
+    $arrayDatos['identificacion_comprador']= $datosContrato['medio_identificación'];
+    $arrayDatos['identificacion_vendedor']= "INE";
+
 }
 else{
-    $dirCliente = $dirNegocio[0];
+    $dirCliente = $dirNegocio;
     $dirVendedor = $dir;
+    //Apartado para separacion de fecha y hora
+    $fechas= $datosContrato['fecha_firma_contrato'];
+    $fechaObj= date_create($fechas);
+    $fecha= date_format($fechaObj,'d/m/Y');
+    $hora= date_format($fechaObj,'H:i');
+    $arrayDatos['fecha']=$fecha;
+    $arrayDatos['hora']=$hora;
+    //Termina asigacion de horas
     $arrayDatos['comprador'] = $datosContrato['vendido_comprado_por'];
     $arrayDatos['vendedor'] = $datosContrato['cliente'];
+    $arrayDatos['telefono_comprador']= $dirCliente['telefono'];
+    $arrayDatos['telefono_vendedor']= $datosContrato['telefono'];
+    $arrayDatos['identificacion_comprador']= "INE";
+    $arrayDatos['identificacion_vendedor']= $datosContrato['medio_identificación'];
 }
 
-//var_dump($dirVendedor);
 //echo "<br>_______________________________<br>";
-//var_dump($dirCliente);
-//die();
-
 // CREACION DE LA PLANTILLA
 $plantilla = getTemplateCartaResponsiva($datosContrato,$arrayDatos, $dirCliente, $dirVendedor);
 $css = file_get_contents('./reportes/responsiva_style.css');

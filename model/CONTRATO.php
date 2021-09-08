@@ -530,7 +530,7 @@ class CONTRATO extends CONEXION implements I_CONTRATO
         con.telreferente2 ,con.nombre_referente1,con.nombre_referente2 ,con.dir_referente1 ,con.dir_referente2 ,
         con.observaciones ,con.fecha_firma_contrato, v.no_motor, v.numero_serie_vehicular, v.no_factura, v.fecha_factura,
         v.empresa_factura, v.domicilio_empresa, v.tarjeton, v.folio_tarjeton, v.ultima_tenencia, v.tarjeta_circulacion,
-        v.folio_tarje_circul, v.verificaciones_coche, v.carroceria, v.pintura, v.pintura, v.llantas, v.placa,
+        v.folio_tarje_circul, v.verificaciones_coche, v.carroceria, v.pintura, v.pintura, v.llantas, v.placa, cli.medio_identificación,
 		case 
 			when con.tipo_contrato = 0 then 'Venta de Vehiculo'
 			when con.tipo_contrato = 1 then 'Adquisición de Vehiculo'
