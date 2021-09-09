@@ -28,6 +28,7 @@ $dirNegocio = $dirNegocioArray[0];
 
 $mpdf = new \Mpdf\Mpdf([
 ]);
+
 var_dump($datosContrato);
 die();
 // CREACION DE LA PLANTILLA

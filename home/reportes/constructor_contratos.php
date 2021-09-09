@@ -1,8 +1,10 @@
 <?php
 function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
+    $pagos=$contrato[0][0];
     $direccion="";
+    $años=getFechasTenencia($contrato['ultima_tenencia'],$contrato['anio']);
     $direccion .= $dirVendedor['calle'].", No.Ext ".$dirVendedor['no_ext'].", ";
-    $direccion .= count($dirVendedor['no_int'])>0? " No.Int ".$dirVendedor['no_int'].", ": "";
+    $direccion .= strlen($dirVendedor['no_int'])>0? " No.Int ".$dirVendedor['no_int'].", ": "";
     $direccion .= "Col. ".$dirVendedor['colonia'].", CP. ".$dirVendedor['cp'].", ".$dirVendedor['de_mun'].", Edo.  ".$dirVendedor['estado'];
     $direccionCliente="";
     $direccionCliente .= $dirCliente['calle'].", No.Ext ".$dirCliente['no_ext'].", ";
@@ -131,12 +133,12 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                         a la presente fecha de la celebración de este contrato “EL COMPRADOR” HACE ENTREGA “AL VENDEDOR” de  la cantidad de 
                         $<span class="res"> '.$contrato['enganche'].' </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.) de manera líquida
                         y en efectivo, por el concepto de enganche, siendo el precio total de esta operación de compra la cantidad de
-                        $<span class="res"> '.$contrato['total'].' </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.).
+                        $<span class="res">'.$contrato['total'].' </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.).
                     </li>
                     <li class="legal">
                         2)	el comprador en consecuencia se declara deudor del vendedor y se compromete a pagar en entregas iguales mensuales de  
-                        $<span class="res"> 150,000.00 </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.)
-                         cada una a partir del día <span class="res"> 15 AGO 2021 </span> y una entrega final de $<span class="res"> 150,000.00 </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.).
+                        $<span class="res"> '.$pagos['saldo'].' </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.)
+                         cada una a partir del día <span class="res"> '.$pagos['fecha_pago'].' </span> y una entrega final de $<span class="res"> '.$contrato['total'].' </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.).
                     </li>
                 </ol>
             </p>
@@ -160,10 +162,10 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                 Al momento de la entrega del vehículo, EL VENDEDOR dará al COMPRADOR a su entera satisfacción y previa validación de su legal procedencia la siguiente documentación: 
             </p>
             <p class="legal">
-                Factura No.<span class="res"> _______________ </span> de fecha: expedida por: <span class="res"> _________________ </span> 
-                con domicilio:<span class="res"> _______________ </span> Pagos de tenencia vehicular de los años:<span class="res"> _______________ </span>
-                Tarjeta de circulación no.<span class="res"> _______________ </span> Comprobantes de verificación vehicular: <span class="res"> _______________ </span>
-                Manual del usuario (en su caso), Documentos oficiales que acrediten su legal existencia en el país: <span class="res"> _______________ </span> Otros:<span class="res"> _______________ </span>.
+                Factura No.<span class="res"> '.$contrato['no_factura'].' </span> de fecha: '.$contrato['fecha_factura'].' expedida por: <span class="res"> '.$contrato['empresa_factura'].' </span> 
+                con domicilio:<span class="res"> '.$contrato['domicilio_empresa'].' </span> Pagos de tenencia vehicular de los años:<span class="res"> '.$años.' </span>
+                Tarjeta de circulación no.<span class="res"> '.$contrato['folio_tarje_circul'].' </span> Comprobantes de verificación vehicular: <span class="res"> '.$contrato['verificaciones_coche'].' </span>
+                Manual del usuario (en su caso), Documentos oficiales que acrediten su legal existencia en el país: <span class="res"> Aqui va otro campo </span> Otros:<span class="res"> _______________ </span>.
             </p>
             <p class="legal">
                 <strong>SÉPTIMA.-</strong> 
@@ -263,7 +265,7 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                  otra razón. 
             </p>
                Leído que fue por las partes el contenido del presente contrato y sabedoras de su alcance legal, lo firman por duplicado 
-               en la Ciudad NICOLAS ROMERO, ESTADO DE MEXICO siendo las <span class="res"> _______________ </span> del día <span class="res"> _______________ </span>
+               en la Ciudad NICOLAS ROMERO, ESTADO DE MEXICO siendo las <span class="res"> '.$contrato['fecha_firma_contrato'].' </span> del día <span class="res"> _______________ </span>
                 de <span class="res"> _______________ </span> del <span class="res"> _______________ </span>. 
             </p>
             </p>
