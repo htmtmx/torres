@@ -47,3 +47,56 @@ $("#msform").on("submit", function(e){
     $('#msform').trigger('reset');
     e.preventDefault();
 });
+
+/******** FUNCION DE CALCULO PARA SUBTOTAL ******/
+$("#forma_pago").change(function ()
+{
+    let forma = $("#forma_pago").val();
+    if (forma==="1"){
+        $("#engancheSpan").html("Enganche:");
+        $("#creditoContainer").removeClass("d-none");
+        $("#containerAvales").removeClass("d-none");
+    }
+    else{
+        $("#engancheSpan").html("Pagar / Apartar Con:");
+        $("#creditoContainer").addClass("d-none");
+        $("#containerAvales").addClass("d-none");
+    }
+    calculaResto();
+    calculaCredito();
+});
+
+/******** FUNCION DE CALCULO PARA SUBTOTAL ******/
+$("#enganche").change(function ()
+{
+    calculaResto();
+    calculaCredito();
+});
+
+$("#plazo").change(function ()
+{
+    calculaResto();
+    calculaCredito();
+});
+
+function calculaResto() {
+    let forma = $("#forma_pago").val();
+    let totalLista =0;
+    if (forma==="1"){
+        //Eljije credito
+        totalLista = $("#precio_credito").val();
+    }
+    else{
+        totalLista = $("#precio_contado").val();
+    }
+    var adelanto = parseFloat($("#enganche").val());
+    var restante = totalLista-adelanto;
+    $("#total").val(restante);
+}
+
+function calculaCredito() {
+    let plazo = $("#plazo").val();
+    let totalPendiente = $("#total").val();
+    var mensualidad = (parseFloat(totalPendiente)/parseFloat(plazo)).toFixed(2);
+    $("#mensualidad").val(mensualidad);
+}

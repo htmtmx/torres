@@ -388,7 +388,6 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -407,6 +406,40 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                         </div>
                                                         <div class="card-body">
                                                             <!-- Address -->
+
+                                                            <div class="pl-lg-4 d-none" id="containerAvales">
+                                                                <div id="containerAvales">
+                                                                    <h6 class="heading-small text-muted mb-4">Avales</h6>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="nombreAva1">Nombre Completo</label>
+                                                                                <input type="text" name="nombreAva1" id="nombreAva1" class="form-control" placeholder="Escriba el nombre completo del primer aval">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="telaval1">Teléfono</label>
+                                                                                <input type="text" name="telaval1" id="telaval1" class="form-control" placeholder="Teléfono del Aval">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="nombreAval2">Nombre Completo</label>
+                                                                                <input type="text" name="nombreAval2" id="nombreAval2" class="form-control" placeholder="Escriba el nombre completo del segundo aval">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="telAval2">Teléfono</label>
+                                                                                <input type="text" name="telAval2" id="telAval2" class="form-control" placeholder="Telefono del Aval">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             <h6 class="heading-small text-muted mb-4">Pago Inicial</h6>
                                                             <div class="pl-lg-4">
                                                                 <div class="row">
@@ -419,8 +452,8 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-control-label" for="precio_credito">Precio de Lista:</label>
-                                                                            <input class="form-control" type="number" id="precio_contado" name="precio_credito" min="0" max="1000000" readonly>
+                                                                            <label class="form-control-label" for="precio_contado">Precio de Lista:</label>
+                                                                            <input class="form-control" type="number" id="precio_contado" name="precio_contado" min="0" max="1000000" readonly>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -437,7 +470,7 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                     <div class="col-md-6"></div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <span class="form-control-label" id="engancheSpan" for="enganche">Enganche:</span>
+                                                                            <span class="form-control-label" id="engancheSpan" for="enganche">Pagar / Apartar Con:</span>
                                                                             <input class="form-control" type="number" id="enganche" name="enganche" min="0" max="1000000">
                                                                         </div>
                                                                     </div>
@@ -452,35 +485,37 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <hr class="my-4">
                                                             <!-- Uso exclusivo de credito -->
-                                                            <h6 class="heading-small text-muted mb-4">Pago Inicial</h6>
-                                                            <div class="pl-lg-4" id="containerFechasCredito">
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <label class="form-control-label" for="plazo">Elija un plazo</label>
-                                                                        <select id="plazo" name="plazo" class="form-control">
-                                                                            <option value="0">Seleccione un plazo</option>
-                                                                            <option value="1">1 Mes</option>
-                                                                            <option value="3">3 Meses</option>
-                                                                            <option value="6">6 Meses</option>
-                                                                            <option value="12">12 Meses</option>
-                                                                            <option value="24">24 Meses</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label class="form-control-label" for="mensualidad">Pago por mes:</label>
-                                                                            <input class="form-control" type="number" id="mensualidad" name="mensualidad" min="0" max="1000000" readonly>
+                                                            <div id="creditoContainer" class="d-none">
+                                                                <hr class="my-4">
+                                                                <h6 class="heading-small text-muted mb-4">Plazo de los pagos Inicial</h6>
+                                                                <div class="pl-lg-4" id="containerFechasCredito">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <label class="form-control-label" for="plazo">Elija un plazo</label>
+                                                                            <select id="plazo" name="plazo" class="form-control">
+                                                                                <option value="0">Seleccione un plazo</option>
+                                                                                <option value="1">1 Mes</option>
+                                                                                <option value="3">3 Meses</option>
+                                                                                <option value="6">6 Meses</option>
+                                                                                <option value="12">12 Meses</option>
+                                                                                <option value="24">24 Meses</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="mensualidad">Pago por mes:</label>
+                                                                                <input class="form-control" type="number" id="mensualidad" name="mensualidad" min="0" max="1000000" readonly value="0">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="row" id="selectedCredito">
-                                                                    <div class="col-md-6"></div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label class="form-control-label" for="fecha_primer_pago">Elija dia de primer pago:</label>
-                                                                            <input type="date" id="fecha_primer_pago" name="fecha_primer_pago" value="<?php echo date("Y-m-d");?>" min="<?php echo date("Y-m-d");?>" max="2050-12-31"></div>
+                                                                    <div class="row" id="selectedCredito">
+                                                                        <div class="col-md-6"></div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="fecha_primer_pago">Elija día de primer pago:</label>
+                                                                                <input type="date" id="fecha_primer_pago" name="fecha_primer_pago" value="<?php echo date("Y-m-d");?>" min="<?php echo date("Y-m-d");?>" max="2050-12-31"></div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -516,6 +551,16 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                             <i class="fas fa-car-side"></i> Ir al catalogo
                                                                         </button>
                                                                     </a>
+                                                                </div>
+                                                                <div class="row justify-content-center py-5" id="containerBotonesContratos">
+                                                                    <div class="col-lg-12 col-auto">
+                                                                        <a href="./contrato.php?noVehiculo=6501288118067216&amp;consult=true" target="_blank">
+                                                                            <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Contrato</button>
+                                                                        </a>
+                                                                        <a href="./responsiva.php?noVechiculo=6501288118067216&amp;consult=true" target="_blank">
+                                                                            <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> C. Responsiva</button>
+                                                                        </a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
