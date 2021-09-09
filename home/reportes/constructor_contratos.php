@@ -2,8 +2,13 @@
 function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
     $direccion="";
     $direccion .= $dirVendedor['calle'].", No.Ext ".$dirVendedor['no_ext'].", ";
-    $direccion .= count($dirVendedor['no_int'])>0? " No.Int ".$dirVendedor['no_int'].", ": " S/N ";
-    $direccion .= $dirVendedor['colonia'].", ".$dirVendedor['cp'];
+    $direccion .= count($dirVendedor['no_int'])>0? " No.Int ".$dirVendedor['no_int'].", ": "";
+    $direccion .= "Col. ".$dirVendedor['colonia'].", CP. ".$dirVendedor['cp'].", ".$dirVendedor['de_mun'].", Edo.  ".$dirVendedor['estado'];
+    $direccionCliente="";
+    $direccionCliente .= $dirCliente['calle'].", No.Ext ".$dirCliente['no_ext'].", ";
+    $direccionCliente .= $dirCliente['no_int']!=null? " No.Int ".$dirCliente['no_int'].", ": "";
+    $direccionCliente .= "Col. ".$dirCliente['colonia'].", CP. ".$dirCliente['CP'].", ".$dirCliente['municipio'].", Edo.  ".$dirCliente['estado_republica'];
+    $expedicion = getExpedicion($contrato['medio_identificación']);
     $plantilla = '
     <body class="body-legal">
         <div class="container">
@@ -29,15 +34,15 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                 IDENTIFICANDOSE PLENAMENTE  con CREDENCIAL PARA VOTAR, expedida por EL INSTITUTO NACIONAL ELECTORAL.  
             </p>
             <p class="legal">
-                <strong>SEGUNDA.-</strong> “E L  V E N D E D O R”, es actual propietario del vehículo de la MARCA: <span class="res">'.$contrato['marca'].' </span>, 
-                TIPO: <span class="res">VERSA </span>, MODELO: <span class="res">2015 </span>, PLACAS: <span class="res"> HMK1651 </span>, 
-                NUMERO DE SERIE: <span class="res">________________ </span>, COLOR: <span class="res">________________ </span>, 
-                NUMERO DE MOTOR:<span class="res">________________ </span>, acreditándolo con los documentos propios y respectivos.  
+                <strong>SEGUNDA.-</strong> “E L  V E N D E D O R”, es actual propietario del vehículo de la MARCA: <span class="res">'.$contrato['nombre_marca'].' </span>, 
+                TIPO: <span class="res">'.$contrato['tipo_carro'].' </span>, MODELO: <span class="res">'.$contrato['nombre_modelo'].' </span>, PLACAS: <span class="res"> '.$contrato['placa'].' </span>, 
+                NUMERO DE SERIE: <span class="res">'.$contrato['numero_serie_vehicular'].' </span>, COLOR: <span class="res">'.$contrato['color'].' </span>, 
+                NUMERO DE MOTOR:<span class="res">'.$contrato['no_motor'].' </span>, acreditándolo con los documentos propios y respectivos.  
             </p>
             <p class="legal">
                 <strong>TERCERA.-</strong>   “E L   C O M P R A D O R”, manifestó ser mayor de edad, con domicilio en la 
-                calle <span class="res"> DIvicion del norte No 52  </span>, identificándole con <span class="res">________________ </span>, 
-                expedida por <span class="res">________________ </span>. 
+                calle <span class="res"> '.$direccionCliente.'  </span>, identificándole con <span class="res">'.$contrato['medio_identificación'].' </span>, 
+                expedida por <span class="res">'.$expedicion.' </span>. 
             </p>
             <p class="legal">
                 <strong>CUARTA.-</strong> Ambas partes de conformidad manifiestan y reconocen tener la capacidad jurídica para celebrar el presente contrato, en términos del artículo 7.38 del Código Civil del Estado de México vigente. 
@@ -54,7 +59,7 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                 <strong>SEPTIMA.-</strong> 
                 Que cuenta con personal capacitado y responsable para atender dudas, aclaraciones, reclamaciones que se 
                 originen de la prestación del servicio o para proporcionar servicios de orientación , para lo cual se señala el 
-                teléfono <span class="res">________________ </span>, con un horario de atención al público de las horas a las 
+                teléfono <span class="res">'.$dirVendedor['telefono'].' </span>, con un horario de atención al público de las horas a las 
                 horas <span class="res">9:30 A 18:00 </span>, los días lunes, martes, miércoles, jueves, sábado y domingo. 
                 Estos servicios se proporcionarán de manera gratuita. 
             </p>
@@ -71,8 +76,8 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
             <h2 class="titulo-legal">II.- DECLARA “EL COMPRADOR”: </h2>
             <p class="legal">
                 a)   Llamarse como ha quedado plasmado en el rubro del presente contrato y tener su domicilio en 
-                <span class="res">________________ </span> con Registro Federal de Contribuyentes, 
-                teléfono <span class="res">________________ </span> y que tiene capacidad jurídica para obligarse en los 
+                <span class="res">'.$direccionCliente.' </span> con Registro Federal de Contribuyentes, 
+                teléfono <span class="res">'.$contrato['telefono'].' </span> y que tiene capacidad jurídica para obligarse en los 
                 términos del presente contrato. 
             </p>
             <h2 class="centrar titulo-legal">C L A U S U L A S</h2>
@@ -83,11 +88,11 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                 Características de vehículo: 
             </p>
             <p class="legal">
-                Número de identificación vehicular <span class="res">________________ </span> Marca <span class="res">________________ </span> 
-                Submarca <span class="res">________________ </span>Versión ó tipo<span class="res">________________ </span>
-                Modelo ó año<span class="res">________________ </span> Color<span class="res">________________ </span> 
-                Kilometraje<span class="res">________________ </span>Número de constancia de inscripción al Repuve<span class="res">________________ </span>
-                Placas<span class="res">________________ </span> Número de motor<span class="res">________________ </span> 
+                Número de identificación vehicular: <span class="res">'.$contrato['numero_serie_vehicular'].' </span> Marca: <span class="res">'.$contrato['nombre_marca'].' </span> 
+                Submarca: <span class="res">'.$contrato['nombre_modelo'].' </span> Versión ó tipo: <span class="res">'.$contrato['tipo_carro'].' </span>
+                Modelo ó año: <span class="res">'.$contrato['anio'].' </span> Color: <span class="res">'.$contrato['color'].' </span> 
+                Kilometraje: <span class="res">'.$contrato['kilometros'].' </span> Número de constancia de inscripción al Repuve: <span class="res">'.$contrato['NIV'].' </span>
+                Placas: <span class="res">'.$contrato['placa'].' </span> Número de motor: <span class="res">'.$contrato['no_motor'].' </span> 
                 Otros datos de identificación exigidos por las disposiciones legales locales y federales aplicables
             </p>
             <p class="legal">
@@ -113,20 +118,20 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                 Las condiciones generales (Aspectos físicos- mecánicos) en que se encuentra el vehículo usado materia de esta compraventa, son las siguientes: 
             </p>            
             <p class="legal">
-                Carrocería: <span class="res"> BUENA </span>, Pintura: <span class="res"> BUENA </span>, Llantas: <span class="res"> 1/2 Vida </span>, Otros
+                Carrocería: <span class="res"> '.$contrato['carroceria'].' </span>, Pintura: <span class="res"> '.$contrato['pintura'].' </span>, Llantas: <span class="res"> '.$contrato['llantas'].' </span>, Otros
             </p>
             <p class="legal">
                 <strong>SEGUNDA.-</strong> 
-                El precio de compraventa del vehículo es de $<span class="res"> 150,000.00 </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.), 
+                El precio de compraventa del vehículo es de $<span class="res"> '.$contrato['total'].' </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.), 
                 el cual será cubierto de la siguiente Manera: 
             </p>
             <p class="legal">
                 <ol class="legal">
                     <li class="legal">
                         a la presente fecha de la celebración de este contrato “EL COMPRADOR” HACE ENTREGA “AL VENDEDOR” de  la cantidad de 
-                        $<span class="res"> 150,000.00 </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.) de manera líquida
+                        $<span class="res"> '.$contrato['enganche'].' </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.) de manera líquida
                         y en efectivo, por el concepto de enganche, siendo el precio total de esta operación de compra la cantidad de
-                        $<span class="res"> 150,000.00 </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.).
+                        $<span class="res"> '.$contrato['total'].' </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.).
                     </li>
                     <li class="legal">
                         2)	el comprador en consecuencia se declara deudor del vendedor y se compromete a pagar en entregas iguales mensuales de  
@@ -302,6 +307,18 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
     </body>
 ';
     return $plantilla;
+}
+
+function getExpedicion($identificacion){
+    switch ($identificacion){
+        case "INE":
+            return "Instituto Nacional Electoral";
+            break;
+        default:
+            return "Desconocida";
+            break;
+    }
+
 }
 
 function getTableInventario(){

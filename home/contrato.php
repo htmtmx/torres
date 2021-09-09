@@ -28,8 +28,8 @@ $dirNegocio = $dirNegocioArray[0];
 
 $mpdf = new \Mpdf\Mpdf([
 ]);
-//var_dump($dirNegocio);
-//die();
+var_dump($datosContrato);
+die();
 // CREACION DE LA PLANTILLA
 $plantilla = getTemplateContrato($datosContrato,$dir,$dirNegocio);
 $css = file_get_contents('./reportes/responsiva_style.css');
