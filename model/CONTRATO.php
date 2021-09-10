@@ -527,7 +527,7 @@ class CONTRATO extends CONEXION implements I_CONTRATO
 		con.forma_pago , con.subtotal, con.iva, con.total , con.enganche , con.saldo ,  
 		con.tipo_contrato, con.estatus as cont_status,con.hora_fecha_creacion,
 		con.no_empleado_fk, con.no_cliente_fk, v.tipo_carro, con.no_vehiculo_fk,v.id_modelo_fk,mo.id_marca_fk, con.tel_referente1,
-        con.telreferente2 ,con.nombre_referente1,con.nombre_referente2 ,con.dir_referente1 ,con.dir_referente2 ,
+        con.telreferente2 ,con.nombre_referente1,con.nombre_referente2 ,con.dir_referente1 ,con.dir_referente2 ,con.fecha_primer_pago, 
         con.observaciones ,con.fecha_firma_contrato, v.no_motor, v.numero_serie_vehicular, v.no_factura, v.fecha_factura,
         v.empresa_factura, v.domicilio_empresa, v.tarjeton, v.folio_tarjeton, v.ultima_tenencia, v.tarjeta_circulacion,
         v.folio_tarje_circul, v.verificaciones_coche, v.carroceria, v.pintura, v.pintura, v.llantas, v.placa, v.kilometros, v.NIV,cli.medio_identificación,

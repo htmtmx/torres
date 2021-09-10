@@ -1,16 +1,30 @@
 <?php
 function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
+
+    include_once "../model/numerosALetras.class.php";
+    $n = new numerosALetras($contrato['total']);
+    $d = new numerosALetras($contrato['saldo']);
+    $e = new numerosALetras($contrato['enganche']);
+    $letraTotal=  $n->resultado;
+    $letraSaldo= $d->resultado;
+    $letraEnganche= $e->resultado;
     $pagos=$contrato[0][0];
     $direccion="";
+    $estadoVendedor=getEstadoRepublica($dirVendedor['estado']);
+    $estadoComprador=getEstadoRepublica($dirCliente['estado_republica']);
+    $mes=getMesLetra($contrato['mes']);
     $años=getFechasTenencia($contrato['ultima_tenencia'],$contrato['anio']);
+    $carroceria= $contrato['carroceria']>0? "BUENA": "MALA";
+    $pintura= $contrato['pintura']>0? "BUENA": "MALA";
     $direccion .= $dirVendedor['calle'].", No.Ext ".$dirVendedor['no_ext'].", ";
     $direccion .= strlen($dirVendedor['no_int'])>0? " No.Int ".$dirVendedor['no_int'].", ": "";
-    $direccion .= "Col. ".$dirVendedor['colonia'].", CP. ".$dirVendedor['cp'].", ".$dirVendedor['de_mun'].", Edo.  ".$dirVendedor['estado'];
+    $direccion .= "Col. ".$dirVendedor['colonia'].", CP. ".$dirVendedor['cp'].", ".$dirVendedor['de_mun'].", ".$estadoVendedor;
     $direccionCliente="";
     $direccionCliente .= $dirCliente['calle'].", No.Ext ".$dirCliente['no_ext'].", ";
-    $direccionCliente .= $dirCliente['no_int']!=null? " No.Int ".$dirCliente['no_int'].", ": "";
-    $direccionCliente .= "Col. ".$dirCliente['colonia'].", CP. ".$dirCliente['CP'].", ".$dirCliente['municipio'].", Edo.  ".$dirCliente['estado_republica'];
+    $direccionCliente .= strlen($dirCliente['no_int'])>0? " No.Int ".$dirCliente['no_int'].", ": "";
+    $direccionCliente .= "Col. ".$dirCliente['colonia'].", CP. ".$dirCliente['CP'].", ".$dirCliente['municipio'].", ".$estadoComprador;
     $expedicion = getExpedicion($contrato['medio_identificación']);
+    $tipocarro=getTipoCarro($contrato['tipo_carro']);
     $plantilla = '
     <body class="body-legal">
         <div class="container">
@@ -21,8 +35,8 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                 <div><h1>CONTRATO PRIVADO DE PROMESA DE VENTA DE VEHÍCULOS</h1></div>
             </div>
             <p class="legal">
-                En el municipio de Nicolás Romero, Estado de México; día <span class="fecha res">15 </span>de <span class="fecha res">ENERO </span>
-                del<span class="fecha res">2021 </span>; estando presentes:
+                En el municipio de Nicolás Romero, Estado de México; día <span class="fecha res">'.$contrato['dia'].' </span>de <span class="fecha res">'.$mes.' </span>
+                del <span class="fecha res">'.$contrato['anio_contrato'].' </span>; estando presentes:
                 El (la) C. <span class="res">'.$contrato['vendido_comprado_por'].' </span>, a quien en lo sucesivo y para efectos del presente contrato se le
                 denominará  “EL VENDEDOR”  y  por  la  otra, el (la) C. <span class="res">'.$contrato['cliente'].' </span>, a quien en
                 adelante se le denominará “EL COMPRADOR”, quienes de conformidad con lo previsto en los artículos
@@ -37,7 +51,7 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
             </p>
             <p class="legal">
                 <strong>SEGUNDA.-</strong> “E L  V E N D E D O R”, es actual propietario del vehículo de la MARCA: <span class="res">'.$contrato['nombre_marca'].' </span>, 
-                TIPO: <span class="res">'.$contrato['tipo_carro'].' </span>, MODELO: <span class="res">'.$contrato['nombre_modelo'].' </span>, PLACAS: <span class="res"> '.$contrato['placa'].' </span>, 
+                TIPO: <span class="res">'.$tipocarro.' </span>, MODELO: <span class="res">'.$contrato['nombre_modelo'].' </span>, PLACAS: <span class="res"> '.$contrato['placa'].' </span>, 
                 NUMERO DE SERIE: <span class="res">'.$contrato['numero_serie_vehicular'].' </span>, COLOR: <span class="res">'.$contrato['color'].' </span>, 
                 NUMERO DE MOTOR:<span class="res">'.$contrato['no_motor'].' </span>, acreditándolo con los documentos propios y respectivos.  
             </p>
@@ -91,7 +105,7 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
             </p>
             <p class="legal">
                 Número de identificación vehicular: <span class="res">'.$contrato['numero_serie_vehicular'].' </span> Marca: <span class="res">'.$contrato['nombre_marca'].' </span> 
-                Submarca: <span class="res">'.$contrato['nombre_modelo'].' </span> Versión ó tipo: <span class="res">'.$contrato['tipo_carro'].' </span>
+                Submarca: <span class="res">'.$contrato['nombre_modelo'].' </span> Versión ó tipo: <span class="res">'.$tipocarro.' </span>
                 Modelo ó año: <span class="res">'.$contrato['anio'].' </span> Color: <span class="res">'.$contrato['color'].' </span> 
                 Kilometraje: <span class="res">'.$contrato['kilometros'].' </span> Número de constancia de inscripción al Repuve: <span class="res">'.$contrato['NIV'].' </span>
                 Placas: <span class="res">'.$contrato['placa'].' </span> Número de motor: <span class="res">'.$contrato['no_motor'].' </span> 
@@ -120,25 +134,25 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                 Las condiciones generales (Aspectos físicos- mecánicos) en que se encuentra el vehículo usado materia de esta compraventa, son las siguientes: 
             </p>            
             <p class="legal">
-                Carrocería: <span class="res"> '.$contrato['carroceria'].' </span>, Pintura: <span class="res"> '.$contrato['pintura'].' </span>, Llantas: <span class="res"> '.$contrato['llantas'].' </span>, Otros
+                Carrocería: <span class="res"> '.$carroceria.' </span>, Pintura: <span class="res"> '.$pintura.' </span>, Llantas: <span class="res"> '.$contrato['llantas'].' </span>, Otros
             </p>
             <p class="legal">
                 <strong>SEGUNDA.-</strong> 
-                El precio de compraventa del vehículo es de $<span class="res"> '.$contrato['total'].' </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.), 
+                El precio de compraventa del vehículo es de $<span class="res"> '.$contrato['total'].' </span> (<span class="res"> '.$letraTotal.' </span> ), 
                 el cual será cubierto de la siguiente Manera: 
             </p>
             <p class="legal">
                 <ol class="legal">
                     <li class="legal">
                         a la presente fecha de la celebración de este contrato “EL COMPRADOR” HACE ENTREGA “AL VENDEDOR” de  la cantidad de 
-                        $<span class="res"> '.$contrato['enganche'].' </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.) de manera líquida
+                        $<span class="res"> '.$contrato['enganche'].' </span> (<span class="res"> '.$letraEnganche.' </span> ) de manera líquida
                         y en efectivo, por el concepto de enganche, siendo el precio total de esta operación de compra la cantidad de
-                        $<span class="res">'.$contrato['total'].' </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.).
+                        $<span class="res">'.$contrato['total'].' </span> (<span class="res"> '.$letraTotal.' </span> ).
                     </li>
                     <li class="legal">
                         2)	el comprador en consecuencia se declara deudor del vendedor y se compromete a pagar en entregas iguales mensuales de  
-                        $<span class="res"> '.$pagos['saldo'].' </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.)
-                         cada una a partir del día <span class="res"> '.$pagos['fecha_pago'].' </span> y una entrega final de $<span class="res"> '.$contrato['total'].' </span> (<span class="res"> Ciento Cincuenta MIl Pesos </span> 00/100 M. N.).
+                        $<span class="res"> '.$pagos['saldo'].' </span> (<span class="res"> '.$letraSaldo.' </span>)
+                         cada una a partir del día <span class="res"> '.$contrato['fecha_primer_pago'].' </span> y una entrega final de $<span class="res"> '.$contrato['total'].' </span> (<span class="res"> '.$letraTotal.' </span>).
                     </li>
                 </ol>
             </p>
@@ -265,8 +279,8 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                  otra razón. 
             </p>
                Leído que fue por las partes el contenido del presente contrato y sabedoras de su alcance legal, lo firman por duplicado 
-               en la Ciudad NICOLAS ROMERO, ESTADO DE MEXICO siendo las <span class="res"> '.$contrato['fecha_firma_contrato'].' </span> del día <span class="res"> _______________ </span>
-                de <span class="res"> _______________ </span> del <span class="res"> _______________ </span>. 
+               en la Ciudad NICOLAS ROMERO, ESTADO DE MEXICO siendo las <span class="res"> '.$contrato['hora'].' </span> del día <span class="res"> '.$contrato['dia'].' </span>
+                de <span class="res"> '.$mes.' </span> del <span class="res"> '.$contrato['anio_contrato'].' </span>. 
             </p>
             </p>
                <br><br><br>            </p>
@@ -286,9 +300,9 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                            <td class="firma espacio">            </td>
                         </tr>
                         <tr>
-                            <td class="legal centrar">ADRIANA IVETTE TORRES RAMIREZ</td>
+                            <td class="legal centrar">'.$contrato['vendido_comprado_por'].'</td>
                             <td></td>
-                            <td class="legal centrar">ADRIANA IVETTE TORRES RAMIREZ</td>
+                            <td class="legal centrar">'.$contrato['cliente'].'</td>
                         </tr>
                         <tr>
                             <td colspan="3"><h2 class="centrar titulo-legal">AVALES</h2></td>
@@ -321,6 +335,198 @@ function getExpedicion($identificacion){
             break;
     }
 
+}
+
+function getEstadoRepublica($estado){
+    switch ($estado){
+        case "AGU":
+            return "Aguascalientes";
+            break;
+        case "BCN":
+            return "Baja California";
+            break;
+        case "BCS":
+            return "Baja California Sur";
+            break;
+        case "CAM":
+            return "Campeche";
+            break;
+        case "CHP":
+            return "Chiapas";
+            break;
+        case "CHH":
+            return "Chihuahua";
+            break;
+        case "CDMX":
+            return "Ciudad de México";
+            break;
+        case "COA":
+            return "Coahuila";
+            break;
+        case "COL":
+            return "Colima";
+            break;
+        case "DUR":
+            return "Durango";
+            break;
+        case "MEX":
+            return "Estado de México";
+            break;
+        case "GUA":
+            return "Guanajuato";
+            break;
+        case "GRO":
+            return "Guerrero";
+            break;
+        case "HID":
+            return "Hidalgo";
+            break;
+        case "JAL":
+            return "Jalisco";
+            break;
+        case "MIC":
+            return "Michoacán";
+            break;
+        case "MOR":
+            return "Morelos";
+            break;
+        case "NAY":
+            return "Nayarit";
+            break;
+        case "NLE":
+            return "Nuevo León";
+            break;
+        case "OAX":
+            return "Oaxaca";
+            break;
+        case "PUE":
+            return "Puebla";
+            break;
+        case "QUE":
+            return "Queretaro";
+            break;
+        case "ROO":
+            return "Quintana Roo";
+            break;
+        case "SLP":
+            return "San Luis Potosí";
+            break;
+        case "SIN":
+            return "Sinaloa";
+            break;
+        case "SON":
+            return "Sonora";
+            break;
+        case "TAB":
+            return "Tabasco";
+            break;
+        case "TAM":
+            return "Tamaulipas";
+            break;
+        case "TLA":
+            return "Tlaxcala";
+            break;
+        case "VER":
+            return "Veracruz";
+            break;
+        case "YUC":
+            return "Yucatán";
+            break;
+        case "ZAC":
+            return "Zacatecas";
+            break;
+        default:
+            return "Este estado no Existe";
+            break;
+    }
+}
+
+function getTipoCarro($tipo){
+    switch ($tipo){
+        case "0":
+            return "URBANO";
+            break;
+        case "1":
+            return "SUBCOMPACTO";
+            break;
+        case "2":
+            return "COMPACTO";
+            break;
+        case "3":
+            return "FAMILIAR";
+            break;
+        case "4":
+            return "SEDAN";
+            break;
+        case "5":
+            return "BERLINA";
+            break;
+        case "6":
+            return "DESCAPOTABLE";
+            break;
+        case "7":
+            return "COUPE";
+            break;
+        case "8":
+            return "DEPORTIVO";
+            break;
+        case "9":
+            return "SUV";
+            break;
+        case "10":
+            return "TODO TERRENO";
+            break;
+        case "11":
+            return "PICK UP";
+            break;
+        default:
+            return "Marca no conocida";
+            break;
+    }
+}
+
+function getMesLetra($mes){
+    switch ($mes){
+        case '1':
+            return "ENERO";
+            break;
+        case '2':
+            return "FEBRERO";
+            break;
+        case '3':
+            return "MARZO";
+            break;
+        case '4':
+            return "ABRIL";
+            break;
+        case '5':
+            return "MAYO";
+            break;
+        case '6':
+            return "JUNIO";
+            break;
+        case '7':
+            return "JULIO";
+            break;
+        case '8':
+            return "AGOSTO";
+            break;
+        case '9':
+            return "SEPTIEMBRE";
+            break;
+        case '10':
+            return "OCTUBRE";
+            break;
+        case '11':
+            return "NOVIEMBRE";
+            break;
+        case '12':
+            return "DICIEMBRE";
+            break;
+        default:
+            return "Este mes no existe";
+            break;
+    }
 }
 
 function getTableInventario(){
