@@ -70,7 +70,6 @@ function consultaAvancePagoGeneralDeContrato($no_contrato)
     $totalContrato = $arrayContrato[0]['total'];
     $avance = ($totalAbonos*100)/$totalContrato;
     array_push($arrayContrato[0],$avance);
-    //var_dump($arrayContrato);
     return $avance;
 }
 
@@ -81,7 +80,6 @@ function consultaAvancePagoGeneralDeAllContratos()
     $arrayContratos = consultaAllContratos();
     $arrayFinalContrato = array();
     //echo"<br>***** A R R A Y     C O N T R A T O S *****<br>";
-    //var_dump($arrayContratos);
     foreach ($arrayContratos as $contrato) {
         $cont = 0;
         $arrayPagos = consultaPagos($contrato['no_contrato']);
@@ -189,7 +187,6 @@ function creaContratoCompra($params)
         $DIRECCION = constructObjDireccion($params, $VENDEDOR->getNoCliente());
         $resultDireccion = $params['id_dir']>0? $DIRECCION->queryupdateDireccion(): $DIRECCION->queryaddDireccion();
     }
-
 
     if($resultVendedor && $resultCoche && $resultDireccion){
         // 1 - C_COMPRA 0-Contrato_Vta

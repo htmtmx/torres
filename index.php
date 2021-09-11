@@ -86,11 +86,11 @@ if(isset($_SESSION['usuario']))
                 <a href="./registro-cliente.php" class="btn btn-neutral btn-icon">
                   <span class="btn-inner--text"><i class="fas fa-car"></i> Registro Cliente</span>
                 </a>
-                <a href="https://api.whatsapp.com/send?phone=+525565241529&text=Hola%20necesito%20ayuda%20en%20el%20sistema%20de%20Autos%20Torres" class="btn btn-neutral btn-icon" target="_blank">
+                <a href="https://api.whatsapp.com/send?phone=+5215565846164" class="btn btn-neutral btn-icon" target="_blank">
                   <span class="btn-inner--text"><span class="btn-inner--icon">
-                    <i class="fas fa-question-circle"></i>
+                    <i class="fab fa-whatsapp text-green"></i>
                   </span>
-                  <span class="nav-link-inner--text">Soporte</span></span>
+                  <span class="nav-link-inner--text ">Ventas</span></span>
                 </a>
               </div>
             </div>
@@ -143,24 +143,23 @@ if(isset($_SESSION['usuario']))
       <div class="row align-items-center justify-content-xl-between">
         <div class="col-xl-6">
           <div class="copyright text-center text-xl-left text-muted">
-            &copy; 2021 <a href="https://reckreastudios.com/" class="font-weight-bold ml-1" target="_blank">
-            ReCKrea Studios
+            &copy; 2021 Autos Torres
           </a>
           </div>
         </div>
         <div class="col-xl-6">
           <ul class="nav nav-footer justify-content-center justify-content-xl-end">
             <li class="nav-item">
-              <a href="https://reckreastudios.com/" class="nav-link" target="_blank">ReCkreaStudios</a>
+              <a href="https://reckreastudios.com/" class="nav-link" target="_blank"> Creado por ReCkreaStudios</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" target="_blank">About Us</a>
+              <a href="#" class="nav-link" target="_blank">Acerca de</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link" target="_blank">Ayuda</a>
             </li>
             <li class="nav-item">
-              <a href="https://github.com/htmtmx/torres#readme" class="nav-link" target="_blank">RCSG License</a>
+              <a href="#" class="nav-link" target="_blank">RCSG License</a>
             </li>
           </ul>
         </div>

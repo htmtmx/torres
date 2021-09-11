@@ -36,7 +36,6 @@ function verificaAbono($no_contrato,$monto)
                 echo "<br>S U M A      D E      A B O N O S";*/
             }
         checaSiUpdateContrato($no_contrato);
-
     }
     return true;
 }
@@ -53,6 +52,12 @@ function checaSiUpdateContrato($no_contrato){
     if ($totalContrato==$totalPagos) {
         updateEstatusContrato($no_contrato,1);
         updateSaldoContrato($no_contrato,0);
+        //actualizar estado del coche
+
+        //consultar el no de vehiculo a partir del no de contraro
+        //actualizar el coche
+        //include_once  "controlCoche.php";
+        //updateEstatusCoche(contrato['no_vehiculo'],1);
     }
 }
 

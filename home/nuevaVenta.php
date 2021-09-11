@@ -443,12 +443,9 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                             <h6 class="heading-small text-muted mb-4">Pago Inicial</h6>
                                                             <div class="pl-lg-4">
                                                                 <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <label class="form-control-label" for="forma_pago">Elija modo de pago</label>
-                                                                        <select  id="forma_pago" name="forma_pago" class="form-control">
-                                                                            <option selected="" value="0">Contado</option>
-                                                                            <option value="1">Credito</option>
-                                                                        </select>
+                                                                    <div class="col-lg-6">
+                                                                        <label class="form-control-label" for="datetimeFirma">Fecha del Contrato</label>
+                                                                        <input id="datetimeFirma" type="datetime-local" name="datetimeFirma" value="2021-09-11T10:00:00" min="2000-01-01T00:00:00" max="2021-09-11T23:59:59">
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
@@ -467,7 +464,13 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                     </div>
                                                                 </div>
                                                                 <div class="row" id="containerEnganche">
-                                                                    <div class="col-md-6"></div>
+                                                                    <div class="col-md-6">
+                                                                        <label class="form-control-label" for="forma_pago">Elija modo de pago</label>
+                                                                        <select  id="forma_pago" name="forma_pago" class="form-control">
+                                                                            <option selected="" value="0">Contado</option>
+                                                                            <option value="1">Credito</option>
+                                                                        </select>
+                                                                    </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <span class="form-control-label" id="engancheSpan" for="enganche">Pagar / Apartar Con:</span>
