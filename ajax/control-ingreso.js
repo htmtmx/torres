@@ -30,7 +30,7 @@ function construyeSelectDetalles(detalles){
                     <div class="form-group d-inline-flex">
                         <label class="form-control-label" for="observaciones">${detalle.nombre}: </label>
                         <label class="custom-toggle">
-                            <input type="checkbox"  value="${detalle.id_detalle}" name="detalles[]">
+                            <input type="checkbox" value="${detalle.id_detalle}" name="detalles[]">
                             <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
                         </label>
                     </div>

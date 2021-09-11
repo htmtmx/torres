@@ -2,6 +2,7 @@
 $params = [
     //AGREGA COCHE
     "id_modelo_fk" => $_POST['id_modelo_fk'],
+    "tipoVehiculo"=>$_POST['tipoVehiculo'],
     "anio" => $_POST['anio'],
     "placa" => $_POST['placa'],
     "entidad_placa" => $_POST['entidad_placa'],
@@ -10,6 +11,21 @@ $params = [
     "transmision" => $_POST['transmision'],
     "combustible" => $_POST['combustible'],
     "no_puertas" => $_POST['no_puertas'],
+    "noMotor"=>$_POST['noMotor'],
+    "noSerieV"=>$_POST['noSerieV'],
+    "carroceria"=>$_POST['carroceria'],
+    "pintura"=>$_POST['pintura'],
+    "llantas"=>$_POST['llantas'],
+    "noFactura"=>$_POST['noFactura'],
+    "fecha_factura"=>$_POST['fecha_factura'],
+    "empresaExpide"=>$_POST['empresaExpide'],
+    "dirFactura"=>$_POST['dirFactura'],
+    "tarjeton"=>$_POST['tarjeton'],
+    "folioTarjeton"=>$_POST['folioTarjeton'],
+    "tarjectaCirc"=>$_POST['tarjectaCirc'],
+    "folioTarjCirc"=>$_POST['folioTarjCirc'],
+    "verificaciones"=>$_POST['verificaciones'],
+    "arraydetalles"=>$_POST['detalles'],
     "precio_contado" => $_POST['precio_contado_compra'],
     "precio_credito" => $_POST['precio_credito_compra'],
     "nivCoche" => $_POST['nivCoche'],
@@ -43,8 +59,13 @@ $params = [
 
     //tuipo de pago CONTADO -> 0 APARTADO -> 0 CREDITO -> 1
     "forma_pago" => $_POST['forma_pago_compra'],
-    "total" => $_POST['total']
+    "total" => $_POST['total'],
+    "fecha_firma_contrato"=>$_POST['datetimeFirma'],
+    "observacionesContrato"=>$_POST['observacionesContrato'],
 ];
+
+var_dump($params);
+die();
 echo $params['id_dir'];
 include_once "../control/controlContrato.php";
 echo creaContratoCompra($params) ? "Se ha creado un contrato de Compra": "error al crear contrato";

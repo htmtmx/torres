@@ -78,14 +78,14 @@
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <label class="form-control-label" for="marcaCoche"><span class="obliga">*</span> Marca</label>
-                                                                                <select id="marcaCoche" name="marcaCoche" class="form-control">
+                                                                                <select id="marcaCoche" name="marcaCoche" class="form-control" required>
                                                                                     <!-- AJAX RESPONSE GENERAR MARCAS Y MODELOS -->
                                                                                 </select>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <label class="form-control-label" for="id_modelo_fk"><span class="obliga">*</span>Modelo</label>
                                                                                 <div class="d-flex">
-                                                                                    <select id="id_modelo_fk" name="id_modelo_fk" class="form-control">
+                                                                                    <select id="id_modelo_fk" name="id_modelo_fk" class="form-control" required>
                                                                                         <!-- AJAX RESPONSE GENERAR MODELOS ON CHANGE MARCAS-->
                                                                                     </select>
                                                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaladdmodelo">
@@ -96,11 +96,19 @@
                                                                             <!-- Modal para agregar Modelo -->
                                                                             <div class="col-lg-4">
                                                                                 <label class="form-control-label" for="tipoVehiculo"><span class="obliga">*</span>Tipo</label>
-                                                                                <select id="tipoVehiculo" name="tipoVehiculo" class="form-control">
-                                                                                    <option value="SEDAN">SEDAN</option>
-                                                                                    <option value="SPORT">SPORT</option>
-                                                                                    <option value="FAMILIAR">FAMILIAR</option>
-                                                                                    <option value="SUV">SUV</option>
+                                                                                <select id="tipoVehiculo" name="tipoVehiculo" class="form-control" required>
+                                                                                    <option value="0">URBANO</option>
+                                                                                    <option value="1">SUBCOMPACTO</option>
+                                                                                    <option value="2">COMPACTO</option>
+                                                                                    <option value="3">FAMILIAR</option>
+                                                                                    <option value="4">SEDAN</option>
+                                                                                    <option value="5">BERLINA</option>
+                                                                                    <option value="6">DESCAPOTABLE</option>
+                                                                                    <option value="7">COUPE</option>
+                                                                                    <option value="8">DEPORTIVO</option>
+                                                                                    <option value="9">SUV</option>
+                                                                                    <option value="10">TODO TERRENO</option>
+                                                                                    <option value="11">PICK UP</option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -108,8 +116,8 @@
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="anio"><span class="obliga">*</span>Año</label>
-                                                                                    <select id="anio" name="anio" class="form-control">
-
+                                                                                    <select id="anio" name="anio" class="form-control" required>
+                                                                                        <!-- AJAX RESPONSE DE AÑOS -->
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -122,7 +130,7 @@
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="entidad_placa"><span class="obliga">*</span>Entidad Federativa</label>
-                                                                                    <select name="entidad_placa" id="entidad_placa" class="form-control">
+                                                                                    <select name="entidad_placa" id="entidad_placa" class="form-control" required>
                                                                                         <option value="AGU">Aguascalientes</option>
                                                                                         <option value="BCN">Baja California</option>
                                                                                         <option value="BCS">Baja California Sur</option>
@@ -168,20 +176,20 @@
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="color"><span class="obliga">*</span>Color</label>
-                                                                                    <input id="color" name="color" class="form-control" placeholder="Color del vehiculo">
+                                                                                    <input id="color" name="color" class="form-control" placeholder="Color del vehiculo" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="kilometros"><span class="obliga">*</span>Kilometraje</label>
-                                                                                    <input class="form-control" type="number" id="kilometros" name="kilometros" min="0" max="1000000" value="0" placeholder="Kilimetraje actual">
+                                                                                    <input class="form-control" type="number" id="kilometros" name="kilometros" min="0" max="1000000" value="0" placeholder="Kilimetraje actual" required>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <label class="form-control-label" for="transmision"><span class="obliga">*</span>Trasmision</label>
-                                                                                <select id="transmision" name="transmision" class="form-control">
+                                                                                <select id="transmision" name="transmision" class="form-control" required>
                                                                                     <option value="AU">AUTOMATICA</option>
                                                                                     <option value="MA">MANUAL</option>
                                                                                     <option value="DU">DUAL</option>
@@ -189,7 +197,7 @@
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <label class="form-control-label" for="combustible"><span class="obliga">*</span>Combustible</label>
-                                                                                <select id="combustible" name="combustible" class="form-control">
+                                                                                <select id="combustible" name="combustible" class="form-control" required>
                                                                                     <option value="GAS">Gasolina</option>
                                                                                     <option value="DIE">Diesel</option>
                                                                                     <option value="ELE">Electrico</option>
@@ -198,7 +206,7 @@
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <label class="form-control-label" for="no_puertas"><span class="obliga">*</span>No de Puertas</label>
-                                                                                <select id="no_puertas" name="no_puertas" class="form-control">
+                                                                                <select id="no_puertas" name="no_puertas" class="form-control" required>
                                                                                     <option value="0">0</option>
                                                                                     <option value="2">2</option>
                                                                                     <option value="3">3</option>
@@ -211,19 +219,19 @@
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="nivCoche">NIV</label>
-                                                                                    <input type="text" id="nivCoche" name="nivCoche" class="form-control" placeholder="Numero de Identificacion Vehicular" >
+                                                                                    <input type="text" id="nivCoche" name="nivCoche" class="form-control" placeholder="Numero de Identificacion Vehicular" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="noMotor">No. Motor</label>
-                                                                                    <input type="text" id="noMotor" name="noMotor" class="form-control" placeholder="Número de Motor" >
+                                                                                    <input type="text" id="noMotor" name="noMotor" class="form-control" placeholder="Número de Motor" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="noSerieV">Serie Vehicular</label>
-                                                                                    <input type="text" id="noSerieV" name="noSerieV" class="form-control" placeholder="Número de Serie Vehicular" >
+                                                                                    <input type="text" id="noSerieV" name="noSerieV" class="form-control" placeholder="Número de Serie Vehicular" required>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -231,7 +239,7 @@
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="carroceria"><span class="obliga">*</span>Carroceria</label>
-                                                                                    <input type="text" id="carroceria" name="carroceria" class="form-control" placeholder="Estado de la carroceria" >
+                                                                                    <input type="text" id="carroceria" name="carroceria" class="form-control" placeholder="Estado de la carroceria" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
@@ -243,7 +251,7 @@
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="llantas"><span class="obliga">*</span>Llantas</label>
-                                                                                    <input type="text" id="llantas" name="llantas" class="form-control" placeholder="Estado de las llantas" >
+                                                                                    <input type="text" id="llantas" name="llantas" class="form-control" placeholder="Estado de las llantas" required>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -254,19 +262,19 @@
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="noFactura">Factura</label>
-                                                                                    <input id="noFactura" name="noFactura" class="form-control" placeholder="No/Folio Factura">
+                                                                                    <input id="noFactura" name="noFactura" class="form-control" placeholder="No/Folio Factura" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="kilometros">Fecha de Expedición</label>
-                                                                                    <input type="date" id="fecha_primer_pago" name="fecha_primer_pago" value="<?php echo date("Y-m-d");?>" min="2000-01-01" max="<?php echo date("Y-m-d");?>">
+                                                                                    <label class="form-control-label" for="fecha_factura">Fecha de Expedición</label>
+                                                                                    <input type="date" id="fecha_factura" name="fecha_factura" value="<?php echo date("Y-m-d");?>" min="2000-01-01" max="<?php echo date("Y-m-d");?>" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="empresaExpide">Empresa Emisora</label>
-                                                                                    <input id="empresaExpide" name="empresaExpide" class="form-control" placeholder="Nombre de la empresa que expide la factura">
+                                                                                    <input id="empresaExpide" name="empresaExpide" class="form-control" placeholder="Nombre de la empresa que expide la factura" required>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -274,14 +282,14 @@
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="dirFactura">Direccion Factura</label>
-                                                                                    <input id="dirFactura" name="dirFactura" class="form-control" placeholder="Escriba dirección completa como en la factura">
+                                                                                    <input id="dirFactura" name="dirFactura" class="form-control" placeholder="Escriba dirección completa como en la factura" required>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-3">
-                                                                                <label class="form-control-label" for="tarjeton">Targeton</label>
-                                                                                <select id="tarjeton" name="tarjeton" class="form-control">
+                                                                                <label class="form-control-label" for="tarjeton">Tarjeton</label>
+                                                                                <select id="tarjeton" name="tarjeton" class="form-control" >
                                                                                     <option value="1">SI</option>
                                                                                     <option value="0" selected>NO</option>
                                                                                 </select>
@@ -289,32 +297,34 @@
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="folioTarjeton">Folio Tarjetón</label>
-                                                                                    <input id="folioTarjeton" name="folioTarjeton" class="form-control" placeholder="Folio del Tarjetón">
+                                                                                    <input id="folioTarjeton" name="folioTarjeton" class="form-control" placeholder="Folio del Tarjetón" >
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-3">
                                                                                 <label class="form-control-label" for="tarjectaCirc">Tarjeta Circualación</label>
-                                                                                <select id="tarjectaCirc" name="tarjectaCirc" class="form-control">
+                                                                                <select id="tarjectaCirc" name="tarjectaCirc" class="form-control" required>
                                                                                     <option value="1" selected>SI</option>
                                                                                     <option value="0" >NO</option>
                                                                                 </select>
                                                                             </div>
                                                                             <div class="col-lg-3">
                                                                                 <label class="form-control-label" for="folioTarjCirc">Folio Tarjeta Circulación</label>
-                                                                                <input id="folioTarjCirc" name="folioTarjCirc" class="form-control" placeholder="Folio Tarjeta de Circulación">
+                                                                                <input id="folioTarjCirc" name="folioTarjCirc" class="form-control" placeholder="Folio Tarjeta de Circulación" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="combustible"><span class="obliga">*</span>Última Tenencia</label>
-                                                                                    <select id="ultimaTenencia" name="ultimaTenencia" class="form-control"></select>
+                                                                                    <select id="ultimaTenencia" name="ultimaTenencia" class="form-control">
+                                                                                        <!-- AJAX RESPONSE AÑO DE TENENCIA CON AÑO DEL CARRO-->
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="verificaciones"><span class="obliga">*</span>Verificaciones</label>
-                                                                                    <select id="verificaciones" name="verificaciones" class="form-control">
+                                                                                    <select id="verificaciones" name="verificaciones" class="form-control" required>
                                                                                         <option value="1"selected>SI</option>
                                                                                         <option value="0" >NO</option>
                                                                                     </select>
@@ -333,6 +343,7 @@
                                                                     <h6 class="heading-small text-muted mb-4">Inventario</h6>
                                                                     <div class="pl-lg-4">
                                                                         <div class="row" id="detalleBox">
+                                                                            <!-- AJAX RESPONSE DETALLE BOX -->
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -367,19 +378,19 @@
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="nombre"><span class="obliga">*</span>Nombre</label>
-                                                                                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+                                                                                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="apaterno"><span class="obliga">*</span>Primer Apellido</label>
-                                                                                    <input type="text" name="apaterno" id="apaterno" class="form-control" placeholder="Primer Apellido">
+                                                                                    <input type="text" name="apaterno" id="apaterno" class="form-control" placeholder="Primer Apellido" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="amaterno"><span class="obliga">*</span>Segundo Apellido</label>
-                                                                                    <input type="text" name="amaterno" id="amaterno" class="form-control" placeholder="Segundo Apellido">
+                                                                                    <input type="text" name="amaterno" id="amaterno" class="form-control" placeholder="Segundo Apellido" required>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -393,7 +404,7 @@
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="telefono"><span class="obliga">*</span>Telefono</label>
-                                                                                    <input type="text" name="telefono" id="telefono" class="form-control" placeholder="No. Telefono">
+                                                                                    <input type="text" name="telefono" id="telefono" class="form-control" placeholder="No. Telefono" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
@@ -413,13 +424,13 @@
                                                                                 <div class="form-group">
                                                                                     <input type="hidden" id="id_dir" name="id_dir">
                                                                                     <label class="form-control-label" for="calle"><span class="obliga">*</span>Calle</label>
-                                                                                    <input type="text" id="calle" name="calle" class="form-control">
+                                                                                    <input type="text" id="calle" name="calle" class="form-control" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-2">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="noExtEmp"><span class="obliga">*</span>No Ext.</label>
-                                                                                    <input type="text" id="noExtEmp" name="noExtEmp" class="form-control">
+                                                                                    <input type="text" id="noExtEmp" name="noExtEmp" class="form-control" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-2">
@@ -433,13 +444,13 @@
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="coloniaEmpr"><span class="obliga">*</span>Colonia</label>
-                                                                                    <input type="text" id="coloniaEmpr" name="coloniaEmpr" class="form-control">
+                                                                                    <input type="text" id="coloniaEmpr" name="coloniaEmpr" class="form-control" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="municipio"><span class="obliga">*</span>Municipio</label>
-                                                                                    <input type="text" id="municipio" name="municipio" class="form-control">
+                                                                                    <input type="text" id="municipio" name="municipio" class="form-control" required>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -447,13 +458,13 @@
                                                                             <div class="col-lg-2">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="cpEmpr">CP</label>
-                                                                                    <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control">
+                                                                                    <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="estadoEmp"><span class="obliga">*</span>Estado</label>
-                                                                                    <select name="estadoEmp" id="estadoEmp" class="form-control">
+                                                                                    <select name="estadoEmp" id="estadoEmp" class="form-control" required>
                                                                                         <option value="AGU">Aguascalientes</option>
                                                                                         <option value="BCN">Baja California</option>
                                                                                         <option value="BCS">Baja California Sur</option>
@@ -536,7 +547,7 @@
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="folio"><span class="obliga">*</span>Folio</label>
+                                                                                    <label class="form-control-label" for="folio">Folio Identificacion</label>
                                                                                     <input type="text" name="folio" id="folio" class="form-control" placeholder="Folio">
                                                                                 </div>
                                                                             </div>
@@ -590,7 +601,7 @@
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group row">
                                                                                 <label class="form-control-label" for="total">Precio de compra</label>
-                                                                                <input type="numeric" name="total" id="total" class="form-control">
+                                                                                <input type="numeric" name="total" id="total" class="form-control" required>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -621,12 +632,12 @@
                                                                     <div class="row">
                                                                         <div class="col-lg-6">
                                                                             <label class="form-control-label" for="datetimeFirma">Fecha del Contrato</label>
-                                                                            <input id="datetimeFirma"  type="datetime-local" name="datetimeFirma" value="<?php echo date("Y-m-d");?>T10:00:00" min="2000-01-01T00:00:00" max="<?php echo date("Y-m-d");?>T23:59:59">
+                                                                            <input id="datetimeFirma"  type="datetime-local" name="datetimeFirma" value="<?php echo date("Y-m-d");?>T10:00:00" min="2000-01-01T00:00:00" max="<?php echo date("Y-m-d");?>T23:59:59" required>
                                                                         </div>
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
-                                                                                <label class="form-control-label" for="observaciones">Observaciones</label>
-                                                                                <textarea class="form-control" id="observaciones" name="observaciones" rows="3" placeholder="Detalles extra referente a la compra"></textarea>
+                                                                                <label class="form-control-label" for="observacionesContrato">Observaciones</label>
+                                                                                <textarea class="form-control" id="observacionesContrato" name="observacionesContrato" rows="3" placeholder="Detalles extra referente a la compra"></textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -648,13 +659,13 @@
                                                                         <div class="col-md-5">
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="precio_contado_compra">Precio de Lista</label>
-                                                                                <input class="form-control" type="number" id="precio_contado_compra" name="precio_contado_compra" min="0" max="1000000" value="0">
+                                                                                <input class="form-control" type="number" id="precio_contado_compra" name="precio_contado_compra" min="0" max="1000000" value="0" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-5">
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="precio_credito_compra">Precio a Credito</label>
-                                                                                <input class="form-control" type="number" id="precio_credito_compra" name="precio_credito_compra" min="0" max="1000000"  value="0">
+                                                                                <input class="form-control" type="number" id="precio_credito_compra" name="precio_credito_compra" min="0" max="1000000"  value="0" required>
                                                                             </div>
                                                                         </div>
                                                                     </div>
