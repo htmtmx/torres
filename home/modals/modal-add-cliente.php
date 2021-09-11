@@ -70,15 +70,7 @@
                                 <option value="INE">INE</option>
                                 <option value="PASAPORTE">Pasaporte</option>
                                 <option value="CEDULA">Cédula Profesional</option>
-                                <option value="LICENCIA">Licencia de Conducir</option>
-                                <option value="INAPAM">INAPAM</option>
-                                <option value="ESCOLAR">Credencial de Estudiante</option>
-                                <option value="CERTIFICADO">Certificado Escolar</option>
-                                <option value="TITULO">Título Profesional</option>
                                 <option value="CARTILLA">Cartilla de Servicio Militar</option>
-                                <option value="SEGURO">Credencial IMSS ISSSTE</option>
-                                <option value="CEDULA">Cédula de Idedntificacion Ciudadana</option>
-                                <option value="OTRO">Otro</option>
                                 <option value="NONE" selected="">Ninguna</option>
                             </select>
                         </div>

@@ -26,7 +26,7 @@
                                                         <i class="fas fa-search"></i>
                                                     </span>
                                                 </div>
-                                                <input class="form-control" id="myInput" type="text" placeholder="Nombrer del cliente..">
+                                                <input class="form-control" id="myInput" type="text" placeholder="Nombre del cliente..">
                                             </div>
                                         </div>
                                     </div>

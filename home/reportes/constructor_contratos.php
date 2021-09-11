@@ -10,6 +10,7 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
     $letraEnganche= $e->resultado;
     $pagos=$contrato[0][0];
     $direccion="";
+    $verificacion= $contrato['verificaciones_coche']>0? "SI": "NO";
     $estadoVendedor=getEstadoRepublica($dirVendedor['estado']);
     $estadoComprador=getEstadoRepublica($dirCliente['estado_republica']);
     $mes=getMesLetra($contrato['mes']);
@@ -178,8 +179,8 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
             <p class="legal">
                 Factura No.<span class="res"> '.$contrato['no_factura'].' </span> de fecha: '.$contrato['fecha_factura'].' expedida por: <span class="res"> '.$contrato['empresa_factura'].' </span> 
                 con domicilio:<span class="res"> '.$contrato['domicilio_empresa'].' </span> Pagos de tenencia vehicular de los años:<span class="res"> '.$años.' </span>
-                Tarjeta de circulación no.<span class="res"> '.$contrato['folio_tarje_circul'].' </span> Comprobantes de verificación vehicular: <span class="res"> '.$contrato['verificaciones_coche'].' </span>
-                Manual del usuario (en su caso), Documentos oficiales que acrediten su legal existencia en el país: <span class="res"> Aqui va otro campo </span> Otros:<span class="res"> _______________ </span>.
+                Tarjeta de circulación no.<span class="res"> '.$contrato['folio_tarje_circul'].' </span> Comprobantes de verificación vehicular: <span class="res"> '.$verificacion.' </span>
+                Manual del usuario (en su caso).
             </p>
             <p class="legal">
                 <strong>SÉPTIMA.-</strong> 
@@ -328,8 +329,18 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
 function getExpedicion($identificacion){
     switch ($identificacion){
         case "INE":
-            return "Instituto Nacional Electoral";
+            return "INSTITUTO NACIONAL ELECTORAL";
             break;
+        case "PASAPORTE":
+            return "EMBAJADA";
+            break;
+        case "CEDULA":
+            return "DIRECCION GENERAL DE PROFESIONES";
+            break;
+        case "CARTILLA":
+            return "SERVICIO MILITAR NACIONAL";
+            break;
+
         default:
             return "Desconocida";
             break;
