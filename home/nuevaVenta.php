@@ -349,15 +349,7 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                                         <option value="INE">INE</option>
                                                                                         <option value="PASAPORTE">Pasaporte</option>
                                                                                         <option value="CEDULA">Cédula Profesional</option>
-                                                                                        <option value="LICENCIA">Licencia de Conducir</option>
-                                                                                        <option value="INAPAM">INAPAM</option>
-                                                                                        <option value="ESCOLAR">Credencial de Estudiante</option>
-                                                                                        <option value="CERTIFICADO">Certificado Escolar</option>
-                                                                                        <option value="TITULO">Título Profesional</option>
                                                                                         <option value="CARTILLA">Cartilla de Servicio Militar</option>
-                                                                                        <option value="SEGURO">Credencial IMSS ISSSTE</option>
-                                                                                        <option value="CEDULA">Cédula de Idedntificacion Ciudadana</option>
-                                                                                        <option value="OTRO">Otro</option>
                                                                                         <option value="NONE">Ninguna</option>
                                                                                     </select>
                                                                                 </div>
@@ -425,6 +417,14 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="dirAval1">Direccion complñeta del Aval 1</label>
+                                                                                <input type="text" name="dirAval1" id="dirAval1" class="form-control" placeholder="Escriba el nombre completo del primer aval">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="nombreAval2">Nombre Completo</label>
@@ -435,6 +435,14 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="telAval2">Teléfono</label>
                                                                                 <input type="text" name="telAval2" id="telAval2" class="form-control" placeholder="Telefono del Aval">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="dirAval2">Direccion complñeta del Aval 1</label>
+                                                                                <input type="text" name="dirAval2" id="dirAval2" class="form-control" placeholder="Escriba el nombre completo del primer aval">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -513,7 +521,12 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                         </div>
                                                                     </div>
                                                                     <div class="row" id="selectedCredito">
-                                                                        <div class="col-md-6"></div>
+                                                                        <div class="col-lg-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="observacionesContrato">Observaciones</label>
+                                                                                <textarea class="form-control" id="observacionesContrato" name="observacionesContrato" rows="3" placeholder="Mas detalles del contrato"></textarea>
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="fecha_primer_pago">Elija día de primer pago:</label>

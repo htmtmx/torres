@@ -61,6 +61,10 @@ $("#forma_pago").change(function ()
         $("#engancheSpan").html("Pagar / Apartar Con:");
         $("#creditoContainer").addClass("d-none");
         $("#containerAvales").addClass("d-none");
+        $("#nombreAva1").val("");
+        $("#telaval1").val("");
+        $("#nombreAval2").val("");
+        $("#telAval2").val("");
     }
     calculaResto();
     calculaCredito();

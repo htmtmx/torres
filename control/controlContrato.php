@@ -201,7 +201,7 @@ function creaContratoCompra($params)
         $fechaFirmaContrato=$params['fecha_firma_contrato'];
         $observaciones= $params['observacionesContrato'];
         $CONTRATO = constructObjContrato($formaPago,$VENDEDOR->getNoCliente(),$COCHE->getNoVehiculo(),
-            $tipoContrato,$plazos,$fechaPrimerPago, $totalCoche, $enganche,$estatusContrato,$fechaFirmaContrato,$observaciones);
+            $tipoContrato,$plazos,$fechaPrimerPago, $totalCoche, $enganche,$estatusContrato,$params);
 
         $resultContrato = $CONTRATO->queryaddContrato();
 
@@ -247,6 +247,8 @@ function creaContratoVenta($params)
         echo $plazo;
         $enganche = $params['enganche'];
         $totalCoche=$params['total'];
+        $fechaFirmaContrato=$params['fecha_firma_contrato'];
+        $observaciones=
         //Definir si es contado (contado, apartado), credito
         //Los plazos son los meses.
         $forma_pago = "";
@@ -274,7 +276,7 @@ function creaContratoVenta($params)
         }
 
         $CONTRATO = constructObjContrato($forma_pago,$COMPRADOR->getNoCliente(),$noVehiculo,
-        $tipoContrato,$plazo,$fechaPrimerPago, $totalCoche, $enganche,$estatusContrato);
+        $tipoContrato,$plazo,$fechaPrimerPago, $totalCoche, $enganche,$estatusContrato,$params);
 
         $resultContrato = $CONTRATO->queryaddContrato();
         if ($resultContrato) {
@@ -407,7 +409,7 @@ function constructObjDireccion($params,$noCliente){
 //Construimos el objeto contrato
 //ADD: SE AGREGO LA FECHA FIRMA DE CONTRATO Y SE TIENE QUE AGREGAR EN EL ALGORITMO DE VENTA AL IGUAL QUE OBSERVACIONES
 function constructObjContrato($formaPago,$noCliente,$noVehiculo, $tipoContrato,
-                              $plazo,$fechaPrimerPago, $totalCoche, $enganche, $estatusContrato,$fechaFirmaContrato,$observaciones){
+                              $plazo,$fechaPrimerPago, $totalCoche, $enganche, $estatusContrato,$params){
     session_start();
     include_once "../model/CONTRATO.php";
     include_once  "tool_ids_generate.php";
@@ -425,23 +427,30 @@ function constructObjContrato($formaPago,$noCliente,$noVehiculo, $tipoContrato,
     $obj_cont->setFechaPrimerPago($fechaPrimerPago);
     $obj_cont->setEnganche($enganche);
     //Lo que falta pagar del carro
+
     $saldo =  $totalCoche-$enganche;
     $obj_cont->setSaldo($saldo);
     $obj_cont->setFormaPago($formaPago);
+    $obj_cont->setNombreReferente1($params['nombreAv1']);
+    $obj_cont->setNombreReferente2($params['nombreAv2']);
+    $obj_cont->setTelReferente1($params['telefonoAv1']);
+    $obj_cont->setTelReferente2($params['telefonoAv2']);
+    $obj_cont->setDirReferente1($params['dirAval1']);
+    $obj_cont->setDirReferente2($params['dirAval2']);
+
     /*
      * SUBTOTAL $: 84,000
      * + IVA $: 16,000  +
      * COSTO TOTAL DEL COCHE: $100,000
-     *
-     *
      * TOTAL DEL COCHE: $100,000
      * PAGO ENGANCHE: $ 35,000
      * SALDO: $65,000
      * */
+
     $IVA = $totalCoche * .16;
     $subTotal = $totalCoche - $IVA;
-    $obj_cont->setFechaFirmaContrato($fechaFirmaContrato);
-    $obj_cont->setObservaciones($observaciones);
+    $obj_cont->setFechaFirmaContrato($params['fecha_firma_contrato']);
+    $obj_cont->setObservaciones($params['observaciones']);
     $obj_cont->setSubtotal($subTotal);
     $obj_cont->setIva($IVA);
     $obj_cont->setTotal($totalCoche);

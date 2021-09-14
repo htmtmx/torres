@@ -59,6 +59,12 @@ $params = [
     "tipo_cliente" => $_POST['tipo_cliente'],
 
     //tuipo de pago CONTADO -> 0 APARTADO -> 0 CREDITO -> 1
+    "nombreAv1"=>$_POST['nombreAva1'],
+    "nombreAv2"=>$_POST['nombreAval2'],
+    "telefonoAv1"=>$_POST['telaval1'],
+    "telefonoAv2"=>$_POST['telAval2'],
+    "dirAval1"=>$_POST['dirAval1'] ,
+    "dirAval2"=>$_POST['dirAval2'] ,
     "forma_pago" => $_POST['forma_pago_compra'],
     "total" => $_POST['total'],
     "fecha_firma_contrato"=>$_POST['datetimeFirma'],

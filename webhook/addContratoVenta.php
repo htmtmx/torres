@@ -32,13 +32,23 @@ $params = [
     "fecha_primer_pago" => $_POST['fecha_primer_pago'],
     "enganche" => $_POST['enganche'],
     //CONTRATO DATOS
+    "nombreAv1"=>$_POST['nombreAva1'],
+    "nombreAv2"=>$_POST['nombreAval2'],
+    "telefonoAv1"=>$_POST['telaval1'],
+    "telefonoAv2"=>$_POST['telAval2'],
+    "dirAval1"=>$_POST['dirAval1'] ,
+    "dirAval2"=>$_POST['dirAval2'] ,
+    "fecha_firma_contrato"=>$_POST['datetimeFirma'],
+    "observaciones"=> "PRUEBA DE VENTA",
+  //Este lo utilizaremos cuando ya se cree en la vista
+//    "observaciones"=> $_POST['observacionesContrato'],
     //tuipo de pago CONTADO -> 0 APARTADO -> 0  CREDITO -> 1
     "forma_pago" => $_POST['forma_pago'],
     "total" => "0",
 ];
 $plazo= $params['forma_pago']>0? $params['plazo']: 0;
-echo $plazo;
 $params['plazo']= $plazo;
-
+var_dump($params);
+die();
 include_once "../control/controlContrato.php";
 echo revisaContratoVenta($params) ? "Se ha creado un contrato de Venta" : "Error al crear contrato,este coche ya ha sido vendido.";
