@@ -15,8 +15,6 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
     $estadoComprador=getEstadoRepublica($dirCliente['estado_republica']);
     $mes=getMesLetra($contrato['mes']);
     $años=getFechasTenencia($contrato['ultima_tenencia'],$contrato['anio']);
-    $carroceria= $contrato['carroceria']>0? "BUENA": "MALA";
-    $pintura= $contrato['pintura']>0? "BUENA": "MALA";
     $direccion .= $dirVendedor['calle'].", No.Ext ".$dirVendedor['no_ext'].", ";
     $direccion .= strlen($dirVendedor['no_int'])>0? " No.Int ".$dirVendedor['no_int'].", ": "";
     $direccion .= "Col. ".$dirVendedor['colonia'].", CP. ".$dirVendedor['cp'].", ".$dirVendedor['de_mun'].", ".$estadoVendedor;
@@ -135,7 +133,7 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                 Las condiciones generales (Aspectos físicos- mecánicos) en que se encuentra el vehículo usado materia de esta compraventa, son las siguientes: 
             </p>            
             <p class="legal">
-                Carrocería: <span class="res"> '.$carroceria.' </span>, Pintura: <span class="res"> '.$pintura.' </span>, Llantas: <span class="res"> '.$contrato['llantas'].' </span>, Otros
+                Carrocería: <span class="res"> '.$contrato['carroceria'].' </span>, Pintura: <span class="res"> '.$contrato['pintura'].' </span>, Llantas: <span class="res"> '.$contrato['llantas'].' </span>, Otros
             </p>
             <p class="legal">
                 <strong>SEGUNDA.-</strong> 

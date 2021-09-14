@@ -57,18 +57,18 @@ $params = [
     "medio_identificacion" => $_POST['medio_identificación'],
     "folio" => $_POST['folio'],
     "tipo_cliente" => $_POST['tipo_cliente'],
-
+    //Datos contrato
+    "nombreAv1"=>"",
+    "nombreAv2"=>"",
+    "telefonoAv1"=>"",
+    "telefonoAv2"=>"",
+    "dirAval1"=>"",
+    "dirAval2"=>"",
     //tuipo de pago CONTADO -> 0 APARTADO -> 0 CREDITO -> 1
-    "nombreAv1"=>$_POST['nombreAva1'],
-    "nombreAv2"=>$_POST['nombreAval2'],
-    "telefonoAv1"=>$_POST['telaval1'],
-    "telefonoAv2"=>$_POST['telAval2'],
-    "dirAval1"=>$_POST['dirAval1'] ,
-    "dirAval2"=>$_POST['dirAval2'] ,
     "forma_pago" => $_POST['forma_pago_compra'],
     "total" => $_POST['total'],
     "fecha_firma_contrato"=>$_POST['datetimeFirma'],
-    "observacionesContrato"=>$_POST['observacionesContrato'],
+    "observaciones"=>$_POST['observacionesContrato'],
 ];
 if($params['opc_credito']=="on"){
     $params['opc_credito']=1;
