@@ -224,8 +224,7 @@ class DIRECCIONES extends CONEXION implements I_DIRECCIONES
                 `no_int` = '".$this->getNoInt()."', `colonia` = '".$this->getColonia()."', 
                 `municipio` = '".$this->getMunicipio()."', 
                 `estado_republica` = '".$this->getEstadoRepublica()."', 
-                `CP` = '".$this->getCP()."', `referencias` = '".$this->getReferencias()."', 
-                `estado` = '".$this->getEstado()."' 
+                `CP` = '".$this->getCP()."', `referencias` = '".$this->getReferencias()."' 
                 WHERE `direcciones`.`id_direccion` = ".$this->getIdDireccion();
         $this->connect();
         $result = $this->executeInstruction($query);

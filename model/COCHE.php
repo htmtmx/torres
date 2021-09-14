@@ -6,9 +6,8 @@ include_once "I_COCHE.php";
 class COCHE extends CONEXION implements I_COCHE
 {
     private $no_vehiculo;
-
-    private $niv;
     private $id_modelo_fk;
+    private $niv;
     private $fecha_registro;
     private $anio;
     private $placa;
@@ -35,6 +34,10 @@ class COCHE extends CONEXION implements I_COCHE
     private $ultima_tenencia;
     private $tarjeta_circulacion;
     private $folio_tarje_circul;
+    private $verificaciones_coche;
+    private $carroceria;
+    private $pintura;
+    private $llantas;
 
 
 
@@ -300,11 +303,6 @@ class COCHE extends CONEXION implements I_COCHE
     {
         $this->llantas = $llantas;
     }
-    private $verificaciones_coche;
-    private $carroceria;
-    private $pintura;
-    private $llantas;
-
 
     /**
      * @return mixed
@@ -635,7 +633,12 @@ class COCHE extends CONEXION implements I_COCHE
                     `transimision`, `combustible`, `no_puertas`, `verificaciones_coche`, `carroceria`, `pintura`, `llantas`, `precio_contado`, `precio_credito`, `opc_credito`, `observaciones`,
                     `estatus`) VALUES ('".$this->getNoVehiculo()."','".$this->getIdModeloFk()."','".$this->getTipoCarro()."','".$this->getNiv()."','".$this->getNoMotor()."','".$this->getNumeroSerieVehicular()."',
                     '".$this->getNoFactura()."','".$this->getFechaFactura()."','".$this->getEmpresaFactura()."','".$this->getDomicilioEmpresa()."','".$this->getFechaRegistro()."','".$this->getAnio()."',
-                    '".$this->getPlaca()."','".$this->$this->getTarjeton()."','".$this->getFolioTarjeton()."','".$this->getUltimaTenencia()."','".$this->getTarjetaCirculacion()."','".$this->getFolioTarjeCircul()."',
+                    '".$this->getPlaca()."',
+                    '".$this->getTarjeton()."',
+                    '".$this->getFolioTarjeton()."',
+                    '".$this->getUltimaTenencia()."',
+                    '".$this->getTarjetaCirculacion()."',
+                    '".$this->getFolioTarjeCircul()."',
                     '".$this->getEntidadPlaca()."','".$this->getColor()."','".$this->getKilometros()."','".$this->getTransimision()."','".$this->getCombustible()."','".$this->getNoPuertas()."','".$this->getVerificacionesCoche()."',
                     '".$this->getCarroceria()."','".$this->getPintura()."','".$this->getLlantas()."','".$this->getPrecioContado()."','".$this->getPrecioCredito()."','".$this->getOpcCredito()."',
                     '".$this->getObservaciones()."','".$this->getEstatus()."')";

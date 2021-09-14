@@ -31,6 +31,7 @@ $params = [
     "nivCoche" => $_POST['nivCoche'],
     "opc_credito" => $_POST['opc_credito_coche'],
     "observaciones" => $_POST['observaciones'],
+    "ultimaTenencia"=> $_POST['ultimaTenencia'],
     //CLIENTE - VENDEDOR DATOS
     "no_cliente" => $_POST['no_cliente'],
     "nombre" => $_POST['nombre'],
@@ -63,10 +64,12 @@ $params = [
     "fecha_firma_contrato"=>$_POST['datetimeFirma'],
     "observacionesContrato"=>$_POST['observacionesContrato'],
 ];
-
-var_dump($params);
-die();
-echo $params['id_dir'];
+if($params['opc_credito']=="on"){
+    $params['opc_credito']=1;
+} else {
+    $params['opc_credito']=0;
+}
+var_dump($params['fecha_firma_contrato']);
 include_once "../control/controlContrato.php";
 echo creaContratoCompra($params) ? "Se ha creado un contrato de Compra": "error al crear contrato";
 /*

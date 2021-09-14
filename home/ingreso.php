@@ -219,19 +219,19 @@
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="nivCoche">NIV</label>
-                                                                                    <input type="text" id="nivCoche" name="nivCoche" class="form-control" placeholder="Numero de Identificacion Vehicular" required>
+                                                                                    <input type="text" id="nivCoche" name="nivCoche" class="form-control" placeholder="Numero de Identificacion Vehicular">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="noMotor">No. Motor</label>
-                                                                                    <input type="text" id="noMotor" name="noMotor" class="form-control" placeholder="Número de Motor" required>
+                                                                                    <input type="text" id="noMotor" name="noMotor" class="form-control" placeholder="Número de Motor">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="noSerieV">Serie Vehicular</label>
-                                                                                    <input type="text" id="noSerieV" name="noSerieV" class="form-control" placeholder="Número de Serie Vehicular" required>
+                                                                                    <input type="text" id="noSerieV" name="noSerieV" class="form-control" placeholder="Número de Serie Vehicular">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -245,7 +245,7 @@
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="pintura"><span class="obliga">*</span>Pintura</label>
-                                                                                    <input type="text" id="pintura" name="pintura" class="form-control" placeholder="Estado de la pintura" >
+                                                                                    <input type="text" id="pintura" name="pintura" class="form-control" placeholder="Estado de la pintura" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
@@ -262,19 +262,19 @@
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="noFactura">Factura</label>
-                                                                                    <input id="noFactura" name="noFactura" class="form-control" placeholder="No/Folio Factura" required>
+                                                                                    <input id="noFactura" name="noFactura" class="form-control" placeholder="No/Folio Factura" >
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="fecha_factura">Fecha de Expedición</label>
-                                                                                    <input type="date" id="fecha_factura" name="fecha_factura" value="<?php echo date("Y-m-d");?>" min="2000-01-01" max="<?php echo date("Y-m-d");?>" required>
+                                                                                    <input type="date" id="fecha_factura" name="fecha_factura" value="<?php echo date("Y-m-d");?>" min="2000-01-01" max="<?php echo date("Y-m-d");?>">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="empresaExpide">Empresa Emisora</label>
-                                                                                    <input id="empresaExpide" name="empresaExpide" class="form-control" placeholder="Nombre de la empresa que expide la factura" required>
+                                                                                    <input id="empresaExpide" name="empresaExpide" class="form-control" placeholder="Nombre de la empresa que expide la factura">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -282,7 +282,7 @@
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="dirFactura">Direccion Factura</label>
-                                                                                    <input id="dirFactura" name="dirFactura" class="form-control" placeholder="Escriba dirección completa como en la factura" required>
+                                                                                    <input id="dirFactura" name="dirFactura" class="form-control" placeholder="Escriba dirección completa como en la factura">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -297,25 +297,25 @@
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="folioTarjeton">Folio Tarjetón</label>
-                                                                                    <input id="folioTarjeton" name="folioTarjeton" class="form-control" placeholder="Folio del Tarjetón" >
+                                                                                    <input id="folioTarjeton" name="folioTarjeton" class="form-control" placeholder="Folio del Tarjetón">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-3">
                                                                                 <label class="form-control-label" for="tarjectaCirc">Tarjeta Circualación</label>
-                                                                                <select id="tarjectaCirc" name="tarjectaCirc" class="form-control" required>
+                                                                                <select id="tarjectaCirc" name="tarjectaCirc" class="form-control">
                                                                                     <option value="1" selected>SI</option>
                                                                                     <option value="0" >NO</option>
                                                                                 </select>
                                                                             </div>
                                                                             <div class="col-lg-3">
                                                                                 <label class="form-control-label" for="folioTarjCirc">Folio Tarjeta Circulación</label>
-                                                                                <input id="folioTarjCirc" name="folioTarjCirc" class="form-control" placeholder="Folio Tarjeta de Circulación" required>
+                                                                                <input id="folioTarjCirc" name="folioTarjCirc" class="form-control" placeholder="Folio Tarjeta de Circulación">
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="combustible"><span class="obliga">*</span>Última Tenencia</label>
+                                                                                    <label class="form-control-label" for="ultimaTenencia"><span class="obliga">*</span>Última Tenencia</label>
                                                                                     <select id="ultimaTenencia" name="ultimaTenencia" class="form-control">
                                                                                         <!-- AJAX RESPONSE AÑO DE TENENCIA CON AÑO DEL CARRO-->
                                                                                     </select>
@@ -458,7 +458,7 @@
                                                                             <div class="col-lg-2">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="cpEmpr">CP</label>
-                                                                                    <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control" required>
+                                                                                    <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
@@ -528,7 +528,7 @@
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-control-label" for="medio_identificacion"><span class="obliga">*</span>Se identifica con:</label>
-                                                                                    <select id="medio_identificacion" name="medio_identificación" class="form-control">
+                                                                                    <select id="medio_identificacion" name="medio_identificación" class="form-control" required>
                                                                                         <option value="INE">INE</option>
                                                                                         <option value="PASAPORTE">Pasaporte</option>
                                                                                         <option value="CEDULA">Cédula Profesional</option>

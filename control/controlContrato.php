@@ -188,6 +188,7 @@ function creaContratoCompra($params)
         $resultDireccion = $params['id_dir']>0? $DIRECCION->queryupdateDireccion(): $DIRECCION->queryaddDireccion();
     }
 
+
     if($resultVendedor && $resultCoche && $resultDireccion){
         // 1 - C_COMPRA 0-Contrato_Vta
         $tipoContrato = 1; // Compra de vehiculo
@@ -197,8 +198,10 @@ function creaContratoCompra($params)
         $enganche = $totalCoche;
         $estatusContrato = 1; // va  a ser terminado
         $formaPago = $params['forma_pago'];
+        $fechaFirmaContrato=$params['fecha_firma_contrato'];
+        $observaciones= $params['observacionesContrato'];
         $CONTRATO = constructObjContrato($formaPago,$VENDEDOR->getNoCliente(),$COCHE->getNoVehiculo(),
-            $tipoContrato,$plazos,$fechaPrimerPago, $totalCoche, $enganche,$estatusContrato);
+            $tipoContrato,$plazos,$fechaPrimerPago, $totalCoche, $enganche,$estatusContrato,$fechaFirmaContrato,$observaciones);
 
         $resultContrato = $CONTRATO->queryaddContrato();
 
@@ -402,8 +405,9 @@ function constructObjDireccion($params,$noCliente){
 
 
 //Construimos el objeto contrato
+//ADD: SE AGREGO LA FECHA FIRMA DE CONTRATO Y SE TIENE QUE AGREGAR EN EL ALGORITMO DE VENTA AL IGUAL QUE OBSERVACIONES
 function constructObjContrato($formaPago,$noCliente,$noVehiculo, $tipoContrato,
-                              $plazo,$fechaPrimerPago, $totalCoche, $enganche, $estatusContrato){
+                              $plazo,$fechaPrimerPago, $totalCoche, $enganche, $estatusContrato,$fechaFirmaContrato,$observaciones){
     session_start();
     include_once "../model/CONTRATO.php";
     include_once  "tool_ids_generate.php";
@@ -436,6 +440,8 @@ function constructObjContrato($formaPago,$noCliente,$noVehiculo, $tipoContrato,
      * */
     $IVA = $totalCoche * .16;
     $subTotal = $totalCoche - $IVA;
+    $obj_cont->setFechaFirmaContrato($fechaFirmaContrato);
+    $obj_cont->setObservaciones($observaciones);
     $obj_cont->setSubtotal($subTotal);
     $obj_cont->setIva($IVA);
     $obj_cont->setTotal($totalCoche);
@@ -451,11 +457,11 @@ function constructObjCoche($params){
     include_once  "tool_ids_generate.php";
     $obj_coche = new COCHE();
     $no_vehiculo = gen_no_vehiculo();
-    $obj_coche -> setNoVehiculo($no_vehiculo);
+    $obj_coche->setNoVehiculo($no_vehiculo);
     $obj_coche->setIdModeloFk($params['id_modelo_fk']);
     $obj_coche->setNiv($params['nivCoche']);
     $obj_coche->setFechaRegistro(date('Y-m-d H:i:s'));
-    $obj_coche -> setAnio($params['anio']);
+    $obj_coche->setAnio($params['anio']);
     $obj_coche->setPlaca($params['placa']);
     $obj_coche->setEntidadPlaca($params['entidad_placa']);
     $obj_coche->setColor($params['color']);
@@ -467,6 +473,23 @@ function constructObjCoche($params){
     $obj_coche->setPrecioCredito($params['precio_credito']);
     $obj_coche->setOpcCredito($params['opc_credito']);
     $obj_coche->setObservaciones($params['observaciones']);
+    $obj_coche->setTipoCarro($params['tipoVehiculo']);
+    $obj_coche->setNoMotor($params['noMotor']);
+    $obj_coche->setNumeroSerieVehicular($params['noSerieV']);
+    $obj_coche->setNoFactura($params['noFactura']);
+    $obj_coche->setFechaFactura($params['fecha_factura']);
+    $obj_coche->setEmpresaFactura($params['empresaExpide']);
+    $obj_coche->setDomicilioEmpresa($params['dirFactura']);
+    $obj_coche->setTarjeton($params['tarjeton']);
+    $obj_coche->setFolioTarjeton($params['folioTarjeton']);
+    $obj_coche->setUltimaTenencia($params['ultimaTenencia']);
+    $obj_coche->setTarjetaCirculacion($params['tarjectaCirc']);
+    $obj_coche->setFolioTarjeCircul($params['folioTarjCirc']);
+    $obj_coche->setVerificacionesCoche($params['verificaciones']);
+    $obj_coche->setCarroceria($params['carroceria']);
+    $obj_coche->setPintura($params['pintura']);
+    $obj_coche->setLlantas($params['llantas']);
+    $obj_coche->setUltimaTenencia($params['ultimaTenencia']);
     $obj_coche->setEstatus(0); // automaticamente lo pongo en venta
     return $obj_coche;
 }
