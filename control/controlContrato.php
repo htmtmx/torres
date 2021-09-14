@@ -191,6 +191,11 @@ function creaContratoCompra($params)
 
     if($resultVendedor && $resultCoche && $resultDireccion){
         // 1 - C_COMPRA 0-Contrato_Vta
+        //Guardamos los detalles basicos del coche que aparecen en contrato
+        $listDetalles= $params['arraydetalles'];
+        if(count($listDetalles)>0){
+            guardaListDetalles($listDetalles,$COCHE->getNoVehiculo());
+        }
         $tipoContrato = 1; // Compra de vehiculo
         $plazos = 1; // Porque defino que ya lo pago TORRES
         $fechaPrimerPago = date('Y-m-d');
@@ -227,6 +232,13 @@ function creaContratoCompra($params)
 
         } else return  false;
     } else return false;
+
+}
+
+//FUNCION PARA GUARDAR DETALLES
+function guardaListDetalles($listDetalles,$noVehiculo){
+    include_once "../control/controlUsoDetalle.php";
+    return addListDetalles($listDetalles,$noVehiculo);
 
 }
 /********************************************************************

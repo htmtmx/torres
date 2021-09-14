@@ -34,8 +34,7 @@ $datosContrato['hora']= $hora;
 
 $mpdf = new \Mpdf\Mpdf([
 ]);
-
-//var_dump($datosContrato);
+//var_dump($pagos);
 //die();
 // CREACION DE LA PLANTILLA
 $plantilla = getTemplateContrato($datosContrato,$dir,$dirNegocio);

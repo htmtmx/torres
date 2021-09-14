@@ -1,14 +1,13 @@
 <?php
 function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
-
+    $pagos=$contrato[0];
     include_once "../model/numerosALetras.class.php";
     $n = new numerosALetras($contrato['total']);
-    $d = new numerosALetras($contrato['saldo']);
+    $d = new numerosALetras($pagos[1]['total']);
     $e = new numerosALetras($contrato['enganche']);
     $letraTotal=  $n->resultado;
     $letraSaldo= $d->resultado;
     $letraEnganche= $e->resultado;
-    $pagos=$contrato[0][0];
     $direccion="";
     $verificacion= $contrato['verificaciones_coche']>0? "SI": "NO";
     $estadoVendedor=getEstadoRepublica($dirVendedor['estado']);
@@ -150,7 +149,7 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                     </li>
                     <li class="legal">
                         2)	el comprador en consecuencia se declara deudor del vendedor y se compromete a pagar en entregas iguales mensuales de  
-                        $<span class="res"> '.$pagos['saldo'].' </span> (<span class="res"> '.$letraSaldo.' </span>)
+                        $<span class="res"> '.$pagos[1]['saldo'].' </span> (<span class="res"> '.$letraSaldo.' </span>)
                          cada una a partir del día <span class="res"> '.$contrato['fecha_primer_pago'].' </span> y una entrega final de $<span class="res"> '.$contrato['total'].' </span> (<span class="res"> '.$letraTotal.' </span>).
                     </li>
                 </ol>
