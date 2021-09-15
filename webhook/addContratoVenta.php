@@ -39,7 +39,7 @@ $params = [
     "dirAval1"=>$_POST['dirAval1'] ,
     "dirAval2"=>$_POST['dirAval2'] ,
     "fecha_firma_contrato"=>$_POST['datetimeFirma'],
-    "observaciones"=> $_POST['observacionesContrato'],
+    "observacionesContrato"=> $_POST['observacionesContrato'],
     //tuipo de pago CONTADO -> 0 APARTADO -> 0  CREDITO -> 1
     "forma_pago" => $_POST['forma_pago'],
     "total" => "0",
