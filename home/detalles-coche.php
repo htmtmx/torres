@@ -208,18 +208,28 @@ $noCoche = $_GET['idCoche'];
                                     <div class="col-lg-4">
                                         <label class="form-control-label" for="marca"><span class="obliga">*</span> Marca</label>
                                         <select id="marca" name="marca" class="form-control">  </select>
+                                        <!-- AJAX RESPONSE-->
                                     </div>
                                     <div class="col-lg-4">
                                         <label class="form-control-label" for="modelo"><span class="obliga">*</span>Modelo</label>
                                         <select id="modelo" name="modelo" class="form-control">  </select>
+                                        <!-- AJAX RESPONSE-->
                                     </div>
                                     <div class="col-lg-4">
                                         <label class="form-control-label" for="tipoVehiculo"><span class="obliga">*</span>Tipo</label>
                                         <select id="tipoVehiculo" name="tipoVehiculo" class="form-control">
-                                            <option value="SEDAN">SEDAN</option>
-                                            <option value="SPORT">SPORT</option>
-                                            <option value="FAMILIAR">FAMILIAR</option>
-                                            <option value="SUV">SUV</option>
+                                            <option value="0">URBANO</option>
+                                            <option value="1">SUBCOMPACTO</option>
+                                            <option value="2">COMPACTO</option>
+                                            <option value="3">FAMILIAR</option>
+                                            <option value="4">SEDAN</option>
+                                            <option value="5">BERLINA</option>
+                                            <option value="6">DESCAPOTABLE</option>
+                                            <option value="7">COUPE</option>
+                                            <option value="8">DEPORTIVO</option>
+                                            <option value="9">SUV</option>
+                                            <option value="10">TODO TERRENO</option>
+                                            <option value="11">PICK UP</option>
                                         </select>
                                     </div>
                                 </div>
@@ -560,13 +570,13 @@ $noCoche = $_GET['idCoche'];
 </body>
 <?php include './include/js.php'; ?>
 </html>
+<script src="../ajax/tools.js"></script>
 <script src="../ajax/aniosCoches.js"></script>
-<script src="../ajax/control-detalles-coche.js"></script>
 <script src="../ajax/control-botones-detalles-coche.js"></script>
 <script src="../ajax/control-abonos.js"></script>
 <script src="../ajax/sendDocmentos.js"></script>
 <script src="../ajax/car-update.js"></script>
-<script src="../ajax/tools.js"></script>
+<script src="../ajax/control-detalles-coche.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script>

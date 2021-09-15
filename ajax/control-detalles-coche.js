@@ -32,7 +32,6 @@ function consultaDetallesCoche(){
 }
 
 function cargaDatosCarro(obj_carro){
-
     $("#idCoche").val(obj_carro.no_vehiculo);
     $("#precioLista").html("$"+obj_carro.precio_contado);
     let credito = obj_carro.opc_credito>0 ? "$"+obj_carro.precio_credito : "NA";
@@ -41,6 +40,7 @@ function cargaDatosCarro(obj_carro){
     $("#niv").val(obj_carro.NIV);
     $("#marca").val(obj_carro.id_marca);
     consultaModelos(obj_carro.id_marca, obj_carro.id_modelo );
+    $("#modelo").val(obj_carro.id_modelo);
     $("#anio").val(obj_carro.anio);
     $("#placa").val(obj_carro.placa);
     $("#PlacaInfo").html(obj_carro.placa);
@@ -83,6 +83,24 @@ function cargaDatosCarro(obj_carro){
             break;
     }
     $("#containerBotonCoche").html(btnAccionCoche);
+
+    //NUEVOS VALORES AGREGADOS EN LA BASE DE DATOS (IMPRIME VALORES)
+    $("#noMotor").val(obj_carro.no_motor);
+    $("#tipoVehiculo").val(obj_carro.tipo_carro);
+    $("#").val();
+    $("#").val();
+    $("#").val();
+    $("#").val();
+    $("#").val();
+    $("#").val();
+    $("#").val();
+    $("#").val();
+    $("#").val();
+    $("#").val();
+    $("#").val();
+    $("#").val();
+    $("#").val();
+    $("#").val();
 }
 
 function construyeCarouselFotosCoche(docs){
