@@ -68,7 +68,7 @@ $params = [
     "forma_pago" => $_POST['forma_pago_compra'],
     "total" => $_POST['total'],
     "fecha_firma_contrato"=>$_POST['datetimeFirma'],
-    "observaciones"=>$_POST['observacionesContrato'],
+    "observacionesContrato"=>$_POST['observacionesContrato'],
 ];
 if($params['opc_credito']=="on"){
     $params['opc_credito']=1;

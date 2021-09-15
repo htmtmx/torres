@@ -101,27 +101,41 @@ function addCoche(  $idModeloFk,$anio,$placa,$entidadPlaca,$color,
     echo $result = $objCoche->queryaddCoche()?"Se registro correctamente el coche ".$objCoche->getNoVehiculo():"Error al intentar registrar";
 }
 
-function updateCoche($noVehiculo,$niv,$idModeloFk,$anio,$placa,$entidadPlaca,$color,
-                     $kilometros,$transmision,$combustible,$noPuertas,$precioContado,
-                     $precioCredito,$opcCredito,$observaciones)
+function updateCoche($params)
 {
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    $objCoche->setNoVehiculo($noVehiculo);
-    $objCoche->setNiv($niv);
-    $objCoche->setIdModeloFk($idModeloFk);
-    $objCoche->setAnio($anio);
-    $objCoche->setPlaca($placa);
-    $objCoche->setEntidadPlaca($entidadPlaca);
-    $objCoche->setColor($color);
-    $objCoche->setKilometros($kilometros);
-    $objCoche->setTransimision($transmision);
-    $objCoche->setCombustible($combustible);
-    $objCoche->setNoPuertas($noPuertas);
-    $objCoche->setPrecioContado($precioContado);
-    $objCoche->setPrecioCredito($precioCredito);
-    $objCoche->setOpcCredito($opcCredito);
-    $objCoche->setObservaciones($observaciones);
+    $objCoche->setNoVehiculo($params['no_vehiculo']);
+    $objCoche->setIdModeloFk($params['modelo']);
+    $objCoche->setTipoCarro($params['tipoCarro']);
+    $objCoche->setAnio($params['anio']);
+    $objCoche->setPlaca($params['placa']);
+    $objCoche->setEntidadPlaca($params['entidadPlaca']);
+    $objCoche->setColor($params['color']);
+    $objCoche->setKilometros($params['kilometraje']);
+    $objCoche->setTransimision($params['transmision']);
+    $objCoche->setCombustible($params['combustible']);
+    $objCoche->setNoPuertas($params['nopuertas']);
+    $objCoche->setNiv($params['niv']);
+    $objCoche->setNoMotor($params['noMotor']);
+    $objCoche->setNumeroSerieVehicular($params['noSerieV']);
+    $objCoche->setCarroceria($params['carroceria']);
+    $objCoche->setPintura($params['pintura']);
+    $objCoche->setLlantas($params['llantas']);
+    $objCoche->setObservaciones($params['observaciones']);
+    $objCoche->setNoFactura($params['noFactura']);
+    $objCoche->setFechaFactura($params['fechaExpedicion']);
+    $objCoche->setEmpresaFactura($params['empresaExpide']);
+    $objCoche->setDomicilioEmpresa($params['dirFactura']);
+    $objCoche->setTarjeton($params['tarjeton']);
+    $objCoche->setFolioTarjeton($params['folioTarjeton']);
+    $objCoche->setTarjetaCirculacion($params['tarjectaCirc']);
+    $objCoche->setFolioTarjeCircul($params['folioTarjCirc']);
+    $objCoche->setUltimaTenencia($params['ultimaTenencia']);
+    $objCoche->setVerificacionesCoche($params['verificaciones']);
+    $objCoche->setPrecioContado($params['precioLista']);
+    $objCoche->setPrecioCredito($params['precioCredito']);
+    $objCoche->setOpcCredito($params['opc_credito']);
     return $objCoche->queryupdateCoche();
 }
 

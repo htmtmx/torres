@@ -375,7 +375,7 @@ $noCoche = $_GET['idCoche'];
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="fecha_registro">Observaciones</label>
+                                            <label class="form-control-label" for="observaciones">Observaciones</label>
                                             <textarea class="form-control" name="observaciones" id="observaciones" rows="3"></textarea>
                                         </div>
                                     </div>
@@ -393,8 +393,8 @@ $noCoche = $_GET['idCoche'];
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="kilometros"><span class="obliga">*</span>Fecha de Expedición</label>
-                                            <input type="date" id="fecha_primer_pago" name="fecha_primer_pago" value="<?php echo date("Y-m-d");?>" min="2000-01-01" max="<?php echo date("Y-m-d");?>">
+                                            <label class="form-control-label" for="fecha_expedicion"><span class="obliga">*</span>Fecha de Expedición</label>
+                                            <input type="date" id="fecha_expedicion" name="fecha_expedicion" value="<?php echo date("Y-m-d");?>" min="2000-01-01" max="<?php echo date("Y-m-d");?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -414,10 +414,10 @@ $noCoche = $_GET['idCoche'];
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3">
-                                        <label class="form-control-label" for="tarjeton">Targeton</label>
+                                        <label class="form-control-label" for="tarjeton">Tarjeton</label>
                                         <select id="tarjeton" name="tarjeton" class="form-control">
                                             <option value="1">SI</option>
-                                            <option value="0" selected>NO</option>
+                                            <option value="0" >NO</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3">
@@ -429,7 +429,7 @@ $noCoche = $_GET['idCoche'];
                                     <div class="col-lg-3">
                                         <label class="form-control-label" for="tarjectaCirc">Tarjeta Circualación</label>
                                         <select id="tarjectaCirc" name="tarjectaCirc" class="form-control">
-                                            <option value="1" selected>SI</option>
+                                            <option value="1" >SI</option>
                                             <option value="0" >NO</option>
                                         </select>
                                     </div>
@@ -441,7 +441,7 @@ $noCoche = $_GET['idCoche'];
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="combustible"><span class="obliga">*</span>Última Tenencia</label>
+                                            <label class="form-control-label" for="ultimaTenencia"><span class="obliga">*</span>Última Tenencia</label>
                                             <select id="ultimaTenencia" name="ultimaTenencia" class="form-control"></select>
                                         </div>
                                     </div>

@@ -87,20 +87,21 @@ function cargaDatosCarro(obj_carro){
     //NUEVOS VALORES AGREGADOS EN LA BASE DE DATOS (IMPRIME VALORES)
     $("#noMotor").val(obj_carro.no_motor);
     $("#tipoVehiculo").val(obj_carro.tipo_carro);
-   /* $("#").val();
-    $("#").val();
-    $("#").val();
-    $("#").val();
-    $("#").val();
-    $("#").val();
-    $("#").val();
-    $("#").val();
-    $("#").val();
-    $("#").val();
-    $("#").val();
-    $("#").val();
-    $("#").val();
-    $("#").val();*/
+    $("#noSerieV").val(obj_carro.numero_serie_vehicular);
+    $("#noFactura").val(obj_carro.no_factura);
+    $("#fecha_expedicion").val(obj_carro.fecha_factura);
+    $("#empresaExpide").val(obj_carro.empresa_factura);
+    $("#dirFactura").val(obj_carro.domicilio_empresa);
+    $("#tarjeton").val(obj_carro.tarjeton);
+    $("#folioTarjeton").val(obj_carro.folio_tarjeton);
+    $("#tarjectaCirc").val(obj_carro.tarjeta_circulacion);
+    $("#folioTarjCirc").val(obj_carro.folio_tarje_circul);
+    $("#ultimaTenencia").val(obj_carro.ultima_tenencia);
+    $("#verificaciones").val(obj_carro.verificaciones_coche);
+    $("#carroceria").val(obj_carro.carroceria);
+    $("#pintura").val(obj_carro.pintura);
+    $("#llantas").val(obj_carro.llantas);
+
 }
 
 function construyeCarouselFotosCoche(docs){
