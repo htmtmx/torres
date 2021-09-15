@@ -87,6 +87,7 @@ function cargaDatosCarro(obj_carro){
     //NUEVOS VALORES AGREGADOS EN LA BASE DE DATOS (IMPRIME VALORES)
     $("#noMotor").val(obj_carro.no_motor);
     $("#tipoVehiculo").val(obj_carro.tipo_carro);
+   /* $("#").val();
     $("#").val();
     $("#").val();
     $("#").val();
@@ -99,8 +100,7 @@ function cargaDatosCarro(obj_carro){
     $("#").val();
     $("#").val();
     $("#").val();
-    $("#").val();
-    $("#").val();
+    $("#").val();*/
 }
 
 function construyeCarouselFotosCoche(docs){
