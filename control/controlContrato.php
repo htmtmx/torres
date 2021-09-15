@@ -226,12 +226,11 @@ function creaContratoCompra($params)
             //SI YA SE CREO EL PAGO CREO EL ABONO
             if ($resultPago){
                 //Crerar el OBJ de abono
-                $resutlAbono = insertaAbono($idPago,$CONTRATO->getTotal(),"Este abono es por la compra de la nueva adquisicion");
-                return $resutlAbono;
+                return insertaAbono($idPago,$CONTRATO->getTotal(),"Este abono es por la compra de la nueva adquisicion") ? $COCHE->getNoVehiculo(): 0;
             }
 
-        } else return  false;
-    } else return false;
+        } else return  0;
+    } else return 0;
 
 }
 

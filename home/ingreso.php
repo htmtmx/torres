@@ -704,13 +704,8 @@
                                                                     </a>
                                                                 </div>
                                                                 <div class="row justify-content-center py-5" id="containerBotonesContratos">
-                                                                    <div class="col-lg-12 col-auto">
-                                                                        <a href="./contrato.php?noVehiculo=6501288118067216&amp;consult=true" target="_blank">
-                                                                            <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Contrato</button>
-                                                                        </a>
-                                                                        <a href="./responsiva.php?noVechiculo=6501288118067216&amp;consult=true" target="_blank">
-                                                                            <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> C. Responsiva</button>
-                                                                        </a>
+                                                                    <div class="col-lg-12 col-auto" id="botonesContrato">
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -739,3 +734,4 @@
 <script src="../ajax/control-compra-venta.js"></script>
 <script src="../ajax/control-ingreso.js"></script>
 <script src="../ajax/aniosCoches.js"></script>
+<script src="../ajax/swal-messages.js"></script>

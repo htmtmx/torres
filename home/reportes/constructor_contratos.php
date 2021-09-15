@@ -577,6 +577,7 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
     $formatter->conector = ' PESOS ';
     $WordTotal =  $formatter->toInvoice($contrato['total'], 2, "MXN");
     $letraTotal=  $WordTotal;
+    $valorCancelacion = ($contrato['total']*.4)." (". $formatter->toInvoice($contrato['total']*.4, 2, "MXN").")";
     $letraTotal = strtoupper($letraTotal);
     $fecha= getFechasTenencia($contrato['ultima_tenencia'],$contrato['anio']);
     $tarjeton= getExistenciaTarjeta($contrato['tarjeton']);
@@ -584,6 +585,8 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
     $folioTarjeta= $tarjeta=="SI"? $contrato['folio_tarje_circul']: "NA";
     $folioTarjeton= $tarjeton=="SI"? $contrato['folio_tarjeton']: "NA";
     $verificaciones= getExistenciaTarjeta($contrato['verificaciones_coche']);
+//var_dump($contrato);
+//die();
     $plantilla = '
     <body>
         <div class="container">
@@ -673,13 +676,21 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
                 Se realiza la Compra - Venta de dicha unidad en la cantidad de <span class="res">$ '.$contrato['total'].'</span>
                 <br>
                 Cantidad con letra  <span class="res">('.$letraTotal.')</span>
-            </p>
-            <p>
-                Estando de conformidad ambas partes con los derechos y obligaciones correspondientes,
-                firmado la presente para constancia. <br>
-                En caso de cancelar esta operación el Sr.  <span class="res">'.$contrato['cliente'].'</span> acepta pagar el
-                <span class="res">40%</span>  del valor de la operación que corresponde a <span class="res">$ '.$contrato['total'].'</span>
-            </p>
+            </p>';
+
+        if ($contrato['tipo_contrato']== "0")
+        {
+            if ($contrato['forma_pago']=="1"){
+                $plantilla .= '
+                <p>
+                    Estando de conformidad ambas partes con los derechos y obligaciones correspondientes,
+                    firmado la presente para constancia. <br>
+                    En caso de cancelar esta operación el Sr.  <span class="res">'.$contrato['cliente'].'</span> acepta pagar el
+                    <span class="res">&nbsp;&nbsp;40%&nbsp;&nbsp;</span> del valor de la operación que corresponde a <br> <span class="res">&nbsp;&nbsp;$ '.$valorCancelacion.'</span>
+                </p>';
+            }
+        }
+            $plantilla .= '
             <p>
                 Esta operación se realizará bajo el RÉGIMEN DE RESERVA DE DOMINIO esto es,
                 que el comprador otorga al vendedor poder absoluto, de recuperar la unidad detallada,
@@ -694,7 +705,7 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
             <p>
             <!-- Aqui va la division de las fechas por DIA, MES Y AÑO-->
                 Firmado en
-                <span class="fecha res">Nicolas Romero, Edomex</span> a
+                <span class="fecha res">Nicolás Romero, Edomex</span> a
                 <span class="fecha res">'.$arrayDatos['fecha'].'</span> 
                 a las <span class="fecha res">'.$arrayDatos['hora'].'</span> horas.
             </p>
@@ -703,7 +714,7 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
                 <tbody>
                 <tr>
                     <td colspan="2">
-                        <div class="titulostable">VEDNEDOR</div>
+                        <div class="titulostable">VENDEDOR</div>
                     </td>
                     <td colspan="2">
                         <div class="titulostable">COMPRADOR</div>

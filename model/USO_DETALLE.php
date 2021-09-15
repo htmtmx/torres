@@ -112,7 +112,6 @@ class USO_DETALLE extends  CONEXION
           $cont++;
           $query.= count($listDetalles)==$cont? ";": ",";
         }
-        echo $query;
         $this->connect();
         $result=$this->executeInstruction($query);
         $this->close();

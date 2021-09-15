@@ -68,7 +68,7 @@ $params = [
     "forma_pago" => $_POST['forma_pago_compra'],
     "total" => $_POST['total'],
     "fecha_firma_contrato"=>$_POST['datetimeFirma'],
-    "observaciones"=>$_POST['observacionesContrato'],
+    "observacionesContrato"=>$_POST['observacionesContrato'],
 ];
 if($params['opc_credito']=="on"){
     $params['opc_credito']=1;
@@ -76,7 +76,23 @@ if($params['opc_credito']=="on"){
     $params['opc_credito']=0;
 }
 include_once "../control/controlContrato.php";
-echo creaContratoCompra($params) ? "Se ha creado un contrato de Compra": "error al crear contrato";
+$idCoche = creaContratoCompra($params);
+if ($idCoche>0) {
+        $mje = array(
+            "mjeType" => "1",
+            "Mensaje" => "Se ha creado un contrato de Compra",
+            "idCoche" => $idCoche
+        );
+    }
+    else{
+        $mje = array(
+            "mjeType" => "1",
+            "Mensaje" => "No se hha podido crear el contrato",
+            "idCoche" => $idCoche
+        );
+}
+
+echo json_encode($mje);
 /*
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method == 'POST') {

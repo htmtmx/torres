@@ -158,7 +158,17 @@ $("#msform").on("submit", function(e){
         processData: false
     })
         .done(function(res){
-            console.log(res);
+            let mje = JSON.parse(res);
+            alertaEmergente(mje.Mensaje);
+            let plantilla = `
+                        <a href="./detalles-coche.php?idCoche=${mje.idCoche}">
+                            <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Ver Vehiculo</button>
+                        </a>
+                        <a href="./responsiva.php?noVechiculo=${mje.idCoche}&amp;consult=false" target="_blank">
+                            <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Carta Responsiva</button>
+                        </a>
+            `;
+            $("#botonesContrato").html(plantilla);
         $('#msform').trigger('reset');
         });
     e.preventDefault();
