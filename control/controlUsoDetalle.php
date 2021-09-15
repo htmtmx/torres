@@ -21,3 +21,9 @@ function addUsoDetalle($no_vehiculo,$idDetalle,$valor){
     $obj_ud->setEstatus(1);
     return $obj_ud->queryAddUsoDetalle();
 }
+
+function addListDetalles($listDetalles,$noVehiculo){
+    include_once "../model/USO_DETALLE.php";
+    $detalle= new USO_DETALLE();
+    return $detalle->queryAddListDetalles($listDetalles,$noVehiculo);
+}

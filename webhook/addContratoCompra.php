@@ -75,7 +75,6 @@ if($params['opc_credito']=="on"){
 } else {
     $params['opc_credito']=0;
 }
-var_dump($params['fecha_firma_contrato']);
 include_once "../control/controlContrato.php";
 echo creaContratoCompra($params) ? "Se ha creado un contrato de Compra": "error al crear contrato";
 /*

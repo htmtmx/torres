@@ -9,8 +9,6 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
     $WordTotal =  $formatter->toInvoice($contrato['total'], 2, "MXN");
     $WordSaldo =  $formatter->toInvoice($contrato['saldo'], 2,"MXN");
     $WordEnganche =  $formatter->toInvoice($contrato['enganche'], 2,"MXN");
-
-
     $letraTotal= $WordTotal;
     $letraSaldo= $WordSaldo;
     $letraEnganche= $WordEnganche;
@@ -156,7 +154,7 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
                     </li>
                     <li class="legal">
                         2)	el comprador en consecuencia se declara deudor del vendedor y se compromete a pagar en entregas iguales mensuales de  
-                        $<span class="res"> '.$pagos['saldo'].' </span> (<span class="res"> '.$letraSaldo.' </span>)
+                        $<span class="res"> '.$pagos[1]['saldo'].' </span> (<span class="res"> '.$letraSaldo.' </span>)
                          cada una a partir del día <span class="res"> '.$contrato['fecha_primer_pago'].' </span> y una entrega final de $<span class="res"> '.$contrato['total'].' </span> (<span class="res"> '.$letraTotal.' </span>).
                     </li>
                 </ol>
