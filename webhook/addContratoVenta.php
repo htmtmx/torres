@@ -47,4 +47,19 @@ $params = [
 $plazo= $params['forma_pago']>0? $params['plazo']: 0;
 $params['plazo']= $plazo;
 include_once "../control/controlContrato.php";
-echo revisaContratoVenta($params) ? "Se ha creado un contrato de Venta" : "Error al crear contrato,este coche ya ha sido vendido.";
+if(revisaContratoVenta($params)){
+    $mje = array(
+        "mjeType" => "1",
+        "Mensaje" => "Se ha creado un contrato de Venta",
+        "idCoche" => $params['no_vehiculo']
+    );
+}
+else{
+    $mje = array(
+        "mjeType" => "1",
+        "Mensaje" => "Error al crear contrato,este coche ya ha sido vendido",
+        "idCoche" => $params['no_vehiculo']
+    );
+}
+
+echo json_encode($mje);

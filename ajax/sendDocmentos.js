@@ -121,7 +121,7 @@ $("#frm-add-foto-vehiculo").on("submit", function(e){
        .done(function(res){
           consultaDetallesCoche();
           $('#modalAddFotoCoche').modal('hide');
-          document.getElementById("preview").src = "https://sierranorte.cnt.es/wp-content/uploads/no_preview.jpg";s
+          document.getElementById("preview").src = "https://sierranorte.cnt.es/wp-content/uploads/no_preview.jpg";
        });
    $('#frm-add-foto-vehiculo').trigger('reset');
    e.preventDefault();

@@ -641,9 +641,6 @@ function getTemplateContratoAdq(contrato) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-12 col-auto text-right">
-                                                                    <a href="./contrato.php?noVehiculo=${contrato.no_vehiculo_fk}&consult=false" target="_blank">
-                                                                        <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Contrato</button>
-                                                                    </a>
                                                                     <a href="./responsiva.php?noVechiculo=${contrato.no_vehiculo_fk}&consult=false" target="_blank">
                                                                         <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> C. Responsiva</button>
                                                                     </a>

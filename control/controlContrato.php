@@ -203,8 +203,6 @@ function creaContratoCompra($params)
         $enganche = $totalCoche;
         $estatusContrato = 1; // va  a ser terminado
         $formaPago = $params['forma_pago'];
-        $fechaFirmaContrato=$params['fecha_firma_contrato'];
-        $observaciones= $params['observaciones'];
         $CONTRATO = constructObjContrato($formaPago,$VENDEDOR->getNoCliente(),$COCHE->getNoVehiculo(),
             $tipoContrato,$plazos,$fechaPrimerPago, $totalCoche, $enganche,$estatusContrato,$params);
 
@@ -255,7 +253,7 @@ function creaContratoVenta($params)
         $noVehiculo= $params['no_vehiculo'];
         $tipoContrato = 0; // Es una venta
         $plazo = $params['plazo'];
-        echo $plazo;
+
         $enganche = $params['enganche'];
         $totalCoche=$params['total'];
         $fechaFirmaContrato=$params['fecha_firma_contrato'];

@@ -86,7 +86,7 @@ if ($idCoche>0) {
     }
     else{
         $mje = array(
-            "mjeType" => "1",
+            "mjeType" => "0",
             "Mensaje" => "No se hha podido crear el contrato",
             "idCoche" => $idCoche
         );

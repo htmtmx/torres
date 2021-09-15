@@ -143,7 +143,7 @@ function updateEstatusCoche($noVehiculo,$estatus)
 {
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    echo $objCoche->queryupdateEstatusCoche($noVehiculo,$estatus)? "Se actualizo correctamente el estado del coche":"Error al intentar actualizar el estado del coche";
+    return $objCoche->queryupdateEstatusCoche($noVehiculo,$estatus);
 }
 
 function deleteCoche($noVehiculo)
