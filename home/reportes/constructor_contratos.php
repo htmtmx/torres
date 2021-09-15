@@ -1,13 +1,19 @@
 <?php
-function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
 
-    include_once "../model/numerosALetras.class.php";
-    $n = new numerosALetras($contrato['total']);
-    $d = new numerosALetras($contrato['saldo']);
-    $e = new numerosALetras($contrato['enganche']);
-    $letraTotal=  $n->resultado;
-    $letraSaldo= $d->resultado;
-    $letraEnganche= $e->resultado;
+require './../vendor/autoload.php';
+use Luecano\NumeroALetras\NumeroALetras;
+
+function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
+    $formatter = new NumeroALetras();
+    $formatter->conector = ' PESOS ';
+    $WordTotal =  $formatter->toInvoice($contrato['total'], 2, "MXN");
+    $WordSaldo =  $formatter->toInvoice($contrato['saldo'], 2,"MXN");
+    $WordEnganche =  $formatter->toInvoice($contrato['enganche'], 2,"MXN");
+
+
+    $letraTotal= $WordTotal;
+    $letraSaldo= $WordSaldo;
+    $letraEnganche= $WordEnganche;
     $pagos=$contrato[0][0];
     $direccion="";
     $verificacion= $contrato['verificaciones_coche']>0? "SI": "NO";
@@ -568,9 +574,11 @@ function getTableInventario(){
 
 
 function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVendedor){
-    include_once "../model/numerosALetras.class.php";
-    $n = new numerosALetras($contrato['total']);
-    $letraTotal=  $n->resultado;
+
+    $formatter = new NumeroALetras();
+    $formatter->conector = ' PESOS ';
+    $WordTotal =  $formatter->toInvoice($contrato['total'], 2, "MXN");
+    $letraTotal=  $WordTotal;
     $letraTotal = strtoupper($letraTotal);
     $fecha= getFechasTenencia($contrato['ultima_tenencia'],$contrato['anio']);
     $tarjeton= getExistenciaTarjeta($contrato['tarjeton']);
