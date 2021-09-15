@@ -534,6 +534,8 @@ $noCoche = $_GET['idCoche'];
                     </div>
                 </div>
             </div>
+            <div class="col-xl-12" id="containerDocsCompra"></div>
+            <div class="col-xl-12" id="containerDocsVenta"></div>
         </div>
         <div class="row" id="conteinerContratos">
             <div class="col-xl-12">
@@ -541,7 +543,7 @@ $noCoche = $_GET['idCoche'];
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Documentacion de contratos</h3>
+                                <h3 class="mb-0">Informacion de contratos</h3>
                             </div>
                         </div>
                     </div>

@@ -7,7 +7,7 @@ if(isset($_SESSION["timeout"])){
     $sessionTTL = time() - $_SESSION["timeout"];
     if($sessionTTL > $inactividad){
         session_destroy();
-        header("Location: webhook\c_logout.php");
+        header("Location: ./control\c_logout.php");
     }
 }
 // El siguiente key se crea cuando se inicia sesión
