@@ -71,76 +71,7 @@
                             </tr>
                             </thead>
                             <tbody id="tblContratosVenta">
-                            <tr>
-                                <th scope="row">
-                                    1
-                                </th>
-                                <td>
-                                    655985665
-                                </td>
-                                <td>
-                                    Hernandez Ledezma Luis Fernando
-                                </td>
-                                <td>
-                                    Pioquinto Hernandez Christian
-                                </td>
-                                <td>
-                                    Nissan Versa 2015 Negro
-                                </td>
-                                <td>
-                                    Credito
-                                </td>
-                                <td>
-                                    12
-                                </td>
-                                <td>
-                                    $ 1542356
-                                </td>
-                                <td>
-                                    0
-                                </td>
-                                <td>
-                                    Liquidado
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    156156
-                                </th>
-                                <td>
-                                    Nissan Versa 2015
-                                </td>
-                                <td>
-                                    15 de Enero de 2021
-                                </td>
-                                <td>
-                                    <i class="fas fa-calendar-times text-red"></i> Atrasado
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">60%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown show">
-                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Acciones
-                                        </a>
-
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-blue"></i> Ver Contrato</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd text-green"></i> Abonar</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-cloud-upload-alt text-orange"></i> Subir Archivo</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-times text-red"></i> Cancelar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                            <!-- AJAX RESPONSE TBL-->
                             </tbody>
                         </table>
                     </div>

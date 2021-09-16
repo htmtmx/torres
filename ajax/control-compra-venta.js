@@ -123,7 +123,6 @@ function limpiarCliente() {
 
 function cargarDatosPersona(persona) {
     let dir = persona[0][0];
-    console.log(dir);
     $("#fechaRegistroCliente").removeClass("d-none");
     $("#no_cliente").val(persona.no_cliente);
     $("#nombre").val(persona.nombre);

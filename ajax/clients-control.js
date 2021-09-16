@@ -1,6 +1,7 @@
 $(document).ready(function () {
   if (id_page != 1) {
     getAllClientes();
+    alert("Este se usa");
   } else {
     console.log("estamos en la otra pagina");
     getOnlyClient();

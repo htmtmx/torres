@@ -1,0 +1,2 @@
+<?php
+$noVehiculo= 10;

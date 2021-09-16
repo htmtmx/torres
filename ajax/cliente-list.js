@@ -58,11 +58,6 @@ function consultaClientes(){
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">
-                                                <i class="fas fa-pause-circle text-yellow"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
                                             <button type="button" class="btn btn-white btnEliminarCliente">
                                                 <i class="fas fa-trash-alt text-red"></i>
                                             </button>

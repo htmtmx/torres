@@ -13,7 +13,8 @@ function consultaCochesOneFoto(){
         url: "../webhook/car-list-one-foto.php",
         type: "POST",
         data: { id: $("#no_vehiculo").val(),
-            filter: $("#filtro").val()
+            filter: $("#filtro").val(),
+            archivado: $('#archivados').prop('checked')?true:false
         },
         success: function (response)
         {
@@ -114,5 +115,14 @@ function construyeGridCochesCatalogo(listaCoches) {
 
 $("#filtro").change(function ()
 {
+    consultaCochesOneFoto();
+});
+
+$("#archivados").change(function ()
+{
+    if( $('#archivados').prop('checked') ) {
+        $("#filtro").val(999);
+    } else $("#filtro").val(0);
+
     consultaCochesOneFoto();
 });

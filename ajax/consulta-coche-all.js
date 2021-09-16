@@ -1,5 +1,6 @@
 $(document).ready(function(){
     consultaCocheAll();
+    alert("Aqui me ocupan");
 });
 
 function consultaCocheAll(){

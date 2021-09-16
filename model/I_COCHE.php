@@ -2,7 +2,7 @@
 
 interface I_COCHE
 {
-    function queryconsultaCoches($no_vehiculo,$filter);
+    function queryconsultaCoches($no_vehiculo,$filter,$archivados);
     function queryaddCoche();
     function queryupdateCoche();
     function queryupdateEstatusCoche($no_vehiculo,$estatus);

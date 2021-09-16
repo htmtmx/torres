@@ -919,5 +919,37 @@ try {
 }
 
 function hideCoche(parametro) {
-    alert('Ocultar '+parametro);
+    let titulo= "Ocultar coche";
+    let texto= "¿Esta seguro de querer ocultar este carro?";
+    Swal.fire({
+        title: titulo,
+        text: texto,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let elementCoche =parametro;
+            ocultaCoche(elementCoche);
+        }
+    });
+}
+
+function  ocultaCoche(coche){
+    function eliminaEmpleado(idEmpleado){
+        $.ajax({
+            url: "../webhook/user-delete.php",
+            type: 'POST',
+            data: {
+                idEmpleado: idEmpleado,
+            },
+            success: function (mje) {
+                alertaEmergente(mje);
+                getAllUsers();
+            }
+        });
+    }
 }

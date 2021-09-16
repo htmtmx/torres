@@ -1,11 +1,11 @@
 <?php
 
-function consultaAllCochesOneFoto($noVehiculo,$filter)
+function consultaAllCochesOneFoto($noVehiculo,$filter,$archivados)
 {
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
     include_once "../control/controlFileVehiculo.php";
-    $arrayCoches = $objCoche->queryconsultaCoches($noVehiculo,$filter);
+    $arrayCoches = $objCoche->queryconsultaCoches($noVehiculo,$filter,$archivados);
     $dataCochesFoto = array();
     foreach ($arrayCoches as $coche) {
         $arrayFotos = consultaFotoCoche($coche["no_vehiculo"]);
@@ -21,7 +21,7 @@ function consultaCocheDetallesDocumentosFotos($no_vehiculo)
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
     include_once "../control/controlFileVehiculo.php";
-    $arrayCoche = $objCoche->queryconsultaCoches($no_vehiculo,99);
+    $arrayCoche = $objCoche->queryconsultaCoches($no_vehiculo,99, false);
     $dataCoche = array();
     foreach ($arrayCoche as $coche) {
         $arrayDetails = consultaDetallesCoche($coche["no_vehiculo"]);
@@ -36,10 +36,10 @@ function consultaCocheDetallesDocumentosFotos($no_vehiculo)
     return json_encode($dataCoche);
 }
 
-function consultaCocheDetallesCompletos($show_detalles,$noVehiculo,$estatus){
+function consultaCocheDetallesCompletos($show_detalles,$noVehiculo,$estatus,$archivados){
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    $arrayCoches = $objCoche->queryconsultaCoches($noVehiculo,$estatus);
+    $arrayCoches = $objCoche->queryconsultaCoches($noVehiculo,$estatus,$archivados);
     $cochesData = array();
     //obtengo la lista de coches en
     if ($show_detalles) {

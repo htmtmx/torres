@@ -61,7 +61,6 @@ function countCochesEnVentaDashboard() {
         success: function (response)
         {
             let obj_result = JSON.parse(response);
-            console.log(obj_result);
             $("#noVehiculosVenta").html(obj_result[0]['no_vehiculos_venta']);
         },
     });
@@ -73,7 +72,6 @@ function sumaAbonosHoy() {
         success: function (response)
         {
             let obj_result = JSON.parse(response);
-            console.log(obj_result);
             var total =new Intl.NumberFormat().format(obj_result[0]['total_abonos_hoy']);
             $("#montoAbonosHoy").html("$"+total);
         },

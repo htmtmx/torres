@@ -608,10 +608,10 @@ class COCHE extends CONEXION implements I_COCHE
         $this->estatus = $estatus;
     }
 
-    public function queryconsultaCoches($no_vehiculo,$filter)
+    public function queryconsultaCoches($no_vehiculo,$filter,$archivados)
     {
         $filter= $filter>=-1 && $filter<=1 ? "AND co.estatus=".$filter : "";
-
+        $archivados= $archivados? " ":" AND co.no_vehiculo>0 ";
         $concat=$no_vehiculo>0 ? " AND co.no_vehiculo = ".$no_vehiculo: "";
         $query = "select co.no_vehiculo,co.id_modelo_fk, co.tipo_carro, co.NIV , co.no_motor, co.numero_serie_vehicular ,co.no_factura ,co.fecha_factura ,co.empresa_factura,
                 co.domicilio_empresa, co.fecha_registro, co.anio ,co.placa ,co.tarjeton ,co.folio_tarjeton ,co.ultima_tenencia,co.tarjeta_circulacion ,co.folio_tarje_circul,
@@ -619,7 +619,7 @@ class COCHE extends CONEXION implements I_COCHE
                 co.precio_contado ,co.precio_credito , co.opc_credito , co.observaciones ,co.estatus, mo.id_modelo, mo.id_marca_fk, mo.nombre AS modelo_coche, mar.id_marca, 
                 mar.nombre AS marca_coche  from coche co, modelo mo, marca mar 
                 WHERE co.id_modelo_fk = mo.id_modelo 
-                AND co.no_vehiculo > 0 ".$filter."
+                 ".$archivados." ".$filter."
                 AND mar.id_marca = mo.id_marca_fk ".$concat." ORDER BY co.estatus ASC ";
         $this->connect();
         $result = $this->getData($query);

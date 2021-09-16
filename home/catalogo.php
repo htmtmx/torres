@@ -35,13 +35,20 @@ $no_vehiculo = 0;
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-lg-6 col-auto text-right">
+                    <div class="col-lg-4 col-auto text-right">
                         <select id="filtro" name="filtro" class="form-control">
                             <option value="0" selected>En venta</option>
                             <option value="1">Vendidos</option>
                             <option value="-1">Apartados</option>
                             <option value="999">Todos</option>
                         </select>
+                    </div>
+                    <div class="col-lg-2 col-auto text-right">
+                        <label for="" class="text-white"> Ver archivados</label>
+                        <label class="custom-toggle text-white">
+                            <input type="checkbox" id="archivados">
+                            <span class="custom-toggle-slider rounded-circle" data-label-off="NO" data-label-on="SI"></span>
+                        </label>
                     </div>
                 </div>
             </div>

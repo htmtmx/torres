@@ -2,7 +2,7 @@
 /**********************************************************
  * Registro de Abonos
  * ********************************************************/
-function verificaAbono($no_contrato,$monto)
+function verificaAbono($no_contrato,$monto,$noVehiculo)
 {
     $montoAbono = $monto;
     include_once "../control/controlPago.php";
@@ -35,12 +35,12 @@ function verificaAbono($no_contrato,$monto)
                 echo "Total del pago ".$totalPago.", Suma de abonos ".$sumaAbonos.", Resta por pagar ".$faltantePorAbonar. " Al pago ".$pago['id_pago'];
                 echo "<br>S U M A      D E      A B O N O S";*/
             }
-        checaSiUpdateContrato($no_contrato);
+        checaSiUpdateContrato($no_contrato,$noVehiculo);
     }
     return true;
 }
 
-function checaSiUpdateContrato($no_contrato){
+function checaSiUpdateContrato($no_contrato,$noVehiculo){
     include_once "../control/controlContrato.php";
     $arrayContrato = consultaContrato($no_contrato);
     $totalContrato = $arrayContrato[0]['total'];
@@ -53,8 +53,9 @@ function checaSiUpdateContrato($no_contrato){
         updateEstatusContrato($no_contrato,1);
         updateSaldoContrato($no_contrato,0);
         //actualizar estado del coche
-
-        //consultar el no de vehiculo a partir del no de contraro
+        include_once "controlCoche.php";
+        updateEstatusCoche($noVehiculo,1);
+        //consultar el no de vehiculo a partir del no de contrato
         //actualizar el coche
         //include_once  "controlCoche.php";
         //updateEstatusCoche(contrato['no_vehiculo'],1);

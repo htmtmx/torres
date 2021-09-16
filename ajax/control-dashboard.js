@@ -12,11 +12,12 @@ function consultaCochesDashBoard(){
     $.ajax({
         url: "../webhook/car-list-one-foto.php",
         type: "POST",
-        data: { id: 0, filter:0 },
+        data: { id: 0, filter:0,
+            archivado: false
+        },
         success: function (response)
         {
             let obj_result = JSON.parse(response);
-            //console.log(obj_result);
             let caroselCoche = construyeCarouselCoche(obj_result);
             let tableCoches= construyetablaCoches(obj_result);
             $("#caroucelCochesDinamico").html(caroselCoche);
@@ -31,7 +32,6 @@ function consultaPagosContrato(){
         success: function (response)
         {
             let obj_result = JSON.parse(response);
-            console.log(obj_result);
            let abonos   =   construyeTablaAbonosContrato(obj_result);
             $("#tblPagos").html(abonos);
         },
@@ -44,7 +44,6 @@ function consultaCreditosPendientes(){
         success: function (response)
         {
             let obj_result = JSON.parse(response);
-            console.log(obj_result);
             let contratosCedito   =   construyeTablaContratosCredito(obj_result);
             $("#tblCredits").html(contratosCedito);
         },
@@ -232,6 +231,10 @@ function construyeCarouselCoche(listaCoches) {
                                         </a>
                                     </div>
                                     <img class="d-block w-100" src="${link}" alt="First slide">
+                                    <!-- Span para el nombre del carro-->
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <p class="">${coche.marca_coche+" "+coche.modelo_coche}</p>
+                                    </div>
                                 </div>
                             `;
             contador++;
