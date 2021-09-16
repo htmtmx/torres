@@ -13,11 +13,11 @@ function consultaDetallesCoche(){
         url: "../webhook/cars-list.php",
         type: "POST",
         data: { idCoche: $("#noCoche").val(),
-            details:1, estatus:99
+            details:1, estatus:99, archivado:true
         },
         success: function (response)
         {
-            //console.log(response);
+            console.log(response);
             let obj_result = JSON.parse(response);
             let obj_carro= obj_result[0];
             console.log(obj_carro);
@@ -933,23 +933,23 @@ function hideCoche(parametro) {
     }).then((result) => {
         if (result.isConfirmed) {
             let elementCoche =parametro;
-            ocultaCoche(elementCoche);
+            alert(elementCoche);
+            //ocultaCoche(elementCoche);
         }
     });
 }
 
-function  ocultaCoche(coche){
-    function eliminaEmpleado(idEmpleado){
-        $.ajax({
-            url: "../webhook/user-delete.php",
-            type: 'POST',
-            data: {
-                idEmpleado: idEmpleado,
-            },
-            success: function (mje) {
-                alertaEmergente(mje);
-                getAllUsers();
-            }
-        });
-    }
+
+function ocultaCoche(coche){
+    $.ajax({
+        url: "../webhook/user-delete.php",
+        type: 'POST',
+        data: {
+            idCoche: coche,
+        },
+        success: function (mje) {
+            alertaEmergente(mje);
+            getAllUsers();
+        }
+    });
 }

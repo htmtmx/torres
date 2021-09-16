@@ -611,8 +611,8 @@ class COCHE extends CONEXION implements I_COCHE
     public function queryconsultaCoches($no_vehiculo,$filter,$archivados)
     {
         $filter= $filter>=-1 && $filter<=1 ? "AND co.estatus=".$filter : "";
-        $archivados= $archivados? " ":" AND co.no_vehiculo>0 ";
-        $concat=$no_vehiculo>0 ? " AND co.no_vehiculo = ".$no_vehiculo: "";
+        $archivados= $archivados ? " ":" AND co.no_vehiculo>0 ";
+        $concat= $no_vehiculo != 0 ? " AND co.no_vehiculo = ".$no_vehiculo: "";
         $query = "select co.no_vehiculo,co.id_modelo_fk, co.tipo_carro, co.NIV , co.no_motor, co.numero_serie_vehicular ,co.no_factura ,co.fecha_factura ,co.empresa_factura,
                 co.domicilio_empresa, co.fecha_registro, co.anio ,co.placa ,co.tarjeton ,co.folio_tarjeton ,co.ultima_tenencia,co.tarjeta_circulacion ,co.folio_tarje_circul,
                 co.entidad_placa ,co.color ,co.kilometros, co.transimision ,co.combustible, co.no_puertas ,co.verificaciones_coche ,co.carroceria ,co.pintura ,co.llantas, 
