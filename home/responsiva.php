@@ -14,15 +14,8 @@ $mpdf = new \Mpdf\Mpdf([
 
 $dirCliente = "";
 $dirVendedor = "";
-
 $arrayDatos = array();
-
 $idCliente = $datosContrato['no_cliente_fk'];
-
-
-
-
-
 
 //llamar al control de direcciones
 include("../control/controlCliente.php");

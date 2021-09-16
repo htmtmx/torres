@@ -3,7 +3,7 @@
 require './../vendor/autoload.php';
 use Luecano\NumeroALetras\NumeroALetras;
 
-function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
+function getTemplateContrato($contrato,$dirCliente,$dirVendedor, $inventario){
     $formatter = new NumeroALetras();
     $formatter->conector = ' PESOS ';
     $WordTotal =  $formatter->toInvoice($contrato['total'], 2, "MXN");
@@ -119,18 +119,13 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor){
             </p>
             <table class="tablaLegal">
                 <tbody>
-                    <tr>
-                        <td class="tablaLegal">EXTERIORES</td>
-                        <td class="tablaLegal">SI</td>
-                        <td class="tablaLegal">NO</td>
-                        <td class="tablaLegal">INVENTARIO</td>
-                        <td class="tablaLegal">SI</td>
-                        <td class="tablaLegal">NO</td>
-                        <td class="tablaLegal">ACCESORIOS</td>
-                        <td class="tablaLegal">SI</td>
-                        <td class="tablaLegal">NO</td>
-                    </tr>
-                    '.getTableInventario().'
+                		<tr>
+                            <td class="tablaLegal"></td>
+                            <td class="tablaLegal">Nombre</td>
+                            <td class="tablaLegal">SI</td>
+                            <td class="tablaLegal">NO</td>
+                        </tr>
+                    '.getTableInventario($inventario).'
                 </tbody>
             </table>
             <p class="legal">
@@ -542,31 +537,82 @@ function getMesLetra($mes){
     }
 }
 
-function getTableInventario(){
-    $template = '
-                    <tr class="tablaLegal">
-                        <td class="tablaLegal">Unidad de luces</td>
-                        <td class="tablaLegal">X</td>
-                        <td class="tablaLegal"></td>
-                        <td class="tablaLegal">Instrumentos de tablero</td>
-                        <td class="tablaLegal">X</td>
-                        <td class="tablaLegal"></td>
-                        <td class="tablaLegal">Gato</td>
-                        <td class="tablaLegal">X</td>
-                        <td class="tablaLegal"></td>
-                    </tr>
-                    <tr class="tablaLegal">
-                        <td class="tablaLegal">Luces</td>
-                        <td class="tablaLegal">X</td>
-                        <td class="tablaLegal"></td>
-                        <td class="tablaLegal">Calefacción </td>
-                        <td class="tablaLegal">X</td>
-                        <td class="tablaLegal"></td>
-                        <td class="tablaLegal">Llave de tuercas</td>
-                        <td class="tablaLegal"></td>
-                        <td class="tablaLegal">X</td>
-                    </tr>';
+function getTableInventario($USOS){
+    //separar por categoria
 
+    #inventario general del suistema
+    include_once("./../control/controlDetalles.php");
+    $DETALLES = json_decode(consultaDetallesParaInventarioContrato(),true);
+
+    //verificar si el inventario actual corresponde al inventario que se agrego
+
+    $ext = [];
+    $inv = [];
+    $acc = [];
+
+    foreach ($DETALLES as $d)
+    {
+        $existe = false;
+            foreach ($USOS as $u){
+                if ($u['id_detalle_fk']==$d['id_detalle']){
+                    $existe = true;
+                }
+                //constuyo el array obj
+                $obj = array(
+                    "nombre"=> $d['nombre'],
+                    "existe"=> $existe,
+                    "cat" => $d['categoria']
+                );
+            }
+        //asignarlo a su categoria
+        switch ($d['categoria']){
+            case "0":
+                array_push($ext,$obj);
+                break;
+            case "1":
+                array_push($inv,$obj);
+                break;
+            default:
+                array_push($acc,$obj);
+                break;
+        }
+    }
+    $template .= '<tr class="tablaLegal" >
+			        <td class="tablaLegal" colspan="4">EXTERIORES</td>
+		        </tr>';
+    foreach ($ext as $obj){
+        $template .= '		
+		<tr class="tablaLegal">
+			<td class="tablaLegal">'.$obj['cat'].'</td>
+			<td class="tablaLegal">'.$obj['nombre'].'</td>
+			<td class="tablaLegal">'.($obj['existe'] ? "X":"").'</td>
+			<td class="tablaLegal">'.($obj['existe'] ? "":"X").'</td>
+		</tr>';
+    }
+    $template .= '<tr class="tablaLegal">
+			        <td class="tablaLegal" colspan="4">INVENTARIO</td>
+		        </tr>';
+    foreach ($inv as $obj){
+        $template .= '		
+		<tr class="tablaLegal">
+			<td class="tablaLegal">'.$obj['cat'].'</td>
+			<td class="tablaLegal">'.$obj['nombre'].'</td>
+			<td class="tablaLegal">'.($obj['existe'] ? "X":"").'</td>
+			<td class="tablaLegal">'.($obj['existe'] ? "":"X").'</td>
+		</tr>';
+    }
+    $template .= '<tr class="tablaLegal">
+			        <td class="tablaLegal" colspan="4">ACCESORIOS</td>
+		        </tr>';
+    foreach ($acc as $obj){
+        $template .= '		
+		<tr class="tablaLegal">
+			<td class="tablaLegal">'.$obj['cat'].'</td>
+			<td class="tablaLegal">'.$obj['nombre'].'</td>
+			<td class="tablaLegal">'.($obj['existe'] ? "X":"").'</td>
+			<td class="tablaLegal">'.($obj['existe'] ? "":"X").'</td>
+		</tr>';
+    }
     return $template;
 }
 
@@ -799,8 +845,6 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
     ';
     return $plantilla;
 }
-
-
 
 function getPlantilla($contratos){
     $plantilla = '

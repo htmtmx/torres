@@ -32,12 +32,14 @@ $datosContrato['mes']= $mes;
 $datosContrato['anio_contrato']= $anio;
 $datosContrato['hora']= $hora;
 
+//obteniendo los uso detalles de inventartiors
+include_once("../control/controlCoche.php");
+$inventario = consultaDetallesCoche($noVechiculo);
 $mpdf = new \Mpdf\Mpdf([
 ]);
-//var_dump($pagos);
-//die();
+
 // CREACION DE LA PLANTILLA
-$plantilla = getTemplateContrato($datosContrato,$dir,$dirNegocio);
+$plantilla = getTemplateContrato($datosContrato,$dir,$dirNegocio,$inventario);
 $css = file_get_contents('./reportes/responsiva_style.css');
 
 $mpdf->writeHtml($css,\Mpdf\HTMLParserMode::HEADER_CSS);
