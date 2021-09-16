@@ -150,7 +150,7 @@ function deleteCoche($noVehiculo)
 {
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    echo $result = $objCoche->querydeleteCoche($noVehiculo)?"Se elimino correctamente el coche":"Error al intentar eliminar";
+    return $objCoche->querydeleteCoche($noVehiculo);
 }
 
 function montoCoches()

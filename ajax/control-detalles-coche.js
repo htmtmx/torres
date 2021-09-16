@@ -17,10 +17,8 @@ function consultaDetallesCoche(){
         },
         success: function (response)
         {
-            console.log(response);
             let obj_result = JSON.parse(response);
             let obj_carro= obj_result[0];
-            console.log(obj_carro);
             cargaDatosCarro(obj_carro);
             $("#carouselCocheFotos").html(construyeCarouselFotosCoche(obj_carro[1]));
             $("#tblfotosCoche").html(construyeCocheTablaFotos(obj_carro[1]));
@@ -63,25 +61,28 @@ function cargaDatosCarro(obj_carro){
     $("#precioCreditoCoche").val(obj_carro.precio_credito);
 
     let btnAccionCoche = '';
-    switch (obj_carro.estatus) {
-        case "0":
-            btnAccionCoche = `
+    if(obj_carro.no_vehiculo>0){
+        switch (obj_carro.estatus) {
+            case "0":
+                btnAccionCoche = `
                             <a href="./nuevaVenta.php?idCoche=${obj_carro.no_vehiculo}">
                             <button type="button" class="btn btn-success">
                                 <i class="fas fa-dollar-sign text-white"></i> Vender
                             </button></a>`;
-            break;
-        case "1":
-            btnAccionCoche = `<button type="button" class="btn btn-danger" onclick="hideCoche(${obj_carro.no_vehiculo});">
-                                <i class="fas fa-eye-slash"></i> Ocultar
+                break;
+            case "1":
+                btnAccionCoche = `<button type="button" class="btn btn-warning" onclick="hideCoche(${obj_carro.no_vehiculo});">
+                                <i class="fas fa-archive"></i> Archivar
                             </button>`;
-            break;
-        case "-1":
-            btnAccionCoche = `<button type="button" class="btn btn-alert">
+                break;
+            case "-1":
+                btnAccionCoche = `<button type="button" class="btn btn-alert">
                                 <i class="fas fa-undo"></i> Liberar
                             </button>`;
-            break;
+                break;
+        }
     }
+
     $("#containerBotonCoche").html(btnAccionCoche);
 
     //NUEVOS VALORES AGREGADOS EN LA BASE DE DATOS (IMPRIME VALORES)
@@ -919,8 +920,8 @@ try {
 }
 
 function hideCoche(parametro) {
-    let titulo= "Ocultar coche";
-    let texto= "¿Esta seguro de querer ocultar este carro?";
+    let titulo= "Archivar coche";
+    let texto= "¿Esta seguro de querer archivar este carro?";
     Swal.fire({
         title: titulo,
         text: texto,
@@ -933,8 +934,7 @@ function hideCoche(parametro) {
     }).then((result) => {
         if (result.isConfirmed) {
             let elementCoche =parametro;
-            alert(elementCoche);
-            //ocultaCoche(elementCoche);
+            ocultaCoche(elementCoche);
         }
     });
 }
@@ -942,14 +942,15 @@ function hideCoche(parametro) {
 
 function ocultaCoche(coche){
     $.ajax({
-        url: "../webhook/user-delete.php",
+        url: "../webhook/car-delete.php",
         type: 'POST',
         data: {
             idCoche: coche,
         },
         success: function (mje) {
+            console.log(mje);
             alertaEmergente(mje);
-            getAllUsers();
+            setTimeout(history.back(),30000);
         }
     });
 }

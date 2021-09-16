@@ -675,9 +675,7 @@ class COCHE extends CONEXION implements I_COCHE
 
     public function querydeleteCoche($no_vehiculo)
     {
-        $query = "UPDATE autostorres.coche 
-                SET no_vehiculo= no_vehiculo * (-1) 
-                WHERE no_vehiculo = ".$no_vehiculo;
+        $query = "UPDATE `coche` SET `no_vehiculo` = no_vehiculo*-1 WHERE `coche`.`no_vehiculo` = ".$no_vehiculo;
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
