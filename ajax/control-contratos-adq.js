@@ -10,9 +10,7 @@ function consultaContratosTodos(){
             id: 0
         },
         success: function (response) {
-            console.log(response);
             let objContratos = JSON.parse(response);
-            console.log(objContratos);
             $("#tblContratosAdquisicion").html(discriminaContratos(objContratos,1));
             $("#tblContratosVenta").html(discriminaContratos(objContratos,0))
         }

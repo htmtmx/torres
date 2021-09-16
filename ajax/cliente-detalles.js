@@ -35,7 +35,6 @@ function consultaDirecciones(){
         success: function (response)
         {
             let obj_result = JSON.parse(response);
-            console.log(obj_result);
             let direcciones= obj_result[0][0];
             cargaDirecciones(direcciones);
         },

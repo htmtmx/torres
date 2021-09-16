@@ -13,7 +13,6 @@ $("#navbar-search-main").on("submit", function(e){
         success: function (response)
         {
             let placas = JSON.parse(response);
-            console.log(placas);
             if(placas.length>0){
                 let placa = placas[0];
                 window.location.href="./detalles-coche.php?idCoche="+placa.no_vehiculo;

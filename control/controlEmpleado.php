@@ -64,19 +64,6 @@ function addEmpleado($nombre,$app,$apm,$tel,$cel,$correo,$puesto,$sexo,$acceso)
 }
 
 /********************************************************************
- *                  U P D A T E    P W D    E M P L E A D O
- *******************************************************************/
-
-function updatePwdEmpleado($no_empleado,$pwd)
-{
-    include_once "../model/EMPLEADO.php";
-    $objEmpleado = new EMPLEADO();
-    $objEmpleado->setNoEmpleado($no_empleado);
-    $objEmpleado->setPw(md5($pwd));
-    echo $result = $objEmpleado->queryupdatePw() ? "Se actualizo correctamente la contraseña ":"Error al intentar actualizar";
-}
-
-/********************************************************************
  *           U P D A T E    E S T A T U S    E M P L E A D O
  *******************************************************************/
 function updateStatusE($idUser,$estatus){

@@ -13,7 +13,6 @@ function montoVehiculosDashboard() {
         success: function (response)
         {
             let obj_result = JSON.parse(response);
-            //console.log(obj_result);
             var total =new Intl.NumberFormat().format(obj_result[0]['total_vendido']);
             $("#montoVendido").html("$"+total);
         },
@@ -49,7 +48,6 @@ function countPagosPendientesDashboard() {
         success: function (response)
         {
             let obj_result = JSON.parse(response);
-            //console.log(obj_result);
             $("#noPagosPend").html(obj_result[0]['count_pagos']+" Pagos pendientes");
         },
     });

@@ -116,7 +116,6 @@ function addCar() {
                 combustible: $("#combustible").val(),
                 nopuertas: $("#noPuertas").val(),
             }, success: function () {
-                console.log(response);
                 }
         }
         )

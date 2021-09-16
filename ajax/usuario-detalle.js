@@ -10,7 +10,6 @@ function consultaDetallesUsuario(){
         success: function (response)
         {
             let obj_result = JSON.parse(response);
-           console.log(obj_result);
             let user = obj_result[0];
             $("#nombreTitulo").html(`Hola `+user.nombre);
             $("#nombre").val(user.nombre);
@@ -67,7 +66,6 @@ $("#frm-update-password").on("submit", function(e){
             //funcion propia de jQuery para POST (a doinde enviar, que enviar, resultado devuelto)
             $.post(url,valoresCajas,function (mje) {
                 //tratamos los datos y hacemos acciones
-                console.log(mje);
                 mensaje = mje;
                 tipoAlert = "success";
                 let template = `

@@ -20,7 +20,6 @@ function buscaCochePaVenta(noCoche) {
         {
             //COnvertimos el string a JSON
             let coches= JSON.parse(response);
-            console.log(coches);
             cargaDatosCoche(coches[0]);
         },
     });

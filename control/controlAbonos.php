@@ -31,9 +31,6 @@ function verificaAbono($no_contrato,$monto,$noVehiculo)
                         $montoAbono =0;
                     }
                 }
-                /*echo "<br>S U M A      D E      A B O N O S";
-                echo "Total del pago ".$totalPago.", Suma de abonos ".$sumaAbonos.", Resta por pagar ".$faltantePorAbonar. " Al pago ".$pago['id_pago'];
-                echo "<br>S U M A      D E      A B O N O S";*/
             }
         checaSiUpdateContrato($no_contrato,$noVehiculo);
     }

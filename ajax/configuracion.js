@@ -44,11 +44,9 @@ function configCaracteristicas(){
         success: function (response)
         {
             let caracteristicas= JSON.parse(response);
-            //console.log(caracteristicas);
             let template="";
             let contador=0;
             caracteristicas.forEach((caracteristica)=>{
-                //console.log(caracteristica);
                 contador++;
                template+=`
                  <tr idCaracteristica="${caracteristica.id_detalle}">
@@ -107,7 +105,6 @@ $("#frm-add-edit-detalle").on("submit", function(e){
         processData: false,
         success: function (response)
         {
-            //console.log(response);
             let template =  `<div class="alert alert-success alert-dismissible fade show" role="alert">
                                 ${response}
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -145,9 +142,7 @@ $(document).on("click", ".btnEliminarCaracteristica", function () {
     }).then((result) => {
         if (result.isConfirmed) {
             let elementDetalle = $(this)[0].parentElement.parentElement;
-            //console.log(elementDetalle);
             let idDetalle = $(elementDetalle).attr("idCaracteristica");
-            //console.log(idDetalle);
             eliminaCaracteristica(idDetalle);
         }
     });
@@ -201,7 +196,6 @@ function getModelos(id_marca) {
         type: "POST",
         success: function (response) {
             let modelos = JSON.parse(response);
-            //console.log(modelos);
             let template="";
             let contador=0;
         modelos.forEach((modelo)=>{
@@ -237,12 +231,11 @@ $("#marcas").change(function ()
     var id = marcaSelected.val();
     if (id != '') {
         getModelos(id);
-    } else console.log("Hay un error interno");
+    }
 });
 function editaModelo(id_modelo,nombre,marca){
     $("#idmodelo").val(id_modelo);
     var id = $("#marcas").val();
-    //console.log(id);
     $("#marcaModelo").val(id);
     $("#idmarca").val(marca);
     $("#nombreModelo").val(nombre);
@@ -333,7 +326,6 @@ function configTiposArchivo(){
         success: function (response)
         {
             let archivos= JSON.parse(response);
-            //console.log(archivos);
             let template="";
             let contador=0;
             let estado="";
@@ -429,9 +421,7 @@ $(document).on("click", ".btnEliminarTipoArchivo", function () {
     }).then((result) => {
         if (result.isConfirmed) {
             let elementTipoArchivo = $(this)[0].parentElement.parentElement;
-            //console.log(elementTipoArchivo);
             let idArchivo = $(elementTipoArchivo).attr("idArchivo");
-            //console.log(idArchivo);
             eliminaTipoArchivo(idArchivo);
         }
     });

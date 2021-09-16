@@ -56,7 +56,6 @@ function eliminarDocumentoContrato(idDocumento){
             idDocumento: idDocumento
         },
         success: function (mje) {
-            console.log(mje);
             consultaDetallesContrato();
         }
     });
@@ -98,7 +97,6 @@ function consultaDetallesCocheGenerales(){
         },
         success: function (response)
         {
-            //console.log(response);
             let obj_result = JSON.parse(response);
             let detalles = construyeSelectDetalles(obj_result);
             $("#detalle").html(detalles);

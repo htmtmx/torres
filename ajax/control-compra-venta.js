@@ -9,15 +9,14 @@ function consultaCochesVenta(){
         type: "POST",
         data: { idCoche: 0 ,
             details: 1,
-            estatus:0
+            estatus:0,
+            archivado:true
         },
         success: function (response)
         {
             //COnvertimos el string a JSON
             let coches = JSON.parse(response);
-            console.log(coches);
             $("#tbl-coches-venta").html(construyeTablaCochesVenta(coches));
-
         },
     });
 }

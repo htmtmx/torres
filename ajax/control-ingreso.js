@@ -14,7 +14,6 @@ function consultaDetalles() {
         type: "POST",
         success: function (response)
         {
-            //console.log(response);
             let obj_result = JSON.parse(response);
             let detalles = construyeSelectDetalles(obj_result);
             $("#detalleBox").html(detalles);
@@ -83,7 +82,6 @@ $("#frm-add-modelo").on("submit", function(e){
         processData: false
     })
         .done(function(res){
-        console.log(res);
         $("#frm-add-modelo").trigger('reset');
         $("#modaladdmodelo").modal('hide');
         getMarcas();

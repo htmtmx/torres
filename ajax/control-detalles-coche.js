@@ -309,7 +309,7 @@ function consultaDetallesContrato(){
         },
         success: function (response)
         {
-            //console.log(response);
+
             let obj_result = JSON.parse(response);
             //esta siempre va a existir
             let contratoVenta = getContrato(obj_result,"0"); // 0 -> venta
@@ -559,7 +559,6 @@ function getTemplateContratoVenta(contrato) {
 }
 
 function getTemplateContratoAdq(contrato) {
-    console.log(contrato);
     let template = "";
     let formaPagoAdq = contrato.forma_pago === "0" ? "Contado" : "Credito";
     let documentos = buildTblFileContratoVenta(contrato[1]);
@@ -948,7 +947,6 @@ function ocultaCoche(coche){
             idCoche: coche,
         },
         success: function (mje) {
-            console.log(mje);
             alertaEmergente(mje);
             setTimeout(history.back(),30000);
         }

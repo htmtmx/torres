@@ -3,7 +3,6 @@ $(document).ready(function () {
     getAllClientes();
     alert("Este se usa");
   } else {
-    console.log("estamos en la otra pagina");
     getOnlyClient();
   }
 
@@ -132,11 +131,9 @@ $(document).ready(function () {
       type: "POST",
       data: { id: $("#user-id").val() },
       success: function (response) {
-        console.log(response);
         //COnvertimos el string a JSON
         try {
           let obj_users = JSON.parse(response);
-          console.log(obj_users);
           let obj = obj_users[0];
           $("#nombre_cliente").val(obj.nombre);
           $("#apaterno_cliente").val(obj.apaterno);
@@ -186,9 +183,6 @@ $(document).ready(function () {
         let templateCompra = "";
         let template_page = "";
         let cont = 0;
-        /*console.log(response);
-        console.log("******************");
-        console.log(obj_result);*/
         obj_result.forEach((obj_result) => {
           cont++;
           template += `
@@ -361,7 +355,6 @@ $(document).ready(function () {
     //eliminar cuando confirme
     let clientSelect = $(this)[0].parentElement.parentElement;
     let noCliente = $(clientSelect).attr("no_cliente");
-    console.log(noCliente);
     cargaDatosClienteCompra(noCliente);
   });
 

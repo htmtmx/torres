@@ -12,7 +12,6 @@ $("#frm-update-datos-empresa").on("submit", function(e){
         processData: false,
         success: function (response)
         {
-            console.log(response);
             let template =  `<div class="alert alert-success alert-dismissible fade show" role="alert">
                                 ${response}
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">

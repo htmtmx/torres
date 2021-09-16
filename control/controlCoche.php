@@ -81,26 +81,6 @@ function consultaArchivos($noVehiculo)
     return  $result;
 }
 
-function addCoche(  $idModeloFk,$anio,$placa,$entidadPlaca,$color,
-                    $kilometros,$transmision,$combustible,$noPuertas)
-{
-    include_once "../model/COCHE.php";
-    include_once "./tool_ids_generate.php";
-    $objCoche = new COCHE();
-    $objCoche->setNoVehiculo(gen_no_vehiculo());
-    $objCoche->setIdModeloFk($idModeloFk);
-    $objCoche->setFechaRegistro(date('Y-m-d H:i:s'));
-    $objCoche->setAnio($anio);
-    $objCoche->setPlaca($placa);
-    $objCoche->setEntidadPlaca($entidadPlaca);
-    $objCoche->setColor($color);
-    $objCoche->setKilometros($kilometros);
-    $objCoche->setTransimision($transmision);
-    $objCoche->setCombustible($combustible);
-    $objCoche->setNoPuertas($noPuertas);
-    echo $result = $objCoche->queryaddCoche()?"Se registro correctamente el coche ".$objCoche->getNoVehiculo():"Error al intentar registrar";
-}
-
 function updateCoche($params)
 {
     include_once "../model/COCHE.php";

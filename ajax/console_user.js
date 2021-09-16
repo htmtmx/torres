@@ -3,7 +3,6 @@ $(document).ready(function() {
     //-------------------Star Sessions
     $('#tarea_form').submit(function (e) {
         //se ejecuta el elemento submit
-        // console.log('enviado');
         var user = $("#txtUser").val();
         var pw = $("#txtPw").val();
         let titulo;
@@ -51,8 +50,6 @@ $(document).ready(function() {
                 }
             });
         }
-
-        //console.log(postData);
         //Cancela las funciones basicas del boton submit y evita regrescar la pagina
         e.preventDefault();
     })
