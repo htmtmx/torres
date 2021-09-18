@@ -107,10 +107,26 @@ function consultaDetallesCocheGenerales(){
 
 
 function construyeSelectDetalles(detalles){
+    console.log(detalles);
     let template="";
     detalles.forEach((detalle)=>{
+        let contrato = detalle.oblogatorio === "1" ? `&#xf56c;`:"&#xf1fc";
+        switch (detalle.categoria){
+            case "0":
+                categoria = "[Ext.]";
+                break;
+            case "1":
+                categoria = "[Inv.]";
+                break;
+            case "2":
+                categoria = "[Acc.]";
+                break;
+            default:
+                categoria = "[Otro]";
+                break;
+        }
         template+=`
-            <option value="${detalle.id_detalle}">${detalle.nombre}</option>
+            <option class="fa" value="${detalle.id_detalle}">${contrato} ${detalle.nombre} ${categoria}</span> </option>
         `;
     });
     return template;

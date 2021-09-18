@@ -17,7 +17,7 @@
                                     <label class="form-control-label" for="detalle">Detalles</label>
                                     <div class="row d-flex">
                                         <input type="hidden" id="idCoche" name="idCoche" value="<?php echo $noCoche;?>">
-                                        <select id="detalle" name="detalle" class="w-75 form-control">
+                                        <select id="detalle" name="detalle" class="w-75 form-control fa">
                                             <!-- AJAX RESPONSE GET DETALLES-->
                                         </select>
                                         <button type="button" class="btn btn-primary W-25 mx-2" data-toggle="modal" data-target="#addDetalles">
