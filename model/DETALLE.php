@@ -120,7 +120,7 @@ class DETALLE extends CONEXION
     //QUERY para traer los detalles
     public function queryConsultaDetallesInventario()
     {
-        $query="SELECT `id_detalle`, `nombre`, `categoria`, `visible`, `oblogatorio`, `estatus` FROM `detalle` WHERE oblogatorio > 0";
+        $query="SELECT `id_detalle`, `nombre`, `categoria`, `visible`, `oblogatorio`, `estatus` FROM `detalle` WHERE oblogatorio > 0 ORDER BY `detalle`.`categoria`, `detalle`.`nombre` ASC";
         $this->connect();
         $result = $this->getData($query);
         $this->close();

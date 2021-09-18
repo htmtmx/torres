@@ -23,11 +23,20 @@ function consultaDetalles() {
 
 function construyeSelectDetalles(detalles){
     let template="";
+    console.log(detalles);
+    let cat;
+
     detalles.forEach((detalle)=>{
+        switch (detalle.categoria){
+            case "0": cat = `<span class="badge badge-info"><i class="fas fa-car-side"></i></span>`; break;
+            case "1": cat = `<span class="badge badge-warning"><i class="fas fa-fire-extinguisher"></i></span>`; break;
+            case "2": cat = `<span class="badge badge-success"><i class="fas fa-tools"></i></span>`; break;
+            default: cat  = `<span class="badge badge-secondary">otro</span>`; break;
+        }
         template+=`
                <div class="col-xl-2 col-md-4">
                     <div class="form-group d-inline-flex">
-                        <label class="form-control-label" for="observaciones">${detalle.nombre}: </label>
+                        <label class="form-control-label" for="observaciones">${detalle.nombre} ${cat}</label>
                         <label class="custom-toggle">
                             <input type="checkbox" value="${detalle.id_detalle}" name="detalles[]">
                             <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>

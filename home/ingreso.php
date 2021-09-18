@@ -345,6 +345,20 @@
                                                                         <div class="row" id="detalleBox">
                                                                             <!-- AJAX RESPONSE DETALLE BOX -->
                                                                         </div>
+                                                                        <div class="row">
+                                                                            <p class="mx-3">
+
+                                                                                <span class="badge badge-info"><i class="fas fa-car-side"></i></span> Exterior
+                                                                            </p>
+                                                                            <p class="mx-3">
+
+                                                                                <span class="badge badge-warning"><i class="fas fa-fire-extinguisher"></i></span> Inventario
+                                                                            </p>
+                                                                            <p class="mx-3">
+
+                                                                                <span class="badge badge-success"><i class="fas fa-tools"></i></span> Accesorio
+                                                                            </p>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
