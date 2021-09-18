@@ -173,11 +173,3 @@ $("#msform").on("submit", function(e){
 });
 
 
-//FUNCIONES PARA BUSCADOR Y BOTONES SIGUIENTE Y ANTERIOR
-$("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#tbl-clientes tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-});
-

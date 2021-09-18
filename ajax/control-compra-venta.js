@@ -218,3 +218,13 @@ $("#forma_pago").change(function(){
         $("#selectedCredito").addClass("d-none");
     }
 });
+
+
+//FUNCIONES PARA BUSCADOR Y BOTONES SIGUIENTE Y ANTERIOR
+$("#buscarPersona").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tblVendedores tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+});
+

@@ -26,7 +26,7 @@
                                                         <i class="fas fa-search"></i>
                                                     </span>
                                                 </div>
-                                                <input class="form-control" id="myInput" type="text" placeholder="Nombre del cliente..">
+                                                <input class="form-control" id="buscarPersona" type="text" placeholder="Nombre del cliente..">
                                             </div>
                                         </div>
                                     </div>
@@ -34,7 +34,7 @@
                             </div>
                             <div class="table-responsive">
                                 <!-- Projects table -->
-                                <table class="table align-items-center table-flush">
+                                <table class="table align-items-center table-flush" id="tblVendedores">
                                     <thead class="thead-light">
                                     <tr>
                                         <th scope="col">#</th>

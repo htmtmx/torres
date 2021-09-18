@@ -110,7 +110,7 @@ class DETALLE extends CONEXION
     public function queryConsultaDetalles($id_detalle)
     {
         $filter = $id_detalle>0 ? " WHERE id_detalle=".$id_detalle : "";
-        $query="SELECT `id_detalle`, `nombre`, `categoria`, `visible`, `oblogatorio`, `estatus` FROM `detalle` ". $filter;
+        $query="SELECT `id_detalle`, `nombre`, `categoria`, `visible`, `oblogatorio`, `estatus` FROM `detalle` ". $filter ." ORDER BY `detalle`.`categoria`, `detalle`.`nombre` ASC ";
         $this->connect();
         $result = $this->getData($query);
         $this->close();

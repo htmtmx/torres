@@ -116,3 +116,12 @@ function calculaCredito() {
     var mensualidad = (parseFloat(totalPendiente)/parseFloat(plazo)).toFixed(2);
     $("#mensualidad").val(mensualidad);
 }
+
+//FUNCIONES PARA BUSCADOR Y en la tabla de coches
+$("#buscaCoche").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tblCoches tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+});
+

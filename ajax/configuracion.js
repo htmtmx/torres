@@ -46,7 +46,24 @@ function configCaracteristicas(){
             let caracteristicas= JSON.parse(response);
             let template="";
             let contador=0;
+            let categoria;
+
             caracteristicas.forEach((caracteristica)=>{
+                switch (caracteristica.categoria){
+                    case "0":
+                        categoria = "Exterior";
+                        break;
+                    case "1":
+                        categoria = "Inventario";
+                        break;
+                    case "2":
+                        categoria = "Accesorio";
+                        break;
+                    default:
+                        categoria = "Otro";
+                        break;
+                }
+                let obligaContrato = caracteristica.oblogatorio === "1"? `<i class="fas fa-file-contract text-blue"></i> Aplica`: "";
                 contador++;
                template+=`
                  <tr idCaracteristica="${caracteristica.id_detalle}">
@@ -55,6 +72,12 @@ function configCaracteristicas(){
                     </th>
                     <td>
                         ${caracteristica.nombre}
+                    </td>
+                    <td>
+                        ${categoria}
+                    </td>
+                    <td>
+                        ${obligaContrato}
                     </td>
                     <td>
                         <button type="button" class="btn btn-white" onclick="editaCaracteristica(${caracteristica.id_detalle},'${caracteristica.nombre}','${caracteristica.categoria}','${caracteristica.visible}','${caracteristica.oblogatorio}');">

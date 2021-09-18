@@ -21,22 +21,23 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label" for="catCarac">Categoria</label>
                                     <select name="catCarac" id="catCarac" class="form-control">
                                         <option value="0">Exteriores</option>
                                         <option value="1">Inventario</option>
                                         <option value="2">Accesorios</option>
+                                        <option value="3">Otro</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="form-control-label" for="obligCarac">Obligatorio</label>
+                                    <label class="form-control-label" for="obligCarac">Mostrar en Contrato</label>
                                     <select name="obligCarac" id="obligCarac" class="form-control">
-                                        <option value="0">Si</option>
-                                        <option value="1">No</option>
+                                        <option value="1">Si</option>
+                                        <option value="0" selected>No</option>
                                     </select>
                                 </div>
                             </div>

@@ -347,7 +347,7 @@ $noCoche = $_GET['idCoche'];
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="noSerieV"><span class="obliga">*</span>Serie Vehicular</label>
+                                            <label class="form-control-label" for="noSerieV"><span class="obliga">*</span>NCI Repuve</label>
                                             <input type="text" id="noSerieV" name="noSerieV" class="form-control" placeholder="Número de Serie Vehicular" >
                                         </div>
                                     </div>

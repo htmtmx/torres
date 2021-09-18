@@ -107,10 +107,10 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor, $inventario){
                 Características de vehículo: 
             </p>
             <p class="legal">
-                Número de identificación vehicular: <span class="res">'.$contrato['numero_serie_vehicular'].' </span> Marca: <span class="res">'.$contrato['nombre_marca'].' </span> 
+                Número de Identificación Vehicular: <span class="res">'.$contrato['NIV'].' </span> Marca: <span class="res">'.$contrato['nombre_marca'].' </span> 
                 Submarca: <span class="res">'.$contrato['nombre_modelo'].' </span> Versión ó tipo: <span class="res">'.$tipocarro.' </span>
                 Modelo ó año: <span class="res">'.$contrato['anio'].' </span> Color: <span class="res">'.$contrato['color'].' </span> 
-                Kilometraje: <span class="res">'.$contrato['kilometros'].' </span> Número de constancia de inscripción al Repuve: <span class="res">'.$contrato['NIV'].' </span>
+                Kilometraje: <span class="res">'.$contrato['kilometros'].' </span> Número de constancia de inscripción al Repuve: <span class="res">'.$contrato['numero_serie_vehicular'].' </span>
                 Placas: <span class="res">'.$contrato['placa'].' </span> Número de motor: <span class="res">'.$contrato['no_motor'].' </span> 
                 Otros datos de identificación exigidos por las disposiciones legales locales y federales aplicables
             </p>
@@ -119,12 +119,6 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor, $inventario){
             </p>
             <table class="tablaLegal">
                 <tbody>
-                		<tr>
-                            <td class="tablaLegal"></td>
-                            <td class="tablaLegal">Nombre</td>
-                            <td class="tablaLegal">SI</td>
-                            <td class="tablaLegal">NO</td>
-                        </tr>
                     '.getTableInventario($inventario).'
                 </tbody>
             </table>
@@ -550,17 +544,29 @@ function getTableInventario($USOS){
     foreach ($DETALLES as $d)
     {
         $existe = false;
-        foreach ($USOS as $u){
-            if ($u['id_detalle_fk']==$d['id_detalle']){
-                $existe = true;
+        if (count($USOS)>0){
+            foreach ($USOS as $u){
+                if ($u['id_detalle_fk']==$d['id_detalle']){
+                    $existe = true;
+                }
+                //constuyo el array obj
+                $obj = array(
+                    "nombre"=> $d['nombre'],
+                    "existe"=> $existe,
+                    "cat" => $d['categoria']
+                );
             }
+        }
+        else
+        {
             //constuyo el array obj
             $obj = array(
                 "nombre"=> $d['nombre'],
-                "existe"=> $existe,
+                "existe"=> false,
                 "cat" => $d['categoria']
             );
         }
+
         //asignarlo a su categoria
         switch ($d['categoria']){
             case "0":
@@ -575,36 +581,51 @@ function getTableInventario($USOS){
         }
     }
     $template .= '<tr class="tablaLegal" >
-			        <td class="tablaLegal" colspan="4">EXTERIORES</td>
-		        </tr>';
+			        <td class="tablaLegal" colspan="3"><strong>E X T E R I O R E S</strong></td>
+		        </tr>
+		        <tr>
+                    <td class="tablaLegal"><strong>NOMBRE</strong></td>
+                    <td class="tablaLegal"><strong>SI</strong></td>
+                    <td class="tablaLegal"><strong>NO</strong></td>
+                </tr>
+		        ';
     foreach ($ext as $obj){
         $template .= '		
 		<tr class="tablaLegal">
-			<td class="tablaLegal">'.$obj['cat'].'</td>
 			<td class="tablaLegal">'.$obj['nombre'].'</td>
 			<td class="tablaLegal">'.($obj['existe'] ? "X":"").'</td>
 			<td class="tablaLegal">'.($obj['existe'] ? "":"X").'</td>
 		</tr>';
     }
     $template .= '<tr class="tablaLegal">
-			        <td class="tablaLegal" colspan="4">INVENTARIO</td>
-		        </tr>';
+			        <td class="tablaLegal" colspan="3"><strong>I N V E N T A R I O</strong> </td>
+		        </tr>
+		        <tr>
+                    <td class="tablaLegal"><strong>NOMBRE</strong></td>
+                    <td class="tablaLegal"><strong>SI</strong></td>
+                    <td class="tablaLegal"><strong>NO</strong></td>
+                </tr>
+		        ';
     foreach ($inv as $obj){
         $template .= '		
 		<tr class="tablaLegal">
-			<td class="tablaLegal">'.$obj['cat'].'</td>
 			<td class="tablaLegal">'.$obj['nombre'].'</td>
 			<td class="tablaLegal">'.($obj['existe'] ? "X":"").'</td>
 			<td class="tablaLegal">'.($obj['existe'] ? "":"X").'</td>
 		</tr>';
     }
     $template .= '<tr class="tablaLegal">
-			        <td class="tablaLegal" colspan="4">ACCESORIOS</td>
-		        </tr>';
+			        <td class="tablaLegal" colspan="3"><strong>A C C E S O R I O S</strong></td>
+		        </tr>
+		        <tr>
+                    <td class="tablaLegal"><strong>NOMBRE</strong></td>
+                    <td class="tablaLegal"><strong>SI</strong></td>
+                    <td class="tablaLegal"><strong>NO</strong></td>
+                </tr>
+		        ';
     foreach ($acc as $obj){
         $template .= '		
 		<tr class="tablaLegal">
-			<td class="tablaLegal">'.$obj['cat'].'</td>
 			<td class="tablaLegal">'.$obj['nombre'].'</td>
 			<td class="tablaLegal">'.($obj['existe'] ? "X":"").'</td>
 			<td class="tablaLegal">'.($obj['existe'] ? "":"X").'</td>

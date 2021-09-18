@@ -141,7 +141,7 @@
                                                                                         <option value="COA">Coahuila</option>
                                                                                         <option value="COL">Colima</option>
                                                                                         <option value="DUR">Durango</option>
-                                                                                        <option value="MEX">Estado de México</option>
+                                                                                        <option value="MEX" selected>Estado de México</option>
                                                                                         <option value="GUA">Guanajuato</option>
                                                                                         <option value="GRO">Guerrero</option>
                                                                                         <option value="HID">Hidalgo</option>
@@ -230,7 +230,7 @@
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="noSerieV">Serie Vehicular</label>
+                                                                                    <label class="form-control-label" for="noSerieV">NCI Repuve</label>
                                                                                     <input type="text" id="noSerieV" name="noSerieV" class="form-control" placeholder="Número de Serie Vehicular">
                                                                                 </div>
                                                                             </div>

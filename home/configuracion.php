@@ -164,6 +164,8 @@
                                                                 <tr>
                                                                     <th scope="col">#</th>
                                                                     <th scope="col">Característica</th>
+                                                                    <th scope="col">Categoría</th>
+                                                                    <th scope="col">Uso en Contrato</th>
                                                                     <th scope="col"></th>
                                                                 </tr>
                                                                 </thead>
