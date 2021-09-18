@@ -538,32 +538,29 @@ function getMesLetra($mes){
 }
 
 function getTableInventario($USOS){
-    //separar por categoria
-
     #inventario general del suistema
     include_once("./../control/controlDetalles.php");
     $DETALLES = json_decode(consultaDetallesParaInventarioContrato(),true);
 
     //verificar si el inventario actual corresponde al inventario que se agrego
-
     $ext = [];
     $inv = [];
     $acc = [];
-
+    $template = "";
     foreach ($DETALLES as $d)
     {
         $existe = false;
-            foreach ($USOS as $u){
-                if ($u['id_detalle_fk']==$d['id_detalle']){
-                    $existe = true;
-                }
-                //constuyo el array obj
-                $obj = array(
-                    "nombre"=> $d['nombre'],
-                    "existe"=> $existe,
-                    "cat" => $d['categoria']
-                );
+        foreach ($USOS as $u){
+            if ($u['id_detalle_fk']==$d['id_detalle']){
+                $existe = true;
             }
+            //constuyo el array obj
+            $obj = array(
+                "nombre"=> $d['nombre'],
+                "existe"=> $existe,
+                "cat" => $d['categoria']
+            );
+        }
         //asignarlo a su categoria
         switch ($d['categoria']){
             case "0":
