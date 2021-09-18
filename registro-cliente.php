@@ -82,8 +82,6 @@
                                         <div class="form-group">
                                             <label class="form-control-label" for="nombre_cliente">Nombre</label>
                                             <input type="text" name="nombre_cliente" id="nombre_cliente" class="form-control" placeholder="Nombre" required>
-                                            <div class="was-validated">¡Ok!</div>
-                                            <div class="needs-validation">Ingrese el segundo apellido </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">

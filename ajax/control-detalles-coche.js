@@ -342,6 +342,14 @@ function getTemplateContratoVenta(contrato) {
     } else if(contrato.forma_pago==="1"){
         formaPago="Credito";
     } else formaPago="Apartado";
+    let btnTemplates = ` <a href="./contrato.php?noVehiculo=${contrato.no_vehiculo_fk}&consult=true" target="_blank">
+                            <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Contrato</button>
+                        </a>`;
+    console.log(contrato);
+    let btnContrato= contrato.forma_pago=="1"?btnTemplates:"";
+
+
+
     template += `
                 <!-- CONTRATO DE VENTA-->
                                 <div class="tab-pane fade show active" id="venta" role="tabpanel" aria-labelledby="home-tab">
@@ -421,9 +429,7 @@ function getTemplateContratoVenta(contrato) {
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-12 col-auto text-right">
-                                                                <a href="./contrato.php?noVehiculo=${contrato.no_vehiculo_fk}&consult=true" target="_blank">
-                                                                    <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Contrato</button>
-                                                                </a>
+                                                                ${btnContrato}
                                                                 <a href="./responsiva.php?noVechiculo=${contrato.no_vehiculo_fk}&consult=true" target="_blank">
                                                                     <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> C. Responsiva</button>
                                                                 </a>

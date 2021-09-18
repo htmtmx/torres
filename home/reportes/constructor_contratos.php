@@ -4,15 +4,16 @@ require './../vendor/autoload.php';
 use Luecano\NumeroALetras\NumeroALetras;
 
 function getTemplateContrato($contrato,$dirCliente,$dirVendedor, $inventario){
+    $restante= $contrato['total']-$contrato['enganche'];
+    $mensualidad = $restante/$contrato['plazo'];
     $formatter = new NumeroALetras();
     $formatter->conector = ' PESOS ';
-    $WordTotal =  $formatter->toInvoice($contrato['total'], 2, "MXN");
-    $WordSaldo =  $formatter->toInvoice($contrato['saldo'], 2,"MXN");
+    $WordTotal =  $formatter->toInvoice($restante, 2, "MXN");
+    $WordSaldo =  $formatter->toInvoice($mensualidad, 2,"MXN");
     $WordEnganche =  $formatter->toInvoice($contrato['enganche'], 2,"MXN");
     $letraTotal= $WordTotal;
     $letraSaldo= $WordSaldo;
     $letraEnganche= $WordEnganche;
-    $pagos=$contrato[0][0];
     $direccion="";
     $verificacion= $contrato['verificaciones_coche']>0? "SI": "NO";
     $estadoVendedor=getEstadoRepublica($dirVendedor['estado']);
@@ -142,9 +143,9 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor, $inventario){
                         $<span class="res">'.$contrato['total'].' </span> (<span class="res"> '.$letraTotal.' </span> ).
                     </li>
                     <li class="legal">
-                        2)	el comprador en consecuencia se declara deudor del vendedor y se compromete a pagar en entregas iguales mensuales de  
-                        $<span class="res"> '.$pagos[1]['saldo'].' </span> (<span class="res"> '.$letraSaldo.' </span>)
-                         cada una a partir del día <span class="res"> '.$contrato['fecha_primer_pago'].' </span> y una entrega final de $<span class="res"> '.$contrato['total'].' </span> (<span class="res"> '.$letraTotal.' </span>).
+                        2)	el comprador en consecuencia se declara deudor del vendedor y se compromete a pagar en <span class="res"> '.$contrato['plazo'].' </span> entregas  iguales mensuales de  
+                        $<span class="res"> '.$mensualidad.' </span> (<span class="res"> '.$letraSaldo.' </span>)
+                         cada una a partir del día <span class="res"> '.$contrato['fecha_primer_pago'].' </span> y una entrega final de $<span class="res"> '.$restante.' </span> (<span class="res"> '.$letraTotal.' </span>).
                     </li>
                 </ol>
             </p>
