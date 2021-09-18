@@ -542,7 +542,7 @@ function insertaAbono($idPago,$monto,$notas){
 
 function revisaContratoVenta($params){
     include_once "controlCoche.php";
-    $coches = consultaCocheVenta($params['no_vehiculo'],0);
+    $coches = consultaCocheVenta($params['no_vehiculo'],0,$params['archivado']);
     if($coches!=null){
         try {
             $coche= $coches[0];

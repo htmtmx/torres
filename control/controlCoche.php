@@ -55,10 +55,10 @@ function consultaCocheDetallesCompletos($show_detalles,$noVehiculo,$estatus,$arc
     return json_encode($cochesData);
 }
 
-function consultaCocheVenta($noVehiculo,$estatus){
+function consultaCocheVenta($noVehiculo,$estatus,$archivado){
     include_once "../model/COCHE.php";
     $objCoche = new COCHE();
-    $arrayCoches = $objCoche->queryconsultaCoches($noVehiculo,$estatus);
+    $arrayCoches = $objCoche->queryconsultaCoches($noVehiculo,$estatus,$archivado);
     //obtengo la lista de coches en
     return $arrayCoches;
 }

@@ -43,6 +43,7 @@ $params = [
     //tuipo de pago CONTADO -> 0 APARTADO -> 0  CREDITO -> 1
     "forma_pago" => $_POST['forma_pago'],
     "total" => "0",
+    "archivado"=> false
 ];
 $plazo= $params['forma_pago']>0? $params['plazo']: 0;
 $params['plazo']= $plazo;

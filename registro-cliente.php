@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css">
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
 </head>
 
 <body class="bg-default">
@@ -80,7 +81,9 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="nombre_cliente">Nombre</label>
-                                            <input type="text" name="nombre_cliente" id="nombre_cliente" class="form-control" placeholder="Nombre">
+                                            <input type="text" name="nombre_cliente" id="nombre_cliente" class="form-control" placeholder="Nombre" required>
+                                            <div class="was-validated">¡Ok!</div>
+                                            <div class="needs-validation">Ingrese el segundo apellido </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -234,15 +237,7 @@
                                                 <option value="INE">INE</option>
                                                 <option value="PASAPORTE">Pasaporte</option>
                                                 <option value="CEDULA">Cédula Profesional</option>
-                                                <option value="LICENCIA">Licencia de Conducir</option>
-                                                <option value="INAPAM">INAPAM</option>
-                                                <option value="ESCOLAR">Credencial de Estudiante</option>
-                                                <option value="CERTIFICADO">Certificado Escolar</option>
-                                                <option value="TITULO">Título Profesional</option>
                                                 <option value="CARTILLA">Cartilla de Servicio Militar</option>
-                                                <option value="SEGURO">Credencial IMSS ISSSTE</option>
-                                                <option value="CEDULA">Cédula de Idedntificacion Ciudadana</option>
-                                                <option value="OTRO">Otro</option>
                                                 <option value="NONE">Ninguna</option>
                                             </select>
                                         </div>
@@ -322,9 +317,12 @@
 <script src="./assets/js/sweetalert2.all.min.js"></script>
 </body>
 
-<script src="./ajax/console_user.js"></script>
+
 <script>
-    $("#nombre_cliente").focus();
+$("#nombre_cliente").focus();
 </script>
 <script src="./ajax/registro-usuario-page.js"></script>
+<script src="./ajax/valida-form.js"></script>
+<script src="./ajax/console_user.js"></script>
+
 </html>
