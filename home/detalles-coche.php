@@ -180,7 +180,16 @@ $noCoche = $_GET['idCoche'];
                                 <div class="table-responsive">
                                     <!-- Projects table -->
                                     <table class="table align-items-center table-flush">
+                                        <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Valor</th>
+                                            <th scope="col">Categoría</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                        </thead>
                                         <tbody id="tbl-detalles">
+
                                         <!-- AJAX RESPONSE TABLA DETALLES -->
                                         </tbody>
                                     </table>

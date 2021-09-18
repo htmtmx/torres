@@ -196,25 +196,35 @@ function construyeCocheTablaFotos(docs){
 }
 
 function contruyeTablaDetalles(detalles){
+    console.log(detalles);
     let template="";
+    let cat;
+    let contrato;
     detalles.forEach((detalle)=>{
+        contrato = detalle.oblogatorio === "1" ? `<i class="fas fa-file-contract text-green"></i>`:`<i class="fas fa-file-contract text-lighter"></i>`;
+        switch (detalle.categoria){
+            case "0": cat = "Exterior"; break;
+            case "1": cat = "Inventario"; break;
+            case "2": cat = "Accesorio"; break;
+            default: cat  = "Otro"; break;
+        }
         template+= `
-                             <tr idCarac="${detalle.id_detalle}">
-                                <th scope="row">
-                                    ${detalle.nombre}
-                                </th>
-                                <td>
-                                    ${detalle.valor}
-                                </td>
-                                <td>
-                                    <button class="btn btn-icon btn-secondary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-pen text-primary"></i></span>
-                                    </button>
-                                    <button class="btn btn-icon btn-secondary btnEliminarCaracteristicas" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
+                     <tr idCarac="${detalle.id_detalle}">
+                        <th scope="row">
+                            ${contrato} ${detalle.nombre}
+                        </th>
+                        <td>
+                            ${detalle.valor}
+                        </td>
+                        <td>
+                            ${cat}
+                        </td>
+                        <td>
+                            <button class="btn btn-icon btn-secondary btnEliminarCaracteristicas" type="button">
+                                <span class="btn-inner--icon"><i class="fas fa-trash-alt text-red"></i></span>
+                            </button>
+                        </td>
+                    </tr>
         `;
     });
     return template;

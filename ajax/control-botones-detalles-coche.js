@@ -107,28 +107,27 @@ function consultaDetallesCocheGenerales(){
 
 
 function construyeSelectDetalles(detalles){
-    console.log(detalles);
-    let template="";
+    let template ="";
+    let tmpExt = `<optgroup label="Exterior">`;
+    let tmpInv = `<optgroup label="Inventario">`;
+    let tmpAcc = `<optgroup label="Accesorios">`;
+    let tmpOtro = `<optgroup label="Otros">`;
+
     detalles.forEach((detalle)=>{
         let contrato = detalle.oblogatorio === "1" ? `&#xf56c;`:"&#xf1fc";
+        let option_template =`<option class="fa" value="${detalle.id_detalle}">${contrato} ${detalle.nombre}</span> </option>`;
         switch (detalle.categoria){
-            case "0":
-                categoria = "[Ext.]";
-                break;
-            case "1":
-                categoria = "[Inv.]";
-                break;
-            case "2":
-                categoria = "[Acc.]";
-                break;
-            default:
-                categoria = "[Otro]";
-                break;
+            case "0": tmpExt += option_template; break;
+            case "1": tmpInv += option_template; break;
+            case "2": tmpAcc += option_template; break;
+            default: tmpOtro += option_template; break;
         }
-        template+=`
-            <option class="fa" value="${detalle.id_detalle}">${contrato} ${detalle.nombre} ${categoria}</span> </option>
-        `;
     });
+    tmpExt += `</optgroup>`;
+    tmpInv += `</optgroup>`;
+    tmpAcc += `</optgroup>`;
+    tmpOtro += `</optgroup>`;
+    template += tmpExt + tmpInv+ tmpAcc+ tmpOtro;
     return template;
 }
 //FUNCION SUBMIT PARA EL FORM DE DOC CONTRATO ADQUISICION
