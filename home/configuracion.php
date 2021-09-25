@@ -362,7 +362,7 @@
                                 <div class="col-lg-3">
                                     <div class="form-group">
                                         <label class="form-control-label" for="puesto">Revisión</label>
-                                        <input type="email" id="rev" class="form-control" value="19 AGO 2021" disabled>
+                                        <input type="text" id="rev" class="form-control" value="25 SEP 2021" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

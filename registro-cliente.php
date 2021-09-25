@@ -80,20 +80,20 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="nombre_cliente">Nombre</label>
+                                            <label class="form-control-label" for="nombre_cliente"><span class="obliga">*</span>Nombre</label>
                                             <input type="text" name="nombre_cliente" id="nombre_cliente" class="form-control" placeholder="Nombre" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="apaterno_cliente">Primer Apellido</label>
-                                            <input type="text" name="apaterno_cliente" id="apaterno_cliente" class="form-control" placeholder="Primer Apellido">
+                                            <label class="form-control-label" for="apaterno_cliente"><span class="obliga">*</span>Primer Apellido</label>
+                                            <input type="text" name="apaterno_cliente" id="apaterno_cliente" class="form-control" placeholder="Primer Apellido" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="amaterno_cliente">Segundo Apellido</label>
-                                            <input type="text" name="amaterno_cliente" id="amaterno_cliente" class="form-control" placeholder="Segundo Apellido">
+                                            <label class="form-control-label" for="amaterno_cliente"><span class="obliga">*</span>Segundo Apellido</label>
+                                            <input type="text" name="amaterno_cliente" id="amaterno_cliente" class="form-control" placeholder="Segundo Apellido" required>
                                         </div>
                                     </div>
                                 </div>
@@ -101,13 +101,13 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="correo_cliente">Correo Electronico</label>
-                                            <input type="email" name="correo_cliente" id="correo_cliente" class="form-control" placeholder="example@gmail.com">
+                                            <input type="email" name="correo_cliente" id="correo_cliente" class="form-control" placeholder="example@gmail.com" >
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="telefono_cliente">Telefono</label>
-                                            <input type="text" name="telefono_cliente" id="telefono_cliente" class="form-control" placeholder="No. Telefono">
+                                            <label class="form-control-label" for="telefono_cliente"><span class="obliga">*</span>Teléfono</label>
+                                            <input type="text" name="telefono_cliente" id="telefono_cliente" class="form-control" placeholder="No. Telefono" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -125,14 +125,14 @@
                                     <div class="col-lg-8">
                                         <div class="form-group">
                                             <input type="hidden" id="id_dir" name="id_dir">
-                                            <label class="form-control-label" for="calle">Calle</label>
-                                            <input type="text" id="calle" name="calle" class="form-control">
+                                            <label class="form-control-label" for="calle"><span class="obliga">*</span>Calle</label>
+                                            <input type="text" id="calle" name="calle" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-2">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="noExtEmp">No Ext.</label>
-                                            <input type="text" id="noExtEmp" name="noExtEmp" class="form-control">
+                                            <label class="form-control-label" for="noExtEmp"><span class="obliga">*</span>No Ext.</label>
+                                            <input type="text" id="noExtEmp" name="noExtEmp" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-2">
@@ -145,27 +145,27 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="coloniaEmpr">Colonia</label>
-                                            <input type="text" id="coloniaEmpr" name="coloniaEmpr" class="form-control">
+                                            <label class="form-control-label" for="coloniaEmpr"><span class="obliga">*</span>Colonia</label>
+                                            <input type="text" id="coloniaEmpr" name="coloniaEmpr" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="municipio">Municipio</label>
-                                            <input type="text" id="municipio" name="municipio" class="form-control">
+                                            <label class="form-control-label" for="municipio"><span class="obliga">*</span>Municipio</label>
+                                            <input type="text" id="municipio" name="municipio" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-2">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="cpEmpr">CP</label>
-                                            <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control">
+                                            <label class="form-control-label" for="cpEmpr"><span class="obliga">*</span>CP</label>
+                                            <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="estadoEmp">Estado</label>
+                                            <label class="form-control-label" for="estadoEmp"><span class="obliga">*</span>Estado</label>
                                             <select name="estadoEmp" id="estadoEmp" class="form-control">
                                                 <option value="AGU">Aguascalientes</option>
                                                 <option value="BCN">Baja California</option>
@@ -177,7 +177,7 @@
                                                 <option value="COA">Coahuila</option>
                                                 <option value="COL">Colima</option>
                                                 <option value="DUR">Durango</option>
-                                                <option value="MEX">Estado de México</option>
+                                                <option value="MEX" selected>Estado de México</option>
                                                 <option value="GUA">Guanajuato</option>
                                                 <option value="GRO">Guerrero</option>
                                                 <option value="HID">Hidalgo</option>

@@ -285,7 +285,7 @@ class CLIENTES extends CONEXION implements I_CLIENTES
         $query = "SELECT `no_cliente`, `nombre`, `apaterno`, `amaterno`, `telefono`,
             `celular`, `correo`, `subscripcion`, `empresa`, `rfc`, `fecha_registro`,
             `medio_identificación`, `folio`, `tipo_cliente`, `estatus`
-            FROM `cliente` WHERE no_cliente>0" . $concat . " ORDER BY `apaterno`,`amaterno`";
+            FROM `cliente` WHERE no_cliente>0" . $concat . " ORDER BY `nombre`,`apaterno`,`amaterno`";
         $this->connect();
         $result = $this->getData($query);
         $this->close();

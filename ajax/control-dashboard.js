@@ -43,6 +43,7 @@ function consultaCreditosPendientes(){
         url: "../webhook/avanceCredits.php",
         success: function (response)
         {
+            console.log(response);
             let obj_result = JSON.parse(response);
             let contratosCedito   =   construyeTablaContratosCredito(obj_result);
             $("#tblCredits").html(contratosCedito);
