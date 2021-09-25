@@ -15,19 +15,19 @@ h1 {
     text-align: center;
 }
 h2 {
-    color: #77D312;
+    color: #488207;
     text-align: left;
     font-size: 12px;
     margin-bottom: 2rem;
 }
 h3 {
-    color: #77D312;
+    color: #488207;
     text-align: left;
 }
 p, li, .normalText{
     font-weight: 700;
     font-size: 10px;
-    color: #77D312;
+    color: #488207;
 }
 .container {
     margin: 0 auto;
@@ -59,7 +59,7 @@ td, th {
     width: 30px;
     height: auto;
     text-align: center;
-    color: #32b629;
+    color: #488207;
 }
 th {
     background: #f0e6cc;
@@ -89,7 +89,7 @@ span {
     border: 1px solid #e8e8e8;
     background-color: rgba(253, 253, 253, 0.99);
     -webkit-text-stroke-width: medium;
-    color: #77d312;
+    color: #488207;
     padding-top: .5em;
     padding-bottom: .5em;
 }

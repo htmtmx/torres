@@ -23,7 +23,6 @@ function consultaDetalles() {
 
 function construyeSelectDetalles(detalles){
     let template="";
-    console.log(detalles);
     let cat;
 
     detalles.forEach((detalle)=>{
@@ -151,34 +150,33 @@ $("#total").change(function ()
  * ***************************/
 $("#msform").on("submit", function(e){
     //let tipocontrato = $('input[name="contrato"]:checked').val();
-    var f = $(this);
-    var formData = new FormData(document.getElementById("msform"));
-    formData.append("dato", "valor");
-    //formData.append(f.attr("name"), $(this)[0].files[0]);
-    $.ajax({
-        url: "../webhook/addContratoCompra.php",
-        type: "post",
-        dataType: "html",
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false
-    })
-        .done(function(res){
-            let mje = JSON.parse(res);
-            alertaEmergente(mje.Mensaje);
-            let plantilla = `
-                        <a href="./detalles-coche.php?idCoche=${mje.idCoche}">
-                            <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Ver Vehiculo</button>
-                        </a>
-                        <a href="./responsiva.php?noVechiculo=${mje.idCoche}&amp;consult=false" target="_blank">
-                            <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Carta Responsiva</button>
-                        </a>
-            `;
-            $("#botonesContrato").html(plantilla);
-        $('#msform').trigger('reset');
-        });
     e.preventDefault();
+        var f = $(this);
+        var formData = new FormData(document.getElementById("msform"));
+        formData.append("dato", "valor");
+        //formData.append(f.attr("name"), $(this)[0].files[0]);
+        $.ajax({
+            url: "../webhook/addContratoCompra.php",
+            type: "post",
+            dataType: "html",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false
+        })
+            .done(function(res){
+                let mje = JSON.parse(res);
+                alertaEmergente(mje.Mensaje);
+                let plantilla = `
+                    <a href="./detalles-coche.php?idCoche=${mje.idCoche}">
+                        <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Ver Vehiculo</button>
+                    </a>
+                    <a href="./responsiva.php?noVechiculo=${mje.idCoche}&amp;consult=false" target="_blank">
+                        <button type="button" class="btn btn-primary"><i class="fas fa-print"></i> Carta Responsiva</button>
+                    </a>
+        `;
+                $("#botonesContrato").html(plantilla);
+                $('#msform').trigger('reset');
+            });
+
 });
-
-

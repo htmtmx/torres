@@ -59,6 +59,9 @@ $('.radio-group .radio').click(function(){
     $(this).addClass('selected');
 });
 
+/*
 $(".submit").click(function(){
     return false;
 })
+
+ */

@@ -373,12 +373,12 @@
                                                                 <div class="card-header">
                                                                     <div class="row align-items-center">
                                                                         <div class="col-auto">
-                                                                            <h3 class="mb-0">DATOS DEL VENDEDOR</h3>
+                                                                            <h3 class="mb-0">AGREGUE LOS DATOS DE QUIEN SE LE COMPRA</h3>
                                                                         </div>
                                                                         <div class="col text-right">
                                                                             <!-- Button trigger modal -->
                                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buscaClienteModal">
-                                                                                <i class="fas fa-search"></i> Buscar Cliente
+                                                                                <i class="fas fa-search"></i> Buscar Persona
                                                                             </button>
                                                                             <button type="button" class="btn btn-primary" onclick="limpiarCliente();">Nuevo</button>
                                                                         </div>
@@ -471,8 +471,8 @@
                                                                         <div class="row">
                                                                             <div class="col-lg-2">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="cpEmpr">CP</label>
-                                                                                    <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control">
+                                                                                    <label class="form-control-label" for="cpEmpr"><span class="obliga">*</span>CP</label>
+                                                                                    <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
@@ -651,7 +651,7 @@
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="observacionesContrato">Observaciones</label>
-                                                                                <textarea class="form-control" id="observacionesContrato" name="observacionesContrato" rows="3" placeholder="Detalles extra referente a la compra"></textarea>
+                                                                                <textarea class="form-control" id="observacionesContrato" name="observacionesContrato" rows="3" placeholder="Estas observaciones se imprimen en el contrato de Conpra-Venta"></textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>

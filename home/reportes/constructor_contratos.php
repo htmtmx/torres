@@ -653,8 +653,9 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
 //var_dump($contrato);
 //die();
     $plantilla = '
-    <body>
-        <div class="container">
+    <body >
+    <div class="bgMarcas" style="background: url(./reportes/bg-min.jpg) center center no-repeat">
+    <div class="container" >
             <div class="row">
                     <h1>AUTOS TORRES</h1>
             </div>
@@ -671,9 +672,9 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
                     <td>MODELO:</td>
                     <td class="res">'.$contrato['nombre_modelo'].'</td>
                     <td>TIPO:</td>
-                    <td class="res">'.$contrato['tipo_carro'].'</td>
+                    <td class="res">'.getTipoCarro($contrato['tipo_carro']).'</td>
                     <td>COLOR:</td>
-                    <td class="res">'.$contrato['color'].'</td>
+                    <td class="res">'.strtoupper($contrato['color']).'</td>
                 </tr>
                 <tr>
                     <td>MOTOR:</td>
@@ -743,19 +744,19 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
                 Cantidad con letra  <span class="res">('.$letraTotal.')</span>
             </p>';
 
-        if ($contrato['tipo_contrato']== "0")
-        {
-            if ($contrato['forma_pago']=="1"){
-                $plantilla .= '
-                <p>
-                    Estando de conformidad ambas partes con los derechos y obligaciones correspondientes,
-                    firmado la presente para constancia. <br>
-                    En caso de cancelar esta operación el Sr.  <span class="res">'.$contrato['cliente'].'</span> acepta pagar el
-                    <span class="res">&nbsp;&nbsp;40%&nbsp;&nbsp;</span> del valor de la operación que corresponde a <br> <span class="res">&nbsp;&nbsp;$ '.$valorCancelacion.'</span>
-                </p>';
-            }
-        }
+    if ($contrato['tipo_contrato']== "0")
+    {
+        if ($contrato['forma_pago']=="1"){
             $plantilla .= '
+                    <p>
+                        Estando de conformidad ambas partes con los derechos y obligaciones correspondientes,
+                        firmado la presente para constancia. <br>
+                        En caso de cancelar esta operación el Sr.  <span class="res">'.$contrato['cliente'].'</span> acepta pagar el
+                        <span class="res">&nbsp;&nbsp;40%&nbsp;&nbsp;</span> del valor de la operación que corresponde a <br> <span class="res">&nbsp;&nbsp;$ '.$valorCancelacion.'</span>
+                    </p>';
+        }
+    }
+    $plantilla .= '
             <p>
                 Esta operación se realizará bajo el RÉGIMEN DE RESERVA DE DOMINIO esto es,
                 que el comprador otorga al vendedor poder absoluto, de recuperar la unidad detallada,
@@ -800,9 +801,9 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
                 </tr>
                 <tr>
                     <td>COLONIA:</td>
-                    <td><span class="fecha res">'.$dirVendedor['colonia'].'</span></td>
+                    <td><span class="fecha res">Col. '.$dirVendedor['colonia'].'</span></td>
                     <td>COLONIA:</td>
-                    <td><span class="fecha res">'.$dirCliente['colonia'].'</span></td>
+                    <td><span class="fecha res">Col. '.$dirCliente['colonia'].'</span></td>
                 </tr>
                 <tr>
                     <td>TELEFONO:</td>
@@ -818,15 +819,15 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <div class="titulostable">ENTREGO POR MI VOLUNTAD</div>
+                        <div class="titulostable"><br>ENTREGO POR MI VOLUNTAD</div>
                     </td>
                     <td colspan="2">
-                        <div class="titulostable">RECIBI DE CONFORMIDAD</div>
+                        <div class="titulostable"><br>RECIBI DE CONFORMIDAD</div>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="firma">            </td>
-                    <td colspan="2" class="firma">            </td>
+                    <td colspan="2" class="firma"><br><br></td>
+                    <td colspan="2" class="firma"><br><br></td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -838,15 +839,15 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <div class="titulostable">TESTIGO</div>
+                        <div class="titulostable"><br>TESTIGO</div>
                     </td>
                     <td colspan="2">
-                        <div class="titulostable">TESTIGO</div>
+                        <div class="titulostable"><br>TESTIGO</div>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="firma">            </td>
-                    <td colspan="2" class="firma">            </td>
+                    <td colspan="2" class="firma"><br></td>
+                    <td colspan="2" class="firma"><br></td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -859,6 +860,8 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
                 </tbody>
             </table>
         </div>
+    </div>
+        
         
         </body>
     ';

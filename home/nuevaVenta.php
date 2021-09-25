@@ -176,14 +176,14 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                 <div class="card-header">
                                                                     <div class="row align-items-center">
                                                                         <div class="col-auto">
-                                                                            <h3 class="mb-0">DATOS DEL VENDEDOR</h3>
+                                                                            <h3 class="mb-0">DATOS DEL COMPRADOR</h3>
                                                                         </div>
                                                                         <div class="col text-right">
                                                                             <!-- Button trigger modal -->
                                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buscaClienteModal">
                                                                                 <i class="fas fa-search"></i> Buscar Cliente
                                                                             </button>
-                                                                            <button type="button" class="btn btn-primary" onclick="limpiarCliente();">Nuevo</button>
+                                                                            <button type="button" class="btn btn-primary" onclick="limpiarCliente();">Registrar Nuevo</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -194,20 +194,20 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="nombre">Nombre</label>
-                                                                                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+                                                                                    <label class="form-control-label" for="nombre"><span class="obliga">*</span>Nombre</label>
+                                                                                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="apaterno">Primer Apellido</label>
-                                                                                    <input type="text" name="apaterno" id="apaterno" class="form-control" placeholder="Primer Apellido">
+                                                                                    <label class="form-control-label" for="apaterno"><span class="obliga">*</span>Primer Apellido</label>
+                                                                                    <input type="text" name="apaterno" id="apaterno" class="form-control" placeholder="Primer Apellido" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="amaterno">Segundo Apellido</label>
-                                                                                    <input type="text" name="amaterno" id="amaterno" class="form-control" placeholder="Segundo Apellido">
+                                                                                    <label class="form-control-label" for="amaterno"><span class="obliga">*</span>Segundo Apellido</label>
+                                                                                    <input type="text" name="amaterno" id="amaterno" class="form-control" placeholder="Segundo Apellido" required>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -220,8 +220,8 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                             </div>
                                                                             <div class="col-lg-4">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="telefono">Telefono</label>
-                                                                                    <input type="text" name="telefono" id="telefono" class="form-control" placeholder="No. Telefono">
+                                                                                    <label class="form-control-label" for="telefono"><span class="obliga">*</span>Telefono</label>
+                                                                                    <input type="text" name="telefono" id="telefono" class="form-control" placeholder="No. Telefono" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
@@ -239,14 +239,14 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                             <div class="col-lg-8">
                                                                                 <div class="form-group">
                                                                                     <input type="hidden" id="id_dir" name="id_dir">
-                                                                                    <label class="form-control-label" for="calle">Calle</label>
-                                                                                    <input type="text" id="calle" name="calle" class="form-control" >
+                                                                                    <label class="form-control-label" for="calle"><span class="obliga">*</span>Calle</label>
+                                                                                    <input type="text" id="calle" name="calle" class="form-control" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-2">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="noExtEmp">No Ext.</label>
-                                                                                    <input type="text" id="noExtEmp" name="noExtEmp" class="form-control">
+                                                                                    <label class="form-control-label" for="noExtEmp"><span class="obliga">*</span>No Ext.</label>
+                                                                                    <input type="text" id="noExtEmp" name="noExtEmp" class="form-control" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-2">
@@ -259,22 +259,22 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                         <div class="row">
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="coloniaEmpr">Colonia</label>
-                                                                                    <input type="text" id="coloniaEmpr" name="coloniaEmpr" class="form-control">
+                                                                                    <label class="form-control-label" for="coloniaEmpr"><span class="obliga">*</span>Colonia</label>
+                                                                                    <input type="text" id="coloniaEmpr" name="coloniaEmpr" class="form-control" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="municipio">Municipio</label>
-                                                                                    <input type="text" id="municipio" name="municipio" class="form-control">
+                                                                                    <label class="form-control-label" for="municipio"><span class="obliga">*</span>Municipio</label>
+                                                                                    <input type="text" id="municipio" name="municipio" class="form-control" required>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-lg-2">
                                                                                 <div class="form-group">
-                                                                                    <label class="form-control-label" for="correo">CP</label>
-                                                                                    <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control">
+                                                                                    <label class="form-control-label" for="correo"><span class="obliga">*</span>CP</label>
+                                                                                    <input type="numeric" id="cpEmpr" name="cpEmpr" class="form-control" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-4">
@@ -291,7 +291,7 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                                         <option value="COA">Coahuila</option>
                                                                                         <option value="COL">Colima</option>
                                                                                         <option value="DUR">Durango</option>
-                                                                                        <option value="MEX">Estado de México</option>
+                                                                                        <option value="MEX" selected>Estado de México</option>
                                                                                         <option value="GUA">Guanajuato</option>
                                                                                         <option value="GRO">Guerrero</option>
                                                                                         <option value="HID">Hidalgo</option>
@@ -482,7 +482,7 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <span class="form-control-label" id="engancheSpan" for="enganche">Pagar / Apartar Con:</span>
-                                                                            <input class="form-control" type="number" id="enganche" name="enganche" min="0" max="1000000">
+                                                                            <input class="form-control" type="number" id="enganche" name="enganche" min="0" max="1000000" value="0">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -524,7 +524,7 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="observacionesContrato">Observaciones</label>
-                                                                                <textarea class="form-control" id="observacionesContrato" name="observacionesContrato" rows="3" placeholder="Mas detalles del contrato"></textarea>
+                                                                                <textarea class="form-control" id="observacionesContrato" name="observacionesContrato" rows="3" placeholder="Escriba las observaciones que se mostraran el la Carta Responsiva"></textarea>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6">
