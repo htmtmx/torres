@@ -5,10 +5,10 @@ use Luecano\NumeroALetras\NumeroALetras;
 
 function getTemplateContrato($contrato,$dirCliente,$dirVendedor, $inventario){
     $restante= $contrato['total']-$contrato['enganche'];
-    $mensualidad = $restante/$contrato['plazo'];
+    $mensualidad = round($restante/$contrato['plazo'],2) ;
     $formatter = new NumeroALetras();
     $formatter->conector = ' PESOS ';
-    $WordTotal =  $formatter->toInvoice($restante, 2, "MXN");
+    $WordTotal =  $formatter->toInvoice($contrato['total'], 2, "MXN");
     $WordSaldo =  $formatter->toInvoice($mensualidad, 2,"MXN");
     $WordEnganche =  $formatter->toInvoice($contrato['enganche'], 2,"MXN");
     $letraTotal= $WordTotal;

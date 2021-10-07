@@ -49,6 +49,7 @@ if(isset($_SESSION['usuario']))
   <link rel="stylesheet" href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css">
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
 </head>
 
 <body class="bg-default">
@@ -142,7 +143,7 @@ if(isset($_SESSION['usuario']))
     <div class="container">
       <div class="row align-items-center justify-content-xl-between">
         <div class="col-xl-6">
-          <div class="copyright text-center text-xl-left text-muted">
+          <div class="copyright text-center text-xl-left text-white">
             &copy; 2021 Autos Torres
           </a>
           </div>

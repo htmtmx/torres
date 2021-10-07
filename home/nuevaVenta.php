@@ -419,7 +419,7 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                     <div class="row">
                                                                         <div class="col-md-12">
                                                                             <div class="form-group">
-                                                                                <label class="form-control-label" for="dirAval1">Direccion complñeta del Aval 1</label>
+                                                                                <label class="form-control-label" for="dirAval1">Direccion completa del Aval 1</label>
                                                                                 <input type="text" name="dirAval1" id="dirAval1" class="form-control" placeholder="Escriba el nombre completo del primer aval">
                                                                             </div>
                                                                         </div>
@@ -441,7 +441,7 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                     <div class="row">
                                                                         <div class="col-md-12">
                                                                             <div class="form-group">
-                                                                                <label class="form-control-label" for="dirAval2">Direccion complñeta del Aval 1</label>
+                                                                                <label class="form-control-label" for="dirAval2">Direccion completa del Aval 2</label>
                                                                                 <input type="text" name="dirAval2" id="dirAval2" class="form-control" placeholder="Escriba el nombre completo del primer aval">
                                                                             </div>
                                                                         </div>
@@ -453,7 +453,7 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                 <div class="row">
                                                                     <div class="col-lg-6">
                                                                         <label class="form-control-label" for="datetimeFirma">Fecha del Contrato</label>
-                                                                        <input id="datetimeFirma" type="datetime-local" name="datetimeFirma" value="2021-09-11T10:00:00" min="2000-01-01T00:00:00" max="2021-09-11T23:59:59">
+                                                                        <input id="datetimeFirma" type="datetime-local" name="datetimeFirma" value="<?php echo date("Y-m-d");?>T10:00:00" min="2000-01-01T00:00:00"  required="">
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
@@ -510,6 +510,7 @@ $idCoche =  (isset($_GET['idCoche'])) ? $_GET['idCoche'] : 0;
                                                                                 <option value="3">3 Meses</option>
                                                                                 <option value="6">6 Meses</option>
                                                                                 <option value="12">12 Meses</option>
+                                                                                <option value="18">18 Meses</option>
                                                                                 <option value="24">24 Meses</option>
                                                                             </select>
                                                                         </div>

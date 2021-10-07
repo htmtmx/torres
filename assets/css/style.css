@@ -1,8 +1,8 @@
 :root{
-    --primary:#590995;
-    --second: #03c4a1;
+    --primary: #0b9038;
+    --second: #d5cb12;
     --ligth : #ffffff;
-    --grey: #efefef;
+    --grey: #b6bdce;
     --alert:  indianred;
 }
 
@@ -15,6 +15,27 @@
 a:hover{
     text-decoration: none;
 }
+
+.bg-gradient-default {
+    background: linear-gradient(87deg, var(--second) 0, var(--primary) 100%) !important;
+}
+
+.bg-default {
+    background-color: var(--primary) !important;
+}
+
+.fill-default {
+    fill: var(--primary);
+}
+
+.nav-link {
+    color: var(--grey);
+}
+
+.text-muted {
+    color: var(--ligth); !important;
+}
+
 /*@over botstrap styles*/
 .bg-primary{background-color: var(--primary) !important;}
 .bg-light{background-color: var(--ligth) !important;}
