@@ -145,7 +145,8 @@ function getTemplateContrato($contrato,$dirCliente,$dirVendedor, $inventario){
                     <li class="legal">
                         2)	el comprador en consecuencia se declara deudor del vendedor y se compromete a pagar en <span class="res"> '.$contrato['plazo'].' </span> entregas  iguales mensuales de  
                         $<span class="res"> '.$mensualidad.' </span> (<span class="res"> '.$letraSaldo.' </span>)
-                         cada una a partir del día <span class="res"> '.$contrato['fecha_primer_pago'].' </span> y una entrega final de $<span class="res"> '.$restante.' </span> (<span class="res"> '.$letraTotal.' </span>).
+                         cada una a partir del día <span class="res"> '.$contrato['fecha_primer_pago'].' </span> 
+                         y una entrega final de $<span class="res"> '.$contrato['total'].' </span> (<span class="res"> '.$letraTotal.' </span>).
                     </li>
                 </ol>
             </p>
