@@ -678,10 +678,12 @@ function getTemplateCartaResponsiva($contrato, $arrayDatos, $dirCliente, $dirVen
                     <td class="res">'.strtoupper($contrato['color']).'</td>
                 </tr>
                 <tr>
+                    <td>AÑO:</td>
+                    <td class="res" colspan="">'.$contrato['anio'].'</td>
                     <td>MOTOR:</td>
-                    <td class="res" colspan="3">'.$contrato['no_motor'].'</td>
+                    <td class="res" colspan="2">'.$contrato['no_motor'].'</td>
                     <td>SERIE:</td>
-                    <td class="res" colspan="3">'.$contrato['numero_serie_vehicular'].'</td>
+                    <td class="res" colspan="2">'.$contrato['numero_serie_vehicular'].'</td>
                 </tr>
                 <tr>
                     <td colspan="8"><h3>Con los siguientes documentos:</h3></td>
